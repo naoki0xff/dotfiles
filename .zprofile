@@ -30,6 +30,7 @@ bindkey "^S" history-incremental-search-forward
 
 #migrating .bash_profile
 source ~/.bash_profile
+source ~/.bashrc
 
 #extra settings
 #to diactivate zsh built-in-command r, and to activate 'r' commaand to start rstuio
