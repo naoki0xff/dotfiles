@@ -1,3 +1,4 @@
+"configuration of dein.vim
 if &compatible
   set nocompatible
 endif
@@ -26,10 +27,12 @@ if dein#check_install()
   call dein#install()
 endif
 
-
+"personal
 set autoindent
 set nobackup
 set noundofile
 set number
 syntax on
+
+"enable backspace to delete those
 set backspace=indent,eol,start
