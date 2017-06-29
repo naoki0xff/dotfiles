@@ -27,6 +27,9 @@ if dein#check_install()
   call dein#install()
 endif
 
+"nerdtree config
+nnoremap <silent><C-n> :NERDTree<CR>
+
 "jedi costumize
 let g:jedi#rename_command = "<leader>R"
 

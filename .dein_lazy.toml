@@ -8,3 +8,6 @@ on_ft = [ 'python', 'ruby', 'c' ]
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
