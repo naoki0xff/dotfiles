@@ -48,11 +48,16 @@ nnoremap \r :write<CR>:QuickRun -mode n<CR>
 xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
 
 "vim basic config
-set autoindent
+syntax on
+set number
 set nobackup
 set noundofile
-set number
-syntax on
+set tabstop=2
+set shiftwidth=2
+set autoindent
+set smartindent
+set ignorecase
+set smartcase
 
 "enable backspace to delete those
 set backspace=indent,eol,start
