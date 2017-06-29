@@ -1,3 +1,4 @@
 # dotfiles
 
-just to restore persnal configs
+basically for personal usage.
+
