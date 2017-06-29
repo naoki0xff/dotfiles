@@ -30,10 +30,10 @@ endif
 "jedi costumize
 let g:jedi#rename_command = "<leader>R"
 
-"quickrun config
-let g:quickrun_config = {
-\ 	'*': {'runmode': 'async:remote:vimproc'},
-\ }
+""quickrun config -- halted, due to the need of runnig XQuartz to async.
+"let g:quickrun_config = {
+"\ 	'*': {'runmode': 'async:remote:vimproc'},
+"\ }
 let g:quickrun_config = {
 \  "_" : {
 \    "outputter/buffer/split" : ":botright",
