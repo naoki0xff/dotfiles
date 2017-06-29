@@ -6,6 +6,7 @@ alias cp='cp -i'
 alias grep='grep --color=auto'
 alias diff='colordiff'
 alias less='less -N'
+alias tac='tail -r'
 
 #alias for application
 alias word='open -a microsoft\ word'

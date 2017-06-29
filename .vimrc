@@ -27,7 +27,24 @@ if dein#check_install()
   call dein#install()
 endif
 
-"personal
+"jedi costumize
+let g:jedi#rename_command = "<leader>R"
+
+"quickrun config
+let g:quickrun_config = {
+\ 	'*': {'runmode': 'async:remote:vimproc'},
+\ }
+let g:quickrun_config = {
+\  "_" : {
+\    "outputter/buffer/split" : ":botright",
+\    "outputter/buffer/close_on_empty" : 1
+\  }
+\}
+let g:quickrun_no_default_key_mappings = 1
+nnoremap \r :write<CR>:QuickRun -mode n<CR>
+xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
+
+"vim basic config
 set autoindent
 set nobackup
 set noundofile
@@ -36,3 +53,7 @@ syntax on
 
 "enable backspace to delete those
 set backspace=indent,eol,start
+
+"close help with q
+autocmd FileType help nnoremap <buffer> q <C-w>c
+noremap q :<C-u>bw! \[quickrun\ output\]<CR>
