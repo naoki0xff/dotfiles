@@ -27,8 +27,14 @@ if dein#check_install()
   call dein#install()
 endif
 
+"denite.vim config
+nnoremap [denite] <Nop>
+nmap <Space>d [denite]
+nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
+nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
+
 "nerdtree config
-nnoremap <silent><C-n> :NERDTree<CR>
+nnoremap <silent><Space>n :NERDTree<CR>
 
 "jedi costumize
 let g:jedi#rename_command = "<leader>R"
@@ -114,10 +120,8 @@ map <silent> [Tag]p :tabprevious<CR>
 
 "mapping insert mode
 "move
-inoremap <C-h> <C-o>^
+inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>$
-"insertion of new line
-"inoremap <> <C-o>o
-"inoremap <> <C-o>O
+inoremap <C-l> <C-o>l
+"any other utility would be substituted with <C-o>.(it will work as great prefix-key)
