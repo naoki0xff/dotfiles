@@ -38,14 +38,21 @@ let g:jedi#rename_command = "<leader>R"
 "\ 	'*': {'runmode': 'async:remote:vimproc'},
 "\ }
 let g:quickrun_config = {
-\  "_" : {
-\    "outputter/buffer/split" : ":botright",
-\    "outputter/buffer/close_on_empty" : 1
+\	"_" : {
+\		"outputter/buffer/split" : ":botright",
+\		"outputter/error/success" : "buffer",
+\		"outputter/error/error/" : "quickfix",
+\		"outputter/buffer/into" : "1",
+\		"outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
+\		"outputter/buffer/close_on_empty" : 1,
+\		"outputter" : "error"
 \  }
 \}
 let g:quickrun_no_default_key_mappings = 1
 nnoremap \r :write<CR>:QuickRun -mode n<CR>
 xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+au FileType qf nnoremap <silent><buffer>q :quit<CR>
 
 "vim basic config
 syntax on
@@ -64,7 +71,6 @@ set backspace=indent,eol,start
 
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
-noremap q :<C-u>bw! \[quickrun\ output\]<CR>
 
 "tab config
 function! s:SID_PREFIX()
@@ -105,3 +111,13 @@ map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
+
+"mapping insert mode
+"move
+inoremap <C-h> <C-o>^
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>$
+"insertion of new line
+"inoremap <> <C-o>o
+"inoremap <> <C-o>O
