@@ -60,6 +60,18 @@ xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
 
+"emmet config
+inoremap [emmet] <Nop>
+imap <C-e> [emmet]
+autocmd FileType html imap <buffer><expr><C-e>
+\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+\	"\<tab>"
+let g:user_emmet_settings = {
+\	'variables' : {
+\	'lang' : 'ja'
+\	}
+\}
+
 "vim basic config
 syntax on
 set number
@@ -71,6 +83,7 @@ set autoindent
 set smartindent
 set ignorecase
 set smartcase
+set hlsearch
 
 "enable backspace to delete those
 set backspace=indent,eol,start
