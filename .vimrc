@@ -1,4 +1,5 @@
 ""dein.vim config
+
 if &compatible
   set nocompatible
 endif
@@ -31,7 +32,10 @@ endif
 nnoremap [denite] <Nop>
 nmap <C-m> [denite]
 nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
-nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
+nnoremap <silent>[denite]f :<C-u>Denite file<CR>
+nnoremap <silent>[denite]r :<C-u>Denite file_rec<CR>
+nnoremap <silent>[denite]y :<C-u>Denite file_old<CR>
+nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
 
 ""nerdtree config
 nnoremap <silent><C-n> :NERDTree<CR>
