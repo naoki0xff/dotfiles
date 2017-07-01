@@ -4,7 +4,7 @@ on_ft = 'python'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_ft = [ 'python', 'ruby', 'c' ]
+on_ft = [ 'python', 'ruby', 'c', 'sh' ]
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
