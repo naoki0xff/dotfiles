@@ -1,4 +1,4 @@
-"configuration of dein.vim
+""dein.vim config
 if &compatible
   set nocompatible
 endif
@@ -27,22 +27,23 @@ if dein#check_install()
   call dein#install()
 endif
 
-"denite.vim config
+""denite.vim config
 nnoremap [denite] <Nop>
 nmap <C-m> [denite]
 nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
 nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
 
-"nerdtree config
+""nerdtree config
 nnoremap <silent><C-n> :NERDTree<CR>
 
-"jedi costumize
+""jedi config
 let g:jedi#rename_command = "<leader>R"
 
-""quickrun config -- halted, due to the need of runnig XQuartz to async.
+""quickrun config
 "let g:quickrun_config = {
 "\ 	'*': {'runmode': 'async:remote:vimproc'},
 "\ }
+"-- halted, due to the need of runnig XQuartz to async.
 let g:quickrun_config = {
 \	"_" : {
 \		"outputter/buffer/split" : ":botright",
@@ -60,7 +61,7 @@ xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
 
-"emmet config
+""emmet config
 inoremap [emmet] <Nop>
 imap <C-e> [emmet]
 autocmd FileType html imap <buffer><expr><C-e>
@@ -72,26 +73,40 @@ let g:user_emmet_settings = {
 \	}
 \}
 
-"vim basic config
+""vim original config
+"syntax and indication
 syntax on
 set number
+"file
 set nobackup
 set noundofile
+"indent
 set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
+"search
+set hlsearch
+set incsearch
 set ignorecase
 set smartcase
-set hlsearch
-
-"enable backspace to delete those
+"enable backspace for delete
 set backspace=indent,eol,start
-
+"window
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+"insert mode
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 
-"tab config
+""tab control
+"config
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
 endfunction
@@ -116,25 +131,15 @@ function! s:my_tabline()  "{{{
 endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
-
-" The prefix key.
+"prefix key.
 nnoremap    [Tag]   <Nop>
 nmap    t [Tag]
-" Tab jump
+"jump
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-
 "mapping create,x(close),next,prev
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
-
-"mapping insert mode
-"move
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
-"any other utility would be substituted with <C-o>.(it will work as great prefix-key)
