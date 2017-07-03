@@ -1,6 +1,5 @@
 #user defined scripts and function
 export PATH=$PATH:~/scripts/bin
-source ~/scripts/bin/workdir.sh
 
 #python config
 export PYENV_ROOT="${HOME}/.pyenv"
