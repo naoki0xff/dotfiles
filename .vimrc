@@ -78,7 +78,7 @@ let g:user_emmet_settings = {
 \}
 
 ""vim original config
-"syntax and indication
+"view
 syntax on
 set number
 "file
@@ -94,6 +94,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+nnoremap <Space>n :noh<CR>
 "enable backspace for delete
 set backspace=indent,eol,start
 "window
@@ -106,6 +107,8 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
+inoremap <C-i> <C-o>I
+inoremap <C-a> <C-o>A
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 
