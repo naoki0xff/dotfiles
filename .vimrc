@@ -107,8 +107,6 @@ inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>j
 inoremap <C-k> <C-o>k
 inoremap <C-l> <C-o>l
-inoremap <C-i> <C-o>I
-inoremap <C-a> <C-o>A
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 
