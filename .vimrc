@@ -36,12 +36,10 @@ nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
 nnoremap <silent>[denite]d :<C-u>Denite directory_rec<CR>
 nnoremap <silent>[denite]y :<C-u>Denite file_old<CR>
 nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
+set hidden
 
 ""nerdtree config
 nnoremap <silent><C-n> :NERDTree<CR>
-
-""jedi config
-let g:jedi#rename_command = "<leader>R"
 
 ""quickrun config
 "let g:quickrun_config = {
@@ -89,6 +87,7 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 "search
 set hlsearch
 set incsearch
