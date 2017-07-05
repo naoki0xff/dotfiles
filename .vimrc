@@ -94,7 +94,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-nnoremap <Space>n :noh<CR>
+set nowrapscan
 "enable backspace for delete
 set backspace=indent,eol,start
 "window

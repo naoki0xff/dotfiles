@@ -1,12 +1,10 @@
-#zsh template?
+#zsh configuration
 autoload -U compinit
 compinit
-
 #prompt
 autoload -U promptinit
 promptinit
 PROMPT='%m:%F{cyan}%~%f%#'
-
 #history and completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
@@ -25,7 +23,7 @@ setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
 
-#git config
+#git status
 autoload -Uz add-zsh-hook
 autoload -Uz colors
 colors
@@ -54,14 +52,14 @@ function _update_vcs_info_msg() {
 add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
-#to avoid terminal from interpreting ctrl+s, instead shell can interpret that
+#etc
+#forward search
 stty stop undef
 bindkey "^S" history-incremental-search-forward
+#enable 'rstudio'
+disable r
 
 #migrating .bash_profile
 source ~/.bash_profile
 source ~/.bashrc
 
-#extra settings
-#to diactivate zsh built-in-command r, and to activate 'r' commaand to start rstuio
-disable r
