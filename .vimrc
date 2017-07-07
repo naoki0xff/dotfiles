@@ -98,14 +98,16 @@ set nowrapscan
 "enable backspace for delete
 set backspace=indent,eol,start
 "window
+nnoremap j gj
+nnoremap k gk
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 "insert mode
 inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
+inoremap <C-j> <C-o>gj
+inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>l
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
