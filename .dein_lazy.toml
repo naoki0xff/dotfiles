@@ -8,7 +8,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_ft = [ 'python', 'ruby', 'c', 'sh' ]
+on_ft = [ 'python', 'ruby', 'c']
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
