@@ -81,6 +81,8 @@ let g:user_emmet_settings = {
 "view
 syntax on
 set number
+set display=lastline
+set pumheight=10
 "file
 set nobackup
 set noundofile
