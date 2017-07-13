@@ -6,8 +6,8 @@ as personal config storage
 
 ## environment
 
--OS:MacOS
--vim:version8.0
+- OS:MacOS
+- vim:version8.0
 
 ## note
 
