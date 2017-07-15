@@ -41,7 +41,6 @@ set hidden
 
 ""nerdtree config
 nnoremap <silent><C-n> :NERDTree<CR>
-nnoremap ~ :NERDTree home<CR>
 
 ""quickrun config
 "let g:quickrun_config = {
