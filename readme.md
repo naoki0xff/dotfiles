@@ -11,7 +11,13 @@ as personal config storage
 
 ## note
 
-if it were for other unix-like OS, there should be manually installed packages.
-even some programs are already insructed installation of them in config files here.
+followings are the list of configuration files
 
-so please be aware any error message returned by shell.
+- .bashrc
+- .bash_profile
+- .zprofile
+- .vimrc
+- .dein.toml
+- .dein_lazy.toml
+- .tmux.conf
+
