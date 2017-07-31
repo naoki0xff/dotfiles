@@ -97,6 +97,18 @@ set incsearch
 set ignorecase
 set smartcase
 set nowrapscan
+"matcher	#need to add behaivour on '*'.
+nnoremap <expr> / _(":%s/<Cursor>/&/gn")
+
+function! s:move_cursor_pos_mapping(str, ...)
+    let left = get(a:, 1, "<Left>")
+    let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
+    return substitute(a:str, '<Cursor>', '', '') . lefts
+endfunction
+
+function! _(str)
+    return s:move_cursor_pos_mapping(a:str, "\<Left>")
+endfunction
 "enable backspace for delete
 set backspace=indent,eol,start
 "window
