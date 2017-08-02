@@ -9,7 +9,8 @@ build = 'make'
 repo = 'Shougo/neosnippet-snippets'
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
+repo = 'Shougo/deoplete.nvim'
+hook_add = 'let g:deoplete#enable_at_startup =1'
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'

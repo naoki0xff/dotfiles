@@ -1,7 +1,7 @@
 #editor
 export EDITOR=vim
 
-#user defined scripts and function
+#PATH
 export PATH=$PATH:~/scripts/bin
 
 ##language config

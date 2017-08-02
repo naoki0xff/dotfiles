@@ -23,6 +23,9 @@ setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
 
+#vim setting
+#export XDG_CONFIG_HOME=~/.config
+
 #git status
 autoload -Uz add-zsh-hook
 autoload -Uz colors
