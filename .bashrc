@@ -1,4 +1,5 @@
-#alias for built in command
+#alias
+#built-in
 alias ls='ls -CF'
 alias la='ls -CFal'
 alias mv='mv -i'
@@ -8,8 +9,7 @@ alias diff='colordiff'
 alias less='less -N'
 alias tac='tail -r'
 alias vim='nvim'
-
-#alias for application
+#application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'
 alias powerpoint='open -a microsoft\ powerpoint'

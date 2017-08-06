@@ -1,11 +1,15 @@
-#zsh configuration
+#zsh initialization
+#load config files
+source ~/.bash_profile
+source ~/.bashrc
+#compatibility
 autoload -U compinit
 compinit
-#prompt
+#prompt customize
 autoload -U promptinit
 promptinit
 PROMPT='%m:%F{cyan}%~%f%#'
-#history and completion
+#history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
 export HISTSIZE=1000
@@ -22,10 +26,11 @@ setopt hist_no_store
 setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
+#forward search
+stty stop undef
+bindkey "^S" history-incremental-search-forward
 
-#vim setting
-#export XDG_CONFIG_HOME=~/.config
-
+#command line tools
 #git status
 autoload -Uz add-zsh-hook
 autoload -Uz colors
@@ -54,15 +59,5 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT="%1(v|%F{green}%1v%f|)"
-
-#etc
-#forward search
-stty stop undef
-bindkey "^S" history-incremental-search-forward
-#enable 'rstudio'
+#enable r(statistics)
 disable r
-
-#migrating .bash_profile
-source ~/.bash_profile
-source ~/.bashrc
-
