@@ -63,5 +63,5 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 disable r
 
 #trouble shooting
-#when $EDITOR is vi/vim, assing emacs keybind instead of vi/vim. 
+#when $EDITOR is vi/vim, assing emacs keybind instead of vi/vim's one.
 bindkey -e

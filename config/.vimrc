@@ -118,7 +118,9 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-"insert mode
+"cursor (insert mode)
+inoremap <C-a> <C-o>A
+inoremap <C-i> <C-o>I
 inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>gj
 inoremap <C-k> <C-o>gk
