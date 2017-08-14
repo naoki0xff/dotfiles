@@ -61,3 +61,7 @@ add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT="%1(v|%F{green}%1v%f|)"
 #enable r(statistics)
 disable r
+
+#trouble shooting
+#when $EDITOR is vi/vim, assing emacs keybind instead of vi/vim. 
+bindkey -e
