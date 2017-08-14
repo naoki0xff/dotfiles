@@ -166,11 +166,3 @@ map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
-
-"command shortcut
-"prefix key is set to <C-s>
-nnoremap [command] <Nop>
-nmap <C-s> [command]
-"commands
-nnoremap <silent>[command]r :register<CR>
-nnoremap <silent>[command]n :noh<CR>
