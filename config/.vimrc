@@ -6,7 +6,6 @@
 "----------------------------------------------------------------------------
 
 "appearance
-syntax on
 nnoremap <C-g> 2<C-g>
 set number
 set display=lastline
@@ -178,3 +177,9 @@ let g:user_emmet_settings = {
 \	}
 \}
 
+
+"----------------------------------------------------------------------------
+"etc:trouble shooting
+"----------------------------------------------------------------------------
+"syntax on must come after dein.vim's config, due to its requirement
+syntax on
