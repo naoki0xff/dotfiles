@@ -1,88 +1,17 @@
-""dein.vim config
+""vimrc
+"requirement:vim=NVIM v0.2.0 or later
 
-if &compatible
-  set nocompatible
-endif
+"----------------------------------------------------------------------------
+"built-in configuration
+"----------------------------------------------------------------------------
 
-let s:dein_dir = expand('~/.cache/dein')
-let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
-
-if !isdirectory(s:dein_repo_dir)
-  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
-endif
-execute 'set runtimepath^=' . s:dein_repo_dir
-
-if dein#load_state(s:dein_dir)
-  call dein#begin(s:dein_dir)
-
-  let s:toml = '~/.dein.toml'
-  let s:lazy_toml = '~/.dein_lazy.toml'
-  call dein#load_toml(s:toml, {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-if dein#check_install()
-  call dein#install()
-endif
-
-""denite.vim config
-nnoremap [denite] <Nop>
-nmap <C-m> [denite]
-nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
-nnoremap <silent>[denite]l :<C-u>Denite line<CR>
-nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
-nnoremap <silent>[denite]d :<C-u>Denite directory_rec<CR>
-nnoremap <silent>[denite]y :<C-u>Denite file_old<CR>
-nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
-set hidden
-
-""nerdtree config
-nnoremap <silent><C-n> :NERDTree<CR>
-
-""quickrun config
-"let g:quickrun_config = {
-"\ 	'*': {'runmode': 'async:remote:vimproc'},
-"\ }
-"-- halted, due to the need of runnig XQuartz to async.
-let g:quickrun_config = {
-\	"_" : {
-\		"outputter/buffer/split" : ":botright",
-\		"outputter/error/success" : "buffer",
-\		"outputter/error/error/" : "quickfix",
-\		"outputter/buffer/into" : "1",
-\		"outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
-\		"outputter/buffer/close_on_empty" : 1,
-\		"outputter" : "error"
-\  }
-\}
-let g:quickrun_no_default_key_mappings = 1
-nnoremap \r :write<CR>:QuickRun -mode n<CR>
-xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
-nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-au FileType qf nnoremap <silent><buffer>q :quit<CR>
-
-""emmet config
-inoremap [emmet] <Nop>
-imap <C-Space> [emmet]
-autocmd FileType html imap <buffer><expr><C-Space>
-\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-\	"\<tab>"
-let g:user_emmet_settings = {
-\	'variables' : {
-\	'lang' : 'ja'
-\	}
-\}
-
-""vim original config
-"view
+"appearance
 syntax on
+nnoremap <C-g> 2<C-g>
 set number
 set display=lastline
 set pumheight=10
-"file
+"backup
 set nobackup
 set noundofile
 "indent
@@ -154,7 +83,7 @@ function! s:my_tabline()  "{{{
 endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
-"prefix key.
+"prefix
 nnoremap    [Tag]   <Nop>
 nmap    t [Tag]
 "jump
@@ -166,3 +95,86 @@ map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
+
+
+"----------------------------------------------------------------------------
+"plugin configuration
+"----------------------------------------------------------------------------
+
+""dein.vim
+if &compatible
+  set nocompatible
+endif
+
+let s:dein_dir = expand('~/.cache/dein')
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone https://github.com/Shougo/dein.vim' s:dein_repo_dir
+endif
+execute 'set runtimepath^=' . s:dein_repo_dir
+
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  let s:toml = '~/.dein.toml'
+  let s:lazy_toml = '~/.dein_lazy.toml'
+  call dein#load_toml(s:toml, {'lazy': 0})
+  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+
+  call dein#end()
+  call dein#save_state()
+endif
+
+if dein#check_install()
+  call dein#install()
+endif
+
+""denite.vim
+nnoremap [denite] <Nop>
+nmap <C-m> [denite]
+nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
+nnoremap <silent>[denite]l :<C-u>Denite line<CR>
+nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
+nnoremap <silent>[denite]d :<C-u>Denite directory_rec<CR>
+nnoremap <silent>[denite]y :<C-u>Denite file_old<CR>
+nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
+set hidden
+
+""nerdtree
+nnoremap <silent><C-n> :NERDTree<CR>
+
+""quickrun
+"let g:quickrun_config = {
+"\ 	'*': {'runmode': 'async:remote:vimproc'},
+"\ }
+"-- halted, due to the need of runnig XQuartz to async.
+let g:quickrun_config = {
+\	"_" : {
+\		"outputter/buffer/split" : ":botright",
+\		"outputter/error/success" : "buffer",
+\		"outputter/error/error/" : "quickfix",
+\		"outputter/buffer/into" : "1",
+\		"outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
+\		"outputter/buffer/close_on_empty" : 1,
+\		"outputter" : "error"
+\  }
+\}
+let g:quickrun_no_default_key_mappings = 1
+nnoremap \r :write<CR>:QuickRun -mode n<CR>
+xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
+nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+au FileType qf nnoremap <silent><buffer>q :quit<CR>
+
+""emmet
+inoremap [emmet] <Nop>
+imap <C-Space> [emmet]
+autocmd FileType html imap <buffer><expr><C-Space>
+\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+\	"\<tab>"
+let g:user_emmet_settings = {
+\	'variables' : {
+\	'lang' : 'ja'
+\	}
+\}
+
