@@ -66,8 +66,8 @@ au FileType qf nnoremap <silent><buffer>q :quit<CR>
 
 ""emmet config
 inoremap [emmet] <Nop>
-imap <C-e> [emmet]
-autocmd FileType html imap <buffer><expr><C-e>
+imap <C-Space> [emmet]
+autocmd FileType html imap <buffer><expr><C-Space>
 \	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
 \	"\<tab>"
 let g:user_emmet_settings = {
