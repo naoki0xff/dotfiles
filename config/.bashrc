@@ -8,7 +8,6 @@ alias grep='grep --color=auto'
 alias diff='colordiff'
 alias less='less -N'
 alias tac='tail -r'
-alias vim='nvim'
 #application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'

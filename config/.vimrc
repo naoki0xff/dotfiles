@@ -11,7 +11,8 @@ set number
 set display=lastline
 set pumheight=10
 "backup
-set nobackup
+set backup
+set backupdir=~/.backup/vim
 set noundofile
 "indent
 set tabstop=4
