@@ -1,4 +1,4 @@
-""vimrc
+"vimrc
 "requirement:vim=NVIM v0.2.0 or later
 
 "----------------------------------------------------------------------------
@@ -40,13 +40,9 @@ function! _(str)
 endfunction
 "enable backspace for delete
 set backspace=indent,eol,start
-"select window area
+"cursor (normal mode)
 nnoremap j gj
 nnoremap k gk
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 "cursor (insert mode)
 inoremap <C-a> <C-o>A
 inoremap <C-i> <C-o>I
@@ -56,6 +52,16 @@ inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>l
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
+
+""window control
+"split widow
+nnoremap <silent><C-s>s :split<CR>
+nnoremap <silent><C-s>v :vsplit<CR>
+"select window area
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 ""tab control
 "config
