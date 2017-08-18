@@ -13,7 +13,6 @@ only usr specific settings are written
 
 |assigned key|original key|behaviour|
 |:--|--:|:--:|
-|C-a|C-o+A|move to last of line|
-|C-Space|[emmet]|use emmet completion|
-|C-i|C-o+I|move to head of line|
+|C-a|C-o+I|move to head of line|
+|C-e|C-o+A|move to last of line|
 |C-[h/j/k/l]|C-o+[h/j/k/l]|move cursor to left/up/down/right|

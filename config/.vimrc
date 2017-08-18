@@ -15,9 +15,8 @@ set backup
 set backupdir=~/.backup/vim
 set noundofile
 "indent
-set tabstop=4
+"set tabstop=4
 set shiftwidth=4
-set autoindent
 set smartindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 "search
@@ -44,14 +43,16 @@ set backspace=indent,eol,start
 nnoremap j gj
 nnoremap k gk
 "cursor (insert mode)
-inoremap <C-a> <C-o>A
-inoremap <C-i> <C-o>I
+inoremap <C-e> <C-o>A
+inoremap <C-a> <C-o>I
 inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>gj
 inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>l
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
+"clipboard integration
+set clipboard+=unnamedplus
 
 ""window control
 "split widow
