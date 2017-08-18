@@ -55,9 +55,6 @@ autocmd FileType help nnoremap <buffer> q <C-w>c
 set clipboard+=unnamedplus
 
 ""window control
-"split widow
-nnoremap <silent><C-s>s :split<CR>
-nnoremap <silent><C-s>v :vsplit<CR>
 "select window area
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j

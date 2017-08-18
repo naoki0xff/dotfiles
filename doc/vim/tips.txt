@@ -1,0 +1,124 @@
+#vim usage
+
+------------------------
+------------------------
+
+##tips
+
+・reserve any changes made
+if swapfile option is set, you can use ":recover" to backup editing file.
+if backup file option is set, backup file will be made.
+you can specify the directory of both swp/~ file to be made.
+
+・標準入力からバッファを開く
+1).give '-' as it arguments.
+	ex. which myfunc.py|vim -
+2).quote command with backquote(`) and give that as vim arguments.
+	ex. vim `ls -1`
+
+・デフォルト設定での起動
+"vim -u NONE [fliename]"
+
+・注意事項
+キーマッピングを潰した結果、割り当てられていた機能群がまるごと使えなくなることがある。
+ex). <C-i>を他のにassignした結果、本来のtabが(tabキーさえも)丸々使えなくなってしまった。
+
+・参考
+:h index | コマンドやキーバインドのリスト。網羅的。
+:h howto | 知っておくと便利なもの。基礎知識的な感じでもある。
+:set | 設定されているオプションの一覧。:set [option]? でそのオプションが設定されているか知れる。
+...etc.
+というかhelpを見よう。だいたい載ってる。
+
+------------------------
+
+##normal mode
+
+"cursor position
+w/e/b,W/E/B = move with word level.
+              each type means 1 word forward/+tail/backword. with capital, block level.
+ctrl+[ = <esc>
+ctrl+u/ctrl+d = scroll up/down half of the page
+ctrl+b/ctrl+f = scroll backword/forward the page
+ctrl+o/i = go to previous/later work area
+ (ex. on line 60, if you typed gg then ctrl+o, you'll go back to line 60)
+m<char> = <char> typed after m will be used as mark
+`<char> = when marked, with this, you can jump marked text line
+f/t<word> = search for the <word> to first/till it matches
+
+"window
+[prefix] = ctrl+w
+[prefix]+s/v = split horizontaly/verticaly
+
+"buffer
+ctrl+^ = open previously used buffer (^ can be altered with 6, no need to type shift for ^)
+ 
+"operation
+. = repeat previously used operation
+
+------------------------
+
+##command mode
+
+"edit file
+:e[dit] {file}
+
+"substitution
+:%s/foo/bar/g = substitute globally.
+:num1,num2s/foo/bar/g = substitute globally within num1~num2 lines
+* = search a word under curosr
+
+"match
+:%s/\<word\>/&/gn = (circle target word with <>,escape with \)
+                    serach for 'exact' match
+
+"read from shell/ use of shell
+:! <command> = allow using shell command once
+:r! <command> = read the command's stdout/stderr to current position of cursor
+:shell = go to shell
+
+"change directory (note:for more,see ":h cd")
+:cd = go to home directory (same with :cd ~)
+:cd {path} = go to {path} designated directory. both relative/absolute path is available.
+:cd %:h = go to current buffer's directory.
+
+"get file path
+:echo expand("%:p")
+
+"open help with tab
+:tab help <name_of_doc>
+"move tab
+a).default
+gt/gT = move next/previous tab
+b).customized
+tn/tp = move next/previous tab
+
+"see register
+:register
+
+------------------------
+
+##insert mode
+
+"cursor
+ctrl+m = insert new line (originally ctrl+m = <CR>)
+
+"optional
+ctrl+o = allow typing of normal mode command once on insert mode
+
+##visualmode
+
+"tab indentation
+1.select word/line with visual mode
+2.> = indent left
+  < = delete indent (level:1)
+*comment will be automatically dismissed
+
+"add/delete lines on its head/tail
+1,ctrl+v(shift+v won't work) and select target lines
+2,a),if you wanna delete highlighted lines, just type 'd'
+  b),if you want to add, type I/A depend on where you want to add
+3,type any string
+4,type <ESC>
+*note:正規表現でも出来る。よく知らんが。
+
