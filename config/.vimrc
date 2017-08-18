@@ -15,7 +15,7 @@ set backup
 set backupdir=~/.backup/vim
 set noundofile
 "indent
-"set tabstop=4
+set tabstop=4
 set shiftwidth=4
 set smartindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
