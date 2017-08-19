@@ -1,13 +1,12 @@
 #enviroment variables
 #browser
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
-#editor
+#vim
 export EDITOR=vim
 alias vim='nvim'
+export XDG_CONFIG_HOME=~/.config
 #PATH
 export PATH=$PATH:~/scripts/bin
-alias hcd='cd ~/documents/help/'
-alias pcd='cd ~/work/python/tutor/'
 
 ##language
 #python
