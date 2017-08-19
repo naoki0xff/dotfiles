@@ -54,6 +54,26 @@ autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
 set clipboard+=unnamedplus
 
+":Diff
+"conf
+function! s:vimdiff_in_newtab(...)
+  if a:0 == 1
+    tabedit %:p
+    exec 'rightbelow vertical diffsplit ' . a:1
+  else
+    exec 'tabedit ' . a:1
+    for l:file in a:000[1 :]
+      exec 'rightbelow vertical diffsplit ' . l:file
+    endfor
+  endif
+endfunction
+command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
+"highlight setting
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
 ""window control
 "select window area
 nnoremap <C-h> <C-w>h
@@ -62,7 +82,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 ""tab control
-"config
+"conf
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
 endfunction
@@ -186,5 +206,5 @@ let g:user_emmet_settings = {
 "----------------------------------------------------------------------------
 "etc:trouble shooting
 "----------------------------------------------------------------------------
-"syntax on must come after dein.vim's config, due to its requirement
+"syntax on must come after dein.vim's conf, due to its requirement
 syntax on
