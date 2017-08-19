@@ -17,6 +17,7 @@ set noundofile
 "indent
 set tabstop=4
 set shiftwidth=4
+set autoindent
 set smartindent
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 "search
@@ -54,7 +55,7 @@ autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
 set clipboard+=unnamedplus
 
-":Diff
+":Diff (use diff mode)
 "conf
 function! s:vimdiff_in_newtab(...)
   if a:0 == 1
@@ -73,6 +74,25 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
+":Comp (Comparing two or more files)
+"conf
+function! s:compare(...)
+  if a:0 == 1
+    tabedit %:p
+	setl scrollbind
+    exec 'rightbelow vnew ' . a:1
+	setl scrollbind
+  else
+    exec 'tabedit ' . a:1
+    setl scrollbind
+    for l:file in a:000[1 :]
+      exec 'rightbelow vnew ' . l:file
+      setl scrollbind
+    endfor
+  endif
+endfunction
+command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
 
 ""window control
 "select window area
