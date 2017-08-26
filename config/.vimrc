@@ -4,7 +4,6 @@
 "----------------------------------------------------------------------------
 "built-in configuration
 "----------------------------------------------------------------------------
-
 "appearance
 nnoremap <C-g> 2<C-g>
 set number
@@ -139,12 +138,11 @@ map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
-
+map <silent> [Tag]o :tabonly<CR>
 
 "----------------------------------------------------------------------------
 "plugin configuration
 "----------------------------------------------------------------------------
-
 ""dein.vim
 if &compatible
   set nocompatible
@@ -221,7 +219,6 @@ let g:user_emmet_settings = {
 \	'lang' : 'ja'
 \	}
 \}
-
 
 "----------------------------------------------------------------------------
 "etc:trouble shooting
