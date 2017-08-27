@@ -25,9 +25,8 @@ set incsearch
 set ignorecase
 set smartcase
 set nowrapscan
-"matcher	#need to add behaivour on '*'.
+"matcher
 nnoremap <expr> / _(":%s/<Cursor>/&/gn")
-
 function! s:move_cursor_pos_mapping(str, ...)
     let left = get(a:, 1, "<Left>")
     let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
@@ -133,7 +132,7 @@ nmap    t [Tag]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-"mapping create,x(close),next,prev
+"mapping create,x(close),next,prev,only
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
@@ -171,6 +170,8 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+filetype plugin indent on
+syntax on
 
 ""denite.vim
 nnoremap [denite] <Nop>
@@ -221,7 +222,6 @@ let g:user_emmet_settings = {
 \}
 
 "----------------------------------------------------------------------------
-"etc:trouble shooting
+"etc:documentation for trouble shooting
 "----------------------------------------------------------------------------
-"syntax on must come after dein.vim's conf, due to its requirement
-syntax on
+"when runtimepath is redefined within .vimrc, 'syntax on' must be written after that sentence.
