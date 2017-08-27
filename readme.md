@@ -7,7 +7,7 @@ as personal config storage
 ## environment
 
 - OS:MacOS
-- vim:NVIM v0.2.0
+- vim:NVIM v0.2.0 or later
 
 ## note
 
