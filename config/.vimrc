@@ -174,20 +174,20 @@ filetype plugin indent on
 syntax on
 
 ""denite.vim
-"mapping
+"map
 nnoremap [denite] <Nop>
-nmap <Space>d [denite]
+nmap <M-d> [denite]
 nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
 nnoremap <silent>[denite]l :<C-u>Denite line<CR>
 nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
 nnoremap <silent>[denite]d :<C-u>Denite directory_rec<CR>
 nnoremap <silent>[denite]y :<C-u>Denite file_old<CR>
 nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
-"enable buffer changes w/o save
+"enable buffer change w/o saving
 set hidden
 
 ""nerdtree
-nnoremap <silent><Space>n :NERDTree<CR>
+nnoremap <silent><M-n> :NERDTree<CR>
 
 ""quickrun
 "let g:quickrun_config = {
@@ -223,9 +223,9 @@ let g:user_emmet_settings = {
 \	}
 \}
 
-"fugitive
+""fugitive
 nnoremap [fugitive] <Nop>
-nmap <Space>g [fugitive]
+nmap <M-g> [fugitive]
 nnoremap <silent>[fugitive]s :Gstatus<CR>
 nnoremap <silent>[fugitive]a :Gwrite<CR>
 nnoremap <silent>[fugitive]c :Gcommit<CR>
