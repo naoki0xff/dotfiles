@@ -223,12 +223,6 @@ let g:user_emmet_settings = {
 \	}
 \}
 
-""fugitive
-nnoremap <silent>gs :Gstatus<CR>
-nnoremap <silent>ga :Gwrite<CR>
-nnoremap <silent>gc :Gcommit<CR>
-nnoremap <silent>gd :Gdiff<CR>
-
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting
 "----------------------------------------------------------------------------
