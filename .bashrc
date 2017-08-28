@@ -18,4 +18,4 @@ alias vivaldi='open -a vivaldi'
 #cd shortcut
 alias hcd='cd ~/documents/help/'
 alias pcd='cd ~/work/python/tutor/'
-alias ccd='cd ~/project/dotfiles/config/'
+alias ccd='cd ~/project/dotfiles/'

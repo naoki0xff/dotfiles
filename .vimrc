@@ -176,7 +176,7 @@ syntax on
 ""denite.vim
 "map
 nnoremap [denite] <Nop>
-nmap <M-d> [denite]
+nmap <C-m> [denite]
 nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
 nnoremap <silent>[denite]l :<C-u>Denite line<CR>
 nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
@@ -187,7 +187,7 @@ nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
 set hidden
 
 ""nerdtree
-nnoremap <silent><M-n> :NERDTree<CR>
+nnoremap <silent><C-n> :NERDTree<CR>
 
 ""quickrun
 "let g:quickrun_config = {
@@ -224,12 +224,10 @@ let g:user_emmet_settings = {
 \}
 
 ""fugitive
-nnoremap [fugitive] <Nop>
-nmap <M-g> [fugitive]
-nnoremap <silent>[fugitive]s :Gstatus<CR>
-nnoremap <silent>[fugitive]a :Gwrite<CR>
-nnoremap <silent>[fugitive]c :Gcommit<CR>
-nnoremap <silent>[fugitive]d :Gdiff<CR>
+nnoremap <silent>gs :Gstatus<CR>
+nnoremap <silent>ga :Gwrite<CR>
+nnoremap <silent>gc :Gcommit<CR>
+nnoremap <silent>gd :Gdiff<CR>
 
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting
