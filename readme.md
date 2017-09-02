@@ -20,8 +20,3 @@ followings are the list of configuration files
 - .dein.toml
 - .dein_lazy.toml
 - .tmux.conf
-
-componenets are set to
-
-- configuration files -> config/
-- documentations -> doc/
