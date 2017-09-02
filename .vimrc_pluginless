@@ -1,0 +1,137 @@
+"vimrc
+
+"appearance
+syntax on
+nnoremap <C-g> 2<C-g>
+set number
+set display=lastline
+set pumheight=10
+"backup
+set backup
+set backupdir=~/.backup/vim
+set noundofile
+"indent
+set tabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
+"search
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set nowrapscan
+"matcher
+nnoremap <expr> / _(":%s/<Cursor>/&/gn")
+function! s:move_cursor_pos_mapping(str, ...)
+    let left = get(a:, 1, "<Left>")
+    let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
+    return substitute(a:str, '<Cursor>', '', '') . lefts
+endfunction
+
+function! _(str)
+    return s:move_cursor_pos_mapping(a:str, "\<Left>")
+endfunction
+"enable backspace for delete
+set backspace=indent,eol,start
+"cursor (normal mode)
+nnoremap j gj
+nnoremap k gk
+"cursor (insert mode)
+inoremap <C-e> <C-o>A
+inoremap <C-a> <C-o>I
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>gj
+inoremap <C-k> <C-o>gk
+inoremap <C-l> <C-o>l
+"close help with q
+autocmd FileType help nnoremap <buffer> q <C-w>c
+"clipboard integration
+set clipboard+=unnamedplus
+
+":Diff (use diff mode)
+"conf
+function! s:vimdiff_in_newtab(...)
+  if a:0 == 1
+    tabedit %:p
+    exec 'rightbelow vertical diffsplit ' . a:1
+  else
+    exec 'tabedit ' . a:1
+    for l:file in a:000[1 :]
+      exec 'rightbelow vertical diffsplit ' . l:file
+    endfor
+  endif
+endfunction
+command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
+"highlight setting
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+
+":Comp (Comparing two or more files)
+"conf
+function! s:compare(...)
+  if a:0 == 1
+    tabedit %:p
+	setl scrollbind
+    exec 'rightbelow vnew ' . a:1
+	setl scrollbind
+  else
+    exec 'tabedit ' . a:1
+    setl scrollbind
+    for l:file in a:000[1 :]
+      exec 'rightbelow vnew ' . l:file
+      setl scrollbind
+    endfor
+  endif
+endfunction
+command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
+
+""window control
+"select window area
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+""tab control
+"conf
+function! s:SID_PREFIX()
+  return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
+endfunction
+
+function! s:my_tabline()  "{{{
+  let s = ''
+  for i in range(1, tabpagenr('$'))
+    let bufnrs = tabpagebuflist(i)
+    let bufnr = bufnrs[tabpagewinnr(i) - 1]  " first window, first appears
+    let no = i  " display 0-origin tabpagenr.
+    let mod = getbufvar(bufnr, '&modified') ? '!' : ' '
+    let title = fnamemodify(bufname(bufnr), ':t')
+    let title = '[' . title . ']'
+    let s .= '%'.i.'T'
+    let s .= '%#' . (i == tabpagenr() ? 'TabLineSel' : 'TabLine') . '#'
+    let s .= no . ':' . title
+    let s .= mod
+    let s .= '%#TabLineFill# '
+  endfor
+  let s .= '%#TabLineFill#%T%=%#TabLine#'
+  return s
+endfunction "}}}
+let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
+set showtabline=2
+"prefix
+nnoremap    [Tag]   <Nop>
+nmap    t [Tag]
+"jump
+for n in range(1, 9)
+  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+endfor
+"mapping create,x(close),next,prev,only
+map <silent> [Tag]c :tablast <bar> tabnew<CR>
+map <silent> [Tag]x :tabclose<CR>
+map <silent> [Tag]n :tabnext<CR>
+map <silent> [Tag]p :tabprevious<CR>
+map <silent> [Tag]o :tabonly<CR>
