@@ -7,8 +7,7 @@ set number
 set display=lastline
 set pumheight=10
 "backup
-set backup
-set backupdir=~/.backup/vim
+set nobackup
 set noundofile
 "indent
 set tabstop=4
@@ -22,17 +21,6 @@ set incsearch
 set ignorecase
 set smartcase
 set nowrapscan
-"matcher
-nnoremap <expr> / _(":%s/<Cursor>/&/gn")
-function! s:move_cursor_pos_mapping(str, ...)
-    let left = get(a:, 1, "<Left>")
-    let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
-    return substitute(a:str, '<Cursor>', '', '') . lefts
-endfunction
-
-function! _(str)
-    return s:move_cursor_pos_mapping(a:str, "\<Left>")
-endfunction
 "enable backspace for delete
 set backspace=indent,eol,start
 "cursor (normal mode)
@@ -47,8 +35,6 @@ inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>l
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
-"clipboard integration
-set clipboard+=unnamedplus
 
 ":Diff (use diff mode)
 "conf
