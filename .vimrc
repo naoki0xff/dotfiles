@@ -25,36 +25,63 @@ set incsearch
 set ignorecase
 set smartcase
 set nowrapscan
-"matcher
-nnoremap <expr> / _(":%s/<Cursor>/&/gn")
-function! s:move_cursor_pos_mapping(str, ...)
-    let left = get(a:, 1, "<Left>")
-    let lefts = join(map(split(matchstr(a:str, '.*<Cursor>\zs.*\ze'), '.\zs'), 'left'), "")
-    return substitute(a:str, '<Cursor>', '', '') . lefts
-endfunction
-
-function! _(str)
-    return s:move_cursor_pos_mapping(a:str, "\<Left>")
-endfunction
 "enable backspace for delete
 set backspace=indent,eol,start
 "cursor (normal mode)
 nnoremap j gj
 nnoremap k gk
 "cursor (insert mode)
-inoremap <C-e> <C-o>A
-inoremap <C-a> <C-o>I
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
 inoremap <C-h> <C-o>h
 inoremap <C-j> <C-o>gj
 inoremap <C-k> <C-o>gk
 inoremap <C-l> <C-o>l
+"cursor (command mode)
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
 set clipboard+=unnamedplus
+"japanese ZENKAKU
+set ambiwidth=double
 
+""sub commands
+nnoremap [sub] <Nop>
+nmap s [sub]
+"match
+nnoremap <silent> [sub]/ :Denite line<CR>
+nnoremap [sub]c :%s//&/gn<Left><Left><Left><Left><Left>
+"substituiton
+nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
+nnoremap [sub]s :%s///g<Left><Left><Left>
+"buffer
+nnoremap <silent> [sub]b :Denite buffer<CR>
+nnoremap <silent> [sub]y :Denite file_old<CR>
+nnoremap <silent> [sub]g :Denite grep<CR>
+
+""user defined command (alphabetic order)
+":Comp (Comparing two or more files)
+function! s:compare(...)
+  if a:0 == 1
+    tabedit %:p
+	setl scrollbind
+    exec 'rightbelow vnew ' . a:1
+	setl scrollbind
+  else
+    exec 'tabedit ' . a:1
+    setl scrollbind
+    for l:file in a:000[1 :]
+      exec 'rightbelow vnew ' . l:file
+      setl scrollbind
+    endfor
+  endif
+endfunction
+command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
 ":Diff (use diff mode)
-"conf
 function! s:vimdiff_in_newtab(...)
   if a:0 == 1
     tabedit %:p
@@ -72,25 +99,8 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
-
-":Comp (Comparing two or more files)
-"conf
-function! s:compare(...)
-  if a:0 == 1
-    tabedit %:p
-	setl scrollbind
-    exec 'rightbelow vnew ' . a:1
-	setl scrollbind
-  else
-    exec 'tabedit ' . a:1
-    setl scrollbind
-    for l:file in a:000[1 :]
-      exec 'rightbelow vnew ' . l:file
-      setl scrollbind
-    endfor
-  endif
-endfunction
-command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
+":Vimrc (jump to ~/.vimrc)
+command! Vimrc :tabedit ~/.vimrc
 
 ""window control
 "select window area
@@ -132,7 +142,7 @@ nmap    t [Tag]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-"mapping create,x(close),next,prev,only
+"mapping create,x(close),next,previous,only
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
@@ -174,15 +184,7 @@ filetype plugin indent on
 syntax on
 
 ""denite.vim
-"map
-nnoremap [denite] <Nop>
-nmap <C-m> [denite]
-nnoremap <silent>[denite]b :<C-u>Denite buffer<CR>
-nnoremap <silent>[denite]l :<C-u>Denite line<CR>
-nnoremap <silent>[denite]f :<C-u>Denite file_rec<CR>
-nnoremap <silent>[denite]d :<C-u>Denite directory_rec<CR>
-nnoremap <silent>[denite]y :<C-u>Denite file_old<CR>
-nnoremap <silent>[denite]g :<C-u>Denite grep<CR>
+"-- all the keymappings are written in section 'built-in'
 "enable buffer change w/o saving
 set hidden
 
@@ -226,4 +228,4 @@ let g:user_emmet_settings = {
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting
 "----------------------------------------------------------------------------
-"when runtimepath is redefined within .vimrc, 'syntax on' must be written after that sentence.
+"when runtimepath is redefined within vimrc, 'syntax on' must be written after that line.

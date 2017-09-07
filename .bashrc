@@ -1,6 +1,8 @@
 #alias
-#built-in
+#shell command
 alias ls='ls -CF'
+alias ll='ls -1'
+alias lt='ls -1ta|grep -v "/"'
 alias la='ls -CFal'
 alias mv='mv -i'
 alias cp='cp -i'
@@ -8,8 +10,10 @@ alias grep='grep --color=auto'
 alias diff='colordiff'
 alias less='less -N'
 alias tac='tail -r'
+alias vim='nvim'
 alias vimdiff='nvim -d'
-#application
+alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+#gui application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'
 alias powerpoint='open -a microsoft\ powerpoint'

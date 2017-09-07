@@ -1,9 +1,8 @@
-#enviroment variables
+#enviroment variable
 #browser
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
-#vim
-export EDITOR=vim
-alias vim='nvim'
+#editor
+export EDITOR=nvim
 export XDG_CONFIG_HOME=~/.config
 #PATH
 export PATH=$PATH:~/scripts/bin
