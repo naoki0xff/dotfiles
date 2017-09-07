@@ -62,6 +62,8 @@ nnoremap [sub]s :%s///g<Left><Left><Left>
 nnoremap <silent> [sub]b :Denite buffer<CR>
 nnoremap <silent> [sub]y :Denite file_old<CR>
 nnoremap <silent> [sub]g :Denite grep<CR>
+"DiffOrig
+nnoremap <silent> [sub]d :DiffOrig<CR> 
 
 ""user defined command (alphabetic order)
 ":Comp (Comparing two or more files)
@@ -99,6 +101,8 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+":DiffOrig (view changes from last save on current buffer)
+command DiffOrig tabedit % | rightb vert new | set buftype=nofile | read ++edit # | 0d_| diffthis | wincmd p | diffthis
 ":Vimrc (jump to ~/.vimrc)
 command! Vimrc :tabedit ~/.vimrc
 
