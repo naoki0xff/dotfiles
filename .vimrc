@@ -2,7 +2,7 @@
 "requirement:vim=NVIM v0.2.0 or later
 
 "----------------------------------------------------------------------------
-"built-in configuration
+"configuration
 "----------------------------------------------------------------------------
 "appearance
 nnoremap <C-g> 2<C-g>
@@ -11,7 +11,7 @@ set display=lastline
 set pumheight=10
 "backup
 set backup
-set backupdir=~/.backup/vim
+set backupdir=~/.local/share/nvim/backup 
 set noundofile
 "indent
 set tabstop=4
@@ -33,15 +33,12 @@ nnoremap k gk
 "cursor (insert mode)
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>gj
-inoremap <C-k> <C-o>gk
-inoremap <C-l> <C-o>l
 "cursor (command mode)
-cnoremap <C-h> <Left>
-cnoremap <C-l> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <C-k> <C-E><C-U>
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
@@ -53,8 +50,9 @@ set ambiwidth=double
 nnoremap [sub] <Nop>
 nmap s [sub]
 "match
-nnoremap <silent> [sub]/ :Denite line<CR>
+nnoremap <silent> [sub]l :Denite line<CR>
 nnoremap [sub]c :%s//&/gn<Left><Left><Left><Left><Left>
+nnoremap [sub]C :%s/\<\>/&/gn<Left><Left><Left><Left><Left><Left><Left>
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
@@ -114,7 +112,6 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 ""tab control
-"conf
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
 endfunction
@@ -146,7 +143,7 @@ nmap    t [Tag]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-"mapping create,x(close),next,previous,only
+"create,x(close),next,previous,only
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
@@ -188,12 +185,9 @@ filetype plugin indent on
 syntax on
 
 ""denite.vim
-"-- all the keymappings are written in section 'built-in'
+"-- all the keymappings are written in 'configuration' section 
 "enable buffer change w/o saving
 set hidden
-
-""nerdtree
-nnoremap <silent><C-n> :NERDTree<CR>
 
 ""quickrun
 "let g:quickrun_config = {
