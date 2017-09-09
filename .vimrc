@@ -50,14 +50,16 @@ set ambiwidth=double
 nnoremap [sub] <Nop>
 nmap s [sub]
 "match
-nnoremap <silent> [sub]l :Denite line<CR>
+nnoremap <silent> [sub]/ :Denite line<CR>
 nnoremap [sub]c :%s//&/gn<Left><Left><Left><Left><Left>
 nnoremap [sub]C :%s/\<\>/&/gn<Left><Left><Left><Left><Left><Left><Left>
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
-"buffer
-nnoremap <silent> [sub]b :Denite buffer<CR>
+"buffer (list,next,previous,history,grep)
+nnoremap <silent> [sub]l :Denite buffer<CR>
+nnoremap <silent> [sub]n :bn<CR>
+nnoremap <silent> [sub]p :bp<CR>
 nnoremap <silent> [sub]y :Denite file_old<CR>
 nnoremap <silent> [sub]g :Denite grep<CR>
 "DiffOrig
@@ -190,10 +192,6 @@ syntax on
 set hidden
 
 ""quickrun
-"let g:quickrun_config = {
-"\ 	'*': {'runmode': 'async:remote:vimproc'},
-"\ }
-"-- halted, due to the need of runnig XQuartz to async.
 let g:quickrun_config = {
 \	"_" : {
 \		"outputter/buffer/split" : ":botright",
@@ -210,18 +208,6 @@ nnoremap \r :write<CR>:QuickRun -mode n<CR>
 xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
 nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
 au FileType qf nnoremap <silent><buffer>q :quit<CR>
-
-""emmet
-inoremap [emmet] <Nop>
-imap <C-Space> [emmet]
-autocmd FileType html imap <buffer><expr><C-Space>
-\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-\	"\<tab>"
-let g:user_emmet_settings = {
-\	'variables' : {
-\	'lang' : 'ja'
-\	}
-\}
 
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting

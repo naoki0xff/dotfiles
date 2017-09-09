@@ -1,10 +1,11 @@
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = 'python'
-hook_add = '''
-	let g:jedi#rename_command = "<leader>R"
-	autocmd FileType python setlocal completeopt-=preview
-'''
+#[[plugins]]
+#repo = 'davidhalter/jedi-vim'
+#on_ft = 'python'
+#hook_add = '''
+#	let g:jedi#rename_command = "<leader>R"
+#	autocmd FileType python setlocal completeopt-=preview
+#'''
+#	|-need modification with its speed, halted.
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -16,3 +17,15 @@ on_ft = [ 'python', 'ruby', 'c', 'sh']
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = [ 'html']
+hook_add = '''
+	inoremap [emmet] <Nop>
+	imap <C-Space> [emmet]
+	autocmd FileType html imap <buffer><expr><C-Space>
+	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+	\	"\<tab>"
+	let g:user_emmet_settings = {
+	\	'variables' : {
+	\	'lang' : 'ja'
+	\	}
+	\}
+'''
