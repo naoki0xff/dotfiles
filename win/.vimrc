@@ -42,7 +42,7 @@ cnoremap <C-k> <C-E><C-U>
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
-set clipboard+=unnamedplus
+set clipboard+=unnamed
 "japanese ZENKAKU
 set ambiwidth=double
 
@@ -59,7 +59,9 @@ nnoremap [sub]s :%s///g<Left><Left><Left>
 "buffer (list,next,previous,history,grep)
 nnoremap <silent> [sub]l :ls<CR>
 nnoremap <silent> [sub]n :bn<CR>
+nnoremap <silent> [sub]N :bl<CR>
 nnoremap <silent> [sub]p :bp<CR>
+nnoremap <silent> [sub]P :bf<CR>
 nnoremap <silent> [sub]y :bro ol<CR>
 "nnoremap <silent> [sub]g :Denite grep<CR>
 "DiffOrig
@@ -147,6 +149,7 @@ for n in range(1, 9)
 endfor
 "create,x(close),next,previous,only
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
+map [Tag]e :tabedit 
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
 map <silent> [Tag]p :tabprevious<CR>
@@ -191,23 +194,23 @@ syntax on
 "enable buffer change w/o saving
 set hidden
 
-""quickrun
-let g:quickrun_config = {
-\	"_" : {
-\		"outputter/buffer/split" : ":botright",
-\		"outputter/error/success" : "buffer",
-\		"outputter/error/error/" : "quickfix",
-\		"outputter/buffer/into" : "1",
-\		"outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
-\		"outputter/buffer/close_on_empty" : 1,
-\		"outputter" : "error"
-\  }
-\}
-let g:quickrun_no_default_key_mappings = 1
-nnoremap \r :write<CR>:QuickRun -mode n<CR>
-xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
-nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-au FileType qf nnoremap <silent><buffer>q :quit<CR>
+"""quickrun
+"let g:quickrun_config = {
+"\	"_" : {
+"\		"outputter/buffer/split" : ":botright",
+"\		"outputter/error/success" : "buffer",
+"\		"outputter/error/error/" : "quickfix",
+"\		"outputter/buffer/into" : "1",
+"\		"outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
+"\		"outputter/buffer/close_on_empty" : 1,
+"\		"outputter" : "error"
+"\  }
+"\}
+"let g:quickrun_no_default_key_mappings = 1
+"nnoremap \r :write<CR>:QuickRun -mode n<CR>
+"xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
+"nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
+"au FileType qf nnoremap <silent><buffer>q :quit<CR>
 
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting
