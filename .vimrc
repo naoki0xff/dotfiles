@@ -56,7 +56,7 @@ set ambiwidth=double
 nnoremap [sub] <Nop>
 nmap s [sub]
 "match
-nnoremap <silent> [sub]/ :Denite line<CR>
+nnoremap <silent> [sub]/ :Denite -buffer-name=search -auto-resize line<CR>
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>

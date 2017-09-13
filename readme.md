@@ -17,6 +17,6 @@ followings are the list of configuration files
 - .bash_profile
 - .zprofile
 - .vimrc
-- .dein.toml
+- .dein.toml <- grepをagにしたった。特にif(executable)的なのしてないからそこだけ注意。
 - .dein_lazy.toml
 - .tmux.conf
