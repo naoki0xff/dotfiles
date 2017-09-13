@@ -2,7 +2,7 @@
 #shell command
 alias ls='ls -CF'
 alias ll='ls -1'
-alias lt='ls -1ta|grep -v "/"'
+alias lt='ls -1ta'
 alias la='ls -CFal'
 alias mv='mv -i'
 alias cp='cp -i'

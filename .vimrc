@@ -25,6 +25,7 @@ set incsearch
 set ignorecase
 set smartcase
 set nowrapscan
+highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 "enable backspace for delete
 set backspace=indent,eol,start
 "cursor (normal mode)
@@ -39,6 +40,11 @@ cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
+"remenber last cursor position
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
@@ -51,17 +57,20 @@ nnoremap [sub] <Nop>
 nmap s [sub]
 "match
 nnoremap <silent> [sub]/ :Denite line<CR>
-nnoremap [sub]c :%s//&/gn<Left><Left><Left><Left><Left>
-nnoremap [sub]C :%s/\<\>/&/gn<Left><Left><Left><Left><Left><Left><Left>
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
-"buffer (list,next,previous,history,grep)
+"buffer (list,next,previous)
 nnoremap <silent> [sub]l :Denite buffer<CR>
 nnoremap <silent> [sub]n :bn<CR>
+nnoremap <silent> [sub]N :bl<CR>
 nnoremap <silent> [sub]p :bp<CR>
+nnoremap <silent> [sub]P :bf<CR>
+"file search
 nnoremap <silent> [sub]y :Denite file_old<CR>
 nnoremap <silent> [sub]g :Denite grep<CR>
+nnoremap <silent> [sub]f :Denite file_rec<CR>
+nnoremap <silent> [sub]; :Denite -resume<CR>
 "DiffOrig
 nnoremap <silent> [sub]d :DiffOrig<CR> 
 
@@ -145,11 +154,14 @@ nmap    t [Tag]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-"create,x(close),next,previous,only
+"create,edit,x[close],next(last),previous(first),only
 map <silent> [Tag]c :tablast <bar> tabnew<CR>
+map [Tag]e :tabedit 
 map <silent> [Tag]x :tabclose<CR>
 map <silent> [Tag]n :tabnext<CR>
+map <silent> [Tag]N :tabl<CR>
 map <silent> [Tag]p :tabprevious<CR>
+map <silent> [Tag]P :tabfir<CR>
 map <silent> [Tag]o :tabonly<CR>
 
 "----------------------------------------------------------------------------

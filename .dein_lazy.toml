@@ -14,18 +14,18 @@ repo = 'thinca/vim-quickrun'
 repo = 'cohama/lexima.vim'
 on_ft = [ 'python', 'ruby', 'c', 'sh']
 
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = [ 'html']
-hook_add = '''
-	inoremap [emmet] <Nop>
-	imap <C-Space> [emmet]
-	autocmd FileType html imap <buffer><expr><C-Space>
-	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-	\	"\<tab>"
-	let g:user_emmet_settings = {
-	\	'variables' : {
-	\	'lang' : 'ja'
-	\	}
-	\}
-'''
+#[[plugins]]
+#repo = 'mattn/emmet-vim'
+#on_ft = [ 'html']
+#hook_add = '''
+#	inoremap [emmet] <Nop>
+#	imap <C-Space> [emmet]
+#	autocmd FileType html imap <buffer><expr><C-Space>
+#	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+#	\	"\<tab>"
+#	let g:user_emmet_settings = {
+#	\	'variables' : {
+#	\	'lang' : 'ja'
+#	\	}
+#	\}
+#'''
