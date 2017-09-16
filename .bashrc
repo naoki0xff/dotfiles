@@ -24,3 +24,5 @@ alias vivaldi='open -a vivaldi'
 alias hcd='cd ~/documents/help/'
 alias pcd='cd ~/work/python/tutor/'
 alias ccd='cd ~/project/dotfiles/'
+#git alias
+alias gam='git add .;git commit -m "update"'
