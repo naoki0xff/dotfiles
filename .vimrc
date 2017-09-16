@@ -49,30 +49,34 @@ augroup END
 autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
 set clipboard+=unnamedplus
-"japanese ZENKAKU
+"drawing ZENKAKU symbol
 set ambiwidth=double
 
-""sub commands
-nnoremap [sub] <Nop>
-nmap s [sub]
-"match
-nnoremap <silent> [sub]/ :Denite -buffer-name=search -auto-resize line<CR>
+""sub commands [s/S]
+nnoremap [Sub] <Nop>
+nmap s [Sub]
 "substituiton
-nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
-nnoremap [sub]s :%s///g<Left><Left><Left>
-"buffer (list,next,previous)
-nnoremap <silent> [sub]l :Denite buffer<CR>
-nnoremap <silent> [sub]n :bn<CR>
-nnoremap <silent> [sub]N :bl<CR>
-nnoremap <silent> [sub]p :bp<CR>
-nnoremap <silent> [sub]P :bf<CR>
-"file search
-nnoremap <silent> [sub]y :Denite file_old<CR>
-nnoremap <silent> [sub]g :Denite grep<CR>
-nnoremap <silent> [sub]f :Denite file_rec<CR>
-nnoremap <silent> [sub]; :Denite -resume<CR>
+nnoremap [Sub]* *:%s/<C-r>///g<Left><Left>
+nnoremap [Sub]s :%s///g<Left><Left><Left>
 "DiffOrig
-nnoremap <silent> [sub]d :DiffOrig<CR> 
+nnoremap <silent> [Sub]d :DiffOrig<CR> 
+""Denite sources plus
+"match
+nnoremap <silent> [Sub]/ :Denite -buffer-name=search -auto-resize line<CR>
+"buffer (list,next_last,previous_first)
+set hidden
+nnoremap <silent> [Sub]l :Denite -cursor-wrap -winheight=16 buffer<CR>
+nnoremap <silent> [Sub]n :bn<CR>
+nnoremap <silent> [Sub]N :bl<CR>
+nnoremap <silent> [Sub]p :bp<CR>
+nnoremap <silent> [Sub]P :bf<CR>
+"search some
+nnoremap <silent> [Sub]y :Denite -winheight=10 file_old<CR>
+nnoremap <silent> [Sub]g :Denite grep<CR>
+nnoremap <silent> [Sub]f :Denite file_rec<CR>
+nnoremap <silent> [Sub]q :Denite -winheight=10 command_history<CR>
+"resume latest denite source
+nnoremap <silent> [Sub]; :Denite -resume<CR>
 
 ""user defined command (alphabetic order)
 ":Comp (Comparing two or more files)
@@ -165,7 +169,7 @@ map <silent> [Tag]P :tabfir<CR>
 map <silent> [Tag]o :tabonly<CR>
 
 "----------------------------------------------------------------------------
-"plugin configuration
+"plugin initialization	<-	configuration within ~/.dein{.toml,_lazy.toml}
 "----------------------------------------------------------------------------
 ""dein.vim
 if &compatible
@@ -197,29 +201,6 @@ if dein#check_install()
 endif
 filetype plugin indent on
 syntax on
-
-""denite.vim
-"-- all the keymappings are written in 'configuration' section 
-"enable buffer change w/o saving
-set hidden
-
-""quickrun
-let g:quickrun_config = {
-\	"_" : {
-\		"outputter/buffer/split" : ":botright",
-\		"outputter/error/success" : "buffer",
-\		"outputter/error/error/" : "quickfix",
-\		"outputter/buffer/into" : "1",
-\		"outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
-\		"outputter/buffer/close_on_empty" : 1,
-\		"outputter" : "error"
-\  }
-\}
-let g:quickrun_no_default_key_mappings = 1
-nnoremap \r :write<CR>:QuickRun -mode n<CR>
-xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
-nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-au FileType qf nnoremap <silent><buffer>q :quit<CR>
 
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting
