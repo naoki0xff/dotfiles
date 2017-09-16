@@ -11,12 +11,11 @@ as personal config storage
 
 ## note
 
-followings are the list of configuration files
+vimrcの分割を思案中。
 
-- .bashrc
-- .bash_profile
-- .zprofile
-- .vimrc
-- .dein.toml <- grepをagにしたった。特にif(executable)的なのしてないからそこだけ注意。
-- .dein_lazy.toml
-- .tmux.conf
+- 基本的なの
+- plugin系
+- プログラミング言語
+- etc...
+
+とかで考え中。deinでうまいこと出来るでしょ。

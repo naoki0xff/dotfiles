@@ -52,31 +52,46 @@ set clipboard+=unnamedplus
 "drawing ZENKAKU symbol
 set ambiwidth=double
 
-""sub commands [s/S]
-nnoremap [Sub] <Nop>
-nmap s [Sub]
+""path_to_header
+augroup GfPathGroup
+  autocmd!
+  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
+augroup END
+
+""sub- commands [s/S]
+nnoremap [sub] <Nop>
+nmap s [sub]
 "substituiton
-nnoremap [Sub]* *:%s/<C-r>///g<Left><Left>
-nnoremap [Sub]s :%s///g<Left><Left><Left>
+nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
+nnoremap [sub]s :%s///g<Left><Left><Left>
 "DiffOrig
-nnoremap <silent> [Sub]d :DiffOrig<CR> 
+nnoremap <silent> [sub]d :DiffOrig<CR> 
 ""Denite sources plus
 "match
-nnoremap <silent> [Sub]/ :Denite -buffer-name=search -auto-resize line<CR>
+nnoremap <silent> [sub]/ :Denite -buffer-name=search -auto-resize line<CR>
 "buffer (list,next_last,previous_first)
 set hidden
-nnoremap <silent> [Sub]l :Denite -cursor-wrap -winheight=16 buffer<CR>
-nnoremap <silent> [Sub]n :bn<CR>
-nnoremap <silent> [Sub]N :bl<CR>
-nnoremap <silent> [Sub]p :bp<CR>
-nnoremap <silent> [Sub]P :bf<CR>
-"search some
-nnoremap <silent> [Sub]y :Denite -winheight=10 file_old<CR>
-nnoremap <silent> [Sub]g :Denite grep<CR>
-nnoremap <silent> [Sub]f :Denite file_rec<CR>
-nnoremap <silent> [Sub]q :Denite -winheight=10 command_history<CR>
+nnoremap <silent> [sub]l :Denite -cursor-wrap -winheight=16 buffer<CR>
+nnoremap <silent> [sub]n :bn<CR>
+nnoremap <silent> [sub]N :bl<CR>
+nnoremap <silent> [sub]p :bp<CR>
+nnoremap <silent> [sub]P :bf<CR>
+"search various
+nnoremap <silent> [sub]y :Denite -winheight=10 -mode=normal file_old<CR>
+nnoremap <silent> [sub]g :Denite grep<CR>
+nnoremap <silent> [sub]o :Denite -no-quit -mode=normal -cursor-wrap -auto-resize outline<CR>
+nnoremap <silent> [sub]f :Denite file_rec<CR>
+nnoremap <silent> [sub]: :Denite -winheight=10 -default-action=edit_and_execute -mode=normal command_history<CR>
 "resume latest denite source
-nnoremap <silent> [Sub]; :Denite -resume<CR>
+nnoremap <silent> [sub]; :Denite -resume<CR>
+""Session
+nnoremap [SUB] <Nop>
+nmap S [SUB]
+"make,source,list,delete (as abbreviation)
+nnoremap [SUB]m :mksession ~/.vim/session/.vim<Left><Left><Left><Left>
+nnoremap [SUB]s :source ~/.vim/session/
+nnoremap [SUB]l :!ls ~/.vim/session/<CR>
+nnoremap [SUB]d :!rm ~/.vim/session/
 
 ""user defined command (alphabetic order)
 ":Comp (Comparing two or more files)
@@ -152,21 +167,21 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
 "prefix
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
+nnoremap    [Tab]   <Nop>
+nmap    t [Tab]
 "jump
 for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> [Tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 "create,edit,x[close],next(last),previous(first),only
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-map [Tag]e :tabedit 
-map <silent> [Tag]x :tabclose<CR>
-map <silent> [Tag]n :tabnext<CR>
-map <silent> [Tag]N :tabl<CR>
-map <silent> [Tag]p :tabprevious<CR>
-map <silent> [Tag]P :tabfir<CR>
-map <silent> [Tag]o :tabonly<CR>
+map <silent> [Tab]c :tablast <bar> tabnew<CR>
+map [Tab]e :tabedit 
+map <silent> [Tab]x :tabclose<CR>
+map <silent> [Tab]n :tabnext<CR>
+map <silent> [Tab]N :tabl<CR>
+map <silent> [Tab]p :tabprevious<CR>
+map <silent> [Tab]P :tabfir<CR>
+map <silent> [Tab]o :tabonly<CR>
 
 "----------------------------------------------------------------------------
 "plugin initialization	<-	configuration within ~/.dein{.toml,_lazy.toml}
