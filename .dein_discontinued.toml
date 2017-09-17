@@ -1,5 +1,6 @@
 ### initialization
 
+# not neccessary until using this as interface of programming language
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertCharPre'
@@ -10,6 +11,7 @@ hook_source = '''
 
 ### lazy load
 
+# need modification with its speed, halted.
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
@@ -17,8 +19,8 @@ hook_add = '''
 	let g:jedi#rename_command = "<leader>R"
 	autocmd FileType python setlocal completeopt-=preview
 '''
-	|-need modification with its speed, halted.
 
+# not used. if you want, just enable this.
 [[plugins]]
 repo = 'mattn/emmet-vim'
 on_ft = [ 'html']

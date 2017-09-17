@@ -25,4 +25,3 @@ hook_add = '''
 [[plugins]]
 repo = 'cohama/lexima.vim'
 on_ft = [ 'python', 'c', 'sh', 'ruby' ]
-

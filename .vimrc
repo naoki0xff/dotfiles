@@ -25,8 +25,7 @@ set incsearch
 set ignorecase
 set smartcase
 set nowrapscan
-highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
-"enable backspace for delete
+"backspace for deletion
 set backspace=indent,eol,start
 "cursor (normal mode)
 nnoremap j gj
@@ -51,14 +50,19 @@ autocmd FileType help nnoremap <buffer> q <C-w>c
 set clipboard+=unnamedplus
 "drawing ZENKAKU symbol
 set ambiwidth=double
-
-""path_to_header
+"hilight
+highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
+"gf:path_to_header
 augroup GfPathGroup
   autocmd!
   autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
 augroup END
 
-""sub- commands [s/S]
+""sub command
 nnoremap [sub] <Nop>
 nmap s [sub]
 "substituiton
@@ -81,19 +85,11 @@ nnoremap <silent> [sub]y :Denite -winheight=10 -mode=normal file_old<CR>
 nnoremap <silent> [sub]g :Denite grep<CR>
 nnoremap <silent> [sub]o :Denite -no-quit -mode=normal -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
-nnoremap <silent> [sub]: :Denite -winheight=10 -default-action=edit_and_execute -mode=normal command_history<CR>
+nnoremap <silent> [sub]: :Denite -winheight=10 -default-action=edit_and_execute command_history<CR>
 "resume latest denite source
 nnoremap <silent> [sub]; :Denite -resume<CR>
-""Session
-nnoremap [SUB] <Nop>
-nmap S [SUB]
-"make,source,list,delete (as abbreviation)
-nnoremap [SUB]m :mksession ~/.vim/session/.vim<Left><Left><Left><Left>
-nnoremap [SUB]s :source ~/.vim/session/
-nnoremap [SUB]l :!ls ~/.vim/session/<CR>
-nnoremap [SUB]d :!rm ~/.vim/session/
 
-""user defined command (alphabetic order)
+""user defined function/command
 ":Comp (Comparing two or more files)
 function! s:compare(...)
   if a:0 == 1
@@ -124,22 +120,21 @@ function! s:vimdiff_in_newtab(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
-"highlight setting
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 ":DiffOrig (view changes from last save on current buffer)
 command DiffOrig tabedit % | rightb vert new | set buftype=nofile | read ++edit # | 0d_| diffthis | wincmd p | diffthis
+"HandleURI <- open url with preset browser
+function! HandleURI()
+  let l:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+  echo l:uri
+  if l:uri != ""
+    exec "!open \"" . l:uri . "\""
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+nnoremap <Leader>v :<C-u>call HandleURI()<CR>
 ":Vimrc (jump to ~/.vimrc)
 command! Vimrc :tabedit ~/.vimrc
-
-""window control
-"select window area
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 ""tab control
 function! s:SID_PREFIX()
@@ -182,6 +177,13 @@ map <silent> [Tab]N :tabl<CR>
 map <silent> [Tab]p :tabprevious<CR>
 map <silent> [Tab]P :tabfir<CR>
 map <silent> [Tab]o :tabonly<CR>
+
+""window control
+"select window area
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 "----------------------------------------------------------------------------
 "plugin initialization	<-	configuration within ~/.dein{.toml,_lazy.toml}
