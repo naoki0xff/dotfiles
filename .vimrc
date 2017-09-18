@@ -32,6 +32,10 @@ nnoremap k gk
 "cursor (insert mode)
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
 "cursor (command mode)
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -67,10 +71,10 @@ augroup END
 nnoremap [sub] <Nop>
 nmap s [sub]
 "substituiton
-nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
+nnoremap [sub]* *:%s/<C-r>///g<Left<Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
 "DiffOrig
-nnoremap <silent> [sub]d :DiffOrig<CR> 
+nnoremap <silent> [sub]d :DiffOrig<CR>
 ""Denite sources plus
 "match
 nnoremap <silent> [sub]/ :Denite -buffer-name=search -auto-resize line<CR>
@@ -132,7 +136,7 @@ function! HandleURI()
     echo "No URI found in line."
   endif
 endfunction
-nnoremap <Leader>b :<C-u>call HandleURI()<CR>
+nnoremap <Leader>w :<C-u>call HandleURI()<CR>
 ":Vimrc (jump to ~/.vimrc)
 command! Vimrc :tabedit ~/.vimrc
 
