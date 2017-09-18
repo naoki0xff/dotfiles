@@ -71,7 +71,7 @@ augroup END
 nnoremap [sub] <Nop>
 nmap s [sub]
 "substituiton
-nnoremap [sub]* *:%s/<C-r>///g<Left<Left>
+nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
 "DiffOrig
 nnoremap <silent> [sub]d :DiffOrig<CR>
