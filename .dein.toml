@@ -1,5 +1,4 @@
-### plugin configuration (initialization)
-###  -- to ".dein.toml" and ".dein_lazy.toml", configurations are splited.
+### conf on startup
 
 [[plugins]]
 repo = 'Shougo/dein.vim'

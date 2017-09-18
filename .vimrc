@@ -18,7 +18,6 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
-autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 "search
 set hlsearch
 set incsearch
@@ -44,6 +43,8 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
+"look help with K
+autocmd Filetype vim set keywordprg=:help
 "close help with q
 autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
@@ -75,17 +76,16 @@ nnoremap <silent> [sub]d :DiffOrig<CR>
 nnoremap <silent> [sub]/ :Denite -buffer-name=search -auto-resize line<CR>
 "buffer (list,next_last,previous_first)
 set hidden
-nnoremap <silent> [sub]l :Denite -cursor-wrap -winheight=16 buffer<CR>
+nnoremap <silent> [sub]l :Denite -cursor-wrap -mode=normal -winheight=16 buffer<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]N :bl<CR>
 nnoremap <silent> [sub]p :bp<CR>
 nnoremap <silent> [sub]P :bf<CR>
 "search various
-nnoremap <silent> [sub]y :Denite -winheight=10 -mode=normal file_old<CR>
+nnoremap <silent> [sub]y :Denite -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite grep<CR>
 nnoremap <silent> [sub]o :Denite -no-quit -mode=normal -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
-nnoremap <silent> [sub]: :Denite -winheight=10 -default-action=edit_and_execute command_history<CR>
 "resume latest denite source
 nnoremap <silent> [sub]; :Denite -resume<CR>
 
@@ -132,7 +132,7 @@ function! HandleURI()
     echo "No URI found in line."
   endif
 endfunction
-nnoremap <Leader>v :<C-u>call HandleURI()<CR>
+nnoremap <Leader>b :<C-u>call HandleURI()<CR>
 ":Vimrc (jump to ~/.vimrc)
 command! Vimrc :tabedit ~/.vimrc
 
@@ -171,6 +171,7 @@ endfor
 "create,edit,x[close],next(last),previous(first),only
 map <silent> [Tab]c :tablast <bar> tabnew<CR>
 map [Tab]e :tabedit 
+map <silent> [Tab]t :tabedit %<CR>
 map <silent> [Tab]x :tabclose<CR>
 map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]N :tabl<CR>
