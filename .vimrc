@@ -47,10 +47,6 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
-"look help with K
-autocmd Filetype vim set keywordprg=:help
-"close help with q
-autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
 set clipboard+=unnamedplus
 "drawing ZENKAKU symbol
@@ -61,30 +57,24 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
-"gf:path_to_header
-augroup GfPathGroup
-  autocmd!
-  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
-augroup END
 
 ""sub command
 nnoremap [sub] <Nop>
 nmap s [sub]
+nnoremap [SUB] <Nop>
+nmap S [SUB]
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
 "DiffOrig
 nnoremap <silent> [sub]d :DiffOrig<CR>
-""Denite sources plus
-"match
-nnoremap <silent> [sub]/ :Denite -buffer-name=search -auto-resize line<CR>
-"buffer (list,next_last,previous_first)
+""Denite and else
+"buffer (list,next,previous,grep)
 set hidden
 nnoremap <silent> [sub]l :Denite -cursor-wrap -mode=normal -winheight=16 buffer<CR>
 nnoremap <silent> [sub]n :bn<CR>
-nnoremap <silent> [sub]N :bl<CR>
 nnoremap <silent> [sub]p :bp<CR>
-nnoremap <silent> [sub]P :bf<CR>
+nnoremap [sub]/ :bufdo !ag -H '' %<Left><Left><Left>
 "search various
 nnoremap <silent> [sub]y :Denite -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite grep<CR>
@@ -175,7 +165,6 @@ endfor
 "create,edit,x[close],next(last),previous(first),only
 map <silent> [Tab]c :tablast <bar> tabnew<CR>
 map [Tab]e :tabedit 
-map <silent> [Tab]t :tabedit %<CR>
 map <silent> [Tab]x :tabclose<CR>
 map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]N :tabl<CR>
@@ -183,12 +172,15 @@ map <silent> [Tab]p :tabprevious<CR>
 map <silent> [Tab]P :tabfir<CR>
 map <silent> [Tab]o :tabonly<CR>
 
-""window control
-"select window area
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+""FILETYPE  -- also see [sub] commands for filetype shortcut
+"vim:open help with K,close with q
+autocmd Filetype vim set keywordprg=:help
+autocmd FileType help nnoremap <buffer> q <C-w>c
+"c:gf{path_to_header}
+augroup GfPathGroup
+  autocmd!
+  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
+augroup END
 
 "----------------------------------------------------------------------------
 "plugin initialization	<-	configuration within ~/.dein{.toml,_lazy.toml}
