@@ -46,18 +46,18 @@ hook_add = '''
 '''
 #NOTE:rename_command=<Leader>v[ariable]
 
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = [ 'html']
-hook_add = '''
-	inoremap [emmet] <Nop>
-	imap <C-n> [emmet]
-	autocmd FileType html imap <buffer><expr><C-n>
-	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-	\	"\<tab>"
-	let g:user_emmet_settings = {
-	\	'variables' : {
-	\	'lang' : 'ja'
-	\	}
-	\}
-'''
+#[[plugins]]
+#repo = 'mattn/emmet-vim'
+#on_ft = [ 'html']
+#hook_add = '''
+#	inoremap [emmet] <Nop>
+#	imap <C-n> [emmet]
+#	autocmd FileType html imap <buffer><expr><C-n>
+#	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+#	\	"\<tab>"
+#	let g:user_emmet_settings = {
+#	\	'variables' : {
+#	\	'lang' : 'ja'
+#	\	}
+#	\}
+#'''

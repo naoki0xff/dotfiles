@@ -69,22 +69,23 @@ nnoremap [sub]s :%s///g<Left><Left><Left>
 "DiffOrig
 nnoremap <silent> [sub]d :DiffOrig<CR>
 ""Denite and else
-"buffer (list,next,previous,grep)
+"buffer (list,reload,next,previous,grep)
 set hidden
 nnoremap <silent> [sub]l :Denite -cursor-wrap -mode=normal -winheight=16 buffer<CR>
+nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
 nnoremap [sub]/ :bufdo !ag -H '' %<Left><Left><Left>
 "search various
 nnoremap <silent> [sub]y :Denite -winheight=10 file_old<CR>
-nnoremap <silent> [sub]g :Denite grep<CR>
+nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
 nnoremap <silent> [sub]o :Denite -no-quit -mode=normal -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
 "resume latest denite source
 nnoremap <silent> [sub]; :Denite -resume<CR>
 
 ""user defined function/command
-":Comp (Comparing two or more files)
+"Comp <- copare files side by side
 function! s:compare(...)
   if a:0 == 1
     tabedit %:p
@@ -101,7 +102,16 @@ function! s:compare(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
-":Diff (use diff mode)
+"DeleteHiddenBuffers <- delete hidden buffer
+function DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+command! BufDel call DeleteHiddenBuffers()
+"Diff <- diff view
 function! s:vimdiff_in_newtab(...)
   if a:0 == 1
     tabedit %:p
@@ -114,7 +124,7 @@ function! s:vimdiff_in_newtab(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
-":DiffOrig (view changes from last save on current buffer)
+"DiffOrig <- show modified from last change
 command DiffOrig tabedit % | rightb vert new | set buftype=nofile | read ++edit # | 0d_| diffthis | wincmd p | diffthis
 "HandleURI <- open url with preset browser
 function! HandleURI()
@@ -127,8 +137,8 @@ function! HandleURI()
   endif
 endfunction
 nnoremap <Leader>w :<C-u>call HandleURI()<CR>
-":Vimrc (jump to ~/.vimrc)
-command! Vimrc :tabedit ~/.vimrc
+"Vimrc <- open ~/.vimrc with tab
+command! Vimrc tabedit ~/.vimrc
 
 ""tab control
 function! s:SID_PREFIX()
@@ -164,7 +174,6 @@ for n in range(1, 9)
 endfor
 "create,edit,x[close],next(last),previous(first),only
 map <silent> [Tab]c :tablast <bar> tabnew<CR>
-map [Tab]e :tabedit 
 map <silent> [Tab]x :tabclose<CR>
 map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]N :tabl<CR>
