@@ -8,7 +8,7 @@ compinit
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='naoki:%F{cyan}%~%f%# '
+PROMPT='naoki:%F{cyan}%~%f%#'
 
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

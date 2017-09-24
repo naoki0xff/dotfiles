@@ -154,11 +154,11 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
 "prefix
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
+nnoremap    [Tab]   <Nop>
+nmap    t [Tab]
 "jump
 for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> [Tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 "create,edit,x[close],next(last),previous(first),only
 map <silent> [Tab]c :tablast <bar> tabnew<CR>
