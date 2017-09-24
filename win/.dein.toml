@@ -1,13 +1,12 @@
+### conf on startup
+
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
 #[[plugins]]
-#repo = 'Shougo/deoplete.nvim'
-#on_event = 'InsertCharPre'
-#hook_source = '''
-#  let g:deoplete#enable_at_startup = 1
-#  let g:deoplete#auto_complete_delay = 0
-#'''
-
-#[[plugins]]
 #repo = 'Shougo/denite.nvim'
+#hook_post_source = '''
+#	call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+#	call denite#custom#var('grep', 'command', ['ag'])
+#	call denite#custom#var('grep', 'default_opts', ['--follow', '--no-group', '--no-color'])
+#'''

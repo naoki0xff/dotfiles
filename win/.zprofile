@@ -1,16 +1,16 @@
-#zsh initialization
-#load config files
+# zsh initialization
+# source
 source ~/.bash_profile
 source ~/.bashrc
-#compatibility
+# compatibility
 autoload -U compinit
 compinit
-#prompt customize
+# prompt
 autoload -U promptinit
 promptinit
-PROMPT='naoki:%F{cyan}%~%f%#'
+PROMPT='naoki:%F{cyan}%~%f%# '
 
-#history and completion
+# history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
 export HISTSIZE=1000
@@ -27,12 +27,11 @@ setopt hist_no_store
 setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
-#forward search
 stty stop undef
 bindkey "^S" history-incremental-search-forward
 
-#command line tools
-#git status
+# CLI tools
+# git
 autoload -Uz add-zsh-hook
 autoload -Uz colors
 colors
@@ -60,9 +59,12 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT="%1(v|%F{green}%1v%f|)"
-#r(statistics)
+# R
 disable r
 
-#trouble shooting
-#when $EDITOR is vi/vim, assinging emacs keybind to shell instead of vi/vim's one.
+### documentation:integration of bash,zsh,iterm2 and etc.
+# --------------------------------------------------------------
+# editor:EDITOR is set to nvim, causing vim bindkey on shell.
+#        (~/.bash_profile)
+#        following line meke it to emacs keybind.
 bindkey -e

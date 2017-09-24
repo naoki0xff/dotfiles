@@ -1,4 +1,4 @@
-# initialization
+# zsh initialization
 # source
 source ~/.bash_profile
 source ~/.bashrc
@@ -8,7 +8,7 @@ compinit
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%m:%F{cyan}%~%f%# '
+PROMPT='%m:%F{cyan}%~%f%#'
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory

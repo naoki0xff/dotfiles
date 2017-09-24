@@ -18,14 +18,13 @@ set tabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
-autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 "search
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set nowrapscan
-"enable backspace for delete
+set wrapscan
+"backspace for deletion
 set backspace=indent,eol,start
 "cursor (normal mode)
 nnoremap j gj
@@ -33,42 +32,48 @@ nnoremap k gk
 "cursor (insert mode)
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
 "cursor (command mode)
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
-"close help with q
-autocmd FileType help nnoremap <buffer> q <C-w>c
 "clipboard integration
 set clipboard+=unnamed
 "japanese ZENKAKU
 set ambiwidth=double
+"hilight
+highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
+highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
+highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
+highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
+highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 
-""sub commands
+""sub command
 nnoremap [sub] <Nop>
 nmap s [sub]
-"match
-"nnoremap <silent> [sub]/ :Denite line<CR>
-nnoremap [sub]c :%s//&/gn<Left><Left><Left><Left><Left>
-nnoremap [sub]C :%s/\<\>/&/gn<Left><Left><Left><Left><Left><Left><Left>
+nnoremap [SUB] <Nop>
+nmap S [SUB]
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
-"buffer (list,next,previous,history,grep)
+"buffer (list,next,previous,reload,history,grep)
+set hidden
 nnoremap <silent> [sub]l :ls<CR>
 nnoremap <silent> [sub]n :bn<CR>
-nnoremap <silent> [sub]N :bl<CR>
 nnoremap <silent> [sub]p :bp<CR>
-nnoremap <silent> [sub]P :bf<CR>
+nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]y :bro ol<CR>
-"nnoremap <silent> [sub]g :Denite grep<CR>
+nnoremap [sub]/ :bufdo !grep -H '' %<Left><Left><Left>
 "DiffOrig
 nnoremap <silent> [sub]d :DiffOrig<CR> 
 
-""user defined command (alphabetic order)
-":Comp (Comparing two or more files)
+""user defined function/command
+"Comp <- copare files side by side
 function! s:compare(...)
   if a:0 == 1
     tabedit %:p
@@ -85,7 +90,16 @@ function! s:compare(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
-":Diff (use diff mode)
+"DeleteHiddenBuffers <- delete hidden buffer
+function DeleteHiddenBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'bufexists(v:val) && index(tpbl, v:val)==-1')
+        silent execute 'bwipeout' buf
+    endfor
+endfunction
+command! BufDel call DeleteHiddenBuffers()
+"Diff <- diff view
 function! s:vimdiff_in_newtab(...)
   if a:0 == 1
     tabedit %:p
@@ -98,22 +112,21 @@ function! s:vimdiff_in_newtab(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
-"highlight setting
-highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
-highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
-highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
-highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 ":DiffOrig (view changes from last save on current buffer)
 command DiffOrig tabedit % | rightb vert new | set buftype=nofile | read ++edit # | 0d_| diffthis | wincmd p | diffthis
+"HandleURI <- open url with preset browser
+function! HandleURI()
+  let l:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
+  echo l:uri
+  if l:uri != ""
+    exec "!open \"" . l:uri . "\""
+  else
+    echo "No URI found in line."
+  endif
+endfunction
+nnoremap <Leader>w :<C-u>call HandleURI()<CR>
 ":Vimrc (jump to ~/.vimrc)
 command! Vimrc :tabedit ~/.vimrc
-
-""window control
-"select window area
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
 
 ""tab control
 function! s:SID_PREFIX()
@@ -147,16 +160,22 @@ nmap    t [Tag]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-"create,x(close),next,previous,only
-map <silent> [Tag]c :tablast <bar> tabnew<CR>
-map [Tag]e :tabedit 
-map <silent> [Tag]x :tabclose<CR>
-map <silent> [Tag]n :tabnext<CR>
-map <silent> [Tag]p :tabprevious<CR>
-map <silent> [Tag]o :tabonly<CR>
+"create,edit,x[close],next(last),previous(first),only
+map <silent> [Tab]c :tablast <bar> tabnew<CR>
+map <silent> [Tab]x :tabclose<CR>
+map <silent> [Tab]n :tabnext<CR>
+map <silent> [Tab]N :tabl<CR>
+map <silent> [Tab]p :tabprevious<CR>
+map <silent> [Tab]P :tabfir<CR>
+map <silent> [Tab]o :tabonly<CR>
+
+""FILETYPE  -- also see [sub] commands for filetype shortcut
+"vim:open help with K,close with q
+autocmd Filetype vim set keywordprg=:help
+autocmd FileType help nnoremap <buffer> q <C-w>c
 
 "----------------------------------------------------------------------------
-"plugin configuration
+"plugin initialization	<-	configuration within ~/.dein{.toml,_lazy.toml}
 "----------------------------------------------------------------------------
 ""dein.vim
 if &compatible
@@ -188,29 +207,6 @@ if dein#check_install()
 endif
 filetype plugin indent on
 syntax on
-
-""denite.vim
-"-- all the keymappings are written in 'configuration' section 
-"enable buffer change w/o saving
-set hidden
-
-"""quickrun
-"let g:quickrun_config = {
-"\	"_" : {
-"\		"outputter/buffer/split" : ":botright",
-"\		"outputter/error/success" : "buffer",
-"\		"outputter/error/error/" : "quickfix",
-"\		"outputter/buffer/into" : "1",
-"\		"outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
-"\		"outputter/buffer/close_on_empty" : 1,
-"\		"outputter" : "error"
-"\  }
-"\}
-"let g:quickrun_no_default_key_mappings = 1
-"nnoremap \r :write<CR>:QuickRun -mode n<CR>
-"xnoremap \r :<C-U>write<CR>gv:QuickRun -mode v<CR>
-"nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-"au FileType qf nnoremap <silent><buffer>q :quit<CR>
 
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting

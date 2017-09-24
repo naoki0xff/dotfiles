@@ -23,7 +23,7 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-set nowrapscan
+set wrapscan
 "backspace for deletion
 set backspace=indent,eol,start
 "cursor (normal mode)
@@ -63,7 +63,7 @@ nnoremap [sub] <Nop>
 nmap s [sub]
 nnoremap [SUB] <Nop>
 nmap S [SUB]
-"substituiton
+"search/substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
 "DiffOrig

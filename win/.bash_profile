@@ -1,14 +1,16 @@
-#setting for cygwin terminal
+### bash_profile
+
+# cygwin
 export LANG=ja_JP.UTF-8
 stty stop undef
-#editor
+# VAR
 export VBACKUPDIR=~/.local/share/nvim/backup
-#path
+# PATH
 export PATH=/cygdrive/c/anaconda:$PATH
 export PATH=/cygdrive/c/anaconda/scripts:$PATH
 export PATH=/cygdrice/c/program\ files/rstudio/bin:$PATH
 export PATH=$PATH:~/scripts/bin
-#function
+# function
 source ~/scripts/bin/clip.sh
 #tmux autoload
 if [ -z $TMUX ];then

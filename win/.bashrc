@@ -16,3 +16,5 @@ alias less='less -N'
 alias hcd='cd ~/documents/help/'
 alias pcd='cd ~/work/python/tutor/'
 alias ccd='cd ~/project/dotfiles/win/'
+# git alias
+alias gam='git add .;git commit -m "update"'
