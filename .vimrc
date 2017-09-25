@@ -68,6 +68,7 @@ nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
 "DiffOrig
 nnoremap <silent> [sub]d :DiffOrig<CR>
+nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
 ""Denite and else
 "buffer (list,reload,next,previous,grep)
 set hidden
