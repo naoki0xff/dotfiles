@@ -71,6 +71,7 @@ nnoremap <silent> [sub]y :bro ol<CR>
 nnoremap [sub]/ :bufdo !grep -H '' %<Left><Left><Left>
 "DiffOrig
 nnoremap <silent> [sub]d :DiffOrig<CR> 
+nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
 
 ""user defined function/command
 "Comp <- copare files side by side
