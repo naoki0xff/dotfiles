@@ -69,7 +69,7 @@ nnoremap <silent> [sub]p :bp<CR>
 nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]y :bro ol<CR>
 nnoremap [sub]/ :bufdo !grep -H '' %<Left><Left><Left>
-"DiffOrig
+"Diff on buffer/backup
 nnoremap <silent> [sub]d :DiffOrig<CR> 
 nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
 
@@ -174,6 +174,8 @@ map <silent> [Tab]o :tabonly<CR>
 "vim:open help with K,close with q
 autocmd Filetype vim set keywordprg=:help
 autocmd FileType help nnoremap <buffer> q <C-w>c
+"activate :Man command
+runtime ftplugin/man.vim
 
 "----------------------------------------------------------------------------
 "plugin initialization	<-	configuration within ~/.dein{.toml,_lazy.toml}
