@@ -66,8 +66,9 @@ nmap S [SUB]
 "search/substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
-"DiffOrig
+"Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
+nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
 ""Denite and else
 "buffer (list,reload,next,previous,grep)
 set hidden
