@@ -69,8 +69,9 @@ nnoremap <silent> [sub]p :bp<CR>
 nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]y :bro ol<CR>
 nnoremap [sub]/ :bufdo !grep -H '' %<Left><Left><Left>
-"DiffOrig
+"Diff on buffer/backup
 nnoremap <silent> [sub]d :DiffOrig<CR> 
+nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
 
 ""user defined function/command
 "Comp <- copare files side by side
@@ -154,11 +155,11 @@ endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
 "prefix
-nnoremap    [Tag]   <Nop>
-nmap    t [Tag]
+nnoremap    [Tab]   <Nop>
+nmap    t [Tab]
 "jump
 for n in range(1, 9)
-  execute 'nnoremap <silent> [Tag]'.n  ':<C-u>tabnext'.n.'<CR>'
+  execute 'nnoremap <silent> [Tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 "create,edit,x[close],next(last),previous(first),only
 map <silent> [Tab]c :tablast <bar> tabnew<CR>
@@ -173,6 +174,8 @@ map <silent> [Tab]o :tabonly<CR>
 "vim:open help with K,close with q
 autocmd Filetype vim set keywordprg=:help
 autocmd FileType help nnoremap <buffer> q <C-w>c
+"activate :Man command
+runtime ftplugin/man.vim
 
 "----------------------------------------------------------------------------
 "plugin initialization	<-	configuration within ~/.dein{.toml,_lazy.toml}
