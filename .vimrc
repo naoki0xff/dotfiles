@@ -182,14 +182,14 @@ map <silent> [Tab]p :tabprevious<CR>
 map <silent> [Tab]P :tabfir<CR>
 map <silent> [Tab]o :tabonly<CR>
 
-""FILETYPE  -- also see [sub] commands for filetype shortcut
+""FILETYPE
 "vim:open help with K,close with q
 autocmd Filetype vim set keywordprg=:help
 autocmd FileType help nnoremap <buffer> q <C-w>c
 "c:gf{path_to_header}
 augroup GfPathGroup
   autocmd!
-  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
+  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include
 augroup END
 
 "----------------------------------------------------------------------------
