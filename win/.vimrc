@@ -32,16 +32,14 @@ nnoremap k gk
 "cursor (insert mode)
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
 "cursor (command mode)
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
+"yank
+nnoremap Y y$
 "clipboard integration
 set clipboard+=unnamed
 "japanese ZENKAKU
@@ -120,7 +118,7 @@ function! HandleURI()
   let l:uri = matchstr(getline("."), '[a-z]*:\/\/[^ >,;:]*')
   echo l:uri
   if l:uri != ""
-    exec "!open \"" . l:uri . "\""
+    exec "!cygstart \"" . l:uri . "\""
   else
     echo "No URI found in line."
   endif
