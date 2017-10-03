@@ -1,7 +1,6 @@
 # zsh initialization
-# source
-source ~/.bash_profile
-source ~/.bashrc
+# conposition:[ ~/.zshrc,~/.zprofile ]
+
 # compatibility
 autoload -U compinit
 compinit
@@ -26,8 +25,22 @@ setopt hist_no_store
 setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
-stty stop undef
-bindkey "^S" history-incremental-search-forward
+
+# VARIABLE
+export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
+export EDITOR=nvim
+export MANPAGER="nvim -c 'set ft=man' -"
+export XDG_CONFIG_HOME=~/.config
+export VBACKUPDIR=~/.local/share/nvim/backup
+# PATH
+export PATH=$PATH:~/scripts/bin
+# LANGUAGE
+# -> python
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:$PATH"
+eval "$(pyenv init -)"
+# -> ruby
+eval "$(rbenv init -)"
 
 # CLI tools
 # git
@@ -60,16 +73,16 @@ add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT="%1(v|%F{green}%1v%f|)"
 #peco
 function peco-select-history() {
-    BUFFER=$(history -n 1 | \
-        tail -r | \
-        peco --query "$LBUFFER")
+    BUFFER=$(fc -l -r -n 1 | peco --query "$LBUFFER")
     CURSOR=$#BUFFER
-    zle clear-screen
+    zle redisplay
 }
 zle -N peco-select-history
-bindkey '^y' peco-select-history
+stty stop undef
+bindkey '^s' peco-select-history
 # R
 disable r
+
 
 ### documentation:integration of bash,zsh,iterm2 and etc.
 # --------------------------------------------------------------
