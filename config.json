@@ -1,0 +1,8 @@
+{
+	"Prompt": "peco>",
+	"keymap": {
+		"C-g": "peco.SelectAll",
+		"C-k": "peco.DeleteAll",
+		"C-x,C-c": "peco.Finish"
+	}
+}

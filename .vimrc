@@ -26,16 +26,18 @@ set smartcase
 set wrapscan
 "backspace for deletion
 set backspace=indent,eol,start
+"yank
+nnoremap Y y$
 "cursor (normal mode)
 nnoremap j gj
 nnoremap k gk
 "cursor (insert mode)
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
-inoremap <C-h> <C-o>h
-inoremap <C-j> <C-o>j
-inoremap <C-k> <C-o>k
-inoremap <C-l> <C-o>l
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <UP>
+inoremap <C-l> <Right>
 "cursor (command mode)
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -66,7 +68,7 @@ nmap S [SUB]
 "search/substituiton
 nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
 nnoremap [sub]s :%s///g<Left><Left><Left>
-"DiffOrig
+"Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
 nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
 ""Denite and else
@@ -80,7 +82,7 @@ nnoremap [sub]/ :bufdo !ag -H '' %<Left><Left><Left>
 "search various
 nnoremap <silent> [sub]y :Denite -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
-nnoremap <silent> [sub]o :Denite -no-quit -mode=normal -cursor-wrap -auto-resize outline<CR>
+nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
 "resume latest denite source
 nnoremap <silent> [sub]; :Denite -resume<CR>
@@ -182,14 +184,14 @@ map <silent> [Tab]p :tabprevious<CR>
 map <silent> [Tab]P :tabfir<CR>
 map <silent> [Tab]o :tabonly<CR>
 
-""FILETYPE  -- also see [sub] commands for filetype shortcut
+""FILETYPE
 "vim:open help with K,close with q
 autocmd Filetype vim set keywordprg=:help
 autocmd FileType help nnoremap <buffer> q <C-w>c
-"c:gf{path_to_header}
+"c:gf{path_to_header} <- add path when neccessary
 augroup GfPathGroup
   autocmd!
-  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.12.sdk/usr/include
+  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include
 augroup END
 
 "----------------------------------------------------------------------------
