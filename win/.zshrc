@@ -1,3 +1,5 @@
+# zshrc
+
 #alias
 #shell command
 alias ls='ls -CF'

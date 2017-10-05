@@ -32,6 +32,10 @@ nnoremap k gk
 "cursor (insert mode)
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
 "cursor (command mode)
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>

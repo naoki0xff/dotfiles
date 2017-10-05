@@ -1,7 +1,6 @@
 # zsh initialization
-# source
-source ~/.bash_profile
-source ~/.bashrc
+# components: ~/.zshrc ~/.zprofile
+
 # compatibility
 autoload -U compinit
 compinit
@@ -9,7 +8,6 @@ compinit
 autoload -U promptinit
 promptinit
 PROMPT='naoki:%F{cyan}%~%f%#'
-
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
@@ -29,6 +27,28 @@ setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
 stty stop undef
 bindkey "^S" history-incremental-search-forward
+# cygwin
+export LANG=ja_JP.UTF-8
+
+# keybind
+bindkey -e
+# VARIABLE
+export VBACKUPDIR=~/.local/share/nvim/backup
+# PATH
+export PATH=/cygdrive/c/anaconda:$PATH
+export PATH=/cygdrive/c/anaconda/scripts:$PATH
+export PATH=/cygdrice/c/program\ files/rstudio/bin:$PATH
+export PATH=$PATH:~/scripts/bin
+# function
+source ~/scripts/bin/clip.sh
+#tmux autoload
+if [ -z $TMUX ];then
+	if $(tmux has-session 2> /dev/null);then
+		tmux -2 attach
+	else
+		tmux -2
+	fi
+fi
 
 # CLI tools
 # git
@@ -62,9 +82,3 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 # R
 disable r
 
-### documentation:integration of bash,zsh,iterm2 and etc.
-# --------------------------------------------------------------
-# editor:EDITOR is set to nvim, causing vim bindkey on shell.
-#        (~/.bash_profile)
-#        following line meke it to emacs keybind.
-bindkey -e
