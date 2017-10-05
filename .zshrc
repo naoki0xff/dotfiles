@@ -1,4 +1,3 @@
-### bashrc
 
 # alias
 # shell command
@@ -30,3 +29,5 @@ alias pcd='cd ~/work/python/tutor/'
 alias ccd='cd ~/project/dotfiles/'
 # git alias
 alias gam='git add .;git commit -m "update"'
+#iterm2_shell_integration:imgcat and else
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
