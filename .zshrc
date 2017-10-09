@@ -1,15 +1,16 @@
+### zhsrc
 
 # alias
 # shell command
 alias ls='ls -CF'
-alias sl='ls'	# typo
+alias sl='ls -CF'
 alias ll='ls -1'
 alias lt='ls -1ta'
 alias la='ls -CFal'
 alias mv='mv -i'
 alias cp='cp -i'
 alias sed='gsed'
-alias grep='grep --color=auto'
+alias grep='ag'
 alias diff='colordiff -u'
 alias less='less -N'
 alias tac='tail -r'

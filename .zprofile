@@ -1,5 +1,4 @@
-# zsh initialization
-# conposition:[ ~/.zshrc,~/.zprofile ]
+### zprofile
 
 # compatibility
 autoload -U compinit
@@ -25,10 +24,14 @@ setopt hist_no_store
 setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
+stty stop undef
+#bindkey "^S" history-incremental-search-forward
 
 # VARIABLE
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
 export EDITOR=nvim
+bindkey -e
+export LESS='--LONG-PROMPT'
 export MANPAGER="nvim -c 'set ft=man' -"
 export XDG_CONFIG_HOME=~/.config
 export VBACKUPDIR=~/.local/share/nvim/backup
@@ -48,13 +51,11 @@ autoload -Uz add-zsh-hook
 autoload -Uz colors
 colors
 autoload -Uz vcs_info
-
 zstyle ':vcs_info:*' enable git svn hg bzr
 zstyle ':vcs_info:*' formats '(%s)-[%b]'
 zstyle ':vcs_info:*' actionformats '(%s)-[%b|%a]'
 zstyle ':vcs_info:(svn|bzr):*' branchformat '%b:r%r'
 zstyle ':vcs_info:bzr:*' use-simple true
-
 autoload -Uz is-at-least
 if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' check-for-changes true
@@ -63,7 +64,6 @@ if is-at-least 4.3.10; then
   zstyle ':vcs_info:git:*' formats '(%s)-[%b] %c%u'
   zstyle ':vcs_info:git:*' actionformats '(%s)-[%b|%a] %c%u'
 fi
-
 function _update_vcs_info_msg() {
     psvar=()
     LANG=en_US.UTF-8 vcs_info
@@ -71,24 +71,6 @@ function _update_vcs_info_msg() {
 }
 add-zsh-hook precmd _update_vcs_info_msg
 RPROMPT="%1(v|%F{green}%1v%f|)"
-#peco
-function peco-select-history() {
-    BUFFER=$(fc -l -r -n 1 | peco --query "$LBUFFER")
-    CURSOR=$#BUFFER
-    zle redisplay
-}
-zle -N peco-select-history
-stty stop undef
-bindkey '^s' peco-select-history
 # R
 disable r
 
-
-### documentation:integration of bash,zsh,iterm2 and etc.
-# --------------------------------------------------------------
-# editor:EDITOR is set to nvim, causing vim bindkey on shell.
-#        (~/.bash_profile)
-#        following line meke it to emacs keybind.
-bindkey -e
-# iterm2 integration:under .zhsrc, all the alias are gatherd
-# --------------------------------------------------------------

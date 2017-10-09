@@ -53,7 +53,7 @@ augroup END
 set clipboard+=unnamedplus
 "drawing ZENKAKU symbol
 set ambiwidth=double
-"hilight
+"highlight
 highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
@@ -78,8 +78,8 @@ nnoremap <silent> [sub]l :Denite -cursor-wrap -mode=normal -winheight=16 buffer<
 nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
-nnoremap [sub]/ :bufdo !ag -H '' %<Left><Left><Left>
 "search various
+nnoremap <silent> [sub]/ :Denite line<CR>
 nnoremap <silent> [sub]y :Denite -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
 nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<CR>
