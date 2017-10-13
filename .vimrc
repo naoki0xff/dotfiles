@@ -5,10 +5,11 @@
 "configuration
 "----------------------------------------------------------------------------
 "appearance
-nnoremap <C-g> 2<C-g>
+nnoremap <silent> <C-g> :call CursorlineToggle()<CR>2<C-g>
 set number
 set display=lastline
 set pumheight=10
+"set cursorline
 "backup
 set backup
 set backupdir=~/.local/share/nvim/backup 
@@ -74,13 +75,13 @@ nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
 ""Denite and else
 "buffer (list,reload,next,previous,grep)
 set hidden
-nnoremap <silent> [sub]l :Denite -cursor-wrap -mode=normal -winheight=16 buffer<CR>
+nnoremap <silent> [sub]l :Denite -mode=normal -cursor-wrap -winheight=16 buffer<CR>
 nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
 "search various
 nnoremap <silent> [sub]/ :Denite line<CR>
-nnoremap <silent> [sub]y :Denite -winheight=10 file_old<CR>
+nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
 nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
@@ -105,6 +106,14 @@ function! s:compare(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
+"CursorlineToggle <- toggle cursorline on/off
+function CursorlineToggle()
+	if &cursorline
+		setlocal nocursorline
+	else
+		setlocal cursorline
+	endif
+endfunction
 "DeleteHiddenBuffers <- delete hidden buffer
 function DeleteHiddenBuffers()
     let tpbl=[]
@@ -147,7 +156,6 @@ command! Vimrc tabedit ~/.vimrc
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
 endfunction
-
 function! s:my_tabline()  "{{{
   let s = ''
   for i in range(1, tabpagenr('$'))

@@ -7,6 +7,8 @@ compinit
 autoload -U promptinit
 promptinit
 PROMPT='%m:%F{cyan}%~%f%#'
+# don't lock screen
+stty stop undef
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
@@ -24,8 +26,6 @@ setopt hist_no_store
 setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
-stty stop undef
-#bindkey "^S" history-incremental-search-forward
 
 # VARIABLE
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
