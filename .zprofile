@@ -36,7 +36,8 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export XDG_CONFIG_HOME=~/.config
 export VBACKUPDIR=~/.local/share/nvim/backup
 # PATH
-export PATH=$PATH:~/scripts/bin
+export PATH="$PATH:$HOME/scripts/bin:/usr/local/opt/coreutils/libexec/gnubin"
+export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # LANGUAGE
 # -> python
 export PYENV_ROOT="${HOME}/.pyenv"
