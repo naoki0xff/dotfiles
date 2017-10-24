@@ -7,7 +7,7 @@ compinit
 autoload -U promptinit
 promptinit
 PROMPT='%m:%F{cyan}%~%f%#'
-# don't lock screen
+# disable ^S
 stty stop undef
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'

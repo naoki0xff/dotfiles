@@ -22,24 +22,24 @@ set smartindent
 "search
 set hlsearch
 set incsearch
-set ignorecase
 set smartcase
 set wrapscan
 "backspace for deletion
 set backspace=indent,eol,start
 "yank
 nnoremap Y y$
-"cursor (normal mode)
+""cursor
+"normal mode
 nnoremap j gj
 nnoremap k gk
-"cursor (insert mode)
+"insert mode
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <UP>
 inoremap <C-l> <Right>
-"cursor (command mode)
+"command mode
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
