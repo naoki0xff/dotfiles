@@ -9,6 +9,8 @@ nnoremap <silent> <C-g> :call CursorlineToggle()<CR>2<C-g>
 set number
 set display=lastline
 set pumheight=10
+set statusline=%F%m%r%h%w%=[ENC=%{&fileencoding}][ROW=%l/%L]
+set laststatus=2
 "set cursorline
 "backup
 set backup
