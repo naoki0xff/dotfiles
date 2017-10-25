@@ -31,7 +31,6 @@ bindkey "^R" history-incremental-search-backward
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
 export EDITOR=nvim
 bindkey -e
-export LESS='--LONG-PROMPT'
 export MANPAGER="nvim -c 'set ft=man' -"
 export XDG_CONFIG_HOME=~/.config
 export VBACKUPDIR=~/.local/share/nvim/backup
