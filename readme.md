@@ -1,16 +1,42 @@
 # dotfiles
 
-as personal config storage
+personal configuration files.
 
 ---
 
-## requirement
+## major requirement
 
 - OS:MacOS
 - vim:NVIM v0.2.0 or later
-- tools:peco,
 
-## documentation
+NOTE:
 
-1. config.json <- for peco. you need to locate it on "~/$XDG_CONFIG_HOME/peco/".
-1. あとはめんどいから察して。
+  other tools like git, tmux, and else are not specified here due to the amount of them.
+
+## correspondance of each configuration files
+
+- shell
+
+	.zshrc
+
+	.zprofile
+
+- vim
+
+	.vimrc
+
+	.dein.toml
+
+	.dein_lazy.toml
+
+- other CLI tools
+
+	.git	<- git,github
+
+	.tmux.conf	<- tmux
+
+	config.json	<- peco
+
+- win
+
+	configuration files of windows' cygwin environment
