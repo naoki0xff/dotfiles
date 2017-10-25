@@ -36,7 +36,3 @@ NOTE:
 	.tmux.conf	<- tmux
 
 	config.json	<- peco
-
-- win
-
-	configuration files of windows' cygwin environment
