@@ -241,4 +241,6 @@ syntax on
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting
 "----------------------------------------------------------------------------
-"when runtimepath is redefined within vimrc, 'syntax on' must be written after that line.
+"1. when runtimepath is redefined within vimrc, 'syntax on' must be written after that line.
+"2. alias of external command within vim -> declare $ZDOTDIR only within vimrc and load "$ZDOTDIR/.zshenv(symlink to ~/.zshrc) to reflect aliases.
+let $ZDOTDIR=expand('~/.vim')
