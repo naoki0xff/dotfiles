@@ -24,8 +24,9 @@ set smartindent
 "search
 set hlsearch
 set incsearch
-set smartcase
 set wrapscan
+set ignorecase
+set smartcase
 "backspace for deletion
 set backspace=indent,eol,start
 "yank
@@ -69,8 +70,8 @@ nmap s [sub]
 nnoremap [SUB] <Nop>
 nmap S [SUB]
 "search/substituiton
-nnoremap [sub]* *:%s/<C-r>///g<Left><Left>
-nnoremap [sub]s :%s///g<Left><Left><Left>
+nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
+nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
 nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
@@ -116,7 +117,7 @@ function CursorlineToggle()
 		setlocal cursorline
 	endif
 endfunction
-"DeleteHiddenBuffers <- delete hidden buffer
+"DeleteHiddenBuffers <- delete all hidden buffer
 function DeleteHiddenBuffers()
     let tpbl=[]
     call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
@@ -241,6 +242,4 @@ syntax on
 "----------------------------------------------------------------------------
 "etc:documentation for trouble shooting
 "----------------------------------------------------------------------------
-"1. when runtimepath is redefined within vimrc, 'syntax on' must be written after that line.
-"2. alias of external command within vim -> declare $ZDOTDIR only within vimrc and load "$ZDOTDIR/.zshenv(symlink to ~/.zshrc) to reflect aliases.
-let $ZDOTDIR=expand('~/.vim')
+"when runtimepath is redefined within vimrc, 'syntax on' must be written after that line.
