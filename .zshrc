@@ -24,8 +24,9 @@ alias onenote='open -a microsoft\ onenote'
 alias vivaldi='open -a vivaldi'
 # cd shortcut
 alias hcd='cd ~/documents/help/'
-alias pcd='cd ~/lang/python/tutor/'
+alias pcd='cd ~/work/tutor/pytutor/chapter/'
 alias ccd='cd ~/project/dotfiles/'
+alias dcd='cd ~/work/tutor/pydata/'
 # git alias
 alias gam='git add .;git commit -m "update"'
 #iterm2_shell_integration:imgcat and else
