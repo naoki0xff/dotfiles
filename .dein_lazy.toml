@@ -44,15 +44,14 @@ hook_add = '''
 	let g:jedi#popup_on_dot=0
 	let g:jedi#smart_auto_mappings = 0
 '''
-#NOTE:rename_command=<Leader>v[ariable]
 
 #[[plugins]]
 #repo = 'mattn/emmet-vim'
 #on_ft = [ 'html']
 #hook_add = '''
-#	inoremap [emmet] <Nop>
-#	imap <C-Space> [emmet]
-#	autocmd FileType html imap <buffer><expr><C-Space>
+#	autocmd FileType html inoremap [emmet] <Nop>
+#	autocmd FileType html imap <C-e> [emmet]
+#	autocmd FileType html imap <buffer><expr><C-e>
 #	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
 #	\	"\<tab>"
 #	let g:user_emmet_settings = {
@@ -61,3 +60,4 @@ hook_add = '''
 #	\	}
 #	\}
 #'''
+### not working with php as intended.
