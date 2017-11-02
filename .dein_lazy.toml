@@ -1,3 +1,5 @@
+### .dein_lazy.toml
+
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
@@ -21,13 +23,14 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_ft = [ 'python', 'c', 'sh', 'ruby' ]
+on_ft = [ 'python' ]
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
-on_ft = [ 'python', 'c', 'sh', 'ruby' ]
+on_ft = [ 'python' ]
 hook_add = '''
 	let g:indentLine_showFirstIndentLevel = 1
+	let g:indentLine_faster = 1
 '''
 
 #[[plugins]]

@@ -1,3 +1,5 @@
+### .dein.toml
+
 [[plugins]]
 repo = 'Shougo/dein.vim'
 

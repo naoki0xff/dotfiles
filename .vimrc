@@ -11,7 +11,6 @@ set display=lastline
 set pumheight=10
 set statusline=%F%m%r%h%w%=[FT=%{&filetype}][ENC=%{&fileencoding}]
 set laststatus=2
-set list listchars=tab:\|\ ,trail:-,nbsp:+
 "backup
 set backup
 set backupdir=~/.local/share/nvim/backup 
@@ -90,6 +89,8 @@ nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<
 nnoremap <silent> [sub]f :Denite file_rec<CR>
 "resume latest denite source
 nnoremap <silent> [sub]; :Denite -resume<CR>
+"Toggle indentLine
+nnoremap <silent> [sub]i :IndentLinesToggle<CR>
 
 ""user defined function/command
 "Comp <- copare files side by side
