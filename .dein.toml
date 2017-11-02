@@ -1,5 +1,3 @@
-### conf on startup
-
 [[plugins]]
 repo = 'Shougo/dein.vim'
 

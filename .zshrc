@@ -24,7 +24,7 @@ alias onenote='open -a microsoft\ onenote'
 alias vivaldi='open -a vivaldi'
 # cd shortcut
 alias hcd='cd ~/documents/help/'
-alias pcd='cd ~/work/tutor/pytutor/chapter/'
+alias pcd='cd ~/work/tutor/pytutor/'
 alias ccd='cd ~/project/dotfiles/'
 alias dcd='cd ~/work/tutor/pydata/'
 # git alias

@@ -1,5 +1,3 @@
-### conf on lazy load
-
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
@@ -25,6 +23,13 @@ hook_add = '''
 repo = 'cohama/lexima.vim'
 on_ft = [ 'python', 'c', 'sh', 'ruby' ]
 
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+on_ft = [ 'python', 'c', 'sh', 'ruby' ]
+hook_add = '''
+	let g:indentLine_showFirstIndentLevel = 1
+'''
+
 #[[plugins]]
 #repo = 'Shougo/deoplete.nvim'
 #on_event = 'InsertCharPre'
@@ -45,19 +50,18 @@ hook_add = '''
 	let g:jedi#smart_auto_mappings = 0
 '''
 
-#[[plugins]]
-#repo = 'mattn/emmet-vim'
-#on_ft = [ 'html']
-#hook_add = '''
-#	autocmd FileType html inoremap [emmet] <Nop>
-#	autocmd FileType html imap <C-e> [emmet]
-#	autocmd FileType html imap <buffer><expr><C-e>
-#	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-#	\	"\<tab>"
-#	let g:user_emmet_settings = {
-#	\	'variables' : {
-#	\	'lang' : 'ja'
-#	\	}
-#	\}
-#'''
-### not working with php as intended.
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = [ 'html']
+hook_add = '''
+	autocmd FileType html inoremap [emmet] <Nop>
+	autocmd FileType html imap <C-e> [emmet]
+	autocmd FileType html imap <buffer><expr><C-e>
+	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+	\	"\<tab>"
+	let g:user_emmet_settings = {
+	\	'variables' : {
+	\	'lang' : 'ja'
+	\	}
+	\}
+'''
