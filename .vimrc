@@ -68,20 +68,20 @@ nnoremap [sub] <Nop>
 nmap s [sub]
 nnoremap [SUB] <Nop>
 nmap S [SUB]
-"search/substituiton
+"substituiton
 nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
 nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
-""Denite and else
+""plugins
 "buffer (list,reload,next,previous,grep)
 set hidden
 nnoremap <silent> [sub]l :Denite -mode=normal -cursor-wrap -winheight=16 buffer<CR>
 nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
-"search various
+"search (line,history,grep,outline,file_rec)
 nnoremap <silent> [sub]/ :Denite line<CR>
 nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
@@ -89,8 +89,11 @@ nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<
 nnoremap <silent> [sub]f :Denite file_rec<CR>
 "resume latest denite source
 nnoremap <silent> [sub]; :Denite -resume<CR>
-"Toggle indentLine
+"indeneLine toggle
 nnoremap <silent> [sub]i :IndentLinesToggle<CR>
+"fotmat - add quotation
+nnoremap <silent> [sub]" :DQuoteInside<CR>
+command DQuoteInside s/\[/\["/ | s/,/","/g | s/]/"\]/ | noh
 
 ""user defined function/command
 "Comp <- copare files side by side
