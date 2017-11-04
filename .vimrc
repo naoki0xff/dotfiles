@@ -74,8 +74,8 @@ nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
 nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
-""plugins
-"buffer (list,reload,next,previous,grep)
+""plugins/extensions
+"buffer (list,reload,next,previous)
 set hidden
 nnoremap <silent> [sub]l :Denite -mode=normal -cursor-wrap -winheight=16 buffer<CR>
 nnoremap <silent> [sub]r :BufDel<CR>
@@ -94,8 +94,12 @@ nnoremap <silent> [sub]i :IndentLinesToggle<CR>
 "fotmat - add quotation
 nnoremap <silent> [sub]" :DQuoteInside<CR>
 command DQuoteInside s/\[/\["/ | s/,/","/g | s/]/"\]/ | noh
+nnoremap <silent> [sub]' :SQuoteInside<CR>
+command SQuoteInside s/\[/\['/ | s/,/','/g | s/]/'\]/ | noh
 
 ""user defined function/command
+"Bufgrep <- bufdo-grep <args> and add result to error list
+command -nargs=1 Bufgrep cexpr "" | bufdo vimgrepadd <args> %
 "Comp <- copare files side by side
 function! s:compare(...)
   if a:0 == 1
