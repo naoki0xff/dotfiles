@@ -21,9 +21,9 @@ hook_add = '''
 	au FileType qf nnoremap <silent><buffer>q :quit<CR>
 '''
 
-#[[plugins]]
-#repo = 'cohama/lexima.vim'
-#on_ft = [ 'python' ]
+[[plugins]]
+repo = 'cohama/lexima.vim'
+on_ft = [ 'python' ]
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'

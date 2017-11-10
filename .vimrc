@@ -30,18 +30,19 @@ set smartcase
 set backspace=indent,eol,start
 "yank
 nnoremap Y y$
-""cursor
-"normal mode
+"insert blank line(:0=zero, not o/O)
+nnoremap <silent> 0 :<C-u>call append(expand('.'), '')<Cr>j
+"cursor:normal mode
 nnoremap j gj
 nnoremap k gk
-"insert mode
+"cursor:insert mode
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <UP>
 inoremap <C-l> <Right>
-"command mode
+"cursor:command mode
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
@@ -91,7 +92,7 @@ nnoremap <silent> [sub]f :Denite file_rec<CR>
 nnoremap <silent> [sub]; :Denite -resume<CR>
 "indeneLine toggle
 nnoremap <silent> [sub]i :IndentLinesToggle<CR>
-"fotmat - add quotation
+"fotmat - ""/'' enclosure to list elements
 nnoremap <silent> [sub]" :DQuoteInside<CR>
 command DQuoteInside s/\[/\["/ | s/,/","/g | s/]/"\]/ | noh
 nnoremap <silent> [sub]' :SQuoteInside<CR>
@@ -125,7 +126,7 @@ function CursorlineToggle()
 		setlocal cursorline
 	endif
 endfunction
-"DeleteHiddenBuffers <- delete all hidden buffer
+"DeleteHiddenBuffers <- delete hidden buffer
 function DeleteHiddenBuffers()
     let tpbl=[]
     call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
