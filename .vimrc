@@ -92,11 +92,11 @@ nnoremap <silent> [sub]f :Denite file_rec<CR>
 nnoremap <silent> [sub]; :Denite -resume<CR>
 "indeneLine toggle
 nnoremap <silent> [sub]i :IndentLinesToggle<CR>
-"fotmat - ""/'' enclosure to list elements
-nnoremap <silent> [sub]" :DQuoteInside<CR>
-command DQuoteInside s/\[/\["/ | s/,/","/g | s/]/"\]/ | noh
-nnoremap <silent> [sub]' :SQuoteInside<CR>
-command SQuoteInside s/\[/\['/ | s/,/','/g | s/]/'\]/ | noh
+"fotmat - "" to each elements within blackets
+nnoremap <silent> [SUB]s :DQsblackets<CR>
+command DQsblackets s/\[/\["/ | s/,/","/g | s/\]/"\]/ | noh
+nnoremap <silent> [SUB]r :DQrblackets<CR>
+command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
 
 ""user defined function/command
 "Bufgrep <- bufdo-grep <args> and add result to error list
