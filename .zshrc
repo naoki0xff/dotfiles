@@ -17,6 +17,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+alias wl='wc -l'
 # gui application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'
@@ -25,11 +26,11 @@ alias onenote='open -a microsoft\ onenote'
 alias vivaldi='open -a vivaldi'
 # cd shortcut
 alias ccd='cd ~/project/dotfiles/'
-alias dcd='cd ~/work/tutor/pydata/'
+alias dcd='cd ~/works/tutor/pydata/'
 alias hcd='cd ~/documents/gdoc/help/'
 alias hhcd='cd ~/documents/gdoc/research/'
-alias pcd='cd ~/work/tutor/pytutor/'
-alias ucd='cd ~/ondrive/univ/'
+alias pcd='cd ~/works/tutor/pytutor/'
+alias ucd='cd ~/onedrive/univ/'
 # git alias
 alias gam='git add .;git commit -m "update"'
 #iterm2_shell_integration:imgcat and else
