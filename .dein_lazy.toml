@@ -23,7 +23,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_ft = [ 'python', 'sh' ]
+on_ft = [ 'python', 'sh', 'c' ]
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'

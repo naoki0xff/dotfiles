@@ -97,6 +97,10 @@ nnoremap <silent> [SUB]s :DQsblackets<CR>
 command DQsblackets s/\[/\["/ | s/,/","/g | s/\]/"\]/ | noh
 nnoremap <silent> [SUB]r :DQrblackets<CR>
 command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
+"Vimrc
+nnoremap <silent> [SUB]V :Vimrc<CR>
+"Note
+nnoremap <silent> [SUB]N :Note<CR>
 
 ""user defined function/command
 "Bufgrep <- bufdo-grep <args> and add result to error list
@@ -161,8 +165,10 @@ function! HandleURI()
   endif
 endfunction
 nnoremap <Leader>w :<C-u>call HandleURI()<CR>
+"Note <- take note
+command! Note tablast | tabedit | tcd ~/Google Drive/documents/research/cache
 "Vimrc <- open ~/.vimrc with tab
-command! Vimrc tabedit ~/.vimrc
+command! Vimrc tablast | tabedit ~/.vimrc
 
 ""tab control
 function! s:SID_PREFIX()
