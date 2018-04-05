@@ -30,18 +30,8 @@ alias code='/Applications/Visual\ Studio\ Code.app/contents/Resources/app/bin/co
 alias ccd='cd ~/project/dotfiles/'
 alias dcd='cd ~/works/tutor/pydata/'
 alias hcd='cd ~/Google\ Drive/documents/help/'
-alias hhcd='cd ~/Google\ Drive/documents/research/'
 alias pcd='cd ~/works/tutor/pytutor/'
-alias ucd='cd ~/Google\ Drive/univ/'
 # git alias
 alias gam='git add .;git commit -m "update"'
 #iterm2_shell_integration:imgcat and else
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-##function
-#function lls(){
-#	if [ -z $1 ];then
-#		ls *
-#	else
-#		ls $1/*
-#	fi
-#}

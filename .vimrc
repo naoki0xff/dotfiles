@@ -103,7 +103,7 @@ nnoremap <silent> [SUB]V :Vimrc<CR>
 nnoremap <silent> [SUB]N :Note<CR>
 
 ""user defined function/command
-"Bufgrep <- bufdo-grep <args> and add result to error list
+"Bufgrep <- bufdo-grep <args> and add result to error list;use `:cw` for quickfix
 command -nargs=1 Bufgrep cexpr "" | bufdo vimgrepadd <args> %
 "Comp <- copare files side by side
 function! s:compare(...)
