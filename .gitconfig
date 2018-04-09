@@ -1,0 +1,5 @@
+[user]
+	email = cover551.9@gmail.com
+	name = naoki0xff
+[alias]
+	graph = log --graph --decorate=short --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
