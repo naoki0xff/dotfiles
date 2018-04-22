@@ -27,19 +27,15 @@ on_ft = [ 'python', 'sh', 'c', 'php' ]
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
-on_ft = [ 'python', 'php' ]
+on_ft = [ 'python' ]
 hook_add = '''
 	let g:indentLine_showFirstIndentLevel = 1
 	let g:indentLine_faster = 1
 '''
 
 #[[plugins]]
-#repo = 'Shougo/deoplete.nvim'
-#on_event = 'InsertCharPre'
-#hook_source = '''
-#  let g:deoplete#enable_at_startup = 1
-#  let g:deoplete#auto_complete_delay = 0
-#'''
+#repo = 'zchee/deoplete-jedi'
+#on_ft = 'python'
 
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
