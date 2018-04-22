@@ -1,5 +1,5 @@
-"vimrc
-"requirement:vim=NVIM v0.2.0 or later
+"vimrc: with "dein.toml" & "dein_lazy.toml"
+"requirement:NVIM v0.2.0 or later
 
 "----------------------------------------------------------------------------
 "configuration
@@ -38,10 +38,9 @@ nnoremap k gk
 "cursor:insert mode
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <UP>
-inoremap <C-l> <Right>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-k> <C-o>dd
 "cursor:command mode
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
@@ -70,8 +69,9 @@ nmap s [sub]
 nnoremap [SUB] <Nop>
 nmap S [SUB]
 "substituiton
-nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
+nnoremap [SUB]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
+nnoremap [SUB]s :s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
 nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
@@ -82,6 +82,9 @@ nnoremap <silent> [sub]l :Denite -mode=normal -cursor-wrap -winheight=16 buffer<
 nnoremap <silent> [sub]r :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
+"greps
+nnoremap [SUB]C :CWnow<CR>
+nnoremap [SUB]B :Bufgrep ""<Left>
 "search (line,history,grep,outline,file_rec)
 nnoremap <silent> [sub]/ :Denite line<CR>
 nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
@@ -103,6 +106,8 @@ nnoremap <silent> [SUB]V :Vimrc<CR>
 nnoremap <silent> [SUB]N :Note<CR>
 
 ""user defined function/command
+"open cwindow
+command! CWnow tablast | tabedit | cwindow
 "Bufgrep <- bufdo-grep <args> and add result to error list;use `:cw` for quickfix
 command -nargs=1 Bufgrep cexpr "" | bufdo vimgrepadd <args> %
 "Comp <- copare files side by side

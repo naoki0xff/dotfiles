@@ -13,3 +13,7 @@ hook_post_source = '''
 
 [[plugins]]
 repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'

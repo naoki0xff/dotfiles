@@ -23,11 +23,11 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_ft = [ 'python', 'sh', 'c' ]
+on_ft = [ 'python', 'sh', 'c', 'php' ]
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
-on_ft = [ 'python' ]
+on_ft = [ 'python', 'php' ]
 hook_add = '''
 	let g:indentLine_showFirstIndentLevel = 1
 	let g:indentLine_faster = 1
@@ -53,18 +53,22 @@ hook_add = '''
 	let g:jedi#smart_auto_mappings = 0
 '''
 
-[[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = [ 'html']
-hook_add = '''
-	autocmd FileType html inoremap [emmet] <Nop>
-	autocmd FileType html imap <C-e> [emmet]
-	autocmd FileType html imap <buffer><expr><C-e>
-	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-	\	"\<tab>"
-	let g:user_emmet_settings = {
-	\	'variables' : {
-	\	'lang' : 'ja'
-	\	}
-	\}
-'''
+#[[plugins]]
+#repo = 'mattn/emmet-vim'
+#on_ft = [ 'html', 'php' ]
+#hook_add = '''
+#	autocmd FileType html,php inoremap [emmet] <Nop>
+#	autocmd FileType html,php imap <C-h> [emmet]
+#	autocmd FileType html,php imap <buffer><expr><C-h>
+#	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+#	\	"\<tab>"
+#	let g:user_emmet_settings = {
+#	\	'variables' : {
+#	\	'lang' : 'ja'
+#	\	}
+#	\}
+#'''
+##emmet-expand-key: <C-h>;short for html-expansion
+##NOTE: なんかうまいことphpと共存してくれない。例えば `echo p>`で展開しようとするとechoまでタグとして認識されてしまう。
+
+

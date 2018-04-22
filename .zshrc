@@ -25,12 +25,13 @@ alias excel='open -a microsoft\ excel'
 alias powerpoint='open -a microsoft\ powerpoint'
 alias onenote='open -a microsoft\ onenote'
 alias vivaldi='open -a vivaldi'
+alias chrome='open -a google\ chrome'
 alias code='/Applications/Visual\ Studio\ Code.app/contents/Resources/app/bin/code'
 # cd shortcut
 alias ccd='cd ~/project/dotfiles/'
 alias dcd='cd ~/works/tutor/pydata/'
 alias hcd='cd ~/Google\ Drive/documents/help/'
-alias pcd='cd ~/works/tutor/pytutor/'
+alias pcd='cd ~/works/tutor/phptutor/'
 # git alias
 alias gam='git add .;git commit -m "update"'
 #iterm2_shell_integration:imgcat and else
