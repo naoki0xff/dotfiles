@@ -53,22 +53,19 @@ hook_add = '''
 	let g:jedi#smart_auto_mappings = 0
 '''
 
-#[[plugins]]
-#repo = 'mattn/emmet-vim'
-#on_ft = [ 'html', 'php' ]
-#hook_add = '''
-#	autocmd FileType html,php inoremap [emmet] <Nop>
-#	autocmd FileType html,php imap <C-h> [emmet]
-#	autocmd FileType html,php imap <buffer><expr><C-h>
-#	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-#	\	"\<tab>"
-#	let g:user_emmet_settings = {
-#	\	'variables' : {
-#	\	'lang' : 'ja'
-#	\	}
-#	\}
-#'''
-##emmet-expand-key: <C-h>;short for html-expansion
-##NOTE: なんかうまいことphpと共存してくれない。例えば `echo p>`で展開しようとするとechoまでタグとして認識されてしまう。
-
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = [ 'html' ]
+hook_add = '''
+	autocmd FileType html inoremap [emmet] <Nop>
+	autocmd FileType html imap <C-e> [emmet]
+	autocmd FileType html imap <buffer><expr><C-e>
+	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
+	\	"\<tab>"
+	let g:user_emmet_settings = {
+	\	'variables' : {
+	\	'lang' : 'ja'
+	\	}
+	\}
+'''
 
