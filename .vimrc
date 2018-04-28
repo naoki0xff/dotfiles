@@ -102,8 +102,6 @@ nnoremap <silent> [SUB]r :DQrblackets<CR>
 command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
 "Vimrc
 nnoremap <silent> [SUB]V :Vimrc<CR>
-"Note
-nnoremap <silent> [SUB]N :Note<CR>
 
 ""user defined function/command
 "open cwindow
@@ -170,8 +168,6 @@ function! HandleURI()
   endif
 endfunction
 nnoremap <Leader>w :<C-u>call HandleURI()<CR>
-"Note <- take note
-command! Note tablast | tabedit | tcd ~/Google Drive/documents/research/cache
 "Vimrc <- open ~/.vimrc with tab
 command! Vimrc tablast | tabedit ~/.vimrc
 
