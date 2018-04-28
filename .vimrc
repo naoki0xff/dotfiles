@@ -33,8 +33,8 @@ nnoremap Y y$
 "insert blank line(:0=zero, not o/O)
 nnoremap <silent> 0 :<C-u>call append(expand('.'), '')<Cr>j
 "cursor:normal mode
-nnoremap j gj
-nnoremap k gk
+nnoremap <silent>j gj
+nnoremap <silent>k gk
 "cursor:insert mode
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
