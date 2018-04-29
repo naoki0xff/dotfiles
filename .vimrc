@@ -70,7 +70,7 @@ nmap s [sub]
 nnoremap [SUB] <Nop>
 nmap S [SUB]
 "substituiton
-nnoremap [SUB]* *:%s/<C-r>///gI<Left><Left><Left>
+nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 nnoremap [SUB]s :s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup

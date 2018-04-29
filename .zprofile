@@ -6,7 +6,7 @@ compinit
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%m:%F{cyan}%~%f%#'
+PROMPT='%F{green}%m@macOS:%~%f#'
 # disable ^S
 stty stop undef
 # history & completion
