@@ -75,3 +75,4 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 disable r
 # tmux
 [[ -z $TMUX && ! -z "$PS1" ]] && tmux
+set -o ignoreeof # stop tmux from exiting with C-d

@@ -19,6 +19,7 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 alias wl='wc -l'
+alias gv='grv'
 # gui application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'
