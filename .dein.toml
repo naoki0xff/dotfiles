@@ -24,3 +24,6 @@ repo = 'tpope/vim-surround'
 #[[plugins]]
 #repo = 'Shougo/vimproc.vim'
 #build = 'make'
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'

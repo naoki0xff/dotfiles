@@ -73,7 +73,7 @@ nmap S [SUB]
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
-nnoremap [SUB]s :s///gI<Left><Left><Left><Left>
+nnoremap [sub]S :s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
 nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
@@ -100,6 +100,8 @@ nnoremap <silent> [SUB]s :DQsblackets<CR>
 command DQsblackets s/\[/\["/ | s/,/","/g | s/\]/"\]/ | noh
 nnoremap <silent> [SUB]r :DQrblackets<CR>
 command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
+"nerdtree
+nnoremap <silent> [sub]t :NERDTree<CR>
 "Vimrc
 nnoremap <silent> [SUB]V :Vimrc<CR>
 
