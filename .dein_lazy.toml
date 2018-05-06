@@ -25,7 +25,6 @@ hook_add = '''
 repo = 'cohama/lexima.vim'
 on_ft = [ 'python', 'sh', 'c', 'php', 'ruby' ]
 
-
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
 on_ft = 'python'
