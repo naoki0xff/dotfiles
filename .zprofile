@@ -6,7 +6,7 @@ compinit
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%F{green}%m:%~%f#'
+PROMPT='%F{green}[%m]%~$%f'
 # disable ^S
 stty stop undef
 # history & completion
@@ -34,16 +34,19 @@ bindkey -e
 export MANPAGER="nvim -c 'set ft=man' -"
 export XDG_CONFIG_HOME=~/.config
 export VBACKUPDIR=~/.local/share/nvim/backup
+export LANG=en_US.UTF-8
 # PATH
 PATH="$PATH:$HOME/usr/bin:/usr/local/opt/coreutils/libexec/gnubin"
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # LANGUAGE
 # -> python
+eval "$(pyenv init -)"
 export PYENV_ROOT="${HOME}/.pyenv"
 export PATH="${PYENV_ROOT}/bin:$PATH"
-eval "$(pyenv init -)"
 # -> ruby
 eval "$(rbenv init -)"
+# avoid duplication
+typeset -U path PATH
 
 # CLI tools
 # git
@@ -82,6 +85,7 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_COMPLETION_TRIGGER=',,'
 # cmd:override default one, execute selected.
 fzf-history-widget-accept() {
   fzf-history-widget

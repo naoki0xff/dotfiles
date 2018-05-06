@@ -25,17 +25,6 @@ hook_add = '''
 repo = 'cohama/lexima.vim'
 on_ft = [ 'python', 'sh', 'c', 'php', 'ruby' ]
 
-#[[plugins]]
-#repo = 'zchee/deoplete-jedi'
-#on_ft = 'python'
-
-#[[plugins]]
-#repo = 'padawan-php/deoplete-padawan'
-#on_ft = [ 'php' ]
-
-#[[plugins]]
-#repo = 'lvht/phpcd.vim'
-#on_ft = 'php'
 
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
@@ -50,18 +39,26 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'mattn/emmet-vim'
-on_ft = [ 'html' ]
-hook_add = '''
-	autocmd FileType html inoremap [emmet] <Nop>
-	autocmd FileType html imap <C-p> [emmet]
-	autocmd FileType html imap <buffer><expr><C-p>
-	\	emmet#isExpandable() ? "\<plug>(emmet-expand-abbr)" :
-	\	"\<tab>"
-	let g:user_emmet_settings = {
-	\	'variables' : {
-	\	'lang' : 'ja'
-	\	}
-	\}
+repo = 'Shougo/deoplete.nvim'
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  inoremap <expr><tab> pumvisible() ? "\<C-n>" :
+        \ neosnippet#expandable_or_jumpable() ?
+        \    "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
 '''
+on_i = 1
 
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_source = '''
+  imap <C-k> <Plug>(neosnippet_expand_or_jump)
+  smap <C-k> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-k> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+  let g:neosnippet#snippets_directory='~/usr/doc/snippets/'
+'''
+on_i  = 1
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
