@@ -75,8 +75,7 @@ nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 nnoremap [sub]S :s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
-nnoremap <silent> [sub]d :DiffOrig<CR>
-nnoremap <silent> [sub]D :Diff % ~/.local/share/nvim/backup/%~<CR>
+nnoremap <silent> <Leader>d :DiffOrig<CR>
 ""plugins/extensions
 "buffer (list,reload,next,previous)
 set hidden
@@ -89,7 +88,7 @@ nnoremap [SUB]C :CWnow<CR>
 nnoremap [SUB]B :Bufgrep ""<Left>
 "search (line,history,grep,outline,file_rec)
 nnoremap <silent> [sub]/ :Denite line<CR>
-nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
+nnoremap <silent> [sub]y :Denite -reversed -mode=normal -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
 nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
@@ -104,6 +103,10 @@ command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
 nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
 "Vimrc
 nnoremap <silent> [SUB]V :Vimrc<CR>
+"neosnippet
+nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
+"force write ReadOnly;manual operation is mandatory!!
+nnoremap [SUB]W :w !sudo tee % > /dev/null
 
 ""user defined function/command
 "open cwindow
@@ -205,8 +208,8 @@ for n in range(1, 9)
   execute 'nnoremap <silent> [Tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 "create,edit,x[close],next(last),previous(first),only
-map <silent> [Tab]c :tablast <bar> tabnew<CR>
-map <silent> [Tab]x :tabclose<CR>
+map <silent> [Tab]t :tablast <bar> tabnew<CR>
+map <silent> [Tab]w :tabclose<CR>
 map <silent> [Tab]n :tabnext<CR>
 map <silent> [Tab]N :tabl<CR>
 map <silent> [Tab]p :tabprevious<CR>
