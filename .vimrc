@@ -5,13 +5,10 @@
 "configuration
 "----------------------------------------------------------------------------
 "appearance
-"nnoremap <silent> <C-g> :call CursorlineToggle()<CR>2<C-g>
 set number
 set display=lastline
 set pumheight=10
-"set statusline=%<%r%h%w%F%m%\ {'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y%=%l,%c%V%6P\ %{fugitive#statusline()}
 set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{fugitive#statusline()}
-"set statusline=%F%m%r%h%w%=[FT=%{&filetype}][ENC=%{&fileencoding}]
 set laststatus=2
 "backup
 set backup
