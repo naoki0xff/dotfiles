@@ -5,11 +5,13 @@
 "configuration
 "----------------------------------------------------------------------------
 "appearance
-nnoremap <silent> <C-g> :call CursorlineToggle()<CR>2<C-g>
+"nnoremap <silent> <C-g> :call CursorlineToggle()<CR>2<C-g>
 set number
 set display=lastline
 set pumheight=10
-set statusline=%F%m%r%h%w%=[FT=%{&filetype}][ENC=%{&fileencoding}]
+"set statusline=%<%r%h%w%F%m%\ {'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y%=%l,%c%V%6P\ %{fugitive#statusline()}
+set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{fugitive#statusline()}
+"set statusline=%F%m%r%h%w%=[FT=%{&filetype}][ENC=%{&fileencoding}]
 set laststatus=2
 "backup
 set backup
@@ -75,12 +77,12 @@ nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 nnoremap [sub]S :s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
-nnoremap <silent> <Leader>d :DiffOrig<CR>
+nnoremap <silent> [sub]d :DiffOrig<CR>
 ""plugins/extensions
 "buffer (list,reload,next,previous)
 set hidden
 nnoremap <silent> [sub]l :Denite -mode=normal -cursor-wrap -winheight=16 buffer<CR>
-nnoremap <silent> [sub]r :BufDel<CR>
+nnoremap <silent> <Leader>d :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
 "greps
@@ -102,7 +104,8 @@ command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
 "nerdtree
 nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
 "Vimrc
-nnoremap <silent> [SUB]V :Vimrc<CR>
+nnoremap <silent> [SUB]v :Vimrc<CR>
+nnoremap <silent> [SUB]V :Vimrcall<CR>
 "neosnippet
 nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "force write ReadOnly;manual operation is mandatory!!
@@ -130,14 +133,14 @@ function! s:compare(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
-"CursorlineToggle <- toggle cursorline on/off
-function CursorlineToggle()
-	if &cursorline
-		setlocal nocursorline
-	else
-		setlocal cursorline
-	endif
-endfunction
+""CursorlineToggle <- toggle cursorline on/off ; deplecated.
+"function CursorlineToggle()
+"	if &cursorline
+"		setlocal nocursorline
+"	else
+"		setlocal cursorline
+"	endif
+"endfunction
 "DeleteHiddenBuffers <- delete hidden buffer
 function DeleteHiddenBuffers()
     let tpbl=[]
@@ -175,6 +178,8 @@ endfunction
 nnoremap <Leader>w :<C-u>call HandleURI()<CR>
 "Vimrc <- open ~/.vimrc with tab
 command! Vimrc tablast | tabedit ~/.vimrc
+"Vimrcall
+command! Vimrcall tablast | tabedit ~/.vimrc| tabedit ~/.dein.toml | tabedit ~/.dein_lazy.toml
 
 ""tab control
 function! s:SID_PREFIX()

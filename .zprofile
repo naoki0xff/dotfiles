@@ -6,9 +6,7 @@ compinit
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%F{green}[%m]%~$%f'
-# disable ^S
-stty stop undef
+PROMPT='%F{green}[naoki@macOS]:%~#%f'
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
@@ -26,6 +24,8 @@ setopt hist_no_store
 setopt hist_expand
 setopt inc_append_history
 bindkey "^R" history-incremental-search-backward
+# etc
+stty stop undef
 
 # VARIABLE
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
@@ -36,7 +36,7 @@ export XDG_CONFIG_HOME=~/.config
 export VBACKUPDIR=~/.local/share/nvim/backup
 export LANG=en_US.UTF-8
 # PATH
-PATH="$PATH:$HOME/usr/bin:/usr/local/opt/coreutils/libexec/gnubin"
+PATH="$PATH:$HOME/usr/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin"
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # LANGUAGE
 # -> python

@@ -1,6 +1,6 @@
 # dotfiles
 
-personal configuration files.
+configuration files.
 
 ---
 
@@ -9,30 +9,14 @@ personal configuration files.
 - OS:MacOS
 - vim:NVIM v0.2.0 or later
 
-NOTE:
+## what's located in this repository?
 
-  other tools like git, tmux, and else are not specified here due to the amount of them.
+(alphabetic order)
 
-## correspondance of each configuration files
+.dein.toml
+.dein_lazy.toml
+.tmux.conf
+.vimrc
+.zprofile
+.zshrc
 
-- shell
-
-	.zshrc
-
-	.zprofile
-
-- vim
-
-	.vimrc
-
-	.dein.toml
-
-	.dein_lazy.toml
-
-- other CLI tools
-
-	.git	<- git,github
-
-	.tmux.conf	<- tmux
-
-	config.json	<- peco
