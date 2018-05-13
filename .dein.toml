@@ -1,4 +1,10 @@
 ### .dein.toml
+#
+# if in trouble,
+# 1). brwe update neovim
+# 2). pip install --upgrade neovim
+# 3). (on vim) :UpdateRemotePlugins,:checkhealth,:call dein#update()
+#
 
 [[plugins]]
 repo = 'Shougo/dein.vim'

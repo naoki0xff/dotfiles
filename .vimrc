@@ -107,6 +107,8 @@ nnoremap <silent> [SUB]V :Vimrcall<CR>
 nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "force write ReadOnly;manual operation is mandatory!!
 nnoremap [SUB]W :w !sudo tee % > /dev/null
+"fugitive conf
+nnoremap <Leader>s :Gstatus<CR>
 
 ""user defined function/command
 "open cwindow
@@ -130,14 +132,6 @@ function! s:compare(...)
   endif
 endfunction
 command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
-""CursorlineToggle <- toggle cursorline on/off ; deplecated.
-"function CursorlineToggle()
-"	if &cursorline
-"		setlocal nocursorline
-"	else
-"		setlocal cursorline
-"	endif
-"endfunction
 "DeleteHiddenBuffers <- delete hidden buffer
 function DeleteHiddenBuffers()
     let tpbl=[]
