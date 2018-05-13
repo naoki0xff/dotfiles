@@ -87,7 +87,7 @@ nnoremap [SUB]C :CWnow<CR>
 nnoremap [SUB]B :Bufgrep ""<Left>
 "search (line,history,grep,outline,file_rec)
 nnoremap <silent> [sub]/ :Denite line<CR>
-nnoremap <silent> [sub]y :Denite -reversed -mode=normal -winheight=10 file_old<CR>
+nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
 nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
@@ -99,7 +99,7 @@ command DQsblackets s/\[/\["/ | s/,/","/g | s/\]/"\]/ | noh
 nnoremap <silent> [SUB]r :DQrblackets<CR>
 command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
 "nerdtree
-nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
+nnoremap <silent> <Leader>n :NERDTreeTabsToggle<CR>
 "Vimrc
 nnoremap <silent> [SUB]v :Vimrc<CR>
 nnoremap <silent> [SUB]V :Vimrcall<CR>

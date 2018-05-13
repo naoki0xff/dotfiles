@@ -19,8 +19,12 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 alias wl='wc -l'
-alias gv='grv'
 alias fzf='fzf-tmux'
+# git shortcut
+alias gs='git status'
+alias gl='git log --oneline'
+alias gv='grv'
+alias gam='git add .;git commit -m "update"'
 # gui application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'
@@ -34,7 +38,5 @@ alias ccd='cd ~/usr/src/dotfiles/'
 alias dcd='cd ~/works/tutor/pydata/'
 alias hcd='cd ~/Google\ Drive/documents/help/'
 alias pcd='cd ~/works/tutor/phptutor/'
-# git alias
-alias gam='git add .;git commit -m "update"'
 #iterm2_shell_integration:imgcat and else
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
