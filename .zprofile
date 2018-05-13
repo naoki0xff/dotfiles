@@ -6,7 +6,7 @@ compinit
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%F{green}[naoki@macOS]:%~#%f'
+PROMPT='%F{green}[naoki@macOS]%~$%f'
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
@@ -93,3 +93,10 @@ fzf-history-widget-accept() {
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^R' fzf-history-widget-accept
+# my_function
+## grvをショートカットで呼び出そうとしてる、途中。
+#function grv_short() {
+#	grv
+# }
+#zle -N grv_short
+#bindkey '\eg' grv_short

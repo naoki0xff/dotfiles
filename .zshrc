@@ -23,8 +23,10 @@ alias fzf='fzf-tmux'
 # git shortcut
 alias gs='git status'
 alias gl='git log --oneline'
-alias gv='grv'
+alias gb='git branch --list'
+alias ga='git branch -a'
 alias gam='git add .;git commit -m "update"'
+alias gv='grv'
 # gui application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'

@@ -35,3 +35,7 @@ repo = 'jistr/vim-nerdtree-tabs'
 
 [[plugins]]
 repo = 'tpope/vim-fugitive'
+
+# when loaded with fugitive & statusline of it enabled, error on loading occurs.
+[[plugins]]
+repo = 'tpope/vim-obsession'

@@ -8,7 +8,7 @@
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{fugitive#statusline()}
+set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}%{fugitive#statusline()}
 set laststatus=2
 "backup
 set backup
@@ -109,6 +109,9 @@ nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 nnoremap [SUB]W :w !sudo tee % > /dev/null
 "fugitive conf
 nnoremap <Leader>s :Gstatus<CR>
+"vim-obsession
+nnoremap [SUB]o :Obsession<CR>
+nnoremap <Leader>o :Obsession!<CR>
 
 ""user defined function/command
 "open cwindow
