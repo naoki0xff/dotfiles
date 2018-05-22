@@ -82,9 +82,6 @@ nnoremap <silent> [sub]l :Denite -mode=normal -cursor-wrap -winheight=16 buffer<
 nnoremap <silent> <Leader>d :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
-"greps
-nnoremap [SUB]C :CWnow<CR>
-nnoremap [SUB]B :Bufgrep ""<Left>
 "search (line,history,grep,outline,file_rec)
 nnoremap <silent> [sub]/ :Denite line<CR>
 nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
@@ -99,7 +96,7 @@ command DQsblackets s/\[/\["/ | s/,/","/g | s/\]/"\]/ | noh
 nnoremap <silent> [SUB]r :DQrblackets<CR>
 command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
 "nerdtree
-nnoremap <silent> <Leader>n :NERDTreeTabsToggle<CR>
+nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
 "Vimrc
 nnoremap <silent> [SUB]v :Vimrc<CR>
 nnoremap <silent> [SUB]V :Vimrcall<CR>
@@ -109,9 +106,9 @@ nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 nnoremap [SUB]W :w !sudo tee % > /dev/null
 "fugitive conf
 nnoremap <Leader>s :Gstatus<CR>
-"vim-obsession
-nnoremap [SUB]o :Obsession<CR>
-nnoremap <Leader>o :Obsession!<CR>
+"vim-obsession;start,stop
+nnoremap <Leader>o :Obsession<CR>
+nnoremap <Leader>O :Obsession!<CR>
 
 ""user defined function/command
 "open cwindow

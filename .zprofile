@@ -6,7 +6,7 @@ compinit
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%F{green}[naoki@macOS]%~$%f'
+PROMPT='%F{green}naoki@macos:%f%~%F{green}$%f'
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
