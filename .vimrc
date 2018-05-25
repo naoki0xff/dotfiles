@@ -91,7 +91,7 @@ nnoremap <silent> [sub]p :bp<CR>
 nnoremap <silent> [sub]/ :Denite line<CR>
 nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
 nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
-nnoremap <silent> [sub]o :Denite -mode=normal -cursor-wrap -auto-resize outline<CR>
+nnoremap <silent> [sub]o :Denite -cursor-wrap -auto-resize outline<CR>
 nnoremap <silent> [sub]f :Denite file_rec<CR>
 "resume latest denite source
 nnoremap <silent> [sub]; :Denite -resume<CR>
@@ -116,8 +116,6 @@ nnoremap <Leader>o :Obsession<CR>
 nnoremap <Leader>O :Obsession!<CR>
 
 ""user defined function/command
-"open cwindow
-command! CWnow tablast | tabedit | cwindow
 "Bufgrep <- bufdo-grep <args> and add result to error list;use `:cw` for quickfix
 command -nargs=1 Bufgrep cexpr "" | bufdo vimgrepadd <args> %
 "Comp <- copare files side by side
@@ -174,8 +172,7 @@ endfunction
 nnoremap <Leader>w :<C-u>call HandleURI()<CR>
 "Vimrc <- open ~/.vimrc with tab
 command! Vimrc tablast | tabedit ~/.vimrc
-"Vimrcall
-command! Vimrcall tablast | tabedit ~/.vimrc| tabedit ~/.dein.toml | tabedit ~/.dein_lazy.toml
+command! Vimrcall tablast | tabedit ~/.vimrc | tabedit ~/.dein.toml | tabedit ~/.dein_lazy.toml
 
 ""tab control
 function! s:SID_PREFIX()
@@ -228,6 +225,24 @@ augroup GfPathGroup
 augroup END
 "in-edit assist
 autocmd Filetype c,python,php,ruby,sh set list lcs=tab:\¦\ 
+
+"ctags;want to apply only when needed. b/c this will be done when edit ALWAYS!!
+"つーかタグジャンプ出来ないときに手動でやったらええやんけ。
+"やっぱめんどい。書くか。
+set tags=.tags;~
+"augroup ctags
+"  autocmd!
+"  autocmd BufWritePost * silent !ctags -R -f .tags
+"augroup END
+"function! s:execute_ctags() abort
+"  let tag_name = '.tags'
+"  let tags_path = findfile(tag_name, '.;')
+"  if tags_path ==# ''
+"    return
+"  endif
+"  let tags_dirpath = fnamemodify(tags_path, ':p:h')
+"  execute 'silent !cd' tags_dirpath '&& ctags -R -f' tag_name '2> /dev/null &'
+"endfunction
 
 "----------------------------------------------------------------------------
 "plugin initialization
