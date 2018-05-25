@@ -86,17 +86,10 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='ag -g ""'
 export FZF_COMPLETION_TRIGGER=',,'
-# cmd:override default one, execute selected.
+# history search (override)
 fzf-history-widget-accept() {
   fzf-history-widget
   zle accept-line
 }
 zle     -N     fzf-history-widget-accept
 bindkey '^R' fzf-history-widget-accept
-# my_function
-## grvをショートカットで呼び出そうとしてる、途中。
-#function grv_short() {
-#	grv
-# }
-#zle -N grv_short
-#bindkey '\eg' grv_short

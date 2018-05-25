@@ -69,7 +69,7 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 highlight NonText cterm=bold ctermfg=248 guifg=248
 
-""sub command
+""sub prefix
 nnoremap [sub] <Nop>
 nmap s [sub]
 nnoremap [SUB] <Nop>
@@ -77,43 +77,43 @@ nmap S [SUB]
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
-nnoremap [sub]S :s///gI<Left><Left><Left><Left>
 "Diff last_save/last_backup
 nnoremap <silent> [sub]d :DiffOrig<CR>
-""plugins/extensions
 "buffer (list,reload,next,previous)
 set hidden
-nnoremap <silent> [sub]l :Denite -mode=normal -cursor-wrap -winheight=16 buffer<CR>
-nnoremap <silent> <Leader>d :BufDel<CR>
+nnoremap <silent> <Leader>q :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
-"search (line,history,grep,outline,file_rec)
-nnoremap <silent> [sub]/ :Denite line<CR>
-nnoremap <silent> [sub]y :Denite -mode=normal -winheight=10 file_old<CR>
-nnoremap <silent> [sub]g :Denite -no-empty grep<CR>
-nnoremap <silent> [sub]o :Denite -cursor-wrap -auto-resize outline<CR>
-nnoremap <silent> [sub]f :Denite file_rec<CR>
-"resume latest denite source
-nnoremap <silent> [sub]; :Denite -resume<CR>
-"fotmat - "" to each elements within blackets
-nnoremap <silent> [SUB]s :DQsblackets<CR>
-command DQsblackets s/\[/\["/ | s/,/","/g | s/\]/"\]/ | noh
-nnoremap <silent> [SUB]r :DQrblackets<CR>
-command DQrblackets s/(/("/ | s/,/","/g | s/)/")/ | noh
+""fzf.vim
+nnoremap <silent> [sub]l :Buffers<CR>
+nnoremap <silent> [sub]w :Windows<CR>
+nnoremap <silent> [sub]y :History<CR>
+nnoremap <silent> [sub]: :History:<CR>
+nnoremap <silent> [sub]. :BLines<CR>
+nnoremap <silent> [sub]/ :Lines<CR>
+nnoremap <silent> [sub]o :BTags<CR>
+nnoremap <silent> [sub]t :Tags<CR>
+nnoremap <silent> [sub]f :Files<CR>
+nnoremap <silent> [sub]g :Ag<CR>
 "nerdtree
 nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
+"neosnippet
+nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
+"fugitive;Commits(fzf)
+nnoremap <Leader>s :Gstatus<CR>
+nnoremap <Leader>a :Gwrite<CR>
+nnoremap <Leader>c :Gcommit<CR>
+nnoremap <Leader>d :Gvdiff<CR>
+nnoremap <Leader>b :Gblame<CR>
+nnoremap <Leader>l :Commits<CR>
+"vim-obsession;{create/halt-recording},destroy
+nnoremap <Leader>o :Obsession<CR>
+nnoremap <Leader>O :Obsession!<CR>
 "Vimrc
 nnoremap <silent> [SUB]v :Vimrc<CR>
 nnoremap <silent> [SUB]V :Vimrcall<CR>
-"neosnippet
-nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "force write ReadOnly;manual operation is mandatory!!
 nnoremap [SUB]W :w !sudo tee % > /dev/null
-"fugitive conf
-nnoremap <Leader>s :Gstatus<CR>
-"vim-obsession;start,stop
-nnoremap <Leader>o :Obsession<CR>
-nnoremap <Leader>O :Obsession!<CR>
 
 ""user defined function/command
 "Bufgrep <- bufdo-grep <args> and add result to error list;use `:cw` for quickfix
@@ -226,9 +226,7 @@ augroup END
 "in-edit assist
 autocmd Filetype c,python,php,ruby,sh set list lcs=tab:\¦\ 
 
-"ctags;want to apply only when needed. b/c this will be done when edit ALWAYS!!
-"つーかタグジャンプ出来ないときに手動でやったらええやんけ。
-"やっぱめんどい。書くか。
+"ctags; TODO-inplement auto update of tag fie
 set tags=.tags;~
 "augroup ctags
 "  autocmd!
