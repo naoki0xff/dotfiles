@@ -11,12 +11,14 @@ configuration files.
 
 ## what's located in this repository?
 
-(alphabetic order)
+.vimrc
 
 .dein.toml
+
 .dein_lazy.toml
-.tmux.conf
-.vimrc
-.zprofile
+
 .zshrc
 
+.zprofile
+
+.tmux.conf
