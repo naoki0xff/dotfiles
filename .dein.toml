@@ -46,3 +46,10 @@ hook_source = '''
     \            <bang>0)
 '''
 #TODO;Ag - need both "1.filename ignore" & "2.preview" as its feature.
+
+[[plugins]]
+repo = 'mbbill/undotree'
+hook_source = '''
+  let g:undotree_WindowLayout = 2
+  let g:undotree_SetFocusWhenToggle = 1
+'''
