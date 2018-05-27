@@ -122,8 +122,6 @@ nnoremap <silent> [SUB]V :Vimrcall<CR>
 nnoremap [SUB]W :w !sudo tee % > /dev/null
 
 ""user defined function/command
-"Bufgrep <- bufdo-grep <args> and add result to error list;use `:cw` for quickfix
-command -nargs=1 Bufgrep cexpr "" | bufdo vimgrepadd <args> %
 "Comp <- copare files side by side
 function! s:compare(...)
   if a:0 == 1
