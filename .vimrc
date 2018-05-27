@@ -81,9 +81,10 @@ nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 nnoremap <silent> [sub]d :DiffOrig<CR>
 "buffer (list,reload,next,previous)
 set hidden
-nnoremap <silent> <Leader>q :BufDel<CR>
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
+nnoremap <silent> <Leader>q :bd #<CR>
+nnoremap <silent> <Leader>q :BufDel<CR>
 ""fzf.vim
 nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]w :Windows<CR>
@@ -228,19 +229,6 @@ autocmd Filetype c,python,php,ruby,sh set list lcs=tab:\¦\
 
 "ctags; TODO-inplement auto update of tag fie
 set tags=.tags;~
-"augroup ctags
-"  autocmd!
-"  autocmd BufWritePost * silent !ctags -R -f .tags
-"augroup END
-"function! s:execute_ctags() abort
-"  let tag_name = '.tags'
-"  let tags_path = findfile(tag_name, '.;')
-"  if tags_path ==# ''
-"    return
-"  endif
-"  let tags_dirpath = fnamemodify(tags_path, ':p:h')
-"  execute 'silent !cd' tags_dirpath '&& ctags -R -f' tag_name '2> /dev/null &'
-"endfunction
 
 "----------------------------------------------------------------------------
 "plugin initialization
