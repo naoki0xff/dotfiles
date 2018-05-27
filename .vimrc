@@ -101,12 +101,12 @@ nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
 "neosnippet
 nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "fugitive;Commits(fzf)
-nnoremap <Leader>s :Gstatus<CR>
-nnoremap <Leader>a :Gwrite<CR>
-nnoremap <Leader>c :Gcommit<CR>
-nnoremap <Leader>d :Gvdiff<CR>
-nnoremap <Leader>b :Gblame<CR>
-nnoremap <Leader>l :Commits<CR>
+nnoremap <silent> <Leader>s :Gstatus<CR>
+nnoremap <silent> <Leader>a :Gwrite<CR>
+nnoremap <silent> <Leader>c :Gcommit<CR>
+nnoremap <silent> <Leader>d :Gvdiff<CR>
+nnoremap <silent> <Leader>b :Gblame<CR>
+nnoremap <silent> <Leader>l :Commits<CR>
 "vim-obsession;{create/halt-recording},destroy
 nnoremap <Leader>o :Obsession<CR>
 nnoremap <Leader>O :Obsession!<CR>
