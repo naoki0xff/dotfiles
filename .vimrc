@@ -102,7 +102,7 @@ nnoremap <silent> [sub]? :Commands<CR>
 "nerdtree
 nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
 "undotree
-nnoremap <silent> <Leader>u :UndotreeToggle<CR>
+nnoremap <silent> <Leader>u :MundoToggle<CR>
 "neosnippet
 nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "fugitive;Commits(fzf)

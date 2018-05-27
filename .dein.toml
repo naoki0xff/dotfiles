@@ -48,8 +48,9 @@ hook_source = '''
 #TODO;Ag - need both "1.filename ignore" & "2.preview" as its feature.
 
 [[plugins]]
-repo = 'mbbill/undotree'
+repo = 'simnalamburt/vim-mundo'
 hook_source = '''
-  let g:undotree_WindowLayout = 2
-  let g:undotree_SetFocusWhenToggle = 1
+  let g:mundo_preview_bottom = 1
+  let g:mundo_preview_statusline = '[Undotree-preview]'
+  let g:mundo_tree_statusline  = '[Undotree]'
 '''
