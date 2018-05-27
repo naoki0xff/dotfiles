@@ -37,9 +37,12 @@ repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 hook_source = '''
   let g:fzf_tags_command = 'ctags -R -f .tags'
-  command! -bang -nargs=* Ag
-    \ call fzf#vim#ag(<q-args>,
-    \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-    \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \                 <bang>0)
+  command! -bang -nargs=* Ag call
+    \ fzf#vim#ag(<q-args>,{'options': '--delimiter : --nth 4..'},<bang>0)
+  command! -bang -nargs=* Files call
+    \ fzf#vim#files(<q-args>,
+    \            <bang>0 ? fzf#vim#with_preview('up:60%')
+    \                    : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \            <bang>0)
 '''
+#TODO;Ag - need both "1.filename ignore" & "2.preview" as its feature.

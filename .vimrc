@@ -84,7 +84,7 @@ set hidden
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
 nnoremap <silent> <Leader>q :bd #<CR>
-nnoremap <silent> <Leader>q :BufDel<CR>
+nnoremap <silent> <Leader>Q :BufDel<CR>
 ""fzf.vim
 nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]w :Windows<CR>
@@ -96,6 +96,7 @@ nnoremap <silent> [sub]o :BTags<CR>
 nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :Ag<CR>
+nnoremap <silent> [sub]? :Commands<CR>
 "nerdtree
 nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
 "neosnippet
@@ -224,10 +225,10 @@ augroup GfPathGroup
   autocmd!
   autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include
 augroup END
-"in-edit assist
+"in-edit assist (last char is ' (space)', not '\')
 autocmd Filetype c,python,php,ruby,sh set list lcs=tab:\¦\ 
 
-"ctags; TODO-inplement auto update of tag fie
+"ctags;search ".tags" file until $HOME
 set tags=.tags;~
 
 "----------------------------------------------------------------------------
