@@ -13,7 +13,8 @@ set laststatus=2
 "backup
 set backup
 set backupdir=~/.local/share/nvim/backup 
-set noundofile
+set undofile
+set undodir=~/.local/share/nvim/undo
 "indent
 set tabstop=4
 set shiftwidth=4
@@ -87,6 +88,7 @@ nnoremap <silent> <Leader>q :bd #<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
 ""fzf.vim
 nnoremap <silent> [sub]l :Buffers<CR>
+nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]w :Windows<CR>
 nnoremap <silent> [sub]y :History<CR>
 nnoremap <silent> [sub]: :History:<CR>
@@ -99,6 +101,8 @@ nnoremap <silent> [sub]g :Ag<CR>
 nnoremap <silent> [sub]? :Commands<CR>
 "nerdtree
 nnoremap <silent> <Leader>t :NERDTreeTabsToggle<CR>
+"undotree
+nnoremap <silent> <Leader>u :UndotreeToggle<CR>
 "neosnippet
 nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "fugitive;Commits(fzf)
