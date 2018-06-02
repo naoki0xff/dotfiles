@@ -25,12 +25,18 @@ alias wl='wc -l'
 alias fzf='fzf-tmux'
 # git shortcut
 alias gs='git status'
+alias gd='git diff'
 alias gl='git log'
 alias glo='git log --oneline'
-alias ga='git add .'
 alias gb='git branch --list'
 alias gba='git branch -a'
 alias gbr='git branch -r'
+alias gss='(){ if [ -n "${1}" ];then git stash push -u -m $1; else git stash push -u; fi }'
+alias gsx='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "DROP not done"; else git stash drop ${TARGETSTASH}; unset TARGETSTASH ;fi }'
+alias gsl='git stash list'
+alias gsd='git diff `git stash list|cut -d':' -f1|fzf`'
+alias gsa='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "APPLY not done"; else git stash apply ${TARGETSTASH}; unset TARGETSTASH ;fi }'
+alias gsr='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "APPLY REVESE not done"; else git stash show ${TARGETSTASH} -p|git apply --reverse; unset TARGETSTASH ;fi }'
 alias gv='grv'
 # gui application
 alias word='open -a microsoft\ word'
@@ -51,3 +57,5 @@ alias -s md=vivaldi
 alias -s vim='nvim -S'
 #iterm2_shell_integration:imgcat and else
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

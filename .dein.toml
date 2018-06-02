@@ -1,7 +1,7 @@
 ### .dein.toml
 #
 # if in trouble,
-# 1). brwe update neovim
+# 1). brew update,brew upgrade neovim
 # 2). pip install --upgrade neovim
 # 3). (on vim) :UpdateRemotePlugins,:checkhealth,:call dein#update()
 #
@@ -29,7 +29,7 @@ repo = 'tpope/vim-obsession'
 
 [[plugins]]
 repo = 'junegunn/fzf'
-build = './install --bin'
+build = './install --all'
 merged = '0'
 
 [[plugins]]
@@ -54,4 +54,13 @@ hook_source = '''
   let g:mundo_width = 35
   let g:mundo_preview_statusline = '[Undotree-preview]'
   let g:mundo_tree_statusline  = '[Undotree]'
+'''
+
+[[plugins]]
+repo = 'Yggdroot/indentLine'
+hook_source = '''
+  let g:indentLine_enabled = 1
+  let g:indentLine_fileType = ['c','sh','php','smarty','python','ruby']
+  let g:indentLine_char = '¦'
+  let g:indentLine_first_char = '¦'
 '''

@@ -16,6 +16,7 @@ set backupdir=~/.local/share/nvim/backup
 set undofile
 set undodir=~/.local/share/nvim/undo
 "indent
+set expandtab
 set tabstop=4
 set shiftwidth=4
 set autoindent
@@ -40,7 +41,7 @@ inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-"inoremap <C-k> <Up>
+inoremap <C-k> <Up>
 inoremap <C-j> <Down>
 "cursor:command mode
 cnoremap <C-b> <Left>
@@ -116,8 +117,7 @@ nnoremap <silent> <Leader>l :Commits<CR>
 nnoremap <Leader>o :Obsession<CR>
 nnoremap <Leader>O :Obsession!<CR>
 "Vimrc
-nnoremap <silent> [SUB]v :Vimrc<CR>
-nnoremap <silent> [SUB]V :Vimrcall<CR>
+nnoremap <silent> [SUB], :Vimrc<CR>
 "force write ReadOnly;manual operation is mandatory!!
 nnoremap [SUB]W :w !sudo tee % > /dev/null
 
@@ -175,8 +175,7 @@ function! HandleURI()
 endfunction
 nnoremap <Leader>w :<C-u>call HandleURI()<CR>
 "Vimrc <- open ~/.vimrc with tab
-command! Vimrc tablast | tabedit ~/.vimrc
-command! Vimrcall tablast | tabedit ~/.vimrc | tabedit ~/.dein.toml | tabedit ~/.dein_lazy.toml
+command! Vimrc tablast | tabedit ~/.vimrc | tabedit ~/.dein.toml | tabedit ~/.dein_lazy.toml
 
 ""tab control
 function! s:SID_PREFIX()
@@ -210,13 +209,15 @@ for n in range(1, 9)
   execute 'nnoremap <silent> [Tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
 "create,edit,x[close],next(last),previous(first),only
-map <silent> [Tab]t :tablast <bar> tabnew<CR>
-map <silent> [Tab]w :tabclose<CR>
-map <silent> [Tab]n :tabnext<CR>
-map <silent> [Tab]N :tabl<CR>
-map <silent> [Tab]p :tabprevious<CR>
-map <silent> [Tab]P :tabfir<CR>
-map <silent> [Tab]o :tabonly<CR>
+nnoremap <silent> [Tab]t :tablast <bar> tabnew<CR>
+nnoremap <silent> [Tab]w :tabclose<CR>
+nnoremap <silent> [Tab]n :tabnext<CR>
+nnoremap <silent> [Tab]N :tabl<CR>
+nnoremap <silent> [Tab]p :tabprevious<CR>
+nnoremap <silent> [Tab]P :tabfir<CR>
+nnoremap <silent> [Tab]o :tabonly<CR>
+nnoremap <silent> [Tab]<C-]> <C-w><C-]><C-w>T
+nnoremap <silent> [Tab]f <C-w>gf
 
 ""FILETYPE
 "vim:open help with K,close with q
@@ -227,8 +228,6 @@ augroup GfPathGroup
   autocmd!
   autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include
 augroup END
-"in-edit assist (last char is ' (space)', not '\')
-autocmd Filetype c,python,php,ruby,sh set list lcs=tab:\¦\ 
 
 "ctags;search ".tags" file until $HOME
 set tags=.tags;~
