@@ -25,7 +25,7 @@ hook_add = '''
 repo = 'cohama/lexima.vim'
 on_ft = [ 'python', 'sh', 'c', 'php', 'ruby' ]
 
-## this is really good plugin, though not holistically collaborated with other plugins for me.
+## Good one. But Not now.
 #[[plugins]]
 #repo = 'davidhalter/jedi-vim'
 #on_ft = 'python'
