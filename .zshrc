@@ -11,6 +11,7 @@ alias lls='tree -N -L 2'
 alias lla='tree -a -N -L 2'
 alias mv='mv -i'
 alias cp='cp -i'
+alias mkdir='mkdir -p'
 alias grep='grep --color=auto'
 alias sed='gsed'
 alias diff='colordiff -u'
@@ -20,7 +21,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
-alias ptags='/usr/local/Cellar/ctags/5.8_1/bin/ctags -R -f .tags'
+alias taginit='/usr/local/Cellar/ctags/5.8_1/bin/ctags -R -f .tags'
 alias wl='wc -l'
 alias fzf='fzf-tmux'
 # git shortcut
@@ -57,5 +58,3 @@ alias -s md=vivaldi
 alias -s vim='nvim -S'
 #iterm2_shell_integration:imgcat and else
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

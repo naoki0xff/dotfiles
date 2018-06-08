@@ -84,7 +84,7 @@ set -o ignoreeof # stop tmux from exiting with C-d
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag -a'
 export FZF_COMPLETION_TRIGGER=',,'
 # history search (override)
 fzf-history-widget-accept() {
