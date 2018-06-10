@@ -10,6 +10,15 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
+repo = 'easymotion/vim-easymotion'
+hook_add = '''
+  let g:EasyMotion_smartcase = 1
+'''
+
+[[plugins]]
+repo = 'qpkorr/vim-bufkill'
+
+[[plugins]]
 repo = 'Shougo/vimproc.vim'
 build = 'make'
 
@@ -104,6 +113,3 @@ hook_add = '''
     \)
   endfunction
 '''
-
-[[plugins]]
-repo = 'easymotion/vim-easymotion'

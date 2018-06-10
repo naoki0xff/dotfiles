@@ -57,6 +57,12 @@ nnoremap <silent>+ 3<C-w>+
 nnoremap <silent>_ 3<C-w>-
 nnoremap <silent>= 3<C-w>>
 nnoremap <silent>- 3<C-w><
+""[e]:easy-motion.vim
+nnoremap e <Nop>
+nmap e [easy]
+nmap [easy] <Plug>(easymotion-prefix)
+nmap [easy]j <Plug>(easymotion-j)
+nmap [easy]k <Plug>(easymotion-k)
 "remenber last cursor position
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -90,7 +96,7 @@ nnoremap <silent> [sub]d :DiffOrig<CR>
 set hidden
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
-nnoremap <silent> <Leader>q :bd %<CR>
+nnoremap <silent> <Leader>q :BD<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
 "fzf.vim
 nnoremap <silent> [sub]l :Buffers<CR>
@@ -139,9 +145,6 @@ nnoremap <silent> <Leader>A :ALEToggle<CR>
 nnoremap <silent> <Leader>I :IndentLinesToggle<CR>
 "GitGutter: Toggle on/off
 nnoremap <silent> <Leader>G :GitGutterToggle<CR>
-""[e]:easy-motion.vim
-nnoremap e <Nop>
-nmap e <Plug>(easymotion-prefix)
 
 ""user defined function/command
 "Comp <- copare files side by side
