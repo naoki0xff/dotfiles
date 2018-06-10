@@ -29,6 +29,18 @@ repo = 'jistr/vim-nerdtree-tabs'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  let g:gitgutter_override_sign_column_highlight = 0
+  highlight clear SignColumn
+  highlight SignColumn ctermbg=gray
+  highlight GitGutterAdd ctermfg=green ctermbg=235
+  highlight GitGutterChange ctermfg=cyan ctermbg=235
+  highlight GitGutterDelete ctermfg=red ctermbg=235
+  highlight GitGutterChangeDelete ctermfg=cyan ctermbg=235
+'''
+
+[[plugins]]
 repo = 'tpope/vim-obsession'
 
 [[plugins]]

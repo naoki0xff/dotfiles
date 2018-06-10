@@ -73,6 +73,9 @@ highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 highlight NonText cterm=bold ctermfg=248 guifg=248
+""system
+"updatetime: decrease delay from 4000 to 100
+set updatetime=100
 
 "extra keybindings
 ""[sub]:sub
@@ -119,11 +122,12 @@ nnoremap <silent> <Leader>n :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>u :MundoToggle<CR>
 "tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
-"fugitive;Commits(fzf)
+"git:fugitive;fzf;GitGutter
 nnoremap <silent> <Leader>s :Gstatus<CR>
 nnoremap <silent> <Leader>a :Gwrite<CR>
 nnoremap <silent> <Leader>c :Gcommit<CR>
-nnoremap <silent> <Leader>d :Gvdiff<CR>
+nnoremap <silent> <Leader>d :Gdiff<CR>
+nnoremap <silent> <Leader>v :GitGutterPreviewHunk<CR>
 nnoremap <silent> <Leader>b :Gblame<CR>
 nnoremap <silent> <Leader>l :Commits<CR>
 "vim-obsession;{create/halt-recording},destroy
@@ -133,6 +137,8 @@ nnoremap <silent> <Leader>O :Obsession!<CR>
 nnoremap <silent> <Leader>A :ALEToggle<CR>
 "IngentLine: Toggle on/off
 nnoremap <silent> <Leader>I :IndentLinesToggle<CR>
+"GitGutter: Toggle on/off
+nnoremap <silent> <Leader>G :GitGutterToggle<CR>
 ""[e]:easy-motion.vim
 nnoremap e <Nop>
 nmap e <Plug>(easymotion-prefix)
@@ -236,10 +242,11 @@ nnoremap <silent> [Tab]o :tabonly<CR>
 nnoremap <silent> [Tab]<C-]> <C-w><C-]><C-w>T
 nnoremap <silent> [Tab]f <C-w>gf
 
-""FILETYPE
-"vim:open help with K,close with q
+""autocmd
+"open help with K
 autocmd Filetype vim set keywordprg=:help
-autocmd FileType help nnoremap <buffer> q <C-w>c
+"close with q
+autocmd FileType help,diff nnoremap <buffer> q <C-w>c
 "c:gf{path_to_header} <- add path when neccessary
 augroup GfPathGroup
   autocmd!
