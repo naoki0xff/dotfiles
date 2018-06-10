@@ -233,7 +233,7 @@ nnoremap <silent> [Tab]f <C-w>gf
 ""FILETYPE
 "vim:open help with K,close with q
 autocmd Filetype vim set keywordprg=:help
-autocmd FileType help,ref* nnoremap <buffer> q <C-w>c
+autocmd FileType help nnoremap <buffer> q <C-w>c
 "c:gf{path_to_header} <- add path when neccessary
 augroup GfPathGroup
   autocmd!

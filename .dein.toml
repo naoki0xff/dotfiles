@@ -72,11 +72,14 @@ hook_source = '''
   let g:tagbar_autofocus = 1
 '''
 
+
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
   nmap <silent> <C-p> <Plug>(ale_previous_wrap)
   nmap <silent> <C-n> <Plug>(ale_next_wrap)
+  highlight ALEWarning ctermbg=Darkgray ctermfg=yellow
+  highlight ALEError ctermbg=Darkgray ctermfg=red
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
   function! LinterStatus() abort
@@ -85,7 +88,7 @@ hook_add = '''
     let l:all_errors = l:counts.error + l:counts.style_error
     let l:all_non_errors = l:counts.total - l:all_errors
 
-    return l:counts.total == 0 ? '0' : printf(
+    return l:counts.total == 0 ? '' : printf(
     \   '%dW %dE',
     \   all_non_errors,
     \   all_errors
