@@ -10,6 +10,9 @@ set display=lastline
 set pumheight=10
 set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]%{fugitive#statusline()}
 set laststatus=2
+"cursorline
+set cursorline
+highlight CursorLine term=bold cterm=bold ctermbg=234
 "backup
 set backup
 set backupdir=~/.local/share/nvim/backup 
