@@ -75,6 +75,8 @@ hook_source = '''
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
+  nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+  nmap <silent> <C-n> <Plug>(ale_next_wrap)
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
   function! LinterStatus() abort
