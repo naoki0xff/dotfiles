@@ -74,12 +74,10 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 highlight NonText cterm=bold ctermfg=248 guifg=248
 
-""sub
-"prefix
+"extra keybindings
+""[sub]:sub
 nnoremap [sub] <Nop>
 nmap s [sub]
-nnoremap [SUB] <Nop>
-nmap S [SUB]
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
@@ -104,7 +102,9 @@ nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :Ag<CR>
 nnoremap <silent> [sub]? :Commands<CR>
-""SUB
+""[SUB]:SUB
+nnoremap [SUB] <Nop>
+nmap S [SUB]
 "neosnippet
 nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "Vimrc
@@ -112,7 +112,7 @@ nnoremap <silent> [SUB]v :Vimrc<CR>
 nnoremap <silent> [SUB]V :Vimrcall<CR>
 "force write ReadOnly;manual operation is mandatory!!
 nnoremap [SUB]W :w !sudo tee % > /dev/null
-""Leader
+""<Leader>:Leader
 "nerdtree
 nnoremap <silent> <Leader>n :NERDTreeTabsToggle<CR>
 "undotree
@@ -133,6 +133,9 @@ nnoremap <silent> <Leader>O :Obsession!<CR>
 nnoremap <silent> <Leader>A :ALEToggle<CR>
 "IngentLine: Toggle on/off
 nnoremap <silent> <Leader>I :IndentLinesToggle<CR>
+""[e]:easy-motion.vim
+nnoremap e <Nop>
+nmap e <Plug>(easymotion-prefix)
 
 ""user defined function/command
 "Comp <- copare files side by side
