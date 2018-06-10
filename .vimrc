@@ -71,7 +71,8 @@ highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
 highlight NonText cterm=bold ctermfg=248 guifg=248
 
-""sub prefix
+""sub
+"prefix
 nnoremap [sub] <Nop>
 nmap s [sub]
 nnoremap [SUB] <Nop>
@@ -87,7 +88,7 @@ nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
 nnoremap <silent> <Leader>q :bd %<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
-""fzf.vim
+"fzf.vim
 nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]w :Windows<CR>
@@ -100,14 +101,21 @@ nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :Ag<CR>
 nnoremap <silent> [sub]? :Commands<CR>
+""SUB
+"neosnippet
+nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
+"Vimrc
+nnoremap <silent> [SUB]v :Vimrc<CR>
+nnoremap <silent> [SUB]V :Vimrcall<CR>
+"force write ReadOnly;manual operation is mandatory!!
+nnoremap [SUB]W :w !sudo tee % > /dev/null
+""Leader
 "nerdtree
 nnoremap <silent> <Leader>n :NERDTreeTabsToggle<CR>
 "undotree
 nnoremap <silent> <Leader>u :MundoToggle<CR>
 "tagbar
 nnoremap <silent> <Leader>t :TagbarToggle<CR>
-"neosnippet
-nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "fugitive;Commits(fzf)
 nnoremap <silent> <Leader>s :Gstatus<CR>
 nnoremap <silent> <Leader>a :Gwrite<CR>
@@ -116,13 +124,12 @@ nnoremap <silent> <Leader>d :Gvdiff<CR>
 nnoremap <silent> <Leader>b :Gblame<CR>
 nnoremap <silent> <Leader>l :Commits<CR>
 "vim-obsession;{create/halt-recording},destroy
-nnoremap <Leader>o :Obsession<CR>
-nnoremap <Leader>O :Obsession!<CR>
-"Vimrc
-nnoremap <silent> [SUB]v :Vimrc<CR>
-nnoremap <silent> [SUB]V :Vimrcall<CR>
-"force write ReadOnly;manual operation is mandatory!!
-nnoremap [SUB]W :w !sudo tee % > /dev/null
+nnoremap <silent> <Leader>o :Obsession<CR>
+nnoremap <silent> <Leader>O :Obsession!<CR>
+"ALE: Toggle on/off
+nnoremap <silent> <Leader>A :ALEToggle<CR>
+"IngentLine: Toggle on/off
+nnoremap <silent> <Leader>I :IndentLinesToggle<CR>
 
 ""user defined function/command
 "Comp <- copare files side by side
