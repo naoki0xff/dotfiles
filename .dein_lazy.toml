@@ -4,6 +4,7 @@
 repo = 'thinca/vim-quickrun'
 hook_add = '''
   let g:quickrun_config = {
+  \ "runner" : "vimproc",
   \	"_" : {
   \  "outputter/buffer/split" : ":botright",
   \  "outputter/error/success" : "buffer",
