@@ -25,6 +25,7 @@ alias taginit='/usr/local/Cellar/ctags/5.8_1/bin/ctags -R -f .tags'
 alias wl='wc -l'
 alias fzf='fzf-tmux'
 alias vcat='(){ if [ -n "${1}" ];then cat $1|sed "s/,/ ,/g"|column -t -s,|less -S; else echo "please specify csv file"; fi }'
+alias rfcid='(){ ID=`cat ~/usr/doc/dict/rfc-index.txt|fzf`; if [ -z ${ID} ]; then return 1 ; else echo ${ID}; unset ID ; fi }'
 # git shortcut
 alias gs='git status'
 alias gd='git diff'
