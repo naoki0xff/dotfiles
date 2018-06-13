@@ -33,7 +33,6 @@ export EDITOR=nvim
 bindkey -e
 export MANPAGER="nvim -c 'set ft=man' -"
 export XDG_CONFIG_HOME=~/.config
-export VBACKUPDIR=~/.local/share/nvim/backup
 export LANG=en_US.UTF-8
 # PATH
 PATH="$PATH:$HOME/usr/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin"
@@ -83,12 +82,5 @@ set -o ignoreeof # stop tmux from exiting with C-d
 # env
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='ag -g ""'
+export FZF_DEFAULT_COMMAND='ag -a -g ""'
 export FZF_COMPLETION_TRIGGER=',,'
-# history search (override)
-fzf-history-widget-accept() {
-  fzf-history-widget
-  zle accept-line
-}
-zle     -N     fzf-history-widget-accept
-bindkey '^R' fzf-history-widget-accept

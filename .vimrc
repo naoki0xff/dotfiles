@@ -1,5 +1,5 @@
-"vimrc: with ".dein.toml" & ".dein_lazy.toml"
-"requirement:NVIM v0.2.0 or later
+"vimrc
+"requirement:vim=NVIM v0.2.0 or later
 
 "----------------------------------------------------------------------------
 "configuration
@@ -8,7 +8,7 @@
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]%{fugitive#statusline()}
+set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]
 set laststatus=2
 "cursorline
 set cursorline
@@ -52,17 +52,19 @@ cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
-"window resize;horizontally{increase/decrease},vertically{increase/decrease}
-nnoremap <silent>+ 3<C-w>+
-nnoremap <silent>_ 3<C-w>-
-nnoremap <silent>= 3<C-w>>
-nnoremap <silent>- 3<C-w><
-""[e]:easy-motion.vim
+"easy-motion
 nnoremap e <Nop>
 nmap e [easy]
 nmap [easy] <Plug>(easymotion-prefix)
 nmap [easy]j <Plug>(easymotion-j)
 nmap [easy]k <Plug>(easymotion-k)
+nnoremap [easy]h ^
+nnoremap [easy]l $
+"window resize;horizontally{increase/decrease},vertically{increase/decrease}
+nnoremap <silent>+ 3<C-w>+
+nnoremap <silent>_ 3<C-w>-
+nnoremap <silent>= 3<C-w>>
+nnoremap <silent>- 3<C-w><
 "remenber last cursor position
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -83,19 +85,23 @@ highlight NonText cterm=bold ctermfg=248 guifg=248
 "updatetime: decrease delay from 4000 to 100
 set updatetime=100
 
-"extra keybindings
-""[sub]:sub
+""keybindings
+"prefix
 nnoremap [sub] <Nop>
 nmap s [sub]
+nnoremap [SUB] <Nop>
+nmap S [SUB]
 "substituiton
 nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
-"Diff last_save/last_backup
+"Diff
 nnoremap <silent> [sub]d :DiffOrig<CR>
-"buffer (list,reload,next,previous)
+"buffer
 set hidden
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
+nnoremap <silent> [SUB]N :BF<CR>
+nnoremap <silent> [SUB]P :BB<CR>
 nnoremap <silent> <Leader>q :BD<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
 "fzf.vim
@@ -111,31 +117,29 @@ nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :Ag<CR>
 nnoremap <silent> [sub]? :Commands<CR>
-""[SUB]:SUB
-nnoremap [SUB] <Nop>
-nmap S [SUB]
 "neosnippet
 nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
 "Vimrc
-nnoremap <silent> [SUB]v :Vimrc<CR>
-nnoremap <silent> [SUB]V :Vimrcall<CR>
+nnoremap <silent> <Space>, :Vimrc<CR>
+nnoremap <silent> <Space>. :Vimrcall<CR>
 "force write ReadOnly;manual operation is mandatory!!
 nnoremap [SUB]W :w !sudo tee % > /dev/null
-""<Leader>:Leader
 "nerdtree
-nnoremap <silent> <Leader>n :NERDTreeTabsToggle<CR>
+nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
 "undotree
-nnoremap <silent> <Leader>u :MundoToggle<CR>
+nnoremap <silent> <Space>u :MundoToggle<CR>
 "tagbar
-nnoremap <silent> <Leader>t :TagbarToggle<CR>
+nnoremap <silent> <Space>t :TagbarToggle<CR>
 "git:fugitive;fzf;GitGutter
-nnoremap <silent> <Leader>s :Gstatus<CR>
-nnoremap <silent> <Leader>a :Gwrite<CR>
-nnoremap <silent> <Leader>c :Gcommit<CR>
-nnoremap <silent> <Leader>d :Gdiff<CR>
-nnoremap <silent> <Leader>v :GitGutterPreviewHunk<CR>
-nnoremap <silent> <Leader>b :Gblame<CR>
-nnoremap <silent> <Leader>l :Commits<CR>
+nnoremap [git] <Nop>
+nmap <Space>g [git]
+nnoremap <silent> [git]s :Gstatus<CR>
+nnoremap <silent> [git]a :Gwrite<CR>
+nnoremap <silent> [git]c :Gcommit<CR>
+nnoremap <silent> [git]d :Gdiff<CR>
+nnoremap <silent> [git]v :GitGutterPreviewHunk<CR>
+nnoremap <silent> [git]b :Gblame<CR>
+nnoremap <silent> [git]l :Commits<CR>
 "vim-obsession;{create/halt-recording},destroy
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
@@ -249,7 +253,9 @@ nnoremap <silent> [Tab]f <C-w>gf
 "open help with K
 autocmd Filetype vim set keywordprg=:help
 "close with q
-autocmd FileType help,diff nnoremap <buffer> q <C-w>c
+autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
+"hide preview window
+autocmd FileType c,php,python setlocal completeopt-=preview
 "c:gf{path_to_header} <- add path when neccessary
 augroup GfPathGroup
   autocmd!

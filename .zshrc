@@ -24,6 +24,7 @@ alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 alias taginit='/usr/local/Cellar/ctags/5.8_1/bin/ctags -R -f .tags'
 alias wl='wc -l'
 alias fzf='fzf-tmux'
+alias vcat='(){ if [ -n "${1}" ];then cat $1|sed "s/,/ ,/g"|column -t -s,|less -S; else echo "please specify csv file"; fi }'
 # git shortcut
 alias gs='git status'
 alias gd='git diff'
