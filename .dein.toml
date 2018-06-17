@@ -107,7 +107,7 @@ hook_add = '''
   highlight ALEError ctermbg=Darkgray ctermfg=red
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
-  let g:ale_echo_msg_format = '[%linter%]%s [%severity%]'
+  let g:ale_echo_msg_format = '[%linter%]%s'
   function! LinterStatus() abort
     let l:counts = ale#statusline#Count(bufnr(''))
     let l:all_errors = l:counts.error + l:counts.style_error
@@ -124,5 +124,5 @@ hook_add = '''
 repo = 'thinca/vim-ref'
 hook_add = '''
   let g:ref_use_vimproc = 1
-  let g:ref_phpmanual_path = '/Users/naoki/usr/doc/dict/php-chunked-xhtml'
+  let g:ref_phpmanual_path = '/Users/naoki/usr/doc/ref/php-chunked-xhtml'
 '''

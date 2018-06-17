@@ -16,8 +16,7 @@ alias grep='grep --color=auto'
 alias sed='gsed'
 alias diff='colordiff -u'
 alias less='less -N'
-alias v='nvim'
-alias vi='nvim'
+alias vi='nvim -u NONE'
 alias vim='nvim'
 alias vimdiff='nvim -d'
 alias ctags='/usr/local/Cellar/ctags/5.8_1/bin/ctags'
@@ -54,6 +53,7 @@ alias ccd='cd ~/usr/src/dotfiles/'
 alias dcd='cd ~/works/tutor/pydata/'
 alias hcd='cd ~/Google\ Drive/documents/help/'
 alias pcd='cd ~/works/tutor/phptutor/'
+alias rcd='cd ~/works/tutor/rbtutor/'
 # execute on filetype
 alias -s html=vivaldi
 alias -s md=vivaldi
