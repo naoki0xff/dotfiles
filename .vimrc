@@ -61,6 +61,7 @@ nmap [easy] <Plug>(easymotion-prefix)
 nmap [easy]j <Plug>(easymotion-j)
 nmap [easy]k <Plug>(easymotion-k)
 nnoremap [easy]h ^
+nnoremap [easy]H 0
 nnoremap [easy]l $
 "window resize;horizontally{increase/decrease},vertically{increase/decrease}
 nnoremap <silent>+ 3<C-w>+
@@ -88,7 +89,7 @@ highlight NonText cterm=bold ctermfg=248 guifg=248
 set updatetime=100
 
 ""keybindings
-"prefix
+"prefix;SUB deprecated.
 nnoremap [sub] <Nop>
 nmap s [sub]
 nnoremap [SUB] <Nop>
@@ -102,8 +103,8 @@ nnoremap <silent> [sub]d :DiffOrig<CR>
 set hidden
 nnoremap <silent> [sub]n :bn<CR>
 nnoremap <silent> [sub]p :bp<CR>
-nnoremap <silent> [SUB]N :BF<CR>
-nnoremap <silent> [SUB]P :BB<CR>
+"nnoremap <silent> [SUB]N :BF<CR>
+"nnoremap <silent> [SUB]P :BB<CR>
 nnoremap <silent> <Leader>q :BD<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
 "fzf.vim
@@ -119,13 +120,14 @@ nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :Ag<CR>
 nnoremap <silent> [sub]? :Commands<CR>
+nnoremap <silent> [sub]h :Helptags<CR>
 "neosnippet
-nnoremap <silent> [SUB]E :NeoSnippetEdit<CR>
+nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
 "Vimrc
 nnoremap <silent> <Space>, :Vimrc<CR>
 nnoremap <silent> <Space>. :Vimrcall<CR>
-"force write ReadOnly;manual operation is mandatory!!
-nnoremap [SUB]W :w !sudo tee % > /dev/null
+"save/write related
+nnoremap <Leader>W :w !sudo tee % > /dev/null
 "nerdtree
 nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
 "undotree
@@ -138,8 +140,10 @@ nmap <Space>g [git]
 nnoremap <silent> [git]s :Gstatus<CR>
 nnoremap <silent> [git]a :Gwrite<CR>
 nnoremap <silent> [git]c :Gcommit<CR>
-nnoremap <silent> [git]d :Gdiff<CR>
-nnoremap <silent> [git]v :GitGutterPreviewHunk<CR>
+nnoremap <silent> [git]d :Gvdiff<CR>
+nnoremap <silent> [git]v :GitGutterPreviewHunk<CR><C-w>b
+nnoremap <silent> [git]p :GitGutterPrevHunk<CR>
+nnoremap <silent> [git]n :GitGutterNextHunk<CR>
 nnoremap <silent> [git]b :Gblame<CR>
 nnoremap <silent> [git]l :Commits<CR>
 "vim-obsession;{create/halt-recording},destroy
@@ -233,6 +237,17 @@ function! s:my_tabline()  "{{{
 endfunction "}}}
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
+"current buffer to new tab
+function! s:MoveToNewTab()
+    tab split
+    tabprevious
+    if winnr('$') > 1
+        close
+    elseif bufnr('$') > 1
+        buffer #
+    endif
+    tabnext
+endfunction
 "prefix
 nnoremap    [Tab]   <Nop>
 nmap    t [Tab]
@@ -250,6 +265,7 @@ nnoremap <silent> [Tab]P :tabfir<CR>
 nnoremap <silent> [Tab]o :tabonly<CR>
 nnoremap <silent> [Tab]<C-]> <C-w><C-]><C-w>T
 nnoremap <silent> [Tab]f <C-w>gf
+nnoremap <silent> [Tab]m :<C-u>call <SID>MoveToNewTab()<CR>
 
 "autocmd
 autocmd Filetype vim set keywordprg=:help
