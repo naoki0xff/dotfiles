@@ -61,7 +61,6 @@ nmap [easy] <Plug>(easymotion-prefix)
 nmap [easy]j <Plug>(easymotion-j)
 nmap [easy]k <Plug>(easymotion-k)
 nnoremap [easy]h ^
-nnoremap [easy]H 0
 nnoremap [easy]l $
 "window resize;horizontally{increase/decrease},vertically{increase/decrease}
 nnoremap <silent>+ 3<C-w>+
