@@ -23,22 +23,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'cohama/lexima.vim'
-on_ft = [ 'python', 'sh', 'c', 'php', 'ruby', 'html' ]
-
-#[[plugins]]
-#repo = 'davidhalter/jedi-vim'
-#on_ft = 'python'
-#hook_add = '''
-#	autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-#	autocmd FileType python setlocal completeopt-=preview
-#	let g:jedi#rename_command = "<leader>v"
-#    let g:jedi#completions_command = "<C-n>"
-#	let g:jedi#popup_on_dot=0
-#	let g:jedi#smart_auto_mappings = 0
-#'''
-
-[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 hook_source = '''
   let g:deoplete#enable_at_startup = 1
@@ -80,7 +64,11 @@ hook_add = '''
   let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
 '''
 
-# said deprecated, but function itself is much preferable than others
 [[plugins]]
 repo = 'Shougo/deoplete-rct'
 on_ft = 'ruby'
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+build = 'make'
+on_ft = 'go'

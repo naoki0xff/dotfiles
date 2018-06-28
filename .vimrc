@@ -8,7 +8,7 @@
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]
+set statusline=%y\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]
 set laststatus=2
 highlight MyHighlightGroup ctermfg=black ctermbg=yellow
 match MyHighlightGroup /TODO\|NOTE\|MEMO/
@@ -276,10 +276,6 @@ augroup GfPath
   autocmd!
   autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include
 augroup END
-augroup DeopleteConf
-  autocmd!
-  autocmd FileType c,php,python,ruby setlocal completeopt-=preview
-augroup END
 augroup RubyConf
   autocmd!
   autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
@@ -287,6 +283,8 @@ augroup END
 
 "ctags;search ".tags" file until $HOME
 set tags=.tags;~
+"hide preview window
+set completeopt-=preview
 
 ""project config
 " -> locate "[projectdir]/.vimconf" to activate
@@ -305,6 +303,7 @@ endfunction
 "----------------------------------------------------------------------------
 "plugin initialization
 "----------------------------------------------------------------------------
+"pkg manager: dein
 if &compatible
   set nocompatible
 endif
@@ -332,5 +331,7 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+
+"finalize
 filetype plugin indent on
 syntax on

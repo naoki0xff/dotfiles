@@ -123,3 +123,6 @@ hook_add = '''
   let g:ref_use_vimproc = 1
   let g:ref_phpmanual_path = '/Users/naoki/usr/doc/ref/php-chunked-xhtml'
 '''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'

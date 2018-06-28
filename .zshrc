@@ -39,7 +39,6 @@ alias gsl='git stash list'
 alias gsd='git diff `git stash list|cut -d':' -f1|fzf`'
 alias gsa='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "APPLY not done"; else git stash apply ${TARGETSTASH}; unset TARGETSTASH ;fi }'
 alias gsr='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "APPLY REVESE not done"; else git stash show ${TARGETSTASH} -p|git apply --reverse; unset TARGETSTASH ;fi }'
-alias gv='grv'
 # gui application
 alias word='open -a microsoft\ word'
 alias excel='open -a microsoft\ excel'

@@ -41,11 +41,16 @@ export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # -> python
 eval "$(pyenv init -)"
 export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${PYENV_ROOT}/bin:$PATH"
+PATH="${PYENV_ROOT}/bin:$PATH"
 # -> ruby
 eval "$(rbenv init -)"
+# -> go
+export GOPATH=$HOME/usr/local/go
+PATH="$PATH:$GOPATH/bin"
 # avoid duplication
 typeset -U path PATH
+# finalize
+export PATH
 
 # CLI tools
 # git
