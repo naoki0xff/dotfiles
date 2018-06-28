@@ -125,4 +125,4 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'cohama/lexima.vim'
+repo = 'osyo-manga/vim-anzu'
