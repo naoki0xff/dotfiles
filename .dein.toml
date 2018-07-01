@@ -94,6 +94,9 @@ hook_source = '''
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
+hook_add = '''
+  let g:tagbar_autofocus = 1
+'''
 
 [[plugins]]
 repo = 'w0rp/ale'
