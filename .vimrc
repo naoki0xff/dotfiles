@@ -8,7 +8,7 @@
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y\ %r%h%w%F%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]
+set statusline=%y\ %r%h%w%-0.40f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]
 set laststatus=2
 highlight MyHighlightGroup ctermfg=black ctermbg=yellow
 match MyHighlightGroup /TODO\|NOTE\|MEMO/
@@ -32,17 +32,20 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+map n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
+map N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
-"nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
+nnoremap <silent> <Esc><Esc> :noh<CR>
 "backspace for deletion
 set backspace=indent,eol,start
 "yank
 nnoremap Y y$
 "insert blank line
-nnoremap <silent> <CR> :<C-u>call append(expand('.'), '')<Cr>j
+nnoremap <silent> 0 :<C-u>call append(expand('.'), '')<Cr>j
 "cursor:normal mode
 nnoremap <silent>j gj
 nnoremap <silent>k gk
@@ -132,7 +135,7 @@ nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
 "Vimrc
 nnoremap <silent> <Space>, :Vimrc<CR>
 nnoremap <silent> <Space>. :Vimrcall<CR>
-"save/write related
+"save/write
 nnoremap <Leader>W :w !sudo tee % > /dev/null
 "nerdtree
 nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
@@ -287,14 +290,18 @@ augroup RubyConf
   autocmd!
   autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
 augroup END
+augroup ForceFF
+    autocmd!
+    autocmd BufNewFile,BufRead *.xaml setfiletype xml
+augroup END
 
 "ctags;search ".tags" file until $HOME
 set tags=.tags;~
 "hide preview window
 set completeopt-=preview
 
-""project config
-" -> locate "[projectdir]/.vimconf" to activate
+""project specific configuration
+" -> "/projectpath/.vimconf" to load
 augroup ProjectVim
   autocmd!
   autocmd BufEnter * call s:vimrc_local(expand('<afile>:p:h'))
@@ -339,6 +346,8 @@ if dein#check_install()
   call dein#install()
 endif
 
-"finalize
+"end vimrc
 filetype plugin indent on
 syntax on
+colorscheme molokai_dark
+set background=light
