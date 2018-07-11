@@ -117,8 +117,6 @@ hook_add = '''
     \)
   endfunction
 '''
-#highlight ALEWarning ctermbg=Darkgray ctermfg=yellow
-#highlight ALEError ctermbg=Darkgray ctermfg=red
 
 [[plugins]]
 repo = 'thinca/vim-ref'
