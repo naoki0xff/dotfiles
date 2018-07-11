@@ -42,15 +42,11 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-#hook_add = '''
-#  let g:gitgutter_override_sign_column_highlight = 0
-#  highlight clear SignColumn
-#  highlight SignColumn ctermbg=gray
-#  highlight GitGutterAdd ctermfg=green ctermbg=235
-#  highlight GitGutterChange ctermfg=cyan ctermbg=235
-#  highlight GitGutterDelete ctermfg=red ctermbg=235
-#  highlight GitGutterChangeDelete ctermfg=cyan ctermbg=235
-#'''
+hook_add = '''
+  let g:gitgutter_sign_added = '++'
+  let g:gitgutter_sign_modified = '~~'
+  let g:gitgutter_sign_removed = '--'
+'''
 
 [[plugins]]
 repo = 'tpope/vim-obsession'
@@ -103,6 +99,7 @@ repo = 'w0rp/ale'
 hook_add = '''
   nmap <silent> <C-p> <Plug>(ale_previous_wrap)
   nmap <silent> <C-n> <Plug>(ale_next_wrap)
+  let g:ale_sign_warning = '>'
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
   let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
