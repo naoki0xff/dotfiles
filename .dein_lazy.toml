@@ -5,6 +5,7 @@ repo = 'thinca/vim-quickrun'
 hook_add = '''
   let g:quickrun_config = {
   \ "runner" : "vimproc",
+  \ "runner/vimproc/updatetime" : 60,
   \	"_" : {
   \  "outputter/buffer/split" : ":botright",
   \  "outputter/error/success" : "buffer",
@@ -15,6 +16,12 @@ hook_add = '''
   \  "outputter" : "error"
   \  }
   \}
+  let g:quickrun_config['cs']  = {
+  \ 'command' : 'mcs',
+  \ 'exec' : ['%c %o %s:p > /dev/null', 'mono %s:p:r.exe', 'rm %s:p:r.exe'],
+  \ 'cmdopt' : '-warn:4',
+  \ 'quickfix/errorformat' : '%f\\(%l\\,%c\\):\ error\ CS%n:\ %m',
+  \}
   let g:quickrun_no_default_key_mappings = 1
   nnoremap \r :QuickRun -mode n<CR>
   xnoremap \r :QuickRun -mode v<CR>
@@ -24,7 +31,7 @@ hook_add = '''
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
-on_ft = ['ruby', 'python', 'c', 'php', 'html', 'go' ]
+on_ft = ['ruby', 'python', 'c', 'php', 'html', 'go', 'cs', 'sh' ]
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -76,3 +83,13 @@ on_ft = 'ruby'
 repo = 'zchee/deoplete-go'
 build = 'make'
 on_ft = 'go'
+
+### わかんねえ。家でやれる時に調べる。
+#[[plugins]]
+#repo = 'Omnisharp/omnisharp-vim'
+#on_ft = 'cs'
+#build = 'xbuild server/Omnisharp.sln'
+#hook_add = '''
+#  let g:OmniSharp_server_path = '/home/naoki/usr/local/omnisharp/omnisharp/Omnisharp.exe'
+#  let g:Omnisharp_server_use_mono = 1
+#'''

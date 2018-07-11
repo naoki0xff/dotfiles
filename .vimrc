@@ -8,10 +8,10 @@
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y\ %r%h%w%-0.40f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}[Lint:%{LinterStatus()}]
+set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$obs]')}[Linter:%{LinterStatus()}]
 set laststatus=2
-highlight MyHighlightGroup ctermfg=black ctermbg=yellow
-match MyHighlightGroup /TODO\|NOTE\|MEMO/
+"highlight MyHighlightGroup ctermfg=black ctermbg=yellow
+"match MyHighlightGroup /TODO\|NOTE\|MEMO/
 "cursorline
 set cursorline
 highlight CursorLine term=bold cterm=bold ctermbg=234
@@ -44,8 +44,13 @@ nnoremap <silent> <Esc><Esc> :noh<CR>
 set backspace=indent,eol,start
 "yank
 nnoremap Y y$
+"x w/o register
+nnoremap x "_x
 "insert blank line
-nnoremap <silent> 0 :<C-u>call append(expand('.'), '')<Cr>j
+nmap <silent> go :<C-u>call append(expand('.'), '')<Cr>j
+"increment/decrement by ignoring minus-prefix
+nmap <silent> g<C-a> <Plug>(trip-increment-ignore-minus)
+nmap <silent> g<C-x> <Plug>(trip-decrement-ignore-minus)
 "cursor:normal mode
 nnoremap <silent>j gj
 nnoremap <silent>k gk
@@ -64,19 +69,24 @@ cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
 "easy-motion
 nnoremap e <Nop>
-nmap e [easy]
-nmap [easy] <Plug>(easymotion-prefix)
-nmap [easy]j <Plug>(easymotion-j)
-nmap [easy]k <Plug>(easymotion-k)
-nnoremap [easy]h ^
-nnoremap [easy]l $
-"window resize{horizontally,vertically};gf;tag
+nmap e [motion]
+nmap [motion] <Plug>(easymotion-prefix)
+nmap [motion]j <Plug>(easymotion-j)
+nmap [motion]k <Plug>(easymotion-k)
+nnoremap [motion]h ^
+nnoremap [motion]l $
+"window control
+"resize
 nnoremap <silent>+ 3<C-w>+
 nnoremap <silent>_ 3<C-w>-
 nnoremap <silent>= 3<C-w>>
 nnoremap <silent>- 3<C-w><
+"gf
 nnoremap <C-w>f :vertical rightbelow wincmd f<CR>
+nnoremap <C-w>gf :rightbelow wincmd f<CR>
+"tag jump
 nnoremap <C-w>] :vertical rightbelow wincmd ]<CR>
+nnoremap <C-w><C-]> :rightbelow wincmd ]<CR>
 "remenber last cursor position
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -349,5 +359,4 @@ endif
 "end vimrc
 filetype plugin indent on
 syntax on
-colorscheme molokai_dark
-set background=light
+colorscheme railscasts
