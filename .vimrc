@@ -32,11 +32,8 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-map n <Plug>(incsearch-nohl)<Plug>(anzu-n-with-echo)
-map N <Plug>(incsearch-nohl)<Plug>(anzu-N-with-echo)
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
 nnoremap <silent> <Esc><Esc> :noh<CR>
@@ -54,6 +51,8 @@ nmap <silent> g<C-x> <Plug>(trip-decrement-ignore-minus)
 "cursor:normal mode
 nnoremap <silent>j gj
 nnoremap <silent>k gk
+nnoremap gh ^
+nnoremap gl $
 "cursor:insert mode
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
@@ -67,14 +66,6 @@ cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
-"easy-motion
-nnoremap e <Nop>
-nmap e [motion]
-nmap [motion] <Plug>(easymotion-prefix)
-nmap [motion]j <Plug>(easymotion-j)
-nmap [motion]k <Plug>(easymotion-k)
-nnoremap [motion]h ^
-nnoremap [motion]l $
 "window control
 "resize
 nnoremap <silent>+ 3<C-w>+
@@ -360,3 +351,4 @@ endif
 filetype plugin indent on
 syntax on
 colorscheme railscasts
+highlight CursorLine term=bold cterm=bold ctermbg=235
