@@ -10,12 +10,6 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'easymotion/vim-easymotion'
-hook_add = '''
-  let g:EasyMotion_smartcase = 1
-'''
-
-[[plugins]]
 repo = 'qpkorr/vim-bufkill'
 
 [[plugins]]
@@ -42,11 +36,9 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
-#hook_add = '''
-#  let g:gitgutter_sign_added = '++'
-#  let g:gitgutter_sign_modified = '~~'
-#  let g:gitgutter_sign_removed = '--'
-#'''
+hook_add = '''
+  let g:gitgutter_sign_modified_removed = '~'
+'''
 
 [[plugins]]
 repo = 'tpope/vim-obsession'
@@ -59,7 +51,7 @@ merged = '0'
 [[plugins]]
 repo = 'junegunn/fzf.vim'
 depends = 'fzf'
-hook_source = '''
+hook_add = '''
   let g:fzf_tags_command = 'ctags -R -f .tags'
   command! -bang -nargs=* Ag call
     \ fzf#vim#ag(<q-args>,{'options': '--delimiter : --nth 4..'},<bang>0)
@@ -77,15 +69,6 @@ hook_source = '''
   let g:mundo_width = 35
   let g:mundo_preview_statusline = '[Undotree-preview]'
   let g:mundo_tree_statusline  = '[Undotree]'
-'''
-
-[[plugins]]
-repo = 'Yggdroot/indentLine'
-hook_source = '''
-  let g:indentLine_enabled = 1
-  let g:indentLine_fileType = ['c','cs','sh','php','smarty','python','ruby']
-  let g:indentLine_char = '¦'
-  let g:indentLine_first_char = '¦'
 '''
 
 [[plugins]]
@@ -108,7 +91,7 @@ hook_add = '''
     let l:all_errors = l:counts.error + l:counts.style_error
     let l:all_non_errors = l:counts.total - l:all_errors
     return l:counts.total == 0 ? '' : printf(
-    \   '%dW %dE',
+    \   '[Linter:%dW %dE]',
     \   all_non_errors,
     \   all_errors
     \)
@@ -133,3 +116,9 @@ repo = 'tpope/vim-speeddating'
 
 [[plugins]]
 repo = 'osyo-manga/vim-trip'
+
+[[plugins]]
+repo = 'haya14busa/vim-edgemotion'
+
+[[plugins]]
+repo = 'andymass/vim-tradewinds'
