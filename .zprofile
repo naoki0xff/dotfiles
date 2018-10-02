@@ -35,7 +35,7 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export XDG_CONFIG_HOME=~/.config
 export LANG=en_US.UTF-8
 # PATH
-PATH="$PATH:$HOME/usr/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin"
+PATH="$PATH:$HOME/usr/bin:$HOME/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin"
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # LANGUAGE
 # -> python
