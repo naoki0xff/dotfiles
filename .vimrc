@@ -4,12 +4,17 @@
 "----------------------------------------------------------------------------
 "configuration
 "----------------------------------------------------------------------------
+"init
+scriptencoding utf-8
 "appearance
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus()}%{LinterStatus()}
+set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}%{LinterStatus()}
 set laststatus=2
+set ambiwidth=double
+set clipboard+=unnamedplus
+set completeopt-=preview
 "backup
 set backup
 set backupdir=~/.local/share/nvim/backup 
@@ -29,9 +34,7 @@ set wrapscan
 set ignorecase
 set smartcase
 nmap n <Plug>(anzu-n-with-echo)
-nmap gn <Plug>(anzu-jump-n)<Plug>(anzu-echo-search-status)
 nmap N <Plug>(anzu-N-with-echo)
-nmap gN <Plug>(anzu-jump-N)<Plug>(anzu-echo-search-status)
 nmap * <Plug>(anzu-star-with-echo)
 nmap # <Plug>(anzu-sharp-with-echo)
 nnoremap <silent> <Esc><Esc> :noh<CR>
@@ -41,6 +44,8 @@ set backspace=indent,eol,start
 nnoremap Y y$
 "x w/o register
 nnoremap x "_x
+"CTRL-G with full file path
+nnoremap <C-g> 1<C-g>
 "insert blank line
 nmap <silent> go :<C-u>call append(expand('.'), '')<Cr>j
 "increment/decrement by ignoring minus-prefix
@@ -48,13 +53,11 @@ nmap <silent> g<C-a> <Plug>(trip-increment-ignore-minus)
 nmap <silent> g<C-x> <Plug>(trip-decrement-ignore-minus)
 "cursor:normal mode
 nnoremap j gj
-nnoremap gj j
 nnoremap k gk
-nnoremap gk k
 nnoremap gh ^
 nnoremap gl $
-nmap <C-j> <Plug>(edgemotion-j)
-nmap <C-k> <Plug>(edgemotion-k)
+nmap ]b <Plug>(edgemotion-j)
+nmap [b <Plug>(edgemotion-k)
 "cursor:insert mode
 inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
@@ -68,6 +71,10 @@ cnoremap <C-f> <Right>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
+"misspel correction
+cabbrev Q q
+cabbrev q1 q!
+cabbrev qa1 qa!
 "window control
 "resize
 nnoremap <silent>+ 3<C-w>+
@@ -77,22 +84,18 @@ nnoremap <silent>- 3<C-w><
 "gf
 nnoremap <C-w>f :vertical rightbelow wincmd f<CR>
 nnoremap <C-w>gf :rightbelow wincmd f<CR>
+"ctags
+set tags=.tags;~
 "tag jump
 nnoremap <C-w>] :vertical rightbelow wincmd ]<CR>
 nnoremap <C-w><C-]> :rightbelow wincmd ]<CR>
-"scrollbind shortcut
-nnoremap <silent> <Leader>b :call ScrollBind()<CR>
 "remenber last cursor position
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
-"clipboard integration
-set clipboard+=unnamedplus
-"multibyte rendering
-set ambiwidth=double
-""system
-"updatetime: decrease delay from 4000 to 100
+"others
+set autoread
 set updatetime=100
 
 ""keybindings
@@ -106,9 +109,10 @@ nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
 nnoremap <silent> [sub]d :DiffOrig<CR>
 "buffer
 set hidden
-nnoremap <silent> [sub]n :bn<CR>
-nnoremap <silent> [sub]p :bp<CR>
-nnoremap <silent> <Leader>q :BD<CR>
+nnoremap <silent> [sub]n :bnext<CR>
+nnoremap <silent> [sub]p :bprev<CR>
+nnoremap <silent> <Leader>w :BD<CR>
+nnoremap <silent> <Leader>q :CleanEmptyBuffers<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
 "fzf.vim
 nnoremap <silent> [sub]l :Buffers<CR>
@@ -121,19 +125,21 @@ nnoremap <silent> [sub]/ :Lines<CR>
 nnoremap <silent> [sub]o :BTags<CR>
 nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]f :Files<CR>
-nnoremap <silent> [sub]g :Ag<CR>
+nnoremap <silent> [sub]g :FAg<CR>
+nnoremap <silent> [sub]G :Ag<CR>
 nnoremap <silent> [sub]? :Commands<CR>
 nnoremap <silent> [sub]h :Helptags<CR>
 "neosnippet
 nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
-"save/write
-nnoremap <Leader>W :w !sudo tee % > /dev/null
 "nerdtree
 nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
 "undotree
 nnoremap <silent> <Space>u :MundoToggle<CR>
 "tagbar
 nnoremap <silent> <Space>t :TagbarToggle<CR>
+"quickhl
+nmap <Space>h <plug>(quickhl-manual-this)
+nmap <Space>H <plug>(quickhl-manual-reset)
 "git:fugitive;fzf;GitGutter
 nnoremap [git] <Nop>
 nmap <Space>g [git]
@@ -153,25 +159,10 @@ nnoremap <silent> <Leader>O :Obsession!<CR>
 nnoremap <silent> <Leader>A :ALEToggle<CR>
 "GitGutter: Toggle on/off
 nnoremap <silent> <Leader>G :GitGutterToggle<CR>
+"scrollbind shortcut
+nnoremap <silent> <Leader>b :call ScrollBind()<CR>
 
-""function
-"Comp = copare files side by side
-function! s:compare(...)
-  if a:0 == 1
-    tabedit %:p
-	setl scrollbind
-    exec 'rightbelow vnew ' . a:1
-	setl scrollbind
-  else
-    exec 'tabedit ' . a:1
-    setl scrollbind
-    for l:file in a:000[1 :]
-      exec 'rightbelow vnew ' . l:file
-      setl scrollbind
-    endfor
-  endif
-endfunction
-command! -bar -nargs=+ -complete=file Compare  call s:compare(<f-args>)
+""functions{{{
 "DeleteHiddenBuffers = delete hidden buffer
 function DeleteHiddenBuffers()
     let tpbl=[]
@@ -181,6 +172,14 @@ function DeleteHiddenBuffers()
     endfor
 endfunction
 command! BufDel call DeleteHiddenBuffers()
+"CleanEmptyBuffers = delete empty buffers
+function! s:CleanEmptyBuffers()
+    let buffers = filter(range(1, bufnr('$')), 'buflisted(v:val) && empty(bufname(v:val)) && bufwinnr(v:val)<0 && !getbufvar(v:val, "&mod")')
+    if !empty(buffers)
+        exe 'bw ' . join(buffers, ' ')
+    endif
+endfunction
+command! CleanEmptyBuffers call s:CleanEmptyBuffers()
 "Diff = diff view
 function! s:vimdiff_in_newtab(...)
   if a:0 == 1
@@ -196,17 +195,6 @@ endfunction
 command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
 "DiffOrig = show modified from last change
 command DiffOrig tabedit % | rightb vert new | set buftype=nofile | read ++edit # | 0d_| diffthis | wincmd p | diffthis
-"HandleURI = open url with preset browser
-function! HandleURI()
-  let l:uri = matchstr(getline('.'), '[a-z]*:\/\/[^ >,;:]*')
-  echo l:uri
-  if l:uri !=# ''
-    exec "!xdg-open \"" . l:uri . "\""
-  else
-    echo 'No URI found in line.'
-  endif
-endfunction
-nnoremap <Leader>w :<C-u>call HandleURI()<CR>
 "ScrollBind = scrollbind both window
 function! ScrollBind(...)
   let l:curr_bufnr = bufnr('%')
@@ -235,12 +223,13 @@ function! ScrollBind(...)
   else
     let g:scb_pos = {}
   endif
-endfunction
-""tab control
+endfunction"}}}
+
+""tab{{{
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
 endfunction
-function! s:my_tabline()  "{{{
+function! s:my_tabline()
   let s = ''
   for i in range(1, tabpagenr('$'))
     let bufnrs = tabpagebuflist(i)
@@ -257,7 +246,7 @@ function! s:my_tabline()  "{{{
   endfor
   let s .= '%#TabLineFill#%T%=%#TabLine#'
   return s
-endfunction "}}}
+endfunction
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
 "prefix
@@ -267,9 +256,8 @@ nmap    t [Tab]
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tab]'.n  ':<C-u>tabnext'.n.'<CR>'
 endfor
-"create,edit,close,next(last),previous(first),only,tag,path
+"new,close(only),next(last),previous(first),tag,path,move
 nnoremap <silent> [Tab]t :tablast <bar> tabnew<CR>
-nnoremap <silent> [Tab]T :tabnew<CR>
 nnoremap <silent> [Tab]w :tabclose<CR>
 nnoremap <silent> [Tab]o :tabonly<CR>
 nnoremap <silent> [Tab]n :tabnext<CR>
@@ -278,49 +266,22 @@ nnoremap <silent> [Tab]p :tabprevious<CR>
 nnoremap <silent> [Tab]P :tabfir<CR>
 nnoremap <silent> [Tab]<C-]> <C-w><C-]><C-w>T
 nnoremap <silent> [Tab]f <C-w>gf
-nnoremap <silent> [Tab]m :wincmd T<CR>
+nnoremap <silent> [Tab]m :wincmd T<CR>"}}}
 
-"autocmd
-autocmd Filetype vim set keywordprg=:help
-augroup QuickQuit
-  autocmd!
-  autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
-augroup END
-augroup GfPath
-  autocmd!
-  autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include
-augroup END
-augroup RubyConf
-  autocmd!
-  autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
-augroup END
-augroup ForceFileType
-    autocmd!
-    autocmd BufNewFile,BufRead *.xaml setfiletype xml
-augroup END
-
-"ctags;search ".tags" file until $HOME
-set tags=.tags;~
-"hide preview window
-set completeopt-=preview
-
-"""project specific configuration
-"" -> "/projectpath/.vimconf" to load
-"augroup ProjectVim
+"""project specific configuration -> locate .vimlocal when to load"{{{
+"augroup vimrc_local
 "  autocmd!
 "  autocmd BufEnter * call s:vimrc_local(expand('<afile>:p:h'))
 "augroup END
-"
 "function! s:vimrc_local(loc)
-"  let files = findfile('.vimconf', escape(a:loc, ' ') . ';', -1)
+"  let files = findfile('.vimlocal', escape(a:loc, ' ') . ';', -1)
 "  for i in reverse(filter(files, 'filereadable(v:val)'))
 "    source `=i`
 "  endfor
-"endfunction
+"endfunction}}}
 
-"----------------------------------------------------------------------------
-"plugin initialization
-"----------------------------------------------------------------------------
+"plugin settings{{{
+"dein
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -344,14 +305,34 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+"LSP
+augroup Pyls
+    autocmd!
+    autocmd Filetype python nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+    autocmd Filetype python nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
+    autocmd Filetype python nnoremap <silent> <C-\> :call LanguageClient_textDocument_references()<CR>
+    autocmd Filetype python nnoremap <silent> <Leader>f :call LanguageClient_formatting()<CR>
+augroup END"}}}
 
 "----------------------------------------------------------------------------
 "finalize
 "----------------------------------------------------------------------------
 filetype plugin indent on
 syntax on
+"autocmds
+augroup vimrc
+    autocmd!
+    autocmd Filetype vim set keywordprg=:help
+    autocmd Filetype vim setlocal foldmethod=marker
+    autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
+    autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include 
+    autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
+    autocmd BufNewFile,BufRead *.xaml setfiletype xml
+    autocmd ColorScheme * highlight Normal ctermbg=none
+    autocmd ColorScheme * highlight LineNr ctermbg=none
+augroup END
 "colorscheme
-colorscheme dante
+colorscheme railscasts
 "highlight
 highlight HighlightWords ctermfg=black ctermbg=yellow
 match HighlightWords /TODO\|NOTE\|MEMO/

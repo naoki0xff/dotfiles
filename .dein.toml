@@ -53,7 +53,7 @@ repo = 'junegunn/fzf.vim'
 depends = 'fzf'
 hook_add = '''
   let g:fzf_tags_command = 'ctags -R -f .tags'
-  command! -bang -nargs=* Ag call
+  command! -bang -nargs=* FAg call
     \ fzf#vim#ag(<q-args>,{'options': '--delimiter : --nth 4..'},<bang>0)
   command! -bang -nargs=* Files call
     \ fzf#vim#files(<q-args>,
@@ -80,8 +80,8 @@ hook_add = '''
 [[plugins]]
 repo = 'w0rp/ale'
 hook_add = '''
-  nmap <silent> <C-p> <Plug>(ale_previous_wrap)
-  nmap <silent> <C-n> <Plug>(ale_next_wrap)
+  nmap <silent> [a <Plug>(ale_previous_wrap)
+  nmap <silent> ]a <Plug>(ale_next_wrap)
   let g:ale_sign_warning = '>>'
   let g:ale_lint_on_text_changed = 'normal'
   let g:ale_lint_on_insert_leave = 1
@@ -122,3 +122,16 @@ repo = 'haya14busa/vim-edgemotion'
 
 [[plugins]]
 repo = 'andymass/vim-tradewinds'
+
+[[plugins]]
+repo = 't9md/vim-quickhl'
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  let g:LanguageClient_serverCommands = {
+  \ 'python': ['pyls']
+  \}
+'''

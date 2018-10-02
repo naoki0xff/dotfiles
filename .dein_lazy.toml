@@ -52,16 +52,18 @@ hook_source = '''
   if has('conceal')
     set conceallevel=2 concealcursor=niv
   endif
-  let g:neosnippet#snippets_directory='~/usr/doc/snippets/'
+  let g:neosnippet#snippets_directory = '~/usr/doc/snippets/'
 '''
 on_event = 'InsertCharPre'
 on_ft = ['snippet']
 depends = ['neosnippet-snippets']
 
-### deoplete sources
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-on_ft = 'python'
+### per lang config
+
+# 勉強会用に退避
+#[[plugins]]
+#repo = 'zchee/deoplete-jedi'
+#on_ft = 'python'
 
 [[plugins]]
 repo = 'padawan-php/deoplete-padawan'
@@ -84,7 +86,6 @@ repo = 'zchee/deoplete-go'
 build = 'make'
 on_ft = 'go'
 
-### わかんねえ。家でやれる時に調べる。
 #[[plugins]]
 #repo = 'Omnisharp/omnisharp-vim'
 #on_ft = 'cs'
@@ -93,3 +94,7 @@ on_ft = 'go'
 #  let g:OmniSharp_server_path = '/home/naoki/usr/local/omnisharp/omnisharp/Omnisharp.exe'
 #  let g:Omnisharp_server_use_mono = 1
 #'''
+
+[[plugins]]
+repo = 'blueyed/smarty.vim'
+on_ft = 'smarty'
