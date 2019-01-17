@@ -47,6 +47,9 @@ eval "$(rbenv init -)"
 # -> go
 export GOPATH=$HOME/usr/local/go
 PATH="$PATH:$GOPATH/bin"
+# -> js
+export NODEBREW_ROOT=/usr/local/var/nodebrew
+PATH="/usr/local/var/nodebrew/current/bin:$PATH"
 # avoid duplication
 typeset -U path PATH
 # finalize

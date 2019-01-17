@@ -70,7 +70,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # zplug
 source $HOME/.zplug/init.zsh
-zplug "arks22/tmuximum", as:command
+zplug "zsh-users/zsh-completions"
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
