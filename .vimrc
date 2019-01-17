@@ -277,7 +277,7 @@ nnoremap <silent> [Tab]l :tabm +1<CR>
 nnoremap <silent> [Tab]H :tabm 0<CR>
 nnoremap <silent> [Tab]L :tabm $<CR>"}}}
 
-"""project specific configuration -> locate .vimlocal when to load"{{{
+""vimlocal"{{{
 "augroup vimrc_local
 "  autocmd!
 "  autocmd BufEnter * call s:vimrc_local(expand('<afile>:p:h'))
