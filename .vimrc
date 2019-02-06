@@ -163,18 +163,7 @@ nnoremap <silent> <Leader>A :ALEToggle<CR>
 "GitGutter: Toggle on/off
 nnoremap <silent> <Leader>G :GitGutterToggle<CR>
 "scrollbind shortcut
-nnoremap <silent> <Leader>b :call ScrollBind()<CR>
-"vdebug: partially congirued within ~/.dein.toml
-nnoremap <silent> <Leader>d :BreakpointWindow<CR>
-let g:vdebug_keymap = {
-\  "run" : "<C-n>",
-\  "close" : "<C-p>",
-\  "set_breakpoint" : "M",
-\}
-augroup Vdebug
-    autocmd!
-    autocmd BufEnter DebuggerBreakpoints nnoremap <buffer> q <C-w>c
-augroup END"}}}
+nnoremap <silent> <Leader>b :call ScrollBind()<CR>}}}
 
 ""functions{{{
 "DeleteHiddenBuffers = delete hidden buffer
@@ -300,8 +289,8 @@ nnoremap <silent> [Tab]L :tabm $<CR>"}}}
 "  endfor
 "endfunction}}}
 
-"plugin settings{{{
-"dein
+"plugin settings
+"dein{{{
 let s:dein_dir = expand('~/.cache/dein')
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -324,8 +313,8 @@ endif
 
 if dein#check_install()
   call dein#install()
-endif
-"LSP
+endif"}}}
+"LSP{{{
 augroup LSP
     autocmd!
     autocmd BufEnter __LanguageClient__ nnoremap <buffer> q <C-w>c
@@ -337,6 +326,29 @@ augroup Pyls
     autocmd Filetype python nnoremap <silent> <C-\> :call LanguageClient_textDocument_references()<CR>
     autocmd Filetype python nnoremap <silent> <Leader>f :call LanguageClient_formatting()<CR>
 augroup END"}}}
+"vdebug: partially congirued within ~/.dein.toml
+nnoremap [vdb] <Nop>
+nmap <Space>d [vdb]
+nnoremap <silent> [vdb]l :BreakpointWindow<CR>
+nnoremap <silent> [vdb]q :BreakpointRemove *<CR>
+augroup Vdebug
+    autocmd!
+    autocmd BufEnter DebuggerBreakpoints nnoremap <buffer> q :BreakpointWindow<CR>
+augroup END
+let g:vdebug_keymap = {
+\  "run" : "<C-n>",
+\  "run_to_cursor" : "<C-m>",
+\  "set_breakpoint" : "M",
+\  "detach" : "<Leader>d",
+\  "close" : "<Leader>D",
+\}
+let g:vdebug_options = {
+\  "port" : "",
+\  "server" : "",
+\  "ide_key" : "",
+\  "path_maps" : {},
+\  "break_on_open" : 0,
+\}
 
 "----------------------------------------------------------------------------
 "finalize
