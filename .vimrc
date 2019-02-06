@@ -163,7 +163,18 @@ nnoremap <silent> <Leader>A :ALEToggle<CR>
 "GitGutter: Toggle on/off
 nnoremap <silent> <Leader>G :GitGutterToggle<CR>
 "scrollbind shortcut
-nnoremap <silent> <Leader>b :call ScrollBind()<CR>"}}}
+nnoremap <silent> <Leader>b :call ScrollBind()<CR>
+"vdebug: partially congirued within ~/.dein.toml
+nnoremap <silent> <Leader>d :BreakpointWindow<CR>
+let g:vdebug_keymap = {
+\  "run" : "<C-n>",
+\  "close" : "<C-p>",
+\  "set_breakpoint" : "M",
+\}
+augroup Vdebug
+    autocmd!
+    autocmd BufEnter DebuggerBreakpoints nnoremap <buffer> q <C-w>c
+augroup END"}}}
 
 ""functions{{{
 "DeleteHiddenBuffers = delete hidden buffer
@@ -262,7 +273,7 @@ endfor
 "new,new(to next),clone,close(only),next(last),previous(first),tag,path,move
 nnoremap <silent> [Tab]t :tablast <bar> tabnew<CR>
 nnoremap <silent> [Tab]<C-t> :tabnew<CR>
-nnoremap <silent> [Tab]T :tabe % <bar> tabm $<CR>
+nnoremap <silent> [Tab]T :tabe %<CR>
 nnoremap <silent> [Tab]w :tabclose<CR>
 nnoremap <silent> [Tab]o :tabonly<CR>
 nnoremap <silent> [Tab]n :tabnext<CR>

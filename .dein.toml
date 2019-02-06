@@ -141,3 +141,11 @@ repo = 'editorconfig/editorconfig-vim'
 hook_add = '''
   let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 '''
+
+[[plugins]]
+repo = 'naoki0xff/vim-fanfingtastic'
+
+# remote: set value to config file (php.ini or else), params = {remote_host,remote_port}
+# local:  `php-xdebug <target_script>`
+[[plugins]]
+repo = 'vim-vdebug/vdebug'
