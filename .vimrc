@@ -333,23 +333,24 @@ nnoremap [vdb] <Nop>
 nmap <Space>d [vdb]
 nnoremap <silent> [vdb]l :BreakpointWindow<CR>
 nnoremap <silent> [vdb]q :BreakpointRemove *<CR>
-augroup Vdebug
-    autocmd!
-    autocmd BufEnter DebuggerBreakpoints nnoremap <buffer> q <C-w>c
-augroup END
+"MEMO: after eval, you can go back to list with 'u'. from list, <Enter> acts almost in same way
 let g:vdebug_keymap = {
 \  "run" : "<C-n>",
 \  "run_to_cursor" : "<C-m>",
+\  "step_over" : "[vdb]n",
+\  "step_into" : "[vdb]i",
+\  "step_out" : "[vdb]N",
 \  "set_breakpoint" : "<Space>m",
+\  "eval_under_cursor" : "[vdb]e",
 \  "detach" : "<Leader>d",
 \  "close" : "<Leader>D",
 \}
-"remote: {ide_key,path_maps}
+"remote: {ide_key,path_maps(physical path)}
 let g:vdebug_options = {
 \    'port' : 9000,
 \    'timeout' : 20,
 \    'server' : '',
-\    'on_close' : 'stop',
+\    'on_close' : 'detach',
 \    'break_on_open' : 0,
 \    'ide_key' : '',
 \    'debug_window_level' : 0,
@@ -380,6 +381,7 @@ augroup vimrc
     autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include 
     autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
     autocmd BufNewFile,BufRead *.xaml setfiletype xml
+    autocmd BufNewFile,BufRead *.csv setfiletype csv
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
