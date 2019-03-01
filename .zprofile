@@ -85,9 +85,8 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 disable r
 # tmux
 [[ -z $TMUX && ! -z "$PS1" ]] && tmux
-set -o ignoreeof # stop tmux from exiting with C-d
-## fzf
-# env
+set -o ignoreeof # stop tmux from exit with C-d
+# fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='ag -a -g ""'
