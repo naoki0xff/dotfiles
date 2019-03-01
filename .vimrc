@@ -163,7 +163,9 @@ nnoremap <silent> <Leader>A :ALEToggle<CR>
 "GitGutter: Toggle on/off
 nnoremap <silent> <Leader>G :GitGutterToggle<CR>
 "scrollbind shortcut
-nnoremap <silent> <Leader>b :call ScrollBind()<CR>}}}
+nnoremap <silent> <Leader>b :call ScrollBind()<CR>
+"Linediff
+vnoremap <Leader>l :Linediff<CR>"}}}
 
 ""functions{{{
 "DeleteHiddenBuffers = delete hidden buffer
@@ -335,17 +337,17 @@ nnoremap <silent> [vdb]l :BreakpointWindow<CR>
 nnoremap <silent> [vdb]q :BreakpointRemove *<CR>
 "MEMO: after eval, you can go back to list with 'u'. from list, <Enter> acts almost in same way
 let g:vdebug_keymap = {
-\  "run" : "<C-n>",
-\  "run_to_cursor" : "<C-m>",
-\  "step_over" : "[vdb]n",
-\  "step_into" : "[vdb]i",
-\  "step_out" : "[vdb]N",
-\  "set_breakpoint" : "<Space>m",
-\  "eval_under_cursor" : "[vdb]e",
-\  "detach" : "<Leader>d",
-\  "close" : "<Leader>D",
+\  'run' : '<C-n>',
+\  'run_to_cursor' : '<C-m>',
+\  'step_over' : '[vdb]n',
+\  'step_into' : '[vdb]i',
+\  'step_out' : '[vdb]N',
+\  'set_breakpoint' : '<Space>m',
+\  'eval_under_cursor' : '[vdb]e',
+\  'detach' : '<Leader>d',
+\  'close' : '<Leader>D',
 \}
-"remote: {ide_key,path_maps(physical path)}
+"remote: {ide_key,path_maps(remote:local)}
 let g:vdebug_options = {
 \    'port' : 9000,
 \    'timeout' : 20,

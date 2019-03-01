@@ -147,3 +147,6 @@ repo = 'naoki0xff/vim-fanfingtastic'
 
 [[plugins]]
 repo = 'vim-vdebug/vdebug'
+
+[[plugins]]
+repo = 'AndrewRadev/linediff.vim'
