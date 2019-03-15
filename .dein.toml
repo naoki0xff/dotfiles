@@ -2,9 +2,10 @@
 #
 # if in trouble,
 # 1). brew update,brew upgrade neovim
-# 2). pip install --upgrade neovim
+# 2). pip install --upgrade pynvim
 # 3). (on vim) :UpdateRemotePlugins,:checkhealth,:call dein#update()
 #
+# extra note: deoplete requires python version 3.6.1+
 
 [[plugins]]
 repo = 'Shougo/dein.vim'

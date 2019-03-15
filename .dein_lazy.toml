@@ -60,10 +60,9 @@ depends = ['neosnippet-snippets']
 
 ### per lang config
 
-# 勉強会用に退避
-#[[plugins]]
-#repo = 'zchee/deoplete-jedi'
-#on_ft = 'python'
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+on_ft = 'python'
 
 [[plugins]]
 repo = 'padawan-php/deoplete-padawan'
