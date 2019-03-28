@@ -1,6 +1,6 @@
-# dotfiles
+## dotfiles
 
-configuration files.
+personal configuration files
 
 ---
 
@@ -9,16 +9,7 @@ configuration files.
 - OS:MacOS
 - vim:NVIM v0.2.0 or later
 
-## what's located in this repository?
+## NOTICE
 
-.vimrc
-
-.dein.toml
-
-.dein_lazy.toml
-
-.zshrc
-
-.zprofile
-
-.tmux.conf
+some codes are made by 3rd party and tells notes LICENSE.
+please check them when you use any of.  
