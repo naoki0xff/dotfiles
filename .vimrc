@@ -76,6 +76,7 @@ cnoremap <C-e> <End>
 cnoremap <C-k> <C-E><C-U>
 "misspell correction
 cabbrev Q q
+cabbrev Qa qa
 cabbrev q1 q!
 cabbrev qa1 qa!
 "window control

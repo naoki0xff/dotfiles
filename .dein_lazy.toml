@@ -85,6 +85,10 @@ repo = 'deoplete-plugins/deoplete-go'
 build = 'make'
 on_ft = 'go'
 
+[[plugins]]
+repo = 'carlitux/deoplete-ternjs'
+on_ft = 'javascript'
+
 #[[plugins]]
 #repo = 'Omnisharp/omnisharp-vim'
 #on_ft = 'cs'
