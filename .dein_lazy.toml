@@ -61,7 +61,7 @@ depends = ['neosnippet-snippets']
 ### per lang config
 
 [[plugins]]
-repo = 'zchee/deoplete-jedi'
+repo = 'deoplete-plugins/deoplete-jedi'
 on_ft = 'python'
 
 [[plugins]]
@@ -69,7 +69,7 @@ repo = 'padawan-php/deoplete-padawan'
 on_ft = 'php'
 
 [[plugins]]
-repo = 'zchee/deoplete-clang'
+repo = 'deoplete-plugins/deoplete-clang'
 on_ft = 'c'
 hook_add = '''
   let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
@@ -81,7 +81,7 @@ repo = 'Shougo/deoplete-rct'
 on_ft = 'ruby'
 
 [[plugins]]
-repo = 'zchee/deoplete-go'
+repo = 'deoplete-plugins/deoplete-go'
 build = 'make'
 on_ft = 'go'
 

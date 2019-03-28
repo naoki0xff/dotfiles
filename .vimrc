@@ -66,6 +66,8 @@ inoremap <C-b> <Left>
 inoremap <C-f> <Right>
 inoremap <C-k> <Up>
 inoremap <C-j> <Down>
+"cursor:visual mode
+set virtualedit=block
 "cursor:command mode
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
