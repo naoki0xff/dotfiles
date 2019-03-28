@@ -1,8 +1,6 @@
 ### zprofile
 
-# compatibility
-autoload -U compinit
-compinit
+## general
 # prompt
 autoload -U promptinit
 promptinit
@@ -39,11 +37,15 @@ PATH="$PATH:$HOME/usr/bin:$HOME/usr/local/bin:/usr/local/opt/coreutils/libexec/g
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # LANGUAGE
 # -> python
-eval "$(pyenv init -)"
 export PYENV_ROOT="${HOME}/.pyenv"
 PATH="${PYENV_ROOT}/bin:$PATH"
+eval "$(pyenv init -)"
 # -> ruby
+PATH="/Users/naoki/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+# -> php (phpenv must comes after rbenv with its PATH)
+PATH="/Users/naoki/.phpenv/bin:$PATH"
+eval "$(phpenv init -)"
 # -> go
 export GOPATH=$HOME/usr/local/go
 PATH="$PATH:$GOPATH/bin"
@@ -85,7 +87,7 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 disable r
 # tmux
 [[ -z $TMUX && ! -z "$PS1" ]] && tmux
-set -o ignoreeof # stop tmux from exit with C-d
+set -o ignoreeof
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
