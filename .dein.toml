@@ -151,3 +151,6 @@ repo = 'vim-vdebug/vdebug'
 
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
