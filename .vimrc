@@ -372,6 +372,17 @@ let g:vdebug_options = {
 \}"}}}
 "defx: experimental{{{
 nnoremap <silent> <Space>n :Defx -split=vertical -toggle -winwidth=35<CR>
+call defx#custom#column('filename', {
+      \ 'directory_icon': '▸',
+      \ 'opened_icon': '▾',
+      \ 'root_icon': ' ',
+      \ 'min_width': 40,
+      \ 'max_width': 40,
+      \ })
+call defx#custom#column('mark', {
+      \ 'readonly_icon': '✗',
+      \ 'selected_icon': '✓',
+      \ })
 "nnoremap <silent> <Space>x :Defx -split=floating -toggle<CR>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
@@ -380,6 +391,12 @@ function! s:defx_my_settings() abort
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
   \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> o
+  \ defx#do_action('open_or_close_tree')
+  nnoremap <silent><buffer><expr> O
+  \ defx#is_opened_tree() ?
+  \ defx#do_action('close_tree') :
+  \ defx#do_action('open_tree_recursive')
   nnoremap <silent><buffer><expr> i
   \ defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> s
@@ -394,8 +411,6 @@ function! s:defx_my_settings() abort
   \ defx#do_action('rename')
   nnoremap <silent><buffer><expr> !
   \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> x
-  \ defx#do_action('execute_system')
   nnoremap <silent><buffer><expr> ;
   \ defx#do_action('repeat')
   nnoremap <silent><buffer><expr> ..
@@ -405,13 +420,9 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> q
   \ defx#do_action('quit')
   nnoremap <silent><buffer><expr> <Space>
-  \ defx#do_action('toggle_select') . 'j'
+  \ defx#do_action('toggle_select')
   nnoremap <silent><buffer><expr> *
   \ defx#do_action('toggle_select_all')
-  nnoremap <silent><buffer><expr> j
-  \ line('.') == line('$') ? 'gg' : 'j'
-  nnoremap <silent><buffer><expr> k
-  \ line('.') == 1 ? 'G' : 'k'
   nnoremap <silent><buffer><expr> <C-l>
   \ defx#do_action('redraw')
   nnoremap <silent> ?
