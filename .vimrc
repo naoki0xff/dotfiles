@@ -371,7 +371,7 @@ let g:vdebug_options = {
 \    'continuous_mode'  : 1
 \}"}}}
 "defx: experimental{{{
-nnoremap <silent> <Space>x :Defx -split=vertical -toggle -winwidth=35<CR>
+nnoremap <silent> <Space>n :Defx -split=vertical -toggle -winwidth=35<CR>
 "nnoremap <silent> <Space>x :Defx -split=floating -toggle<CR>
 autocmd FileType defx call s:defx_my_settings()
 function! s:defx_my_settings() abort
