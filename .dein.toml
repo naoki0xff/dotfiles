@@ -148,3 +148,6 @@ repo = 'AndrewRadev/linediff.vim'
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'

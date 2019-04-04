@@ -1,10 +1,6 @@
 "vimrc
 "requirement:vim=NVIM v0.2.0 or later
 
-"MEMO:
-"もうそろそろLSPで統一してしまってもいいかも
-"defx始めたけど、まだビミョい気が。nerdtreeがmainでもいいかも。
-
 "----------------------------------------------------------------------------
 "configuration
 "----------------------------------------------------------------------------
@@ -19,6 +15,8 @@ set laststatus=2
 set ambiwidth=double
 set clipboard+=unnamedplus
 set completeopt-=preview
+"buffer
+set hidden
 "backup
 set backup
 set backupdir=~/.local/share/nvim/backup 
@@ -37,66 +35,12 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
-nmap n <Plug>(anzu-n-with-echo)
-nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
-vnoremap * y/<C-R>"<CR>
-nnoremap <silent> <Esc><Esc> :noh<CR>
 "backspace for deletion
 set backspace=indent,eol,start
-"yank
-nnoremap Y y$
-"x w/o register
-nnoremap x "_x
-"CTRL-G with full file path
-nnoremap <C-g> 1<C-g>
-"insert blank line
-nmap <silent> go :<C-u>call append(expand('.'), '')<Cr>j
-"increment/decrement by ignoring minus-prefix
-nmap <silent> g<C-a> <Plug>(trip-increment-ignore-minus)
-nmap <silent> g<C-x> <Plug>(trip-decrement-ignore-minus)
-"cursor:normal mode
-nnoremap j gj
-nnoremap k gk
-nnoremap gh ^
-nnoremap gl $
-nmap ]b <Plug>(edgemotion-j)
-nmap [b <Plug>(edgemotion-k)
-"cursor:insert mode
-inoremap <C-e> <C-o>$
-inoremap <C-a> <C-o>^
-inoremap <C-b> <Left>
-inoremap <C-f> <Right>
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
-"cursor:visual mode
+"visual select expansion
 set virtualedit=block
-"cursor:command mode
-cnoremap <C-b> <Left>
-cnoremap <C-f> <Right>
-cnoremap <C-a> <Home>
-cnoremap <C-e> <End>
-cnoremap <C-k> <C-E><C-U>
-"misspell correction
-cabbrev Q q
-cabbrev Qa qa
-cabbrev q1 q!
-cabbrev qa1 qa!
-"window control
-"resize
-nnoremap <silent>+ 3<C-w>+
-nnoremap <silent>_ 3<C-w>-
-nnoremap <silent>= 3<C-w>>
-nnoremap <silent>- 3<C-w><
-"gf
-nnoremap <C-w>f :vertical rightbelow wincmd f<CR>
-nnoremap <C-w>gf :rightbelow wincmd f<CR>
 "ctags
 set tags=.tags;~
-"tag jump
-nnoremap <silent> <C-w>] :vertical rightbelow wincmd ]<CR><C-g>
-nnoremap <silent> <C-w><C-]> :rightbelow wincmd ]<CR><C-g>
 "remenber last cursor position
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
@@ -104,74 +48,65 @@ augroup vimrcEx
 augroup END
 "others
 set autoread
-set updatetime=100"}}}
+set updatetime=100
+"}}}
 
-""keybindings{{{
-"prefix
+""keymap{{{
+"normal
+nnoremap <C-g> 1<C-g>
+nnoremap <silent> <Esc><Esc> :noh<CR>
+nnoremap Y y$
+nnoremap x "_x
+nmap <silent> go :<C-u>call append(expand('.'), '')<Cr>j
+nnoremap j gj
+nnoremap k gk
+nnoremap gh ^
+nnoremap gl $
+"insert
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>^
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+"visual
+vnoremap * y/<C-R>"<CR>
+"command
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-k> <C-E><C-U>
+cabbrev Q q
+cabbrev Qa qa
+cabbrev q1 q!
+cabbrev qa1 qa!
+"window
+nnoremap <silent>+ 3<C-w>+
+nnoremap <silent>_ 3<C-w>-
+nnoremap <silent>= 3<C-w>>
+nnoremap <silent>- 3<C-w><
+nnoremap <C-w>f :vertical rightbelow wincmd f<CR>
+nnoremap <C-w>gf :rightbelow wincmd f<CR>
+nnoremap <silent> <C-w>] :vertical rightbelow wincmd ]<CR><C-g>
+nnoremap <silent> <C-w><C-]> :rightbelow wincmd ]<CR><C-g>
+"custom
+"[sub],[SUB] as prefix
 nnoremap [sub] <Nop>
 nmap s [sub]
-"substituiton
-nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
+nnoremap [SUB] <Nop>
+nmap S [SUB]
+"[sub]+any
 nnoremap [sub]s :%s///gI<Left><Left><Left><Left>
-"Diff
-nnoremap <silent> [sub]d :DiffOrig<CR>
-"buffer
-set hidden
+nnoremap [sub]* *:%s/<C-r>///gI<Left><Left><Left>
 nnoremap <silent> [sub]n :bnext<CR>
 nnoremap <silent> [sub]p :bprev<CR>
+"[SUB]+any
+"<Leader>+any
 nnoremap <silent> <Leader>w :BD<CR>
 nnoremap <silent> <Leader>q :CleanEmptyBuffers<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
-"fzf.vim
-nnoremap <silent> [sub]l :Buffers<CR>
-nnoremap <silent> [sub]m :Marks<CR>
-nnoremap <silent> [sub]w :Windows<CR>
-nnoremap <silent> [sub]y :History<CR>
-nnoremap <silent> [sub]: :History:<CR>
-nnoremap <silent> [sub]. :BLines<CR>
-nnoremap <silent> [sub]/ :Lines<CR>
-nnoremap <silent> [sub]o :BTags<CR>
-nnoremap <silent> [sub]t :Tags<CR>
-nnoremap <silent> [sub]f :Files<CR>
-nnoremap <silent> [sub]g :FAg<CR>
-nnoremap <silent> [sub]G :Ag<CR>
-nnoremap <silent> [sub]? :Commands<CR>
-nnoremap <silent> [sub]h :Helptags<CR>
-"neosnippet
-nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
-"undotree
-nnoremap <silent> <Space>u :MundoToggle<CR>
-"tagbar
-nnoremap <silent> <Space>t :TagbarToggle<CR>
-"quickhl
-nmap <Space>h <plug>(quickhl-manual-this)
-vmap <Space>h <plug>(quickhl-manual-this)
-nmap <Space>H <plug>(quickhl-manual-reset)
-"git:fugitive;fzf;GitGutter
-set nofixeol
-nnoremap [git] <Nop>
-nmap <Space>g [git]
-nnoremap <silent> [git]s :Gstatus<CR>
-nnoremap <silent> [git]d :Gvdiff<CR>
-nnoremap <silent> [git]m :GFiles?<CR>
-nnoremap <silent> [git]v :GitGutterPreviewHunk<CR><C-w>b
-nnoremap <silent> [d :GitGutterPrevHunk<CR>
-nnoremap <silent> ]d :GitGutterNextHunk<CR>
-nnoremap <silent> [git]b :Gblame<CR>
-nnoremap <silent> [git]c :BCommits<CR>
-nnoremap <silent> [git]l :Commits<CR>
-"vim-obsession;{create/halt-recording},destroy
-nnoremap <silent> <Leader>o :Obsession<CR>
-nnoremap <silent> <Leader>O :Obsession!<CR>
-"ALE: Toggle on/off
-nnoremap <silent> <Leader>A :ALEToggle<CR>
-"GitGutter: Toggle on/off
-nnoremap <silent> <Leader>G :GitGutterToggle<CR>
-"scrollbind shortcut
-nnoremap <silent> <Leader>b :call ScrollBind()<CR>
-"Diff/Linediff
-nnoremap <Leader>d :windo diffthis<CR>
-vnoremap <Leader>l :Linediff<CR>"}}}
+"}}}
 
 ""functions{{{
 "DeleteHiddenBuffers = delete hidden buffer
@@ -191,20 +126,6 @@ function! s:CleanEmptyBuffers()
     endif
 endfunction
 command! CleanEmptyBuffers call s:CleanEmptyBuffers()
-"これ使ってなくね？
-"Diff = diff view
-function! s:vimdiff_in_newtab(...)
-  if a:0 == 1
-    tabedit %:p
-    exec 'rightbelow vertical diffsplit ' . a:1
-  else
-    exec 'tabedit ' . a:1
-    for l:file in a:000[1 :]
-      exec 'rightbelow vertical diffsplit ' . l:file
-    endfor
-  endif
-endfunction
-command! -bar -nargs=+ -complete=file Diff  call s:vimdiff_in_newtab(<f-args>)
 "DiffOrig = show modified from last change
 command DiffOrig tabedit % | rightb vert new | set buftype=nofile | read ++edit # | 0d_| diffthis | wincmd p | diffthis
 "ScrollBind = scrollbind both window
@@ -235,7 +156,8 @@ function! ScrollBind(...)
   else
     let g:scb_pos = {}
   endif
-endfunction"}}}
+endfunction
+"}}}
 
 ""tab{{{
 function! s:SID_PREFIX()
@@ -284,7 +206,8 @@ nnoremap <silent> [Tab]m :wincmd T<CR>
 nnoremap <silent> [Tab]h :tabm -1<CR>
 nnoremap <silent> [Tab]l :tabm +1<CR>
 nnoremap <silent> [Tab]H :tabm 0<CR>
-nnoremap <silent> [Tab]L :tabm $<CR>"}}}
+nnoremap <silent> [Tab]L :tabm $<CR>
+"}}}
 
 ""vimlocal"{{{
 "augroup vimrc_local
@@ -296,7 +219,8 @@ nnoremap <silent> [Tab]L :tabm $<CR>"}}}
 "  for i in reverse(filter(files, 'filereadable(v:val)'))
 "    source `=i`
 "  endfor
-"endfunction"}}}
+"endfunction
+"}}}
 
 "----------------------------------------------------------------------------
 "plugin settings
@@ -324,7 +248,8 @@ endif
 
 if dein#check_install()
   call dein#install()
-endif"}}}
+endif
+"}}}
 "LSP{{{
 augroup LSP
     autocmd!
@@ -332,11 +257,12 @@ augroup LSP
 augroup END
 augroup Pyls
     autocmd!
-    autocmd Filetype python nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-    autocmd Filetype python nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
-    autocmd Filetype python nnoremap <silent> <C-\> :call LanguageClient_textDocument_references()<CR>
-    autocmd Filetype python nnoremap <silent> <Leader>f :call LanguageClient_formatting()<CR>
-augroup END"}}}
+    autocmd Filetype python nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+    autocmd Filetype python nnoremap <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
+    autocmd Filetype python nnoremap <silent> <C-\> :call LanguageClient#textDocument_references()<CR>
+    autocmd Filetype python nnoremap <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
+augroup END
+"}}}
 "vdebug{{{
 nnoremap [vdb] <Nop>
 nmap <Space>d [vdb]
@@ -373,7 +299,8 @@ let g:vdebug_options = {
 \    'sign_breakpoint' : '▷',
 \    'sign_current' : '▶',
 \    'continuous_mode'  : 1
-\}"}}}
+\}
+"}}}
 "defx: experimental{{{
 nnoremap <silent> <Space>n :Defx -split=vertical -toggle -winwidth=35<CR>
 "nnoremap <silent> <Space>n :Defx -split=floating -toggle<CR>
@@ -429,7 +356,94 @@ function! s:defx_my_settings() abort
   \ defx#do_action('redraw')
   nnoremap <silent> ?
   \ :h defx.txt<CR>
-endfunction"}}}
+endfunction
+"}}}
+"denite{{{
+call denite#custom#map('insert','<C-a>','<denite:move_caret_to_head>','noremap')
+call denite#custom#map('insert','<C-e>','<denite:move_caret_to_tail>','noremap')
+call denite#custom#map('insert','<C-f>','<denite:move_caret_to_right>','noremap')
+call denite#custom#map('insert','<C-b>','<denite:move_caret_to_left>','noremap')
+call denite#custom#map('insert','<C-j>','<denite:move_to_next_line>','noremap')
+call denite#custom#map('insert','<C-n>','<denite:move_to_next_line>','noremap')
+call denite#custom#map('insert','<C-k>','<denite:move_to_previous_line>','noremap')
+call denite#custom#map('insert','<C-p>','<denite:move_to_previous_line>','noremap')
+call denite#custom#map('insert','<C-d>','<denite:scroll_page_forwards>','noremap')
+call denite#custom#map('insert','<C-u>','<denite:scroll_page_backwards>','noremap')
+nnoremap <silent> [sub]l :Denite buffer -winheight=8 -cursor-wrap -smartcase<CR>
+nnoremap <silent> [sub]j :Denite jump<CR>
+nnoremap <silent> [sub]o :Denite outline -smartcase<CR>
+nnoremap <silent> [sub]t :Denite tag -smartcase<CR>
+let s:menus = {}
+let s:menus.vim = { 'description': 'vim configuration files' }
+let s:menus.vim.file_candidates = [['init.vim','~/.config/nvim/init.vim'],['vimrc','~/.vimrc'],['dein.toml','~/.dein.toml'],['dein_lazy.toml','~/.dein_lazy.toml']]
+let s:menus.zsh = { 'description': 'shell configuration files' }
+let s:menus.zsh.file_candidates = [['zshrc','~/.zshrc'],['zprofile','~/.zprofile']]
+let s:menus.tmux = { 'description': 'tmux configuration files' }
+let s:menus.tmux.file_candidates = [['tmux.conf','~/.tmux.conf']]
+call denite#custom#var('menu','menus',s:menus)
+nnoremap <silent> [sub], :Denite menu<CR>
+"extra sources
+"from LanguageClient-neovim
+nnoremap <silent> [sub]c :Denite contextMenu<CR>
+"}}}
+"fzf{{{
+nnoremap <silent> [sub]f :Files<CR>
+nnoremap <silent> [sub]g :FAg<CR>
+nnoremap <silent> [sub]G :Ag<CR>
+nnoremap <silent> [sub]m :Marks<CR>
+nnoremap <silent> [sub]w :Windows<CR>
+nnoremap <silent> [sub]. :BLines<CR>
+nnoremap <silent> [sub]/ :Lines<CR>
+nnoremap <silent> [sub]y :History<CR>
+nnoremap <silent> [sub]: :History:<CR>
+nnoremap <silent> [sub]? :Commands<CR>
+nnoremap <silent> [sub]h :Helptags<CR>
+"}}}
+"others{{{
+"anzu
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+"vim-trip
+nmap <silent> g<C-a> <Plug>(trip-increment-ignore-minus)
+nmap <silent> g<C-x> <Plug>(trip-decrement-ignore-minus)
+"edgemotion
+nmap ]b <Plug>(edgemotion-j)
+nmap [b <Plug>(edgemotion-k)
+"neosnippet
+nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
+"undotree
+nnoremap <silent> <Space>u :MundoToggle<CR>
+"tagbar
+nnoremap <silent> <Space>t :TagbarToggle<CR>
+"quickhl
+nmap <Space>h <plug>(quickhl-manual-this)
+vmap <Space>h <plug>(quickhl-manual-this)
+nmap <Space>H <plug>(quickhl-manual-reset)
+"git:fugitive;fzf;GitGutter
+set nofixeol
+nnoremap [git] <Nop>
+nmap <Space>g [git]
+nnoremap <silent> [git]s :Gstatus<CR>
+nnoremap <silent> [git]d :Gvdiff<CR>
+nnoremap <silent> [git]m :GFiles?<CR>
+nnoremap <silent> [git]v :GitGutterPreviewHunk<CR><C-w>b
+nnoremap <silent> [d :GitGutterPrevHunk<CR>
+nnoremap <silent> ]d :GitGutterNextHunk<CR>
+nnoremap <silent> [git]b :Gblame<CR>
+nnoremap <silent> [git]c :BCommits<CR>
+nnoremap <silent> [git]l :Commits<CR>
+"vim-obsession;{create/halt-recording},destroy
+nnoremap <silent> <Leader>o :Obsession<CR>
+nnoremap <silent> <Leader>O :Obsession!<CR>
+"scrollbind shortcut
+nnoremap <silent> <Leader>b :call ScrollBind()<CR>
+"Diffs
+nnoremap <Leader>dw :windo diffthis<CR>
+vnoremap <Leader>dl :Linediff<CR>
+nnoremap <Leader>db :DiffOrig<CR>
+"}}}
 
 "----------------------------------------------------------------------------
 "finalize
@@ -460,4 +474,5 @@ highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
 highlight DiffText   cterm=bold ctermfg=10 ctermbg=21
-highlight NonText cterm=bold ctermfg=248 guifg=248"}}}
+highlight NonText cterm=bold ctermfg=248 guifg=248
+"}}}
