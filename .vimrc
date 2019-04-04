@@ -380,6 +380,8 @@ function! s:defx_my_settings() abort
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
   \ defx#do_action('drop')
+  nnoremap <silent><buffer><expr> i
+  \ defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> s
   \ defx#do_action('drop', 'split')
   nnoremap <silent><buffer><expr> v
@@ -412,6 +414,8 @@ function! s:defx_my_settings() abort
   \ line('.') == 1 ? 'G' : 'k'
   nnoremap <silent><buffer><expr> <C-l>
   \ defx#do_action('redraw')
+  nnoremap <silent> ?
+  \ :h defx.txt<CR>
 endfunction"}}}
 
 "----------------------------------------------------------------------------
