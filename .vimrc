@@ -1,6 +1,10 @@
 "vimrc
 "requirement:vim=NVIM v0.2.0 or later
 
+"MEMO:
+"もうそろそろLSPで統一してしまってもいいかも
+"defx始めたけど、まだビミョい気が。nerdtreeがmainでもいいかも。
+
 "----------------------------------------------------------------------------
 "configuration
 "----------------------------------------------------------------------------
@@ -372,6 +376,7 @@ let g:vdebug_options = {
 \}"}}}
 "defx: experimental{{{
 nnoremap <silent> <Space>n :Defx -split=vertical -toggle -winwidth=35<CR>
+"nnoremap <silent> <Space>x :Defx -split=floating -toggle<CR>
 call defx#custom#column('filename', {
       \ 'directory_icon': '▸',
       \ 'opened_icon': '▾',
@@ -383,10 +388,9 @@ call defx#custom#column('mark', {
       \ 'readonly_icon': '✗',
       \ 'selected_icon': '✓',
       \ })
-"nnoremap <silent> <Space>x :Defx -split=floating -toggle<CR>
 autocmd FileType defx call s:defx_my_settings()
+"TODO: set defx root directory to chosen on <CR>, is_open_tree() on current cursor position
 function! s:defx_my_settings() abort
-  " Define mappings
   nnoremap <silent><buffer><expr> <CR>
   \ defx#is_directory() ?
   \ defx#do_action('open_or_close_tree') :
@@ -409,20 +413,16 @@ function! s:defx_my_settings() abort
   \ defx#do_action('remove')
   nnoremap <silent><buffer><expr> r
   \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> !
-  \ defx#do_action('execute_command')
-  nnoremap <silent><buffer><expr> ;
-  \ defx#do_action('repeat')
   nnoremap <silent><buffer><expr> ..
   \ defx#do_action('cd', ['..'])
   nnoremap <silent><buffer><expr> ~
   \ defx#do_action('cd')
   nnoremap <silent><buffer><expr> q
   \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> <Space>
-  \ defx#do_action('toggle_select')
   nnoremap <silent><buffer><expr> *
-  \ defx#do_action('toggle_select_all')
+  \ defx#do_action('toggle_select')
+  nnoremap <silent><buffer><expr> <C-c>
+  \ defx#do_action('clear_select_all')
   nnoremap <silent><buffer><expr> <C-l>
   \ defx#do_action('redraw')
   nnoremap <silent> ?
