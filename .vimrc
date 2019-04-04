@@ -376,7 +376,7 @@ let g:vdebug_options = {
 \}"}}}
 "defx: experimental{{{
 nnoremap <silent> <Space>n :Defx -split=vertical -toggle -winwidth=35<CR>
-"nnoremap <silent> <Space>x :Defx -split=floating -toggle<CR>
+"nnoremap <silent> <Space>n :Defx -split=floating -toggle<CR>
 call defx#custom#column('filename', {
       \ 'directory_icon': '▸',
       \ 'opened_icon': '▾',
@@ -407,6 +407,8 @@ function! s:defx_my_settings() abort
   \ defx#do_action('drop', 'split')
   nnoremap <silent><buffer><expr> v
   \ defx#do_action('drop', 'vsplit')
+  nnoremap <silent><buffer><expr> t
+  \ defx#do_action('drop', 'tabe')
   nnoremap <silent><buffer><expr> c
   \ defx#do_action('new_multiple_files')
   nnoremap <silent><buffer><expr> d
