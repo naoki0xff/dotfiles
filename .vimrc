@@ -13,7 +13,6 @@ set pumheight=10
 set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}%{LinterStatus()}
 set laststatus=2
 set ambiwidth=double
-set clipboard+=unnamedplus
 set completeopt-=preview
 "buffer
 set hidden
@@ -22,6 +21,8 @@ set backup
 set backupdir=~/.local/share/nvim/backup 
 set undofile
 set undodir=~/.local/share/nvim/undo
+"clipboard
+set clipboard+=unnamedplus
 "indent
 set tabstop=4
 set shiftwidth=4
@@ -41,12 +42,14 @@ set backspace=indent,eol,start
 set virtualedit=block
 "ctags
 set tags=.tags;~
+"git
+set nofixeol
 "remenber last cursor position
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
-"others
+"etc
 set autoread
 set updatetime=100
 "}}}
@@ -106,6 +109,10 @@ nnoremap <silent> [sub]p :bprev<CR>
 nnoremap <silent> <Leader>w :BD<CR>
 nnoremap <silent> <Leader>q :CleanEmptyBuffers<CR>
 nnoremap <silent> <Leader>Q :BufDel<CR>
+nnoremap <silent> <Leader>b :call ScrollBind()<CR>
+nnoremap <Leader>dw :windo diffthis<CR>
+vnoremap <Leader>dl :Linediff<CR>
+nnoremap <Leader>db :DiffOrig<CR>
 "}}}
 
 ""functions{{{
@@ -422,7 +429,6 @@ nmap <Space>h <plug>(quickhl-manual-this)
 vmap <Space>h <plug>(quickhl-manual-this)
 nmap <Space>H <plug>(quickhl-manual-reset)
 "git:fugitive;fzf;GitGutter
-set nofixeol
 nnoremap [git] <Nop>
 nmap <Space>g [git]
 nnoremap <silent> [git]s :Gstatus<CR>
@@ -437,12 +443,6 @@ nnoremap <silent> [git]l :Commits<CR>
 "vim-obsession;{create/halt-recording},destroy
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
-"scrollbind shortcut
-nnoremap <silent> <Leader>b :call ScrollBind()<CR>
-"Diffs
-nnoremap <Leader>dw :windo diffthis<CR>
-vnoremap <Leader>dl :Linediff<CR>
-nnoremap <Leader>db :DiffOrig<CR>
 "}}}
 
 "----------------------------------------------------------------------------
