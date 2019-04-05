@@ -1,0 +1,35 @@
+## ways to install language server
+
+1. php
+
+composer require jetbrains/phpstorm-stubs:dev-master
+composer require felixfbecker/language-server
+
+&
+
+composer run-script --working-dir=vendor/felixfbecker/language-server parse-stubs
+
+なんかglobalだと行けないから、ローカルで。
+
+2. python
+
+pip install python-language-server
+
+3. ruby
+
+sudo gem install solargraph
+
+4. javascript/typescript
+
+npm install global javascript-typescript-langserver
+
+5. go
+
+go get -u github.com/sourcegraph/go-langserver
+
+---
+
+## NOTE
+
+somtimes, installation fails due to package dependancy.
+therefore local installtion should work better than global one.
