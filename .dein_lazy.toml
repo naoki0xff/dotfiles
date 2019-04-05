@@ -1,5 +1,51 @@
 ### .dein_lazy.toml
 
+### edit
+[[plugins]]
+repo = 'Shougo/deoplete.nvim'
+hook_source = '''
+  let g:deoplete#enable_at_startup = 1
+  imap <expr><C-l>
+  \ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
+  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
+'''
+on_event = 'InsertCharPre'
+# NOTE: require python version 3.6+
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+hook_source = '''
+  imap <C-l> <Plug>(neosnippet_expand_or_jump)
+  smap <C-l> <Plug>(neosnippet_expand_or_jump)
+  xmap <C-l> <Plug>(neosnippet_expand_target)
+  if has('conceal')
+    set conceallevel=2 concealcursor=niv
+  endif
+  let g:neosnippet#snippets_directory = '~/usr/doc/snippets/'
+'''
+on_event = 'InsertCharPre'
+on_ft = ['snippet']
+depends = ['neosnippet-snippets']
+
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-clang'
+on_ft = 'c'
+hook_add = '''
+  let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
+  let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
+'''
+
+[[plugins]]
+repo = 'deoplete-plugins/deoplete-go'
+build = 'make'
+on_ft = 'go'
+
+### filetype
+[[plugins]]
+repo = 'mechatroner/rainbow_csv'
+on_ft = 'csv'
+
+### utility
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
@@ -29,79 +75,3 @@ hook_add = '''
   au FileType qf nnoremap <silent><buffer>q :quit<CR>
 '''
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
-on_ft = ['ruby', 'python', 'c', 'php', 'html', 'go', 'cs', 'sh' ]
-
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_source = '''
-  let g:deoplete#enable_at_startup = 1
-  imap <expr><C-l>
-  \ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
-'''
-on_event = 'InsertCharPre'
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-hook_source = '''
-  imap <C-l> <Plug>(neosnippet_expand_or_jump)
-  smap <C-l> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-l> <Plug>(neosnippet_expand_target)
-  if has('conceal')
-    set conceallevel=2 concealcursor=niv
-  endif
-  let g:neosnippet#snippets_directory = '~/usr/doc/snippets/'
-'''
-on_event = 'InsertCharPre'
-on_ft = ['snippet']
-depends = ['neosnippet-snippets']
-
-### per lang config
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-jedi'
-on_ft = 'python'
-
-[[plugins]]
-repo = 'padawan-php/deoplete-padawan'
-on_ft = 'php'
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-clang'
-on_ft = 'c'
-hook_add = '''
-  let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-  let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
-'''
-
-[[plugins]]
-repo = 'Shougo/deoplete-rct'
-on_ft = 'ruby'
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-go'
-build = 'make'
-on_ft = 'go'
-
-[[plugins]]
-repo = 'carlitux/deoplete-ternjs'
-on_ft = 'javascript'
-
-#[[plugins]]
-#repo = 'Omnisharp/omnisharp-vim'
-#on_ft = 'cs'
-#build = 'xbuild server/Omnisharp.sln'
-#hook_add = '''
-#  let g:OmniSharp_server_path = '/home/naoki/usr/local/omnisharp/omnisharp/Omnisharp.exe'
-#  let g:Omnisharp_server_use_mono = 1
-#'''
-
-[[plugins]]
-repo = 'blueyed/smarty.vim'
-on_ft = 'smarty'
-
-[[plugins]]
-repo = 'mechatroner/rainbow_csv'
-on_ft = 'csv'

@@ -1,42 +1,20 @@
 ### .dein.toml
 #
-# if in trouble,
+# in case you need to update,
 # 1). brew update,brew upgrade neovim
 # 2). pip install --upgrade pynvim
 # 3). (on vim) :UpdateRemotePlugins,:checkhealth,:call dein#update()
-#
-# extra note: deoplete requires python version 3.6.1+
 
+### manage
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+### search
 [[plugins]]
-repo = 'qpkorr/vim-bufkill'
+repo = 'Shougo/denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/vimproc.vim'
-build = 'make'
-
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
-
-[[plugins]]
-repo = 'tpope/vim-surround'
-
-[[plugins]]
-repo = 'tpope/vim-repeat'
-
-[[plugins]]
-repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'airblade/vim-gitgutter'
-hook_add = '''
-  let g:gitgutter_sign_modified_removed = '~'
-'''
-
-[[plugins]]
-repo = 'tpope/vim-obsession'
+repo = 'Shougo/defx.nvim'
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -57,20 +35,39 @@ hook_add = '''
     \            <bang>0)
 '''
 
+### edit
 [[plugins]]
-repo = 'simnalamburt/vim-mundo'
-hook_source = '''
-  let g:mundo_preview_bottom = 1
-  let g:mundo_width = 35
-  let g:mundo_preview_statusline = '[Undotree-preview]'
-  let g:mundo_tree_statusline  = '[Undotree]'
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = 'bash install.sh'
+hook_add = '''
+  let g:LanguageClient_serverCommands = {
+  \ 'javascript': ['javascript-typescript-stdio'],
+  \ 'typescript': ['javascript-typescript-stdio'],
+  \ 'php': ['php','~/usr/local/src/composer/vendor/bin/php-language-server.php'],
+  \ 'python': ['pyls'],
+  \ 'ruby': ['solargraph','stdio'],
+  \}
 '''
 
 [[plugins]]
-repo = 'majutsushi/tagbar'
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'editorconfig/editorconfig-vim'
 hook_add = '''
-  let g:tagbar_autofocus = 1
+  let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 '''
+
+### debug
+[[plugins]]
+repo = 'vim-vdebug/vdebug'
 
 #[[plugins]]
 #repo = 'w0rp/ale'
@@ -93,11 +90,44 @@ hook_add = '''
 #  endfunction
 #'''
 
+### external integration
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  let g:gitgutter_sign_modified_removed = '~'
+'''
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+hook_add = '''
+  let g:tagbar_autofocus = 1
+'''
+
 [[plugins]]
 repo = 'thinca/vim-ref'
 hook_add = '''
   let g:ref_use_vimproc = 1
   let g:ref_phpmanual_path = '/Users/naoki/usr/doc/ref/php-chunked-xhtml'
+'''
+
+### utility
+[[plugins]]
+repo = 'tpope/vim-obsession'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'simnalamburt/vim-mundo'
+hook_source = '''
+  let g:mundo_preview_bottom = 1
+  let g:mundo_width = 35
+  let g:mundo_preview_statusline = '[Undotree-preview]'
+  let g:mundo_tree_statusline  = '[Undotree]'
 '''
 
 [[plugins]]
@@ -122,33 +152,21 @@ repo = 'andymass/vim-tradewinds'
 repo = 't9md/vim-quickhl'
 
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
-build = 'bash install.sh'
-hook_add = '''
-  let g:LanguageClient_serverCommands = {
-  \ 'python': ['pyls'],
-  \ 'javascript': ['javascript-typescript-stdio'],
-  \}
-'''
+repo = 'qpkorr/vim-bufkill'
 
 [[plugins]]
-repo = 'editorconfig/editorconfig-vim'
-hook_add = '''
-  let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-'''
-
-[[plugins]]
-repo = 'naoki0xff/vim-fanfingtastic'
-
-[[plugins]]
-repo = 'vim-vdebug/vdebug'
+repo = 'dahu/vim-fanfingtastic'
 
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
 
+### filetype sources
 [[plugins]]
-repo = 'Shougo/defx.nvim'
+repo = 'leafgarland/typescript-vim'
 
 [[plugins]]
-repo = 'Shougo/denite.nvim'
+repo = 'blueyed/smarty.vim'
+on_ft = 'smarty'
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
