@@ -54,7 +54,6 @@ augroup END
 set autoread
 set updatetime=100
 "}}}
-
 ""keymap{{{
 "normal
 nnoremap <C-g> 1<C-g>
@@ -115,7 +114,6 @@ nnoremap <Leader>dw :windo diffthis<CR>
 vnoremap <Leader>dl :Linediff<CR>
 nnoremap <Leader>db :DiffOrig<CR>
 "}}}
-
 ""functions{{{
 "DeleteHiddenBuffers = delete hidden buffer
 function DeleteHiddenBuffers()
@@ -166,7 +164,6 @@ function! ScrollBind(...)
   endif
 endfunction
 "}}}
-
 ""tab{{{
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
@@ -216,7 +213,6 @@ nnoremap <silent> [Tab]l :tabm +1<CR>
 nnoremap <silent> [Tab]H :tabm 0<CR>
 nnoremap <silent> [Tab]L :tabm $<CR>
 "}}}
-
 ""vimlocal"{{{
 "augroup vimrc_local
 "  autocmd!
