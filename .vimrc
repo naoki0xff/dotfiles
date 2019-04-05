@@ -333,9 +333,9 @@ function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> o
   \ defx#do_action('open_or_close_tree')
   nnoremap <silent><buffer><expr> O
-  \ defx#is_opened_tree() ?
-  \ defx#do_action('close_tree') :
   \ defx#do_action('open_tree_recursive')
+  nnoremap <silent><buffer><expr> x
+  \ defx#do_action('close_tree')
   nnoremap <silent><buffer><expr> i
   \ defx#do_action('toggle_ignored_files')
   nnoremap <silent><buffer><expr> s
