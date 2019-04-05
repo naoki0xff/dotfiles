@@ -72,26 +72,26 @@ hook_add = '''
   let g:tagbar_autofocus = 1
 '''
 
-[[plugins]]
-repo = 'w0rp/ale'
-hook_add = '''
-  nmap <silent> [a <Plug>(ale_previous_wrap)
-  nmap <silent> ]a <Plug>(ale_next_wrap)
-  let g:ale_sign_warning = '>>'
-  let g:ale_lint_on_text_changed = 'normal'
-  let g:ale_lint_on_insert_leave = 1
-  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-  function! LinterStatus() abort
-    let l:counts = ale#statusline#Count(bufnr(''))
-    let l:all_errors = l:counts.error + l:counts.style_error
-    let l:all_non_errors = l:counts.total - l:all_errors
-    return l:counts.total == 0 ? '' : printf(
-    \   '[Linter:%dW %dE]',
-    \   all_non_errors,
-    \   all_errors
-    \)
-  endfunction
-'''
+#[[plugins]]
+#repo = 'w0rp/ale'
+#hook_add = '''
+#  nmap <silent> [a <Plug>(ale_previous_wrap)
+#  nmap <silent> ]a <Plug>(ale_next_wrap)
+#  let g:ale_sign_warning = '>>'
+#  let g:ale_lint_on_text_changed = 'normal'
+#  let g:ale_lint_on_insert_leave = 1
+#  let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+#  function! LinterStatus() abort
+#    let l:counts = ale#statusline#Count(bufnr(''))
+#    let l:all_errors = l:counts.error + l:counts.style_error
+#    let l:all_non_errors = l:counts.total - l:all_errors
+#    return l:counts.total == 0 ? '' : printf(
+#    \   '[Linter:%dW %dE]',
+#    \   all_non_errors,
+#    \   all_errors
+#    \)
+#  endfunction
+#'''
 
 [[plugins]]
 repo = 'thinca/vim-ref'
@@ -127,7 +127,8 @@ rev = 'next'
 build = 'bash install.sh'
 hook_add = '''
   let g:LanguageClient_serverCommands = {
-  \ 'python': ['pyls']
+  \ 'python': ['pyls'],
+  \ 'javascript': ['javascript-typescript-stdio'],
   \}
 '''
 

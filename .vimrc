@@ -10,7 +10,8 @@ scriptencoding utf-8
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}%{LinterStatus()}
+"set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}%{LinterStatus()}
+set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}
 set laststatus=2
 set ambiwidth=double
 set completeopt-=preview
@@ -258,16 +259,21 @@ if dein#check_install()
 endif
 "}}}
 "LSP{{{
+"TODO: shift from ALE
+"1. statusline integration
+"2. install language server for each lang. {ruby,php,...}
+function LC_maps()
+  if has_key(g:LanguageClient_serverCommands, &filetype)
+    nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+    nnoremap <buffer> <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <silent> <C-\> :call LanguageClient#textDocument_references()<CR>
+    nnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
+  endif
+endfunction
 augroup LSP
     autocmd!
     autocmd BufEnter __LanguageClient__ nnoremap <buffer> q <C-w>c
-augroup END
-augroup Pyls
-    autocmd!
-    autocmd Filetype python nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-    autocmd Filetype python nnoremap <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
-    autocmd Filetype python nnoremap <silent> <C-\> :call LanguageClient#textDocument_references()<CR>
-    autocmd Filetype python nnoremap <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
+    autocmd FileType * call LC_maps()
 augroup END
 "}}}
 "vdebug{{{
@@ -309,21 +315,20 @@ let g:vdebug_options = {
 \}
 "}}}
 "defx: experimental{{{
-nnoremap <silent> <Space>n :Defx -split=vertical -toggle -winwidth=35<CR>
+nnoremap <silent> <Space>n :Defx -split=vertical -direction=topleft -toggle -winwidth=35<CR>
 "nnoremap <silent> <Space>n :Defx -split=floating -toggle<CR>
 call defx#custom#column('filename', {
       \ 'directory_icon': '▸',
       \ 'opened_icon': '▾',
-      \ 'root_icon': ' ',
-      \ 'min_width': 40,
-      \ 'max_width': 40,
       \ })
 call defx#custom#column('mark', {
       \ 'readonly_icon': '✗',
       \ 'selected_icon': '✓',
       \ })
 autocmd FileType defx call s:defx_my_settings()
-"TODO: set defx root directory to chosen on <CR>, is_open_tree() on current cursor position
+"TODO: 
+" 1. Change the tree root to the selected dir (nerdtree-like)
+" 2. recursive open/close 'selected' directory
 function! s:defx_my_settings() abort
   nnoremap <silent><buffer><expr> <CR>
   \ defx#is_directory() ?
@@ -387,6 +392,7 @@ let s:menus.zsh = { 'description': 'shell configuration files' }
 let s:menus.zsh.file_candidates = [['zshrc','~/.zshrc'],['zprofile','~/.zprofile']]
 let s:menus.tmux = { 'description': 'tmux configuration files' }
 let s:menus.tmux.file_candidates = [['tmux.conf','~/.tmux.conf']]
+"want to add `:Denite dein` to menu. Can I do that?
 call denite#custom#var('menu','menus',s:menus)
 nnoremap <silent> [sub], :Denite menu<CR>
 "extra sources
