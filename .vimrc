@@ -310,61 +310,9 @@ let g:vdebug_options = {
 \    'continuous_mode'  : 1
 \}
 "}}}
-"defx: experimental{{{
-"nnoremap <silent> <Space>n :Defx -split=vertical -direction=topleft -toggle -winwidth=35<CR>
-"call defx#custom#column('filename', {
-"      \ 'directory_icon': '▸',
-"      \ 'opened_icon': '▾',
-"      \ })
-"call defx#custom#column('mark', {
-"      \ 'readonly_icon': '✗',
-"      \ 'selected_icon': '✓',
-"      \ })
-"autocmd FileType defx call s:defx_my_settings()
-""TODO: 
-"" 1. Change the tree root to the selected dir (nerdtree-like)
-"" 2. recursive open/close 'selected' directory
-"function! s:defx_my_settings() abort
-"  nnoremap <silent><buffer><expr> <CR>
-"  \ defx#is_directory() ?
-"  \ defx#do_action('open_or_close_tree') :
-"  \ defx#do_action('drop')
-"  nnoremap <silent><buffer><expr> o
-"  \ defx#do_action('open_or_close_tree')
-"  nnoremap <silent><buffer><expr> O
-"  \ defx#do_action('open_tree_recursive')
-"  nnoremap <silent><buffer><expr> x
-"  \ defx#do_action('close_tree')
-"  nnoremap <silent><buffer><expr> i
-"  \ defx#do_action('toggle_ignored_files')
-"  nnoremap <silent><buffer><expr> s
-"  \ defx#do_action('drop', 'split')
-"  nnoremap <silent><buffer><expr> v
-"  \ defx#do_action('drop', 'vsplit')
-"  nnoremap <silent><buffer><expr> t
-"  \ defx#do_action('drop', 'tabe')
-"  nnoremap <silent><buffer><expr> c
-"  \ defx#do_action('new_multiple_files')
-"  nnoremap <silent><buffer><expr> d
-"  \ defx#do_action('remove')
-"  nnoremap <silent><buffer><expr> r
-"  \ defx#do_action('rename')
-"  nnoremap <silent><buffer><expr> ..
-"  \ defx#do_action('cd', ['..'])
-"  nnoremap <silent><buffer><expr> ~
-"  \ defx#do_action('cd')
-"  nnoremap <silent><buffer><expr> q
-"  \ defx#do_action('quit')
-"  nnoremap <silent><buffer><expr> *
-"  \ defx#do_action('toggle_select')
-"  nnoremap <silent><buffer><expr> <C-c>
-"  \ defx#do_action('clear_select_all')
-"  nnoremap <silent><buffer><expr> <C-l>
-"  \ defx#do_action('redraw')
-"  nnoremap <silent> ?
-"  \ :h defx.txt<CR>
-"endfunction
-"}}}
+"nerdtree
+let NERDTreeMapOpenSplit = 's'
+let NERDTreeMapOpenVSplit = 'v'
 "denite{{{
 call denite#custom#map('insert','<C-a>','<denite:move_caret_to_head>','noremap')
 call denite#custom#map('insert','<C-e>','<denite:move_caret_to_tail>','noremap')
