@@ -310,9 +310,10 @@ let g:vdebug_options = {
 \    'continuous_mode'  : 1
 \}
 "}}}
-"nerdtree
+"nerdtree{{{
 let NERDTreeMapOpenSplit = 's'
 let NERDTreeMapOpenVSplit = 'v'
+"}}}
 "denite{{{
 call denite#custom#map('insert','<C-a>','<denite:move_caret_to_head>','noremap')
 call denite#custom#map('insert','<C-e>','<denite:move_caret_to_tail>','noremap')
