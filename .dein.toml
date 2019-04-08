@@ -47,9 +47,7 @@ hook_add = '''
   let g:LanguageClient_serverCommands = {
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'typescript': ['javascript-typescript-stdio'],
-  \ 'php': ['php','~/usr/local/src/composer/vendor/bin/php-language-server.php'],
   \ 'python': ['pyls'],
-  \ 'ruby': ['solargraph','stdio'],
   \}
 '''
 

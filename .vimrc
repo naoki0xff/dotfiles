@@ -255,9 +255,8 @@ if dein#check_install()
 endif
 "}}}
 "LSP{{{
-"TODO: shift from ALE
-"1. statusline integration
-"2. install language server for each lang. {ruby,php,...}
+"MEMO: 
+"なんかイケてない。補完はいいんだけど、それ以外。つーか遅い。
 function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>

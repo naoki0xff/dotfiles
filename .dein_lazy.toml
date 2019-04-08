@@ -40,6 +40,14 @@ repo = 'deoplete-plugins/deoplete-go'
 build = 'make'
 on_ft = 'go'
 
+[[plugins]]                          
+repo = 'padawan-php/deoplete-padawan'
+on_ft = 'php'                        
+
+[[plugins]]                 
+repo = 'Shougo/deoplete-rct'
+on_ft = 'ruby'              
+
 ### filetype
 [[plugins]]
 repo = 'mechatroner/rainbow_csv'
