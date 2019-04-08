@@ -13,8 +13,14 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 
+#[[plugins]]
+#repo = 'Shougo/defx.nvim'
+
 [[plugins]]
-repo = 'Shougo/defx.nvim'
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
 
 [[plugins]]
 repo = 'junegunn/fzf'

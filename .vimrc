@@ -311,60 +311,59 @@ let g:vdebug_options = {
 \}
 "}}}
 "defx: experimental{{{
-nnoremap <silent> <Space>n :Defx -split=vertical -direction=topleft -toggle -winwidth=35<CR>
-"nnoremap <silent> <Space>n :Defx -split=floating -toggle<CR>
-call defx#custom#column('filename', {
-      \ 'directory_icon': '▸',
-      \ 'opened_icon': '▾',
-      \ })
-call defx#custom#column('mark', {
-      \ 'readonly_icon': '✗',
-      \ 'selected_icon': '✓',
-      \ })
-autocmd FileType defx call s:defx_my_settings()
-"TODO: 
-" 1. Change the tree root to the selected dir (nerdtree-like)
-" 2. recursive open/close 'selected' directory
-function! s:defx_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ defx#is_directory() ?
-  \ defx#do_action('open_or_close_tree') :
-  \ defx#do_action('drop')
-  nnoremap <silent><buffer><expr> o
-  \ defx#do_action('open_or_close_tree')
-  nnoremap <silent><buffer><expr> O
-  \ defx#do_action('open_tree_recursive')
-  nnoremap <silent><buffer><expr> x
-  \ defx#do_action('close_tree')
-  nnoremap <silent><buffer><expr> i
-  \ defx#do_action('toggle_ignored_files')
-  nnoremap <silent><buffer><expr> s
-  \ defx#do_action('drop', 'split')
-  nnoremap <silent><buffer><expr> v
-  \ defx#do_action('drop', 'vsplit')
-  nnoremap <silent><buffer><expr> t
-  \ defx#do_action('drop', 'tabe')
-  nnoremap <silent><buffer><expr> c
-  \ defx#do_action('new_multiple_files')
-  nnoremap <silent><buffer><expr> d
-  \ defx#do_action('remove')
-  nnoremap <silent><buffer><expr> r
-  \ defx#do_action('rename')
-  nnoremap <silent><buffer><expr> ..
-  \ defx#do_action('cd', ['..'])
-  nnoremap <silent><buffer><expr> ~
-  \ defx#do_action('cd')
-  nnoremap <silent><buffer><expr> q
-  \ defx#do_action('quit')
-  nnoremap <silent><buffer><expr> *
-  \ defx#do_action('toggle_select')
-  nnoremap <silent><buffer><expr> <C-c>
-  \ defx#do_action('clear_select_all')
-  nnoremap <silent><buffer><expr> <C-l>
-  \ defx#do_action('redraw')
-  nnoremap <silent> ?
-  \ :h defx.txt<CR>
-endfunction
+"nnoremap <silent> <Space>n :Defx -split=vertical -direction=topleft -toggle -winwidth=35<CR>
+"call defx#custom#column('filename', {
+"      \ 'directory_icon': '▸',
+"      \ 'opened_icon': '▾',
+"      \ })
+"call defx#custom#column('mark', {
+"      \ 'readonly_icon': '✗',
+"      \ 'selected_icon': '✓',
+"      \ })
+"autocmd FileType defx call s:defx_my_settings()
+""TODO: 
+"" 1. Change the tree root to the selected dir (nerdtree-like)
+"" 2. recursive open/close 'selected' directory
+"function! s:defx_my_settings() abort
+"  nnoremap <silent><buffer><expr> <CR>
+"  \ defx#is_directory() ?
+"  \ defx#do_action('open_or_close_tree') :
+"  \ defx#do_action('drop')
+"  nnoremap <silent><buffer><expr> o
+"  \ defx#do_action('open_or_close_tree')
+"  nnoremap <silent><buffer><expr> O
+"  \ defx#do_action('open_tree_recursive')
+"  nnoremap <silent><buffer><expr> x
+"  \ defx#do_action('close_tree')
+"  nnoremap <silent><buffer><expr> i
+"  \ defx#do_action('toggle_ignored_files')
+"  nnoremap <silent><buffer><expr> s
+"  \ defx#do_action('drop', 'split')
+"  nnoremap <silent><buffer><expr> v
+"  \ defx#do_action('drop', 'vsplit')
+"  nnoremap <silent><buffer><expr> t
+"  \ defx#do_action('drop', 'tabe')
+"  nnoremap <silent><buffer><expr> c
+"  \ defx#do_action('new_multiple_files')
+"  nnoremap <silent><buffer><expr> d
+"  \ defx#do_action('remove')
+"  nnoremap <silent><buffer><expr> r
+"  \ defx#do_action('rename')
+"  nnoremap <silent><buffer><expr> ..
+"  \ defx#do_action('cd', ['..'])
+"  nnoremap <silent><buffer><expr> ~
+"  \ defx#do_action('cd')
+"  nnoremap <silent><buffer><expr> q
+"  \ defx#do_action('quit')
+"  nnoremap <silent><buffer><expr> *
+"  \ defx#do_action('toggle_select')
+"  nnoremap <silent><buffer><expr> <C-c>
+"  \ defx#do_action('clear_select_all')
+"  nnoremap <silent><buffer><expr> <C-l>
+"  \ defx#do_action('redraw')
+"  nnoremap <silent> ?
+"  \ :h defx.txt<CR>
+"endfunction
 "}}}
 "denite{{{
 call denite#custom#map('insert','<C-a>','<denite:move_caret_to_head>','noremap')
@@ -379,8 +378,6 @@ call denite#custom#map('insert','<C-d>','<denite:scroll_page_forwards>','noremap
 call denite#custom#map('insert','<C-u>','<denite:scroll_page_backwards>','noremap')
 nnoremap <silent> [sub]l :Denite buffer -winheight=8 -cursor-wrap -smartcase<CR>
 nnoremap <silent> [sub]j :Denite jump<CR>
-nnoremap <silent> [sub]o :Denite outline -smartcase<CR>
-nnoremap <silent> [sub]t :Denite tag -smartcase<CR>
 let s:menus = {}
 let s:menus.vim = { 'description': 'vim configuration files' }
 let s:menus.vim.file_candidates = [['init.vim','~/.config/nvim/init.vim'],['vimrc','~/.vimrc'],['dein.toml','~/.dein.toml'],['dein_lazy.toml','~/.dein_lazy.toml']]
@@ -399,6 +396,8 @@ nnoremap <silent> [sub]c :Denite contextMenu<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :FAg<CR>
 nnoremap <silent> [sub]G :Ag<CR>
+nnoremap <silent> [sub]t :Tags<CR>
+nnoremap <silent> [sub]o :BTags<CR>
 nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]w :Windows<CR>
 nnoremap <silent> [sub]. :BLines<CR>
@@ -422,6 +421,8 @@ nmap ]b <Plug>(edgemotion-j)
 nmap [b <Plug>(edgemotion-k)
 "neosnippet
 nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
+"nerdtree
+nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
 "undotree
 nnoremap <silent> <Space>u :MundoToggle<CR>
 "tagbar
