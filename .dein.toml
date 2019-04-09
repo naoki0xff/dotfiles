@@ -45,6 +45,7 @@ rev = 'next'
 build = 'bash install.sh'
 hook_add = '''
   let g:LanguageClient_serverCommands = {
+  \ 'c': ['clangd'],
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'typescript': ['javascript-typescript-stdio'],
   \ 'python': ['pyls'],
