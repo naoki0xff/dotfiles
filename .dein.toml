@@ -172,3 +172,6 @@ on_ft = 'smarty'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
