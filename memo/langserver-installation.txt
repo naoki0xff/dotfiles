@@ -27,6 +27,10 @@ npm install global javascript-typescript-langserver
 
 go get -u github.com/sourcegraph/go-langserver
 
+6. c family
+
+brew install llvm
+
 ---
 
 ## NOTE
