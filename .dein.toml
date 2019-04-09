@@ -174,4 +174,4 @@ on_ft = 'smarty'
 repo = 'cohama/lexima.vim'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'Yggdroot/indentLine'
