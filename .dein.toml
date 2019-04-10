@@ -35,6 +35,7 @@ hook_add = '''
   \ 'c': ['clangd'],
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'typescript': ['javascript-typescript-stdio'],
+  \ 'php': ['intelephense','--stdio'],
   \ 'python': ['pyls'],
   \}
 '''

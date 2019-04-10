@@ -274,6 +274,9 @@ function LC_maps()
     nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
     nnoremap <buffer> <silent> <Leader>r :call LanguageClient#textDocument_rename()<cr>
     nnoremap <buffer> <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <silent> <C-w>] :vertical rightbelow wincmd v<CR>call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <silent> <C-w><C-]> :rightbelow wincmd s<CR>call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <silent> [Tab]<C-]> :tab split<CR>:call LanguageClient#textDocument_definition()<CR>
     nnoremap <buffer> <silent> <C-\> :call LanguageClient#textDocument_references()<CR>
     nnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
     vnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_rangeFormatting()<CR>

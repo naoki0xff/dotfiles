@@ -3,13 +3,8 @@
 1. php
 
 composer require jetbrains/phpstorm-stubs:dev-master
-composer require felixfbecker/language-server
 
-&
-
-composer run-script --working-dir=vendor/felixfbecker/language-server parse-stubs
-
-なんかglobalだと行けないから、ローカルで。
+npm -g install intelephense
 
 2. python
 
