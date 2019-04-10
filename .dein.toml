@@ -33,6 +33,7 @@ build = 'bash install.sh'
 hook_add = '''
   let g:LanguageClient_serverCommands = {
   \ 'c': ['clangd'],
+  \ 'go': ['go-langserver','-gocodecompletion','-diagnostics','-lint-tool','golint'],
   \ 'javascript': ['javascript-typescript-stdio'],
   \ 'typescript': ['javascript-typescript-stdio'],
   \ 'php': ['intelephense','--stdio'],

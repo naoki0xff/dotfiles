@@ -22,6 +22,11 @@ npm install global javascript-typescript-langserver
 
 go get -u github.com/sourcegraph/go-langserver
 
+go get -u golang.org/x/lint/golint
+
+NOTE:
+    diagnostics & lint features are experimental
+
 6. c family
 
 brew install llvm
