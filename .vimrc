@@ -255,8 +255,6 @@ if dein#check_install()
 endif
 "}}}
 "LSP{{{
-"MEMO: 
-"なんかイケてない。当たり前だけどlanguage serverの実装に依存してるから、言語ごとで差がでかい。
 function! LC_warning_error_count()
   let l:current_buf_number = bufnr('%')
   let l:qflist_w = getqflist()
@@ -390,10 +388,12 @@ nnoremap <silent> [git]l :Commits<CR>
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
 "indentLine
-let g:indentLine_fileTypeExclude = ['txt','text','help','man']
+let g:indentLine_fileTypeExclude = ['txt','text','help','man','fzf']
 "nerdtree
 let NERDTreeMapOpenSplit = 's'
 let NERDTreeMapOpenVSplit = 'v'
+"lexima
+autocmd Filetype txt,text let b:lexima_disabled = 1
 "}}}
 
 "----------------------------------------------------------------------------
