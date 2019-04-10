@@ -11,8 +11,7 @@ set encoding=utf-8
 set number
 set display=lastline
 set pumheight=10
-"set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}%{LinterStatus()}
-set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}
+set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}%{LC_warning_error_count()}
 set laststatus=2
 set ambiwidth=double
 set completeopt-=preview
@@ -257,13 +256,27 @@ endif
 "}}}
 "LSP{{{
 "MEMO: 
-"なんかイケてない。補完はいいんだけど、それ以外。つーか遅い。
+"なんかイケてない。当たり前だけどlanguage serverの実装に依存してるから、言語ごとで差がでかい。
+function! LC_warning_error_count()
+  let l:current_buf_number = bufnr('%')
+  let l:qflist_w = getqflist()
+  let l:current_buf_warning_diagnostics = filter(qflist_w, {index, dict -> dict['bufnr'] == current_buf_number && dict['type'] == 'W'})
+  let l:warning_count = len(current_buf_warning_diagnostics)
+  let l:qflist_e = getqflist()
+  let l:current_buf_error_diagnostics = filter(qflist_e, {index, dict -> dict['bufnr'] == current_buf_number && dict['type'] == 'E'})
+  let l:error_count = len(current_buf_error_diagnostics)
+  let l:total_count = warning_count + error_count
+  return total_count == 0 || !g:LanguageClient_loaded ? '' :  printf('[Lint:%dW %dE]',warning_count,error_count)
+endfunction
 function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
+    nnoremap <buffer> <silent> [sub]c :call LanguageClient_contextMenu()<cr>
     nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
+    nnoremap <buffer> <silent> <Leader>r :call LanguageClient#textDocument_rename()<cr>
     nnoremap <buffer> <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
     nnoremap <buffer> <silent> <C-\> :call LanguageClient#textDocument_references()<CR>
     nnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
+    vnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_rangeFormatting()<CR>
   endif
 endfunction
 augroup LSP
@@ -315,6 +328,14 @@ let NERDTreeMapOpenSplit = 's'
 let NERDTreeMapOpenVSplit = 'v'
 "}}}
 "fzf{{{
+let g:fzf_tags_command = 'ctags -R -f .tags'
+command! -bang -nargs=* FAg call
+  \ fzf#vim#ag(<q-args>,{'options': '--delimiter : --nth 4..'},<bang>0)
+command! -bang -nargs=* Files call
+  \ fzf#vim#files(<q-args>,
+  \            <bang>0 ? fzf#vim#with_preview('up:60%')
+  \                    : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \            <bang>0)
 nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :FAg<CR>
