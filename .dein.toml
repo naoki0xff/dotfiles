@@ -81,6 +81,14 @@ hook_add = '''
   let g:ref_phpmanual_path = '/Users/naoki/usr/doc/ref/php-chunked-xhtml'
 '''
 
+### filetype sources
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+
+[[plugins]]
+repo = 'blueyed/smarty.vim'
+on_ft = 'smarty'
+
 ### utility
 [[plugins]]
 repo = 'tpope/vim-obsession'
@@ -127,14 +135,6 @@ repo = 'dahu/vim-fanfingtastic'
 
 [[plugins]]
 repo = 'AndrewRadev/linediff.vim'
-
-### filetype sources
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-
-[[plugins]]
-repo = 'blueyed/smarty.vim'
-on_ft = 'smarty'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
