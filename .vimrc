@@ -54,7 +54,7 @@ augroup END
 set autoread
 set updatetime=100
 "}}}
-""keymap{{{
+"keymap{{{
 "normal
 nnoremap <C-g> 1<C-g>
 nnoremap <silent> <Esc><Esc> :noh<CR>
@@ -114,7 +114,7 @@ nnoremap <Leader>dw :windo diffthis<CR>
 vnoremap <Leader>dl :Linediff<CR>
 nnoremap <Leader>db :DiffOrig<CR>
 "}}}
-""functions{{{
+"functions{{{
 "DeleteHiddenBuffers = delete hidden buffer
 function DeleteHiddenBuffers()
     let tpbl=[]
@@ -164,7 +164,7 @@ function! ScrollBind(...)
   endif
 endfunction
 "}}}
-""tab{{{
+"tab{{{
 function! s:SID_PREFIX()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_\zeSID_PREFIX$')
 endfunction
@@ -323,10 +323,6 @@ let g:vdebug_options = {
 \    'continuous_mode'  : 1
 \}
 "}}}
-"nerdtree{{{
-let NERDTreeMapOpenSplit = 's'
-let NERDTreeMapOpenVSplit = 'v'
-"}}}
 "fzf{{{
 let g:fzf_tags_command = 'ctags -R -f .tags'
 command! -bang -nargs=* FAg call
@@ -392,6 +388,9 @@ nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
 "indentLine
 let g:indentLine_fileTypeExclude = ['txt','text','help','man']
+"nerdtree
+let NERDTreeMapOpenSplit = 's'
+let NERDTreeMapOpenVSplit = 'v'
 "}}}
 
 "----------------------------------------------------------------------------
