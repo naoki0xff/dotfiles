@@ -11,15 +11,6 @@ repo = 'Shougo/dein.vim'
 
 ### search
 [[plugins]]
-repo = 'Shougo/denite.nvim'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-
-[[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-
-[[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
 merged = '0'
@@ -37,6 +28,12 @@ hook_add = '''
     \                    : fzf#vim#with_preview('right:50%:hidden', '?'),
     \            <bang>0)
 '''
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
 
 ### edit
 [[plugins]]

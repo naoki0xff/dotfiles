@@ -314,34 +314,8 @@ let g:vdebug_options = {
 let NERDTreeMapOpenSplit = 's'
 let NERDTreeMapOpenVSplit = 'v'
 "}}}
-"denite{{{
-call denite#custom#map('insert','<C-a>','<denite:move_caret_to_head>','noremap')
-call denite#custom#map('insert','<C-e>','<denite:move_caret_to_tail>','noremap')
-call denite#custom#map('insert','<C-f>','<denite:move_caret_to_right>','noremap')
-call denite#custom#map('insert','<C-b>','<denite:move_caret_to_left>','noremap')
-call denite#custom#map('insert','<C-j>','<denite:move_to_next_line>','noremap')
-call denite#custom#map('insert','<C-n>','<denite:move_to_next_line>','noremap')
-call denite#custom#map('insert','<C-k>','<denite:move_to_previous_line>','noremap')
-call denite#custom#map('insert','<C-p>','<denite:move_to_previous_line>','noremap')
-call denite#custom#map('insert','<C-d>','<denite:scroll_page_forwards>','noremap')
-call denite#custom#map('insert','<C-u>','<denite:scroll_page_backwards>','noremap')
-nnoremap <silent> [sub]l :Denite buffer -winheight=8 -cursor-wrap -smartcase<CR>
-nnoremap <silent> [sub]j :Denite jump<CR>
-let s:menus = {}
-let s:menus.vim = { 'description': 'vim configuration files' }
-let s:menus.vim.file_candidates = [['init.vim','~/.config/nvim/init.vim'],['vimrc','~/.vimrc'],['dein.toml','~/.dein.toml'],['dein_lazy.toml','~/.dein_lazy.toml']]
-let s:menus.zsh = { 'description': 'shell configuration files' }
-let s:menus.zsh.file_candidates = [['zshrc','~/.zshrc'],['zprofile','~/.zprofile']]
-let s:menus.tmux = { 'description': 'tmux configuration files' }
-let s:menus.tmux.file_candidates = [['tmux.conf','~/.tmux.conf']]
-"want to add `:Denite dein` to menu. Can I do that?
-call denite#custom#var('menu','menus',s:menus)
-nnoremap <silent> [sub], :Denite menu<CR>
-"extra sources
-"from LanguageClient-neovim
-nnoremap <silent> [sub]c :Denite contextMenu<CR>
-"}}}
 "fzf{{{
+nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :FAg<CR>
 nnoremap <silent> [sub]G :Ag<CR>
@@ -396,7 +370,7 @@ nnoremap <silent> [git]l :Commits<CR>
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
 "indentLine
-let g:indentLine_fileTypeExclude = ['txt','help']
+let g:indentLine_fileTypeExclude = ['txt','text','help','man']
 "}}}
 
 "----------------------------------------------------------------------------
