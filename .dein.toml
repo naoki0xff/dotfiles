@@ -56,10 +56,6 @@ hook_add = '''
   let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 '''
 
-### debug
-[[plugins]]
-repo = 'vim-vdebug/vdebug'
-
 ### external integration
 [[plugins]]
 repo = 'tpope/vim-fugitive'

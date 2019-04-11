@@ -286,44 +286,6 @@ augroup LSP
     autocmd FileType * call LC_maps()
 augroup END
 "}}}
-"vdebug{{{
-nnoremap [vdb] <Nop>
-nmap <Space>d [vdb]
-nnoremap <silent> [vdb]l :BreakpointWindow<CR>
-nnoremap <silent> [vdb]q :BreakpointRemove *<CR>
-"MEMO: after eval, you can go back to list with 'u'. from list, <Enter> acts almost in same way
-let g:vdebug_keymap = {
-\  'run' : '<C-n>',
-\  'run_to_cursor' : '<C-m>',
-\  'step_over' : '[vdb]n',
-\  'step_into' : '[vdb]i',
-\  'step_out' : '[vdb]N',
-\  'set_breakpoint' : '<Space>m',
-\  'eval_under_cursor' : '[vdb]e',
-\  'detach' : '[vdb]c',
-\  'close' : '[vdb]C',
-\}
-"remote: {ide_key,path_maps(remote:local)}
-let g:vdebug_options = {
-\    'port' : 9000,
-\    'timeout' : 20,
-\    'server' : '',
-\    'on_close' : 'detach',
-\    'break_on_open' : 0,
-\    'ide_key' : '',
-\    'debug_window_level' : 0,
-\    'debug_file_level' : 0,
-\    'debug_file' : '',
-\    'path_maps' : {},
-\    'watch_window_style' : 'expanded',
-\    'marker_default' : '⬦',
-\    'marker_closed_tree' : '▸',
-\    'marker_open_tree' : '▾',
-\    'sign_breakpoint' : '▷',
-\    'sign_current' : '▶',
-\    'continuous_mode'  : 1
-\}
-"}}}
 "fzf{{{
 let g:fzf_tags_command = 'ctags -R -f .tags'
 command! -bang -nargs=* FAg call

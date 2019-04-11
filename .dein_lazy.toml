@@ -53,6 +53,48 @@ on_ft = 'ruby'
 repo = 'mechatroner/rainbow_csv'
 on_ft = 'csv'
 
+### debug
+[[plugins]]
+repo = 'vim-vdebug/vdebug'
+on_ft = ['javascript','perl','php','python','ruby']
+hook_add = '''
+  nnoremap [vdb] <Nop>
+  nmap <Space>d [vdb]
+  nnoremap <silent> [vdb]l :BreakpointWindow<CR>
+  nnoremap <silent> [vdb]q :BreakpointRemove *<CR>
+  let g:vdebug_keymap = {
+  \  'run' : '<C-n>',
+  \  'run_to_cursor' : '<C-m>',
+  \  'step_over' : '[vdb]n',
+  \  'step_into' : '[vdb]i',
+  \  'step_out' : '[vdb]N',
+  \  'set_breakpoint' : '<Space>m',
+  \  'eval_under_cursor' : '[vdb]e',
+  \  'detach' : '[vdb]c',
+  \  'close' : '[vdb]C',
+  \}
+  let g:vdebug_options = {
+  \    'port' : 9000,
+  \    'timeout' : 20,
+  \    'server' : '',
+  \    'on_close' : 'detach',
+  \    'break_on_open' : 0,
+  \    'ide_key' : '',
+  \    'debug_window_level' : 0,
+  \    'debug_file_level' : 0,
+  \    'debug_file' : '',
+  \    'path_maps' : {"":""},
+  \    'watch_window_style' : 'expanded',
+  \    'marker_default' : '⬦',
+  \    'marker_closed_tree' : '▸',
+  \    'marker_open_tree' : '▾',
+  \    'sign_breakpoint' : '▷',
+  \    'sign_current' : '▶',
+  \    'continuous_mode'  : 1
+  \}
+'''
+# for remote debugging -> {path_maps(remote:local)}
+
 ### utility
 [[plugins]]
 repo = 'thinca/vim-quickrun'
