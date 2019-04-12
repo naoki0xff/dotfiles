@@ -119,8 +119,8 @@ hook_add = '''
   \ 'quickfix/errorformat' : '%f\\(%l\\,%c\\):\ error\ CS%n:\ %m',
   \}
   let g:quickrun_no_default_key_mappings = 1
-  nnoremap \e :QuickRun -mode n<CR>
-  xnoremap \e :QuickRun -mode v<CR>
+  nnoremap <Leader>e :QuickRun -mode n<CR>
+  xnoremap <Leader>e :QuickRun -mode v<CR>
   nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
   au FileType qf nnoremap <silent><buffer>q :quit<CR>
 '''

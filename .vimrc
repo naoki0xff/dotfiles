@@ -15,6 +15,7 @@ set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:load
 set laststatus=2
 set ambiwidth=double
 set completeopt-=preview
+set lazyredraw
 "buffer
 set hidden
 "backup
@@ -266,15 +267,16 @@ function! LC_warning_error_count()
   let l:total_count = warning_count + error_count
   return total_count == 0 || !g:LanguageClient_loaded ? '' :  printf('[Lint:%dW %dE]',warning_count,error_count)
 endfunction
+"MEMO: hope gotoCmd to add feature: rightbelow split, works fine even with multiple candidates
 function LC_maps()
   if has_key(g:LanguageClient_serverCommands, &filetype)
     nnoremap <buffer> <silent> [sub]c :call LanguageClient_contextMenu()<cr>
     nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
     nnoremap <buffer> <silent> <Leader>r :call LanguageClient#textDocument_rename()<cr>
     nnoremap <buffer> <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <silent> <C-w>] :vertical rightbelow wincmd v \| call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <silent> <C-w><C-]> :rightbelow wincmd s \| call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <silent> [Tab]<C-]> :tab split \| call LanguageClient#textDocument_definition()<CR>
+    nnoremap <buffer> <silent> <C-w>] :call LanguageClient#textDocument_definition({'gotoCmd':'vsplit'})<CR>
+    nnoremap <buffer> <silent> <C-w><C-]> :call LanguageClient#textDocument_definition({'gotoCmd':'split'})<CR>
+    nnoremap <buffer> <silent> [Tab]<C-]> :call LanguageClient#textDocument_definition({'gotoCmd':'tabnew'})<CR>
     nnoremap <buffer> <silent> <C-\> :call LanguageClient#textDocument_references()<CR>
     nnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
     vnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_rangeFormatting()<CR>
