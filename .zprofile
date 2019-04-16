@@ -33,7 +33,7 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export XDG_CONFIG_HOME=~/.config
 export LANG=en_US.UTF-8
 # PATH
-PATH="$PATH:$HOME/usr/bin:$HOME/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin"
+PATH="$HOME/usr/bin:$HOME/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin:$PATH"
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # LANGUAGE
 # -> python
@@ -49,9 +49,12 @@ eval "$(phpenv init -)"
 # -> go
 export GOPATH=$HOME/usr/local/go
 PATH="$PATH:$GOPATH/bin"
-# -> js
+# -> node.js
 export NODEBREW_ROOT=/usr/local/var/nodebrew
 PATH="/usr/local/var/nodebrew/current/bin:$PATH"
+# tools
+# nvim:experimental v4.0
+PATH="$HOME/usr/local/src/nvim/nvim-osx64/bin:$PATH"
 # avoid duplication
 typeset -U path PATH
 # finalize
@@ -87,7 +90,7 @@ RPROMPT="%1(v|%F{green}%1v%f|)"
 disable r
 # tmux
 [[ -z $TMUX && ! -z "$PS1" ]] && tmux
-set -o ignoreeof
+set -o ignoreeof # stop tmux from exit with C-d
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1

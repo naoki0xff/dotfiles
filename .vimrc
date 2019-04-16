@@ -1,6 +1,9 @@
 "vimrc
 "requirement:vim=NVIM v0.2.0 or later
 
+"experimental with nvim v4
+set wildoptions=pum
+
 "----------------------------------------------------------------------------
 "configuration
 "----------------------------------------------------------------------------
@@ -11,7 +14,7 @@ set encoding=utf-8
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y\ %r%h%w%-0.37f%m%=ROW=%l/%L,COL=%c\ %{ObsessionStatus('[$:loading]','[$:paused]')}%{LC_warning_error_count()}
+set statusline=%y\ %r%h%w%-0.37f%m%=%{LC_warning_error_count()}\%{ObsessionStatus('[$:loading]','[$:paused]')}%{fugitive#statusline()}
 set laststatus=2
 set ambiwidth=double
 set completeopt-=preview
