@@ -1,7 +1,7 @@
 "vimrc
 "requirement:vim=NVIM v0.2.0 or later
 
-"experimental with nvim v4
+"experimental with nvim v4: if set, fzf buffer start with normal? mode. not sure why.
 set wildoptions=pum
 
 "----------------------------------------------------------------------------
