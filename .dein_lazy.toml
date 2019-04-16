@@ -95,6 +95,10 @@ hook_add = '''
 '''
 # for remote debugging -> {path_maps(remote:local)}
 
+[[plugins]]
+repo = 'sakhnik/nvim-gdb'
+on_ft = ['c','cpp','objc','objcpp']
+
 ### utility
 [[plugins]]
 repo = 'thinca/vim-quickrun'
