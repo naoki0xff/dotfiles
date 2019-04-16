@@ -380,6 +380,8 @@ augroup vimrc
     autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
     autocmd BufNewFile,BufRead *.xaml setfiletype xml
     autocmd BufNewFile,BufRead *.csv setfiletype csv
+    autocmd BufNewFile,BufRead *.m setfiletype objc
+    autocmd Filetype objc let b:match_words = '@\(implementation\|interface\):@end'
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END

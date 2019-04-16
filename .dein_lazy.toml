@@ -29,7 +29,7 @@ depends = ['neosnippet-snippets']
 
 [[plugins]]
 repo = 'deoplete-plugins/deoplete-clang'
-on_ft = 'c'
+on_ft = ['c','cpp','objc','objcpp']
 hook_add = '''
   let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
   let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
