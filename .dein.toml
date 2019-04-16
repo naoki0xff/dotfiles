@@ -67,6 +67,12 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'rhysd/git-messenger.vim'
+hook_add = '''
+  let g:git_messenger_no_default_mappings = v:true
+'''
+
+[[plugins]]
 repo = 'majutsushi/tagbar'
 hook_add = '''
   let g:tagbar_autofocus = 1

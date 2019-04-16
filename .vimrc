@@ -339,7 +339,7 @@ nnoremap <silent> <Space>t :TagbarToggle<CR>
 nmap <Space>h <plug>(quickhl-manual-this)
 vmap <Space>h <plug>(quickhl-manual-this)
 nmap <Space>H <plug>(quickhl-manual-reset)
-"git:fugitive;fzf;GitGutter
+"git:fugitive;fzf;GitGutter;git-messenger
 nnoremap [git] <Nop>
 nmap <Space>g [git]
 nnoremap <silent> [git]s :Gstatus<CR>
@@ -351,6 +351,7 @@ nnoremap <silent> ]d :GitGutterNextHunk<CR>
 nnoremap <silent> [git]b :Gblame<CR>
 nnoremap <silent> [git]c :BCommits<CR>
 nnoremap <silent> [git]l :Commits<CR>
+nnoremap <silent> [git]i :GitMessenger<CR>
 "vim-obsession;{create/halt-recording},destroy
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
