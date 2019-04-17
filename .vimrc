@@ -2,7 +2,7 @@
 "requirement:vim=NVIM v0.2.0 or later
 
 "experimental with nvim v4: if set, fzf buffer start with normal? mode. not sure why.
-set wildoptions=pum
+"set wildoptions=pum
 
 "----------------------------------------------------------------------------
 "configuration
@@ -375,6 +375,7 @@ augroup vimrc
     autocmd!
     autocmd Filetype vim set keywordprg=:help
     autocmd Filetype vim setlocal foldmethod=marker
+    autocmd Filetype make setlocal noexpandtab
     autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
     autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include 
     autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
