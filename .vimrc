@@ -373,7 +373,7 @@ syntax on
 "autocmds
 augroup vimrc
     autocmd!
-    autocmd Filetype vim set keywordprg=:help
+    autocmd Filetype vim setlocal keywordprg=:help
     autocmd Filetype vim setlocal foldmethod=marker
     autocmd Filetype make setlocal noexpandtab
     autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
