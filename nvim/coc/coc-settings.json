@@ -1,4 +1,5 @@
 {
+  "diagnostic.virtualText": true,
   "list.autoResize": false,
   "list.insertMappings": {
     "<C-b>": "prompt:left",
