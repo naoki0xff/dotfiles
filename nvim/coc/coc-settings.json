@@ -1,4 +1,16 @@
 {
+  "list.autoResize": false,
+  "list.insertMappings": {
+    "<C-b>": "prompt:left",
+    "<C-f>": "prompt:right",
+    "<C-n>": "normal:j",
+    "<C-p>": "normal:k",
+    "<C-c>": "do:exit"
+  },
+  "list.normalMappings": {
+    "q": "do:exit",
+    "<C-c>": "do:exit"
+  },
   "languageserver": {
     "clangd": {
       "command": "clangd",

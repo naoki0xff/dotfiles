@@ -14,11 +14,13 @@ set encoding=utf-8
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y\ %r%h%w%-0.37f%m%=%{LC_warning_error_count()}\%{ObsessionStatus('[$:loading]','[$:paused]')}%{fugitive#statusline()}
+set statusline=%y\ %r%h%w%-0.37f%m%=%{StatusDiagnostic()}%{ObsessionStatus('[$:loading]','[$:paused]')}%{fugitive#statusline()}
 set laststatus=2
 set ambiwidth=double
 set completeopt-=preview
 set lazyredraw
+set shortmess+=c
+set signcolumn=yes
 "buffer
 set hidden
 "backup
@@ -74,8 +76,6 @@ inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
 "visual
 vnoremap * y/<C-R>"<CR>
 "command
@@ -258,39 +258,6 @@ if dein#check_install()
   call dein#install()
 endif
 "}}}
-"LSP{{{
-function! LC_warning_error_count()
-  let l:current_buf_number = bufnr('%')
-  let l:qflist_w = getqflist()
-  let l:current_buf_warning_diagnostics = filter(qflist_w, {index, dict -> dict['bufnr'] == current_buf_number && dict['type'] == 'W'})
-  let l:warning_count = len(current_buf_warning_diagnostics)
-  let l:qflist_e = getqflist()
-  let l:current_buf_error_diagnostics = filter(qflist_e, {index, dict -> dict['bufnr'] == current_buf_number && dict['type'] == 'E'})
-  let l:error_count = len(current_buf_error_diagnostics)
-  let l:total_count = warning_count + error_count
-  return total_count == 0 || !g:LanguageClient_loaded ? '' :  printf('[Lint:%dW %dE]',warning_count,error_count)
-endfunction
-"MEMO: hope gotoCmd to add feature: rightbelow split, works fine even with multiple candidates
-function LC_maps()
-  if has_key(g:LanguageClient_serverCommands, &filetype)
-    nnoremap <buffer> <silent> [sub]c :call LanguageClient_contextMenu()<cr>
-    nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<cr>
-    nnoremap <buffer> <silent> <Leader>r :call LanguageClient#textDocument_rename()<cr>
-    nnoremap <buffer> <silent> <C-]> :call LanguageClient#textDocument_definition()<CR>
-    nnoremap <buffer> <silent> <C-w>] :call LanguageClient#textDocument_definition({'gotoCmd':'vsplit'})<CR>
-    nnoremap <buffer> <silent> <C-w><C-]> :call LanguageClient#textDocument_definition({'gotoCmd':'split'})<CR>
-    nnoremap <buffer> <silent> [Tab]<C-]> :call LanguageClient#textDocument_definition({'gotoCmd':'tabnew'})<CR>
-    nnoremap <buffer> <silent> <C-\> :call LanguageClient#textDocument_references()<CR>
-    nnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_formatting()<CR>
-    vnoremap <buffer> <silent> <Leader>f :call LanguageClient#textDocument_rangeFormatting()<CR>
-  endif
-endfunction
-augroup LSP
-    autocmd!
-    autocmd BufEnter __LanguageClient__ nnoremap <buffer> q <C-w>c
-    autocmd FileType * call LC_maps()
-augroup END
-"}}}
 "fzf{{{
 let g:fzf_tags_command = 'ctags -R -f .tags'
 command! -bang -nargs=* FAg call
@@ -315,6 +282,55 @@ nnoremap <silent> [sub]: :History:<CR>
 nnoremap <silent> [sub]? :Commands<CR>
 nnoremap <silent> [sub]h :Helptags<CR>
 "}}}
+"coc.nvim
+"TODO: 
+"1. split action with jumpDefinition
+"2. LanguageClient-neovimのvirtualtextでエラー表示するやつはイケてたのでやりたい。
+"functions
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return empty(info) ? '' : '[Lint:' . join(msgs, ',') . get(g:, 'coc_status', '') . ']'
+endfunction
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+function! s:go_definition()
+  if &filetype == 'help'
+    execute 'tag '.expand('<cword>')
+  else
+    call CocAction('jumpDefinition')
+  endif
+endfunction
+"keymaps
+nnoremap <silent> [sub]c :CocList<CR>
+nnoremap <silent> [sub]C :CocConfig<CR>
+nmap <silent> [a <Plug>(coc-diagnostic-prev)
+nmap <silent> ]a <Plug>(coc-diagnostic-next)
+inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> <C-]> :call <SID>go_definition()<CR>
+nmap <silent> <C-\> <Plug>(coc-references)
+nmap <Leader>r <Plug>(coc-rename)
+nmap <leader>f  <Plug>(coc-format)
+vmap <leader>f  <Plug>(coc-format-selected)
+"Coc autocmds
+augroup LspClient
+  autocmd!
+  autocmd BufEnter coc://document nnoremap <buffer> q <C-w>c
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup END
 "others{{{
 "anzu
 nmap n <Plug>(anzu-n-with-echo)
@@ -356,7 +372,7 @@ nnoremap <silent> [git]i :GitMessenger<CR>
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
 "indentLine
-let g:indentLine_fileTypeExclude = ['txt','text','help','man','fzf']
+let g:indentLine_fileTypeExclude = ['txt','text','help','man','fzf','json']
 "nerdtree
 let NERDTreeMapOpenSplit = 's'
 let NERDTreeMapOpenVSplit = 'v'
@@ -383,6 +399,7 @@ augroup vimrc
     autocmd BufNewFile,BufRead *.csv setfiletype csv
     autocmd BufNewFile,BufRead *.m setfiletype objc
     autocmd Filetype objc let b:match_words = '@\(implementation\|interface\):@end'
+    autocmd BufNewFile,BufRead *.json setlocal conceallevel=0
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END

@@ -1,58 +1,5 @@
 ### .dein_lazy.toml
 
-### edit
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-hook_source = '''
-  let g:deoplete#enable_at_startup = 1
-  imap <expr><C-l>
-  \ neosnippet#expandable() <Bar><Bar> neosnippet#jumpable() ?
-  \ "\<Plug>(neosnippet_expand_or_jump)" : "\<C-n>"
-'''
-on_event = 'InsertCharPre'
-# NOTE: require python version 3.6+
-
-[[plugins]]
-repo = 'Shougo/neosnippet'
-hook_source = '''
-  imap <C-l> <Plug>(neosnippet_expand_or_jump)
-  smap <C-l> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-l> <Plug>(neosnippet_expand_target)
-  if has('conceal')
-    set conceallevel=2 concealcursor=niv
-  endif
-  let g:neosnippet#snippets_directory = '~/usr/doc/snippets/'
-'''
-on_event = 'InsertCharPre'
-on_ft = ['snippet']
-depends = ['neosnippet-snippets']
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-clang'
-on_ft = ['c','cpp','objc','objcpp']
-hook_add = '''
-  let g:deoplete#sources#clang#libclang_path = '/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-  let g:deoplete#sources#clang#clang_header = '/Library/Developer/CommandLineTools/usr/lib/clang'
-'''
-
-[[plugins]]
-repo = 'deoplete-plugins/deoplete-go'
-build = 'make'
-on_ft = 'go'
-
-[[plugins]]                          
-repo = 'padawan-php/deoplete-padawan'
-on_ft = 'php'                        
-
-[[plugins]]                 
-repo = 'Shougo/deoplete-rct'
-on_ft = 'ruby'              
-
-### filetype
-[[plugins]]
-repo = 'mechatroner/rainbow_csv'
-on_ft = 'csv'
-
 ### debug
 [[plugins]]
 repo = 'vim-vdebug/vdebug'
@@ -99,33 +46,11 @@ hook_add = '''
 repo = 'sakhnik/nvim-gdb'
 on_ft = ['c','cpp','objc','objcpp']
 
-### utility
+### filetype source
 [[plugins]]
-repo = 'thinca/vim-quickrun'
-hook_add = '''
-  let g:quickrun_config = {
-  \ "runner" : "vimproc",
-  \ "runner/vimproc/updatetime" : 60,
-  \	"_" : {
-  \  "outputter/buffer/split" : ":botright",
-  \  "outputter/error/success" : "buffer",
-  \  "outputter/error/error/" : "quickfix",
-  \  "outputter/buffer/into" : "1",
-  \  "outputter/quickfix/errorformat" : "%f:%l,%m in %f on line %l",
-  \  "outputter/buffer/close_on_empty" : 1,
-  \  "outputter" : "error"
-  \  }
-  \}
-  let g:quickrun_config['cs']  = {
-  \ 'command' : 'mcs',
-  \ 'exec' : ['%c %o %s:p > /dev/null', 'mono %s:p:r.exe', 'rm %s:p:r.exe'],
-  \ 'cmdopt' : '-warn:4',
-  \ 'quickfix/errorformat' : '%f\\(%l\\,%c\\):\ error\ CS%n:\ %m',
-  \}
-  let g:quickrun_no_default_key_mappings = 1
-  nnoremap <Leader>e :QuickRun -mode n<CR>
-  xnoremap <Leader>e :QuickRun -mode v<CR>
-  nnoremap <expr><silent> <C-c> quickrun#is_running() ? quickrun#sweep_sessions() : "\<C-c>"
-  au FileType qf nnoremap <silent><buffer>q :quit<CR>
-'''
+repo = 'mechatroner/rainbow_csv'
+on_ft = 'csv'
 
+[[plugins]]
+repo = 'blueyed/smarty.vim'
+on_ft = 'smarty'
