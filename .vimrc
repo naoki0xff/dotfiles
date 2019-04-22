@@ -19,6 +19,8 @@ set laststatus=2
 set ambiwidth=double
 set completeopt-=preview
 set lazyredraw
+set shortmess+=c
+set signcolumn=yes
 "buffer
 set hidden
 "backup
@@ -74,8 +76,6 @@ inoremap <C-e> <C-o>$
 inoremap <C-a> <C-o>^
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
 "visual
 vnoremap * y/<C-R>"<CR>
 "command
@@ -356,7 +356,7 @@ nnoremap <silent> [git]i :GitMessenger<CR>
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
 "indentLine
-let g:indentLine_fileTypeExclude = ['txt','text','help','man','fzf']
+let g:indentLine_fileTypeExclude = ['txt','text','help','man','fzf','json']
 "nerdtree
 let NERDTreeMapOpenSplit = 's'
 let NERDTreeMapOpenVSplit = 'v'
@@ -383,6 +383,7 @@ augroup vimrc
     autocmd BufNewFile,BufRead *.csv setfiletype csv
     autocmd BufNewFile,BufRead *.m setfiletype objc
     autocmd Filetype objc let b:match_words = '@\(implementation\|interface\):@end'
+    autocmd BufNewFile,BufRead *.json setlocal conceallevel=0
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
