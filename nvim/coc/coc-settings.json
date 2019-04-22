@@ -27,5 +27,6 @@
         "lintTool": "golint"
       }
     }
-  }
+  },
+  "suggest.noselect": false
 }

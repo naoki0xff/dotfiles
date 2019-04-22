@@ -283,9 +283,7 @@ nnoremap <silent> [sub]? :Commands<CR>
 nnoremap <silent> [sub]h :Helptags<CR>
 "}}}
 "coc.nvim
-"TODO: 
-"1. split action with jumpDefinition
-"2. LanguageClient-neovimのvirtualtextでエラー表示するやつはイケてたのでやりたい。
+"MEMO: default configs under [plugin_repo]/data/schema.json
 "functions
 function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
@@ -299,6 +297,7 @@ function! StatusDiagnostic() abort
   endif
   return empty(info) ? '' : '[Lint:' . join(msgs, ',') . get(g:, 'coc_status', '') . ']'
 endfunction
+"TODO: enables split/vsplit/tabe on this function. ex. show_documentation(arg)
 function! s:show_documentation()
   if &filetype == 'vim'
     execute 'h '.expand('<cword>')
@@ -378,6 +377,9 @@ let NERDTreeMapOpenSplit = 's'
 let NERDTreeMapOpenVSplit = 'v'
 "lexima
 autocmd Filetype txt,text let b:lexima_disabled = 1
+"UltiSnips
+nnoremap <silent> [sub]e :UltiSnipsEdit<CR>
+let g:UltiSnipsSnippetsDir = expand('~/.config/nvim/ultisnips')
 "}}}
 
 "----------------------------------------------------------------------------
