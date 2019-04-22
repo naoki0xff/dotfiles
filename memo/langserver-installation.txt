@@ -31,6 +31,10 @@ NOTE:
 
 brew install llvm
 
+7. efm-langserver
+
+go get -u github.com/mattn/efm-langserver/cmd/efm-langserver
+
 ---
 
 ## NOTE
