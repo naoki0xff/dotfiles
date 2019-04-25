@@ -1,9 +1,6 @@
 "vimrc
 "requirement:vim=NVIM v0.2.0 or later
 
-"experimental with nvim v4: if set, fzf buffer start with normal? mode. not sure why.
-"set wildoptions=pum
-
 "----------------------------------------------------------------------------
 "configuration
 "----------------------------------------------------------------------------
@@ -43,6 +40,8 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
+"cmdline completion
+set wildoptions=pum
 "backspace for deletion
 set backspace=indent,eol,start
 "visual select expansion
@@ -258,7 +257,7 @@ if dein#check_install()
   call dein#install()
 endif
 "}}}
-"LSP{{{
+"LanguageClient-neovim{{{
 function! LC_warning_error_count()
   let l:current_buf_number = bufnr('%')
   let l:qflist_w = getqflist()
