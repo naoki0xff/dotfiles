@@ -1,9 +1,6 @@
 "vimrc
 "requirement:vim=NVIM v0.2.0 or later
 
-"experimental with nvim v4: if set, fzf buffer start with normal? mode. not sure why.
-"set wildoptions=pum
-
 "----------------------------------------------------------------------------
 "configuration
 "----------------------------------------------------------------------------
@@ -43,6 +40,8 @@ set incsearch
 set wrapscan
 set ignorecase
 set smartcase
+"cmdline completion
+set wildoptions=pum
 "backspace for deletion
 set backspace=indent,eol,start
 "visual select expansion
@@ -283,7 +282,6 @@ nnoremap <silent> [sub]? :Commands<CR>
 nnoremap <silent> [sub]h :Helptags<CR>
 "}}}
 "coc.nvim
-"MEMO: default configs under [plugin_repo]/data/schema.json
 "functions
 function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
@@ -295,11 +293,13 @@ function! StatusDiagnostic() abort
   if get(info, 'warning', 0)
     call add(msgs, 'W' . info['warning'])
   endif
-  return empty(info) ? '' : '[Lint:' . join(msgs, ',') . get(g:, 'coc_status', '') . ']'
+  if get(info, 'information', 0) || get(info, 'hint', 0)
+    call add(msgs, '?')
+  endif
+  return empty(msgs) ? '' : '[Lint:' . join(msgs, ',') . get(g:, 'coc_status', '') . ']'
 endfunction
-"TODO: enables split/vsplit/tabe on this function. ex. show_documentation(arg)
 function! s:show_documentation()
-  if &filetype == 'vim'
+  if &filetype == 'vim' || &filetype == 'conf'
     execute 'h '.expand('<cword>')
   else
     call CocAction('doHover')
@@ -313,13 +313,17 @@ function! s:go_definition()
   endif
 endfunction
 "keymaps
-nnoremap <silent> [sub]c :CocList<CR>
-nnoremap <silent> [sub]C :CocConfig<CR>
+nnoremap [coc] <Nop>
+nmap <Space>c [coc]
+nnoremap <silent> [coc]l :CocList<CR>
+nnoremap <silent> [coc], :CocConfig<CR>
+nnoremap <silent> [coc]. :view ~/.cache/dein/repos/github.com/neoclide/coc.nvim/data/schema.json \| setlocal nomodifiable<CR>
 nmap <silent> [a <Plug>(coc-diagnostic-prev)
 nmap <silent> ]a <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 nnoremap <silent> <C-]> :call <SID>go_definition()<CR>
+nnoremap <silent> [Tab]<C-]> :call CocActionAsync('jumpDefinition','tabe')<CR>
 nmap <silent> <C-\> <Plug>(coc-references)
 nmap <Leader>r <Plug>(coc-rename)
 nmap <leader>f  <Plug>(coc-format)

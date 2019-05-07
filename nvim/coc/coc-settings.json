@@ -9,6 +9,10 @@
     "<C-c>": "do:exit"
   },
   "list.normalMappings": {
+    "<C-j>": "normal:j",
+    "<C-k>": "normal:k",
+    "<C-n>": "normal:j",
+    "<C-p>": "normal:k",
     "q": "do:exit",
     "<C-c>": "do:exit"
   },
@@ -27,6 +31,5 @@
         "lintTool": "golint"
       }
     }
-  },
-  "suggest.noselect": false
+  }
 }
