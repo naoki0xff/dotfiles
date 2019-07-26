@@ -271,7 +271,7 @@ nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :FAg<CR>
 nnoremap <silent> [sub]G :Ag<CR>
 nnoremap <silent> [sub]t :Tags<CR>
-"nnoremap <silent> [sub]o :BTags<CR>
+nnoremap <silent> [sub]o :BTags<CR>
 nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]w :Windows<CR>
 nnoremap <silent> [sub]. :BLines<CR>
@@ -346,15 +346,13 @@ nmap <silent> g<C-x> <Plug>(trip-decrement-ignore-minus)
 "edgemotion
 nmap ]b <Plug>(edgemotion-j)
 nmap [b <Plug>(edgemotion-k)
-"neosnippet
-nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
 "nerdtree
 nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
 "undotree
 nnoremap <silent> <Space>u :MundoToggle<CR>
 "vista
 nnoremap <silent> <Space>t :Vista<CR>
-nnoremap <silent> [sub]o :Vista finder<CR>
+"nnoremap <silent> [sub]o :Vista finder<CR>
 "nnoremap <silent> [sub]t :Vista finder!<CR>
 let g:vista_default_executive = 'coc'
 let g:vista_finder_alternative_executives = ['ctags']
