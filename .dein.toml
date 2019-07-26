@@ -31,7 +31,7 @@ repo = 'neoclide/coc.nvim'
 merge = 0
 build = 'yarn install --frozen-lockfile'
 # depends: node,yarn
-# extensions: coc-{json,tsserver,html,css,phpls,solargraph,python,emmet,snippets}
+# extensions: coc-{json,tsserver,html,css,phpls,solargraph,python,emmet,snippets,java}
 # LangServer: clangd,go-langserver
 
 [[plugins]]
@@ -52,8 +52,8 @@ hook_add = '''
 [[plugins]]
 repo = 'tyru/caw.vim'
 hook_add = '''
-  let g:caw_hotpos_sp = ''
-  let g:caw_hotpos_skip_blank_line = 1
+  let g:caw_hatpos_sp = ''
+  let g:caw_hatpos_skip_blank_line = 1
 '''
 
 [[plugins]]

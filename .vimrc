@@ -409,6 +409,11 @@ augroup vimrc
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
+"neoivm bug(watching will fixed)
+augroup secure_modeline_conflict_workaround
+  autocmd!
+  autocmd FileType help setlocal nomodeline
+augroup END
 "colorscheme
 colorscheme railscasts
 "highlight
