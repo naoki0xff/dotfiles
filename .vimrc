@@ -57,7 +57,7 @@ augroup vimrcEx
 augroup END
 "etc
 set autoread
-set updatetime=100
+set updatetime=1000
 "}}}
 "keymap{{{
 "normal
