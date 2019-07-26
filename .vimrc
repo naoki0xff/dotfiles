@@ -271,7 +271,7 @@ nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :FAg<CR>
 nnoremap <silent> [sub]G :Ag<CR>
 nnoremap <silent> [sub]t :Tags<CR>
-nnoremap <silent> [sub]o :BTags<CR>
+"nnoremap <silent> [sub]o :BTags<CR>
 nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]w :Windows<CR>
 nnoremap <silent> [sub]. :BLines<CR>
@@ -352,8 +352,25 @@ nnoremap <silent> [sub]e :NeoSnippetEdit<CR>
 nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
 "undotree
 nnoremap <silent> <Space>u :MundoToggle<CR>
-"tagbar
-nnoremap <silent> <Space>t :TagbarToggle<CR>
+"vista
+nnoremap <silent> <Space>t :Vista<CR>
+nnoremap <silent> [sub]o :Vista finder<CR>
+"nnoremap <silent> [sub]t :Vista finder!<CR>
+let g:vista_default_executive = 'coc'
+let g:vista_finder_alternative_executives = ['ctags']
+let g:vista_blink = [0,0]
+let g:vista_top_level_blink = [0,0]
+let g:vista_sidebar_width = 35
+let g:vista_echo_cursor_strategy = 'floating_win'
+let g:vista_fzf_preview = ['right:50%']
+let g:vista#renderer_enable_icon = 1
+let g:vista#renderer#icons = {
+\   "namespace": "{}",
+\   "class": ":=",
+\   "function": "𝒇",
+\   "method": "𝒇",
+\   "variable": "𝑥",
+\}
 "quickhl
 nmap <Space>h <plug>(quickhl-manual-this)
 vmap <Space>h <plug>(quickhl-manual-this)

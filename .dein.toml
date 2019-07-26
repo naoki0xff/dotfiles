@@ -88,10 +88,8 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'majutsushi/tagbar'
-hook_add = '''
-  let g:tagbar_autofocus = 1
-'''
+repo = 'liuchengxu/vista.vim'
+depends = ['coc.nvim']
 
 [[plugins]]
 repo = 'thinca/vim-ref'
