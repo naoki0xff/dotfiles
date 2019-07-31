@@ -45,7 +45,27 @@ hook_add = '''
 [[plugins]]
 repo = 'fatih/vim-go'
 on_ft = 'go'
-#TODO: configure for 1. cut off unused functionality 2. set keybinds, expecially debug feature
+hook_add = '''
+  nnoremap [debug] <Nop>
+  nmap <Space>d [debug]
+  nnoremap <silent> <Leader>n :GoDebugStart<CR>
+  nnoremap <silent> <Space>m :GoDebugBreakpoint<CR>
+  nnoremap <silent> <C-n> :GoDebugContinue<CR>
+  nnoremap <silent> [debug]n :GoDebugNext<CR>
+  nnoremap <silent> [debug]N :GoDebugStepOut<CR>
+  nnoremap <silent> [debug]i :GoDebugStep<CR>
+  nnoremap <silent> [debug]C :GoDebugStop<CR>
+  let g:go_debug_windows = {
+        \ 'stack': 'botright 15new',
+        \ 'out':   'belowright 5new',
+        \ 'vars':  'topleft 40vnew',
+  \ }
+  let g:go_code_completion_enabled = 0
+  let g:go_fmt_autosave = 0
+  let g:go_mod_fmt_autosave = 0
+  let g:go_doc_keywordprg_enabled = 0
+  let g:go_def_mapping_enabled = 0
+'''
 
 ### filetype source
 [[plugins]]
