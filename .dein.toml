@@ -29,7 +29,7 @@ repo = 'jistr/vim-nerdtree-tabs'
 [[plugins]]
 repo = 'neoclide/coc.nvim'
 merge = 0
-build = 'yarn install --frozen-lockfile'
+rev = 'release'
 # depends: node,yarn
 # extensions: coc-{json,tsserver,html,css,phpls,solargraph,python,emmet,snippets,java}
 # LangServer: clangd,go-langserver

@@ -57,7 +57,7 @@ augroup vimrcEx
 augroup END
 "etc
 set autoread
-set updatetime=1000
+set updatetime=750
 "}}}
 "keymap{{{
 "normal
@@ -364,10 +364,13 @@ let g:vista_fzf_preview = ['right:50%']
 let g:vista#renderer_enable_icon = 1
 let g:vista#renderer#icons = {
 \   "namespace": "{}",
-\   "class": ":=",
+\   "class": "@",
 \   "function": "𝒇",
-\   "method": "𝒇",
+\   "method": "@𝒇",
 \   "variable": "𝑥",
+\   "field": "@𝑥",
+\   "interface": "I",
+\   "constant": "&",
 \}
 "quickhl
 nmap <Space>h <plug>(quickhl-manual-this)
