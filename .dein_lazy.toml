@@ -43,8 +43,9 @@ hook_add = '''
 # for remote debugging -> {path_maps(remote:local)}
 
 [[plugins]]
-repo = 'sakhnik/nvim-gdb'
-on_ft = ['c','cpp','objc','objcpp']
+repo = 'fatih/vim-go'
+on_ft = 'go'
+#TODO: configure for 1. cut off unused functionality 2. set keybinds, expecially debug feature
 
 ### filetype source
 [[plugins]]
