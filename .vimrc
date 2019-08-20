@@ -281,7 +281,7 @@ nnoremap <silent> [sub]: :History:<CR>
 nnoremap <silent> [sub]? :Commands<CR>
 nnoremap <silent> [sub]h :Helptags<CR>
 "}}}
-"coc.nvim
+"coc.nvim{{{
 "functions
 function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
@@ -317,7 +317,7 @@ nnoremap [coc] <Nop>
 nmap <Space>c [coc]
 nnoremap <silent> [coc]l :CocList<CR>
 nnoremap <silent> [coc], :CocConfig<CR>
-nnoremap <silent> [coc]. :view ~/.cache/dein/repos/github.com/neoclide/coc.nvim/data/schema.json \| setlocal nomodifiable<CR>
+nnoremap <silent> [coc]. :view ~/.cache/dein/repos/github.com/neoclide/coc.nvim_release/data/schema.json \| setlocal nomodifiable<CR>
 nmap <silent> [a <Plug>(coc-diagnostic-prev)
 nmap <silent> ]a <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
@@ -333,7 +333,7 @@ augroup LspClient
   autocmd!
   autocmd BufEnter coc://document nnoremap <buffer> q <C-w>c
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup END
+augroup END"}}}
 "others{{{
 "anzu
 nmap n <Plug>(anzu-n-with-echo)
@@ -388,6 +388,7 @@ nnoremap <silent> ]d :GitGutterNextHunk<CR>
 nnoremap <silent> [git]b :Gblame<CR>
 nnoremap <silent> [git]c :BCommits<CR>
 nnoremap <silent> [git]l :Commits<CR>
+nnoremap <silent> [git]L :GV<CR>
 nnoremap <silent> [git]i :GitMessenger<CR>
 "vim-obsession;{create/halt-recording},destroy
 nnoremap <silent> <Leader>o :Obsession<CR>
@@ -419,6 +420,7 @@ augroup vimrc
     autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
     autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include 
     autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
+    autocmd Filetype go setlocal noexpandtab tabstop=4 shiftwidth=4
     autocmd BufNewFile,BufRead *.xaml setfiletype xml
     autocmd BufNewFile,BufRead *.csv setfiletype csv
     autocmd BufNewFile,BufRead *.m setfiletype objc

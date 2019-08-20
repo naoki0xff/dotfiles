@@ -31,7 +31,7 @@ repo = 'neoclide/coc.nvim'
 merge = 0
 rev = 'release'
 # depends: node,yarn
-# extensions: coc-{json,tsserver,html,css,phpls,solargraph,python,emmet,snippets,java}
+# extensions: coc-{vimlsp,json,tsserver,html,css,phpls,solargraph,python,emmet,snippets,java}
 # LangServer: clangd,go-langserver
 
 [[plugins]]
@@ -76,6 +76,9 @@ repo = 'tpope/vim-speeddating'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
+repo = 'junegunn/gv.vim'
+
+[[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
   let g:gitgutter_sign_modified_removed = '~'
@@ -90,13 +93,6 @@ hook_add = '''
 [[plugins]]
 repo = 'liuchengxu/vista.vim'
 depends = ['coc.nvim']
-
-[[plugins]]
-repo = 'thinca/vim-ref'
-hook_add = '''
-  let g:ref_use_vimproc = 1
-  let g:ref_phpmanual_path = '/Users/naoki/usr/doc/ref/php-chunked-xhtml'
-'''
 
 ### filetype source
 [[plugins]]

@@ -48,7 +48,8 @@ on_ft = 'go'
 hook_add = '''
   nnoremap [debug] <Nop>
   nmap <Space>d [debug]
-  nnoremap <silent> <Leader>n :GoDebugStart<CR>
+  nnoremap <silent> [debug]d :GoDebugStart<CR>
+  nnoremap <silent> [debug]D :GoDebugTest<CR>
   nnoremap <silent> <Space>m :GoDebugBreakpoint<CR>
   nnoremap <silent> <C-n> :GoDebugContinue<CR>
   nnoremap <silent> [debug]n :GoDebugNext<CR>
