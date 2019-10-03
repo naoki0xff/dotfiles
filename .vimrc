@@ -5,8 +5,8 @@
 "configuration
 "----------------------------------------------------------------------------
 "init{{{
-scriptencoding utf-8
 set encoding=utf-8
+scriptencoding utf-8
 "appearance
 set number
 set display=lastline
@@ -390,6 +390,10 @@ nnoremap <silent> [git]c :BCommits<CR>
 nnoremap <silent> [git]l :Commits<CR>
 nnoremap <silent> [git]L :GV<CR>
 nnoremap <silent> [git]i :GitMessenger<CR>
+augroup Git
+    autocmd!
+    autocmd BufEnter *.fugitiveblame nmap <buffer> q gq
+augroup END
 "vim-obsession;{create/halt-recording},destroy
 nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
