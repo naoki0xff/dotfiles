@@ -50,13 +50,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'tyru/caw.vim'
-hook_add = '''
-  let g:caw_hatpos_sp = ''
-  let g:caw_hatpos_skip_blank_line = 1
-'''
-
-[[plugins]]
 repo = 'simnalamburt/vim-mundo'
 hook_source = '''
   let g:mundo_preview_bottom = 1
@@ -74,9 +67,6 @@ repo = 'tpope/vim-speeddating'
 ### external integration
 [[plugins]]
 repo = 'tpope/vim-fugitive'
-
-[[plugins]]
-repo = 'junegunn/gv.vim'
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'

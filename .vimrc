@@ -266,10 +266,13 @@ command! -bang -nargs=* Files call
   \            <bang>0 ? fzf#vim#with_preview('up:60%')
   \                    : fzf#vim#with_preview('right:50%:hidden', '?'),
   \            <bang>0)
+command! -bang -nargs=* FRg call 
+  \ fzf#vim#grep
+  \   ('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]f :Files<CR>
-nnoremap <silent> [sub]g :FAg<CR>
-nnoremap <silent> [sub]G :Ag<CR>
+nnoremap <silent> [sub]g :FRg<CR>
+nnoremap <silent> [sub]G :Rg<CR>
 nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]o :BTags<CR>
 nnoremap <silent> [sub]m :Marks<CR>
@@ -282,6 +285,7 @@ nnoremap <silent> [sub]? :Commands<CR>
 nnoremap <silent> [sub]h :Helptags<CR>
 "}}}
 "coc.nvim{{{
+set pyxversion=3
 "functions
 function! StatusDiagnostic() abort
   let info = get(b:, 'coc_diagnostic_info', {})
