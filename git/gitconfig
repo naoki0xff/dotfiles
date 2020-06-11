@@ -1,0 +1,13 @@
+[core]
+	excludesfile = {path_to}/.gitignore
+[user]
+	name = {user_name}
+	email = {user_mail}
+[alias]
+    authors = ! git log --format="%aN" | sort | uniq
+[diff]
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "nvimdiff"]
+  cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
