@@ -406,9 +406,6 @@ nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
 "indentLine
 let g:indentLine_fileTypeExclude = ['txt','text','help','man','fzf','json']
-"nerdtree
-let NERDTreeMapOpenSplit = 's'
-let NERDTreeMapOpenVSplit = 'v'
 "lexima
 autocmd Filetype txt,text let b:lexima_disabled = 1
 "UltiSnips
