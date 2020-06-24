@@ -27,6 +27,8 @@ set undofile
 set undodir=~/.local/share/nvim/undo
 "clipboard
 set clipboard+=unnamedplus
+"diff
+set diffopt=internal,filler,algorithm:histogram,indent-heuristic
 "indent
 set tabstop=4
 set shiftwidth=4
@@ -46,6 +48,8 @@ set wildoptions=pum
 set backspace=indent,eol,start
 "visual select expansion
 set virtualedit=block
+"mouse
+set mouse=a
 "ctags
 set tags=.tags;~
 "git
@@ -259,16 +263,14 @@ endif
 "}}}
 "fzf{{{
 let g:fzf_tags_command = 'ctags -R -f .tags'
-command! -bang -nargs=* FAg call
-  \ fzf#vim#ag(<q-args>,{'options': '--delimiter : --nth 4..'},<bang>0)
+command! -bang -nargs=* FRg call 
+  \ fzf#vim#grep
+  \   ('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 command! -bang -nargs=* Files call
   \ fzf#vim#files(<q-args>,
   \            <bang>0 ? fzf#vim#with_preview('up:60%')
   \                    : fzf#vim#with_preview('right:50%:hidden', '?'),
   \            <bang>0)
-command! -bang -nargs=* FRg call 
-  \ fzf#vim#grep
-  \   ('rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1, {'options': '--delimiter : --nth 4..'}, <bang>0)
 nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :FRg<CR>
@@ -298,7 +300,7 @@ function! StatusDiagnostic() abort
     call add(msgs, 'W' . info['warning'])
   endif
   if get(info, 'information', 0) || get(info, 'hint', 0)
-    call add(msgs, '?')
+    call add(msgs, 'H' . info['information'])
   endif
   return empty(msgs) ? '' : '[Lint:' . join(msgs, ',') . get(g:, 'coc_status', '') . ']'
 endfunction
@@ -338,6 +340,9 @@ augroup LspClient
   autocmd BufEnter coc://document nnoremap <buffer> q <C-w>c
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup END"}}}
+"coc-extensions
+"coc-explorer
+nnoremap <silent> <Space>n :CocCommand explorer<CR>
 "others{{{
 "anzu
 nmap n <Plug>(anzu-n-with-echo)
@@ -350,8 +355,6 @@ nmap <silent> g<C-x> <Plug>(trip-decrement-ignore-minus)
 "edgemotion
 nmap ]b <Plug>(edgemotion-j)
 nmap [b <Plug>(edgemotion-k)
-"nerdtree
-nnoremap <silent> <Space>n :NERDTreeTabsToggle<CR>
 "undotree
 nnoremap <silent> <Space>u :MundoToggle<CR>
 "vista
