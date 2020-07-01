@@ -339,10 +339,11 @@ augroup LspClient
   autocmd!
   autocmd BufEnter coc://document nnoremap <buffer> q <C-w>c
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup END"}}}
+augroup END
 "coc-extensions
 "coc-explorer
 nnoremap <silent> <Space>n :CocCommand explorer<CR>
+"}}}
 "others{{{
 "anzu
 nmap n <Plug>(anzu-n-with-echo)
@@ -443,7 +444,7 @@ augroup secure_modeline_conflict_workaround
   autocmd FileType help setlocal nomodeline
 augroup END
 "colorscheme
-colorscheme railscasts
+colorscheme sunburst
 "highlight
 highlight HighlightWords ctermfg=black ctermbg=yellow
 match HighlightWords /TODO\|NOTE\|MEMO/
