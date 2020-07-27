@@ -444,7 +444,7 @@ augroup secure_modeline_conflict_workaround
   autocmd FileType help setlocal nomodeline
 augroup END
 "colorscheme
-colorscheme sunburst
+colorscheme gruvbox
 "highlight
 highlight HighlightWords ctermfg=black ctermbg=yellow
 match HighlightWords /TODO\|NOTE\|MEMO/
