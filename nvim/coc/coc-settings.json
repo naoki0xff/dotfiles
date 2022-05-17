@@ -1,6 +1,5 @@
 {
   "diagnostic.virtualText": true,
-  "list.autoResize": false,
   "list.insertMappings": {
     "<C-b>": "prompt:left",
     "<C-f>": "prompt:right",
@@ -17,6 +16,16 @@
     "<C-c>": "do:exit"
   },
   "languageserver": {
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "filetypes": ["terraform", "tf"],
+      "args": ["serve"]
+    },
     "clangd": {
       "command": "clangd",
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],

@@ -11,6 +11,7 @@ alias lls='tree -N -L 2'
 alias lla='tree -a -h -N -L 2'
 alias mv='mv -i'
 alias cp='cp -i'
+alias rmf='rm `fzf -m`'
 alias mkdir='mkdir -p'
 alias grep='grep --color=auto'
 alias cgrep='grep --color=always'
@@ -24,6 +25,7 @@ alias e='nvim'
 alias vi='nvim -u NONE'
 alias vim='nvim'
 alias vimv='nvim'
+alias sjis="nvim -c 'setl fenc=sjis'"
 alias vimdiff='nvim -d'
 alias taginit='ctags -R -f .tags'
 alias wl='wc -l'
@@ -31,6 +33,7 @@ alias fzf='fzf-tmux'
 alias vcat='(){ if [ -n "${1}" ];then cat $1|sed "s/,/ ,/g"|column -t -s,|less -S; else echo "please specify csv file"; fi }'
 alias rfcid='(){ ID=`cat ~/usr/doc/ref/rfc-index.txt|fzf`; if [ -z ${ID} ]; then return 1 ; else echo ${ID}; unset ID ; fi }'
 alias gcd='(){ SRCLOC=`ghq list|fzf`; if [ -z ${SRCLOC} ] ; then return 1; else cd ~/.ghq/${SRCLOC}; unset SRCLOC ; fi }'
+alias tf='terraform'
 # git shortcut
 alias gs='git status'
 alias gd='git diff'
@@ -94,5 +97,13 @@ if [ ! -e "${XDG_CONFIG_HOME}/zsh/completion/_docker" ];then
 fi
 fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 
-## finally
+## zsh config general
+# prompt
+autoload -U promptinit
+promptinit
+PROMPT='%F{green}naoki@macos:%f%~%F{green}$%f'
+# completion
 autoload -Uz compinit && compinit -i
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform

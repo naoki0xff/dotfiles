@@ -4,7 +4,7 @@
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%F{green}naoki@macos:%f%~%F{green}$%f'
+PROMPT='%F{green}some_username@machine_name:%f%~%F{green}$%f'
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory
@@ -29,7 +29,7 @@ stty stop undef
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
 export EDITOR=nvim
 bindkey -e
-export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="nvim +Man!"
 export XDG_CONFIG_HOME=~/.config
 export LANG=en_US.UTF-8
 # PATH
@@ -52,9 +52,6 @@ PATH="$PATH:$GOPATH/bin"
 # -> node.js
 export NODEBREW_ROOT=/usr/local/var/nodebrew
 PATH="/usr/local/var/nodebrew/current/bin:$PATH"
-# tools
-# nvim:experimental v4.0
-PATH="$HOME/usr/local/src/nvim/nvim-osx64/bin:$PATH"
 # avoid duplication
 typeset -U path PATH
 # finalize
@@ -94,5 +91,5 @@ set -o ignoreeof # stop tmux from exit with C-d
 # fzf
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='ag -a -g ""'
+export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 export FZF_COMPLETION_TRIGGER=',,'
