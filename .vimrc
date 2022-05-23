@@ -11,7 +11,7 @@ scriptencoding utf-8
 set number
 set display=lastline
 set pumheight=10
-set statusline=%y\ %r%h%w%-0.37f%m%=%{StatusDiagnostic()}%{ObsessionStatus('[$:loading]','[$:paused]')}%{fugitive#statusline()}
+set statusline=%y\ %r%h%w%-0.37f%m%=%{coc#status()}%{get(b:,'coc_current_function','')}%{ObsessionStatus('[$:loading]','[$:paused]')}%{fugitive#statusline()}
 set laststatus=2
 set ambiwidth=double
 set completeopt-=preview
@@ -289,21 +289,6 @@ nnoremap <silent> [sub]h :Helptags<CR>
 "coc.nvim{{{
 set pyxversion=3
 "functions
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  if get(info, 'information', 0) || get(info, 'hint', 0)
-    call add(msgs, 'H' . info['information'])
-  endif
-  return empty(msgs) ? '' : '[Lint:' . join(msgs, ',') . get(g:, 'coc_status', '') . ']'
-endfunction
 function! s:show_documentation()
   if &filetype == 'vim' || &filetype == 'conf'
     execute 'h '.expand('<cword>')
@@ -387,13 +372,13 @@ nmap <Space>H <plug>(quickhl-manual-reset)
 "git:fugitive;fzf;GitGutter;git-messenger
 nnoremap [git] <Nop>
 nmap <Space>g [git]
-nnoremap <silent> [git]s :Gstatus<CR>
+nnoremap <silent> [git]s :Git<CR>
 nnoremap <silent> [git]d :Gvdiff<CR>
 nnoremap <silent> [git]m :GFiles?<CR>
 nnoremap <silent> [git]v :GitGutterPreviewHunk<CR><C-w>b
 nnoremap <silent> [d :GitGutterPrevHunk<CR>
 nnoremap <silent> ]d :GitGutterNextHunk<CR>
-nnoremap <silent> [git]b :Gblame<CR>
+nnoremap <silent> [git]b :Git blame<CR>
 nnoremap <silent> [git]c :BCommits<CR>
 nnoremap <silent> [git]l :Commits<CR>
 nnoremap <silent> [git]L :GV<CR>
@@ -448,7 +433,7 @@ colorscheme gruvbox
 "highlight
 highlight HighlightWords ctermfg=black ctermbg=yellow
 match HighlightWords /TODO\|NOTE\|MEMO/
-highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
+"highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17
