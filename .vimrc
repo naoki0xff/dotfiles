@@ -344,7 +344,7 @@ nmap [b <Plug>(edgemotion-k)
 "undotree
 nnoremap <silent> <Space>u :MundoToggle<CR>
 "vista
-nnoremap <silent> <Space>t :Vista<CR>
+nnoremap <silent> <Space>t :Vista!!<CR>
 "nnoremap <silent> [sub]o :Vista finder<CR>
 "nnoremap <silent> [sub]t :Vista finder!<CR>
 let g:vista_default_executive = 'coc'

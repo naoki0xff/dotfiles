@@ -1,10 +1,6 @@
 ### zprofile
 
 ## general
-# prompt
-autoload -U promptinit
-promptinit
-PROMPT='%F{green}some_username@machine_name:%f%~%F{green}$%f'
 # history & completion
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 export HISTFILE=${HOME}/.zhistory

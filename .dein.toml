@@ -25,8 +25,8 @@ repo = 'neoclide/coc.nvim'
 merge = 0
 rev = 'release'
 # depends: node,yarn
-# extensions: coc-{vimlsp,json,tsserver,html,css,phpls,solargraph,python,emmet,snippets,java}
-# LangServer: clangd,go-langserver
+# extensions: coc-{vimlsp,json,yaml,tsserver,html,css,phpls,solargraph,python,emmet,snippets,java}
+# LangServer: clangd,go-langserver,terraform-ls
 
 [[plugins]]
 repo = 'SirVer/ultisnips'
