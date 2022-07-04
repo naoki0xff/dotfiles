@@ -18,13 +18,13 @@
   "languageserver": {
     "dockerfile": {
       "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
+      "args": ["--stdio"],
+      "filetypes": ["dockerfile"]
     },
     "terraform": {
       "command": "terraform-ls",
-      "filetypes": ["terraform", "tf"],
-      "args": ["serve"]
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"]
     },
     "clangd": {
       "command": "clangd",
@@ -33,16 +33,16 @@
     },
     "golang": {
       "command": "go-langserver",
-      "filetypes": ["go"],
-      "initializationOptions": {
-        "gocodeCompletionEnabled": true,
-        "diagnosticsEnabled": true,
-        "lintTool": "golint"
-      }
+      "filetypes": ["go"]
+    },
+    "python": {
+      "command": "pyls",
+      "filetypes": ["python"]
+    },
+    "ruby": {
+      "command": "solargraph",
+      "args": ["stdio"],
+      "filetypes": ["ruby"]
     }
-  },
-  "solargraph.diagnostics": true,
-  "solargraph.formatting": true,
-  "python.jediEnabled": true,
-  "python.jediPath": "~/.pyenv/versions/3.7.2/lib/python3.7/site-packages"
+  }
 }
