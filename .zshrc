@@ -21,7 +21,6 @@ alias agh='ag -a -l'
 alias sed='gsed'
 alias diff='colordiff -u'
 alias less='less -NR'
-alias e='nvim'
 alias vi='nvim -u NONE'
 alias vim='nvim'
 alias vimv='nvim'
@@ -33,7 +32,14 @@ alias fzf='fzf-tmux'
 alias vcat='(){ if [ -n "${1}" ];then cat $1|sed "s/,/ ,/g"|column -t -s,|less -S; else echo "please specify csv file"; fi }'
 alias rfcid='(){ ID=`cat ~/usr/doc/ref/rfc-index.txt|fzf`; if [ -z ${ID} ]; then return 1 ; else echo ${ID}; unset ID ; fi }'
 alias gcd='(){ SRCLOC=`ghq list|fzf`; if [ -z ${SRCLOC} ] ; then return 1; else cd ~/.ghq/${SRCLOC}; unset SRCLOC ; fi }'
+# short alias
+alias e='nvim'
+alias v='nvim'
+alias o='open .'
+alias d='docker'
+alias dc='docker-compose'
 alias tf='terraform'
+alias k='kubectl'
 # git shortcut
 alias gs='git status'
 alias gd='git diff'
@@ -86,7 +92,7 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load
-# Docker for Mac
+# Completion source
 if [ ! -d "${XDG_CONFIG_HOME}/zsh/completion" ];then
     mkdir -p "${XDG_CONFIG_HOME}/zsh/completion"
 fi
@@ -94,6 +100,7 @@ if [ ! -e "${XDG_CONFIG_HOME}/zsh/completion/_docker" ];then
     cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/docker.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_docker
     cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/docker-compose.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_docker-compose
     cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/docker-machine.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_docker-machine
+    cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/kubectl.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_kubectl
 fi
 fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 
@@ -104,6 +111,6 @@ promptinit
 PROMPT='%F{green}naoki@macos:%f%~%F{green}$%f'
 # completion
 autoload -Uz compinit && compinit -i
-
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
+complete -C '/usr/local/bin/aws_completer' aws

@@ -37,10 +37,10 @@ export PYENV_ROOT="${HOME}/.pyenv"
 PATH="${PYENV_ROOT}/bin:$PATH"
 eval "$(pyenv init -)"
 # -> ruby
-PATH="/Users/naoki/.rbenv/bin:$PATH"
+PATH="${HOME}/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 # -> php (phpenv must comes after rbenv with its PATH)
-PATH="/Users/naoki/.phpenv/bin:$PATH"
+PATH="${HOME}/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
 # -> go
 export GOPATH=$HOME/usr/local/go
