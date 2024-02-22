@@ -196,8 +196,8 @@ endfunction
 let &tabline = '%!'. s:SID_PREFIX() . 'my_tabline()'
 set showtabline=2
 "prefix
-nnoremap    [Tab]   <Nop>
-nmap    t [Tab]
+nnoremap [Tab] <Nop>
+nmap t [Tab]
 "jump
 for n in range(1, 9)
   execute 'nnoremap <silent> [Tab]'.n  ':<C-u>tabnext'.n.'<CR>'
@@ -219,18 +219,6 @@ nnoremap <silent> [Tab]h :tabm -1<CR>
 nnoremap <silent> [Tab]l :tabm +1<CR>
 nnoremap <silent> [Tab]H :tabm 0<CR>
 nnoremap <silent> [Tab]L :tabm $<CR>
-"}}}
-""vimlocal"{{{
-"augroup vimrc_local
-"  autocmd!
-"  autocmd BufEnter * call s:vimrc_local(expand('<afile>:p:h'))
-"augroup END
-"function! s:vimrc_local(loc)
-"  let files = findfile('.vimlocal', escape(a:loc, ' ') . ';', -1)
-"  for i in reverse(filter(files, 'filereadable(v:val)'))
-"    source `=i`
-"  endfor
-"endfunction
 "}}}
 
 "----------------------------------------------------------------------------
@@ -429,7 +417,7 @@ augroup secure_modeline_conflict_workaround
   autocmd FileType help setlocal nomodeline
 augroup END
 "colorscheme
-colorscheme gruvbox
+colorscheme inori
 "highlight
 highlight HighlightWords ctermfg=black ctermbg=yellow
 match HighlightWords /TODO\|NOTE\|MEMO/
