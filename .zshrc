@@ -87,3 +87,18 @@ autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 complete -C '/usr/local/bin/aws_completer' aws
+# cd history
+autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
+add-zsh-hook chpwd chpwd_recent_dirs
+zstyle ':chpwd:*' recent-dirs-max 100
+function fzf-cdr() {
+  local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf --reverse)
+  if [ -n "$selected_dir" ]; then
+    BUFFER="cd ${selected_dir}"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N fzf-cdr
+setopt noflowcontrol
+bindkey '^y' fzf-cdr

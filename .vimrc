@@ -59,6 +59,8 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
+"edit vimrc
+nnoremap <silent> <Space>, :e ~/.vimrc<CR>
 "etc
 set autoread
 set updatetime=750
@@ -270,8 +272,8 @@ nnoremap <silent> [sub]w :Windows<CR>
 nnoremap <silent> [sub]. :BLines<CR>
 nnoremap <silent> [sub]/ :Lines<CR>
 nnoremap <silent> [sub]y :History<CR>
-nnoremap <silent> [sub]: :History:<CR>
-nnoremap <silent> [sub]? :Commands<CR>
+nnoremap <silent> [sub]q :History:<CR>
+nnoremap <silent> [sub]: :Commands<CR>
 nnoremap <silent> [sub]h :Helptags<CR>
 "}}}
 "coc.nvim{{{
@@ -380,6 +382,7 @@ nnoremap <silent> <Leader>o :Obsession<CR>
 nnoremap <silent> <Leader>O :Obsession!<CR>
 "indentLine
 let g:indentLine_fileTypeExclude = ['txt','text','help','man','fzf','json']
+let g:vim_json_conceal = 0
 "lexima
 autocmd Filetype txt,text let b:lexima_disabled = 1
 "UltiSnips
@@ -396,10 +399,9 @@ syntax on
 "autocmds
 augroup vimrc
     autocmd!
-    autocmd Filetype vim setlocal keywordprg=:help
     autocmd Filetype vim setlocal foldmethod=marker
-    autocmd Filetype make setlocal noexpandtab
     autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
+    autocmd Filetype make setlocal noexpandtab
     autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include 
     autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
     autocmd Filetype go setlocal noexpandtab tabstop=4 shiftwidth=4
@@ -407,7 +409,6 @@ augroup vimrc
     autocmd BufNewFile,BufRead *.csv setfiletype csv
     autocmd BufNewFile,BufRead *.m setfiletype objc
     autocmd Filetype objc let b:match_words = '@\(implementation\|interface\):@end'
-    autocmd BufNewFile,BufRead *.json setlocal conceallevel=0
     autocmd ColorScheme * highlight Normal ctermbg=none
     autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
@@ -421,7 +422,7 @@ colorscheme inori
 "highlight
 highlight HighlightWords ctermfg=black ctermbg=yellow
 match HighlightWords /TODO\|NOTE\|MEMO/
-"highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
+highlight Search ctermfg=0 ctermbg=11 guifg=Blue guibg=Yellow
 highlight DiffAdd    cterm=bold ctermfg=10 ctermbg=22
 highlight DiffDelete cterm=bold ctermfg=10 ctermbg=52
 highlight DiffChange cterm=bold ctermfg=10 ctermbg=17

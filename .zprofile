@@ -32,10 +32,6 @@ export LANG=en_US.UTF-8
 PATH="$HOME/usr/bin:$HOME/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin:/usr/local/opt/llvm/bin:$PATH"
 export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
 # LANGUAGE
-# -> python
-export PYENV_ROOT="${HOME}/.pyenv"
-PATH="${PYENV_ROOT}/bin:$PATH"
-eval "$(pyenv init -)"
 # -> ruby
 PATH="${HOME}/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
@@ -44,10 +40,15 @@ PATH="${HOME}/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
 # -> go
 export GOPATH=$HOME/usr/local/go
-PATH="$PATH:$GOPATH/bin"
+export GOBIN=$GOPATH/bin
+PATH=$PATH:$GOBIN
 # -> node.js
-export NODEBREW_ROOT=/usr/local/var/nodebrew
-PATH="/usr/local/var/nodebrew/current/bin:$PATH"
+PATH=$HOME/.nodebrew/current/bin:$PATH
+# -> python
+export PYENV_ROOT=$HOME/.pyenv
+[[ -d $PYENV_ROOT/bin ]] && PATH=$PYENV_ROOT/bin:$PATH
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 # avoid duplication
 typeset -U path PATH
 # finalize

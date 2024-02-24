@@ -1,5 +1,6 @@
 {
   "diagnostic.virtualText": true,
+  "suggest.noselect": true,
   "list.insertMappings": {
     "<C-b>": "prompt:left",
     "<C-f>": "prompt:right",
@@ -32,8 +33,10 @@
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     },
     "golang": {
-      "command": "go-langserver",
-      "filetypes": ["go"]
+      "command": "gopls",
+      "filetypes": ["go"],
+      "initializationOptions": {
+          "usePlaceholders": true
     },
     "python": {
       "command": "pyls",
