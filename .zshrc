@@ -85,8 +85,12 @@ PROMPT='%F{green}naoki@macos:%f%~%F{green}$%f'
 # completion
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+# -> aws
 complete -C '/usr/local/bin/aws_completer' aws
+# -> kubectl
+source <(kubectl completion zsh)
+# -> terraform (`terraform -install-autocomplete`)
+# dummy
 # cd history
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
