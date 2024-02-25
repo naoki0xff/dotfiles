@@ -101,7 +101,6 @@ function fzf-cdr() {
     BUFFER="cd ${selected_dir}"
     zle accept-line
   fi
-  zle clear-screen
 }
 zle -N fzf-cdr
 setopt noflowcontrol
