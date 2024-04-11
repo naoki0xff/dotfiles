@@ -1,5 +1,5 @@
 "vimrc
-"requirement:vim=NVIM v0.2.0 or later
+"requirement:vim=NVIM v0.8+
 
 "----------------------------------------------------------------------------
 "configuration

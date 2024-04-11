@@ -65,17 +65,6 @@ if ! zplug check --verbose; then
     fi
 fi
 zplug load
-# Completion source
-if [ ! -d "${XDG_CONFIG_HOME}/zsh/completion" ];then
-    mkdir -p "${XDG_CONFIG_HOME}/zsh/completion"
-fi
-if [ ! -e "${XDG_CONFIG_HOME}/zsh/completion/_docker" ];then
-    cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/docker.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_docker
-    cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/docker-compose.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_docker-compose
-    cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/docker-machine.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_docker-machine
-    cp ${HOME}/.ghq/github.com/naoki0xff/dotfiles/zsh/completion/kubectl.zsh-completion ${XDG_CONFIG_HOME}/zsh/completion/_kubectl
-fi
-fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 
 ## zsh config general
 # prompt
@@ -85,8 +74,15 @@ PROMPT='%F{green}naoki@macos:%f%~%F{green}$%f'
 # completion
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
+## Completion source
+if [ ! -d "${XDG_CONFIG_HOME}/zsh/completion" ];then
+    mkdir -p "${XDG_CONFIG_HOME}/zsh/completion"
+fi
+fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 # -> aws
 complete -C '/usr/local/bin/aws_completer' aws
+# -> docker
+source <(docker completion zsh)
 # -> kubectl
 source <(kubectl completion zsh)
 # -> terraform (`terraform -install-autocomplete`)
