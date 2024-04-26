@@ -365,7 +365,6 @@ nmap <Space>g [git]
 nnoremap <silent> [git]s :Git<CR>
 nnoremap <silent> [git]d :Gvdiff<CR>
 nnoremap <silent> [git]m :GFiles?<CR>
-nnoremap <silent> [git]v :GitGutterPreviewHunk<CR><C-w>b
 nnoremap <silent> [d :GitGutterPrevHunk<CR>
 nnoremap <silent> ]d :GitGutterNextHunk<CR>
 nnoremap <silent> [git]b :Git blame<CR>
