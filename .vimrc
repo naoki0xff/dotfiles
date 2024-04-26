@@ -371,7 +371,7 @@ nnoremap <silent> ]d :GitGutterNextHunk<CR>
 nnoremap <silent> [git]b :Git blame<CR>
 nnoremap <silent> [git]c :BCommits<CR>
 nnoremap <silent> [git]l :Commits<CR>
-nnoremap <silent> [git]L :GV<CR>
+nnoremap <silent> [git]n :GV<CR>
 nnoremap <silent> [git]i :GitMessenger<CR>
 augroup Git
     autocmd!
