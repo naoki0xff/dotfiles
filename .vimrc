@@ -365,6 +365,7 @@ nmap <Space>H <plug>(quickhl-manual-reset)
 nnoremap [git] <Nop>
 nmap <Space>g [git]
 nnoremap <silent> [git]s :Git<CR>
+nnoremap <silent> [git]a :GitGutterStageHunk<CR>
 nnoremap <silent> [git]d :Gvdiff<CR>
 nnoremap <silent> [git]m :GFiles?<CR>
 nnoremap <silent> [d :GitGutterPrevHunk<CR>
