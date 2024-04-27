@@ -74,9 +74,6 @@ hook_add = '''
   let g:git_messenger_no_default_mappings = v:true
 '''
 
-[[plugins]]
-repo = 'junegunn/gv.vim'
-
 ### CTags integration
 [[plugins]]
 repo = 'liuchengxu/vista.vim'

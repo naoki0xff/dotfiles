@@ -265,9 +265,11 @@ nnoremap <silent> [sub]l :Buffers<CR>
 nnoremap <silent> [sub]f :Files<CR>
 nnoremap <silent> [sub]g :FRg<CR>
 nnoremap <silent> [sub]G :Rg<CR>
+nnoremap <silent> [sub]i :Changes<CR>
+nnoremap <silent> [sub]j :Jumps<CR>
+nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]o :BTags<CR>
-nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]w :Windows<CR>
 nnoremap <silent> [sub]. :BLines<CR>
 nnoremap <silent> [sub]/ :Lines<CR>
@@ -370,7 +372,6 @@ nnoremap <silent> ]d :GitGutterNextHunk<CR>
 nnoremap <silent> [git]b :Git blame<CR>
 nnoremap <silent> [git]c :BCommits<CR>
 nnoremap <silent> [git]l :Commits<CR>
-nnoremap <silent> [git]n :GV<CR>
 nnoremap <silent> [git]i :GitMessenger<CR>
 augroup Git
     autocmd!
