@@ -25,8 +25,10 @@ alias fzf='fzf-tmux'
 alias whihc='which'
 # short alias
 alias o='open .'
-alias d='docker'
-alias dc='docker-compose'
+#alias d='docker'
+#alias dc='docker-compose'
+alias p='podman'
+alias pd='podman compose'
 alias tf='terraform'
 alias tg='terragrunt'
 alias k='kubectl'
@@ -81,10 +83,14 @@ fi
 fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 # -> aws
 complete -C '/usr/local/bin/aws_completer' aws
-# -> docker
-source <(docker completion zsh)
+## -> docker
+#source <(docker completion zsh)
+# -> podman
+source <(podman completion zsh)
 # -> kubectl
 source <(kubectl completion zsh)
+# -> helm
+source <(helm completion zsh)
 # -> terraform (`terraform -install-autocomplete`)
 # dummy
 # cd history

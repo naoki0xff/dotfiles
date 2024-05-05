@@ -29,12 +29,11 @@ export MANPAGER="nvim +Man!"
 export XDG_CONFIG_HOME=~/.config
 export LANG=en_US.UTF-8
 # PATH
-PATH="$HOME/usr/bin:$HOME/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:$HOME/.config/composer/vendor/bin:/usr/local/opt/llvm/bin:$PATH"
-export MANPATH="$MANPATH:/usr/local/opt/coreutils/libexec/gnuman"
+PATH=$HOME/.local/bin:$HOME/usr/bin:$HOME/usr/local/bin:$PATH
+# BINARY
+# -> homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 # LANGUAGE
-# -> ruby
-PATH="${HOME}/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 # -> php (phpenv must comes after rbenv with its PATH)
 PATH="${HOME}/.phpenv/bin:$PATH"
 eval "$(phpenv init -)"
@@ -49,6 +48,8 @@ export PYENV_ROOT=$HOME/.pyenv
 [[ -d $PYENV_ROOT/bin ]] && PATH=$PYENV_ROOT/bin:$PATH
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+# -> ruby (also ruby-build)
+eval "$(~/.rbenv/bin/rbenv init - zsh)"
 # avoid duplication
 typeset -U path PATH
 # finalize
@@ -85,8 +86,9 @@ disable r
 # tmux
 [[ -z $TMUX && ! -z "$PS1" ]] && tmux
 set -o ignoreeof # stop tmux from exit with C-d
-# fzf
+# fzf(require 0.48.0 or later)
+eval "$(fzf --zsh)"
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_COMPLETION_TRIGGER=',,'
