@@ -253,6 +253,10 @@ endif
 "}}}
 "fzf{{{
 let g:fzf_tags_command = 'ctags -R -f .tags'
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --hidden --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 command! -bang -nargs=* Files call
   \ fzf#vim#files(<q-args>,
   \            <bang>0 ? fzf#vim#with_preview('up:60%')
