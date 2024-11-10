@@ -75,7 +75,7 @@ zplug load
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%F{green}%n@%m %f%~%F{green}$%f'
+PROMPT='%F{green}%n@%m:%f%~%F{green}$%f'
 # completion
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
