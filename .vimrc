@@ -301,7 +301,6 @@ nnoremap [coc] <Nop>
 nmap <Space>c [coc]
 nnoremap <silent> [coc]l :CocList<CR>
 nnoremap <silent> [coc], :CocConfig<CR>
-nnoremap <silent> [coc]. :view ~/.cache/dein/repos/github.com/neoclide/coc.nvim_release/data/schema.json \| setlocal nomodifiable<CR>
 nmap <silent> [a <Plug>(coc-diagnostic-prev)
 nmap <silent> ]a <Plug>(coc-diagnostic-next)
 inoremap <silent><expr> <C-l> pumvisible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"

@@ -47,5 +47,8 @@
       "args": ["stdio"],
       "filetypes": ["ruby"]
     }
+  },
+  "yaml.schemas": {
+    "kubernetes": "/*.yaml"
   }
 }
