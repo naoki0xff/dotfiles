@@ -92,3 +92,5 @@ export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 export FZF_COMPLETION_TRIGGER=',,'
+# kubectx
+export KUBECTX_IGNORE_FZF=1

@@ -23,15 +23,18 @@ alias taginit='ctags -R -f .tags'
 alias wl='wc -l'
 alias fzf='fzf-tmux'
 alias whihc='which'
-# short alias
+# infra shortcut
 alias o='open .'
-#alias d='docker'
-#alias dc='docker-compose'
+alias d='podman'
+alias dc='podman compose'
+alias docker='podman'
 alias p='podman'
 alias pd='podman compose'
 alias tf='terraform'
 alias tg='terragrunt'
 alias k='kubectl'
+alias kcx='kubectx'
+alias kcn='kubens'
 # git shortcut
 alias gs='git status'
 alias gd='git diff'
@@ -72,7 +75,7 @@ zplug load
 # prompt
 autoload -U promptinit
 promptinit
-PROMPT='%F{green}naoki@macos:%f%~%F{green}$%f'
+PROMPT='%F{green}%n@%m %f%~%F{green}$%f'
 # completion
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit

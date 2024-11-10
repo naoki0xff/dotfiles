@@ -271,12 +271,13 @@ nnoremap <silent> [sub]m :Marks<CR>
 nnoremap <silent> [sub]t :Tags<CR>
 nnoremap <silent> [sub]o :BTags<CR>
 nnoremap <silent> [sub]w :Windows<CR>
-nnoremap <silent> [sub]. :BLines<CR>
-nnoremap <silent> [sub]/ :Lines<CR>
+nnoremap <silent> [sub], :BLines<CR>
+nnoremap <silent> [sub]. :Lines<CR>
 nnoremap <silent> [sub]y :History<CR>
 nnoremap <silent> [sub]q :History:<CR>
+nnoremap <silent> [sub]/ :History/<CR>
 nnoremap <silent> [sub]: :Commands<CR>
-nnoremap <silent> [sub]h :Helptags<CR>
+nnoremap <silent> [sub]? :Helptags<CR>
 "}}}
 "coc.nvim{{{
 set pyxversion=3
@@ -403,15 +404,6 @@ augroup vimrc
     autocmd Filetype vim setlocal foldmethod=marker
     autocmd FileType help,diff,Preview,ref* nnoremap <buffer> q <C-w>c
     autocmd Filetype make setlocal noexpandtab
-    autocmd FileType c setlocal path+=/usr/local/include,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/macosx.sdk/usr/include,/Users/naoki/scripts/src/util-linux/util-linux-2.31-rc1/include 
-    autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 iskeyword+=?
-    autocmd Filetype go setlocal noexpandtab tabstop=4 shiftwidth=4
-    autocmd BufNewFile,BufRead *.xaml setfiletype xml
-    autocmd BufNewFile,BufRead *.csv setfiletype csv
-    autocmd BufNewFile,BufRead *.m setfiletype objc
-    autocmd Filetype objc let b:match_words = '@\(implementation\|interface\):@end'
-    autocmd ColorScheme * highlight Normal ctermbg=none
-    autocmd ColorScheme * highlight LineNr ctermbg=none
 augroup END
 "neoivm bug(watching will fixed)
 augroup secure_modeline_conflict_workaround
