@@ -8,7 +8,7 @@ vim.scriptencoding = 'utf-8'
 opt.number = true
 opt.display = 'lastline'
 opt.pumheight = 10
-opt.laststatus = 2
+opt.laststatus = 3
 opt.ambiwidth = 'double'
 opt.completeopt:remove({ 'preview' })
 opt.lazyredraw = true

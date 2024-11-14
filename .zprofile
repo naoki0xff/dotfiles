@@ -50,6 +50,9 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 # -> ruby (also ruby-build)
 eval "$(~/.rbenv/bin/rbenv init - zsh)"
+# TOOLS
+# -> terraform
+PATH=$HOME/.tfenv/bin:$PATH
 # avoid duplication
 typeset -U path PATH
 # finalize
@@ -87,7 +90,6 @@ disable r
 [[ -z $TMUX && ! -z "$PS1" ]] && tmux
 set -o ignoreeof # stop tmux from exit with C-d
 # fzf(require 0.48.0 or later)
-eval "$(fzf --zsh)"
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'

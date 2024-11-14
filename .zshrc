@@ -86,6 +86,9 @@ fi
 fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 # -> aws
 complete -C '/usr/local/bin/aws_completer' aws
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 ## -> docker
 #source <(docker completion zsh)
 # -> podman
