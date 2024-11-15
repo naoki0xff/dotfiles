@@ -23,8 +23,20 @@ return {
   -- File Explorer
   -- Buffer
 
-  -- Tab
-  -- Statusline
-  { 'bluz71/nvim-linefly' },
+  -- Statusline & Tab
+  {
+    'vim-airline/vim-airline',
+    dependencies = { 'vim-airline/vim-airline-themes' },
+    config = function()
+      -- Theme
+      vim.g.airline_theme = 'nord_minimal'
+      -- Section
+      vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
+      -- Tabline
+      vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
+      vim.api.nvim_set_var('airline#extensions#tabline#show_tabs', 1)
+      vim.api.nvim_set_var('airline#extensions#tabline#show_buffers', 0)
+    end
+  }
 }
 

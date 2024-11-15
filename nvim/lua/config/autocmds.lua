@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("close_buf_with_q"),
   pattern = {
     "coc://document",
+    "fugitive://*",
     "*.fugitiveblame",
   },
   callback = function(event)

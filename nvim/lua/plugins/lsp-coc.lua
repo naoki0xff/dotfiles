@@ -6,6 +6,7 @@ return {
     init = function()
       vim.g.coc_global_extensions = { 
         'coc-explorer',
+        'coc-lists',
         'coc-vimlsp',
         'coc-json',
         'coc-yaml',

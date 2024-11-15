@@ -24,6 +24,9 @@ opt.backupdir = os.getenv("HOME") .. '/.local/share/nvim/backup'
 opt.undofile = true
 opt.undodir = os.getenv("HOME") .. '/.local/share/nvim/undo'
 
+-- Session
+opt.sessionoptions:append({ 'winpos', 'terminal', 'folds' })
+
 -- Clipboard
 opt.clipboard:append({ 'unnamedplus' })
 
