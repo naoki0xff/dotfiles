@@ -29,6 +29,8 @@ return {
           ensure_installed = {
             -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
             --"terraformls"
+            -- "gopls",
+            -- "ts_ls",
           }
         })
         require("mason-lspconfig").setup_handlers {
