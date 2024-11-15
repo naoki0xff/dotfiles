@@ -6,7 +6,10 @@ return {
     end
   },
   {
-    'airblade/vim-gitgutter',
+    'lewis6991/gitsigns.nvim',
+    init = function()
+      require('gitsigns').setup()
+    end
   },
   {
     'rhysd/git-messenger.vim',
