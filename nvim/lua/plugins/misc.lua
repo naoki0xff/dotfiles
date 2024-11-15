@@ -1,13 +1,31 @@
 return {
   { 'osyo-manga/vim-anzu' },
-  { 'osyo-manga/vim-trip' },
   { 'haya14busa/vim-edgemotion' },
   { 'andymass/vim-tradewinds' },
   { 't9md/vim-quickhl' },
   { 'tpope/vim-surround' },
   { 'tpope/vim-repeat' },
-  { 'tpope/vim-speeddating' },
   { 'cohama/lexima.vim' },
+  { 'monaqa/dial.nvim',
+    config = function()
+      local augend = require("dial.augend")
+      require("dial.config").augends:register_group{
+        default = {
+          augend.integer.alias.decimal_int,
+          augend.integer.alias.hex,
+          augend.integer.alias.octal,
+          augend.integer.alias.binary,
+          augend.constant.alias.bool,
+          augend.semver.alias.semver,
+          augend.date.alias["%Y/%m/%d"],
+          augend.date.alias["%Y/%m/%d"],
+          augend.date.alias["%Y-%m-%d"],
+          augend.date.alias["%m/%d"],
+          augend.date.alias["%H:%M"],
+        },
+      }
+    end,
+  },
   { 'editorconfig/editorconfig',
     init = function()
       vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*', 'scp://.*' }
