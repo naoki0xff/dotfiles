@@ -4,6 +4,7 @@ return {
     'neoclide/coc.nvim', 
     branch = 'release',
     init = function()
+      -- install extensions
       vim.g.coc_global_extensions = { 
         'coc-explorer',
         'coc-lists',
@@ -22,23 +23,23 @@ return {
     },
     {
       "williamboman/mason-lspconfig.nvim",
-      --init = function()
-      --  require("mason").setup()
-      --  require("mason-lspconfig").setup({})
-      --  require("mason-lspconfig").setup_handlers {
-      --    function (server_name)
-      --        require("lspconfig")[server_name].setup {}
-      --    end,
-      --    -- See LSP mappings => https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-      --    ["terraformls"] = function ()
-      --      require("terraformls").setup {}
-      --    end
-      --  }
-      --end,
+      init = function()
+        require("mason").setup()
+        require("mason-lspconfig").setup({
+          ensure_installed = {
+            -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
+            "terraformls"
+          }
+        })
+        require("mason-lspconfig").setup_handlers {
+          function (server_name)
+              require("lspconfig")[server_name].setup {}
+          end,
+        }
+      end,
     },
     {
       "neovim/nvim-lspconfig",
     },
   },
 }
--- TODO: manage lsp here
