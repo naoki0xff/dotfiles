@@ -86,9 +86,6 @@ fi
 fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 # -> aws
 complete -C '/usr/local/bin/aws_completer' aws
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source <(fzf --zsh)
 ## -> docker
 #source <(docker completion zsh)
 # -> podman
@@ -98,7 +95,7 @@ source <(kubectl completion zsh)
 # -> helm
 source <(helm completion zsh)
 # -> terraform (`terraform -install-autocomplete`)
-# dummy
+complete -o nospace -C $HOME/.tfenv/bin/terraform terraform
 # cd history
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
