@@ -10,6 +10,10 @@ keymap("n", "j", "gj")
 keymap("n", "k", "gk")
 keymap("n", "gh", "^")
 keymap("n", "gl", "$")
+keymap("n", "+", "3<C-w>+")
+keymap("n", "_", "3<C-w>-")
+keymap("n", "=", "3<C-w>>")
+keymap("n", "-", "3<C-w><")
 
 -- Insert Mode
 keymap("i", "<C-a>", "<C-o>^")
@@ -26,6 +30,10 @@ keymap("c", "<C-e>", "<End>")
 keymap("c", "<C-b>", "<Left>")
 keymap("c", "<C-f>", "<Right>")
 keymap("c", "<C-k>", "<C-E><C-U>")
+vim.cmd.cabbrev("Q", "q")
+vim.cmd.cabbrev("Qa", "qa")
+vim.cmd.cabbrev("q1", "q!")
+vim.cmd.cabbrev("qa1", "qa!")
 
 -- Custom
 -- t as [Tab]
@@ -86,6 +94,7 @@ keymap("n", "[git]i", ":GitMessenger<CR>",  { silent = true })
 keymap("n", "[d", ":Gitsigns prev_hunk<CR>",  { silent = true })
 keymap("n", "]d", ":Gitsigns next_hunk<CR>",  { silent = true })
 -- Misc
+keymap("n", "?", ":Lazy home<CR>",  { silent = true })
 keymap("n", "<Space>n", ":CocCommand explorer<CR>",  { silent = true })
 keymap("n", "<Space>u", ":MundoToggle<CR>",  { silent = true })
 keymap("n", "<Space>h", "<Plug>(quickhl-manual-this)", { remap = true, silent = true })

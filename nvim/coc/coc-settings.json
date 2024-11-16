@@ -17,16 +17,6 @@
     "<C-c>": "do:exit"
   },
   "languageserver": {
-    "dockerfile": {
-      "command": "docker-langserver",
-      "args": ["--stdio"],
-      "filetypes": ["dockerfile"]
-    },
-    "terraform": {
-      "command": "terraform-ls",
-      "args": ["serve"],
-      "filetypes": ["terraform", "tf"]
-    },
     "clangd": {
       "command": "clangd",
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
@@ -41,11 +31,6 @@
     "python": {
       "command": "pyls",
       "filetypes": ["python"]
-    },
-    "ruby": {
-      "command": "solargraph",
-      "args": ["stdio"],
-      "filetypes": ["ruby"]
     }
   },
   "yaml.schemas": {

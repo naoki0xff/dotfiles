@@ -19,6 +19,7 @@ opt.signcolumn = 'yes'
 opt.hidden = true
 
 -- Backup
+opt.autoread = true
 opt.backup = true
 opt.backupdir = os.getenv("HOME") .. '/.local/share/nvim/backup'
 opt.undofile = true
@@ -34,8 +35,8 @@ opt.clipboard:append({ 'unnamedplus' })
 opt.mouse = 'a'
 
 -- Edit
-opt.tabstop = 4
-opt.shiftwidth = 4
+opt.tabstop = 2
+opt.shiftwidth = 2
 opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
@@ -50,3 +51,6 @@ opt.incsearch = true
 opt.wrapscan = true
 opt.ignorecase = true
 opt.smartcase = true
+
+-- ctags
+opt.tags = '.tags;~'

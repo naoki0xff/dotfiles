@@ -3,7 +3,7 @@ return {
   {
     'neoclide/coc.nvim', 
     branch = 'release',
-    init = function()
+    config = function()
       -- install extensions
       vim.g.coc_global_extensions = { 
         'coc-explorer',
@@ -18,30 +18,32 @@ return {
   },
   {
     {
-      "williamboman/mason.nvim",
+      'williamboman/mason.nvim',
       dependencies = { 'williamboman/mason-lspconfig.nvim', 'neovim/nvim-lspconfig' }
     },
     {
-      "williamboman/mason-lspconfig.nvim",
-      init = function()
-        require("mason").setup()
-        require("mason-lspconfig").setup({
+      'williamboman/mason-lspconfig.nvim',
+      config = function()
+        require('mason').setup()
+        require('mason-lspconfig').setup({
           ensure_installed = {
             -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-            --"terraformls"
-            -- "gopls",
-            -- "ts_ls",
+            -- 'terraformls'
+            -- 'dockerls',
+            -- 'gopls',
+            -- 'ts_ls',
+            -- 'lua_ls',
           }
         })
-        require("mason-lspconfig").setup_handlers {
+        require('mason-lspconfig').setup_handlers {
           function (server_name)
-              require("lspconfig")[server_name].setup {}
+              require('lspconfig')[server_name].setup {}
           end,
         }
       end,
     },
     {
-      "neovim/nvim-lspconfig",
+      'neovim/nvim-lspconfig',
     },
   },
 }

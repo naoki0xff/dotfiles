@@ -1,19 +1,19 @@
 return {
   {
     'tpope/vim-fugitive',
-    init = function()
+    config = function()
       vim.g.gitgutter_sign_modified_removed = '~'
     end
   },
   {
     'lewis6991/gitsigns.nvim',
-    init = function()
+    config = function()
       require('gitsigns').setup()
     end
   },
   {
     'rhysd/git-messenger.vim',
-    init = function()
+    config = function()
       vim.g.git_messenger_no_default_mappings = 'v:true'
     end
   },
