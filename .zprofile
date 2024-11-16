@@ -83,13 +83,14 @@ function _update_vcs_info_msg() {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 add-zsh-hook precmd _update_vcs_info_msg
-RPROMPT="%1(v|%F{green}%1v%f|)"
+RPROMPT="%1(v|%F{#5e81ac}%1v%f|)"
 # R
 disable r
 # tmux
 [[ -z $TMUX && ! -z "$PS1" ]] && tmux
 set -o ignoreeof # stop tmux from exit with C-d
 # fzf(require 0.48.0 or later)
+eval "$(fzf --zsh)"
 export FZF_DEFAULT_OPTS='--height 40% --reverse'
 export FZF_TMUX=1
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
