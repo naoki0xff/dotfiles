@@ -1,13 +1,12 @@
 -- Type `:call coc#util#install()` when executable is not correctly set up.
 return { 
   {
-    'neoclide/coc.nvim', 
+    'neoclide/coc.nvim',
     branch = 'release',
     config = function()
       -- install extensions
-      vim.g.coc_global_extensions = { 
+      vim.g.coc_global_extensions = {
         'coc-explorer',
-        'coc-lists',
         'coc-vimlsp',
         'coc-json',
         'coc-yaml',
