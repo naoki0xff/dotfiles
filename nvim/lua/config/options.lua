@@ -44,6 +44,7 @@ opt.breakindent = true
 opt.wildoptions = 'pum'
 opt.backspace = 'indent,eol,start'
 opt.virtualedit = 'block'
+opt.diffopt = 'internal,filler,indent-heuristic,algorithm:histogram'
 
 -- Search
 opt.hlsearch = true

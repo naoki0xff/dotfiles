@@ -38,6 +38,9 @@ return {
       vim.api.nvim_set_var('airline#extensions#tabline#show_tab_count', 2)
       vim.api.nvim_set_var('airline#extensions#tabline#show_buffers', 0)
       vim.api.nvim_set_var('airline#extensions#tabline#show_splits', 0)
+      vim.api.nvim_set_var('airline#extensions#tabline#show_splits', 0)
+      vim.api.nvim_set_var('airline#extensions#tabline#tab_nr_type', 1)
+      vim.api.nvim_set_var('airline#extensions#tabline#show_tab_nr', 1)
       vim.api.nvim_set_var('airline#extensions#hunks#non_zero_only', 1)
     end
   },
@@ -45,7 +48,10 @@ return {
   -- Floating Filename
   {
     'b0o/incline.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', 'lewis6991/gitsigns.nvim' },
+    dependencies = {
+      'nvim-tree/nvim-web-devicons', -- depends https://www.nerdfonts.com
+      'lewis6991/gitsigns.nvim'
+    },
     config = function()
       local devicons = require 'nvim-web-devicons'
       require('incline').setup {

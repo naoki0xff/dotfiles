@@ -39,6 +39,13 @@ vim.cmd.cabbrev("qa1", "qa!")
 -- t as [Tab]
 keymap("n", "[tab]", "", { remap = false })
 keymap("n", "t", "[tab]", { remap = true })
+for tabn = 1,9 do
+  if ( tabn ~= 9 ) then
+    keymap("n", "[tab]" .. tabn, ":tabnext" .. tabn .. "<CR>",  { silent = true })
+  else
+    keymap("n", "[tab]" .. tabn, ":tablast<CR>",  { silent = true })
+  end
+end
 keymap("n", "[tab]t", ":tablast <bar> tabnew<CR>",  { silent = true })
 keymap("n", "[tab]w", ":tabclose<CR>",  { silent = true })
 keymap("n", "[tab]o", ":tabonly<CR>",  { silent = true })
