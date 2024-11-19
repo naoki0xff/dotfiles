@@ -36,7 +36,7 @@ return {
   {
     'Yggdroot/indentLine',
     config = function()
-      vim.g.indentLine_fileTypeExclude = { 'txt', 'text', 'help', 'man', 'fzf', 'json' }
+      vim.g.indentLine_fileTypeExclude = { 'txt', 'text', 'help', 'man', 'fzf', 'json', 'coc-explorer' }
       vim.g.vim_json_conceal = 0
     end
   },
@@ -62,14 +62,29 @@ return {
         autoload = true,
         autosave = true,
         follow_cwd = false,
+        -- Start session when there's no previously saved one
         on_autoload_no_session = function()
           if utils.dirs_match(vim.fn.getcwd(), allowed_dirs) then
             vim.notify("Starting session for current buffer.")
           end
         end,
+        -- Save session only on {allowed_dirs}
         should_save = function()
           return utils.dirs_match(vim.fn.getcwd(), allowed_dirs)
         end,
+        -- Promise to close certain buffers before leaving session
+        vim.api.nvim_create_autocmd("User", {
+          pattern = "PersistedSavePre",
+          callback = function()
+            for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+              if (vim.tbl_contains({
+                'coc-explorer',
+              }, vim.bo[buf].filetype)) then
+                vim.api.nvim_buf_delete(buf, { force = true })
+              end
+            end
+          end,
+        })
       })
     end,
   },

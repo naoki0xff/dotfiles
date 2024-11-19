@@ -14,6 +14,7 @@ keymap("n", "+", "3<C-w>+")
 keymap("n", "_", "3<C-w>-")
 keymap("n", "=", "3<C-w>>")
 keymap("n", "-", "3<C-w><")
+keymap("n", "<Leader>w", ":bdelete<CR>", { silent = true })
 
 -- Insert Mode
 keymap("i", "<C-a>", "<C-o>^")
