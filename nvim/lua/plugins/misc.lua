@@ -79,6 +79,9 @@ return {
             for _, buf in ipairs(vim.api.nvim_list_bufs()) do
               if (vim.tbl_contains({
                 'coc-explorer',
+                'Mundo',
+                'MundoDiff',
+                'fugitive',
               }, vim.bo[buf].filetype)) then
                 vim.api.nvim_buf_delete(buf, { force = true })
               end
