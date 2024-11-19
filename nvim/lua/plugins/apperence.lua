@@ -30,7 +30,7 @@ return {
     dependencies = { 'vim-airline/vim-airline-themes' },
     config = function()
       -- Theme
-      vim.g.airline_theme = 'nord_minimal'
+      vim.g.airline_theme = 'base16_nord'
       -- Section
       -- Tabline
       vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
