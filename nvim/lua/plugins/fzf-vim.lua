@@ -1,9 +1,19 @@
 return {
   {
-    'junegunn/fzf.vim',
-    dependencies = 'junegunn/fzf',
+    'junegunn/fzf',
+    build = './install --bin'
+  },
+  {
+    'ibhagwan/fzf-lua',
+    dependencies = { 'junegunn/fzf', 'nvim-tree/nvim-web-devicons' },
     config = function()
-      vim.g.fzf_tag_command = 'ctags -R -f .tags'
-  end
+      require("fzf-lua").setup({
+        winopts = {
+          preview = {
+            layout = 'vertical'
+          }
+        },
+      })
+    end
   },
 }

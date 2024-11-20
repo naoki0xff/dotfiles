@@ -1,5 +1,5 @@
 -- Type `:call coc#util#install()` when executable is not correctly set up.
-return { 
+return {
   {
     'neoclide/coc.nvim',
     branch = 'release',
