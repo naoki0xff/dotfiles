@@ -5,6 +5,8 @@ opt.encoding = 'utf-8'
 vim.scriptencoding = 'utf-8'
 
 -- Apperence
+opt.termguicolors = true
+opt.winblend = 15
 opt.number = true
 opt.display = 'lastline'
 opt.pumheight = 10
