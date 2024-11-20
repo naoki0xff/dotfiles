@@ -30,9 +30,6 @@ export XDG_CONFIG_HOME=~/.config
 export LANG=en_US.UTF-8
 # PATH
 PATH=$HOME/.local/bin:$HOME/usr/bin:$HOME/usr/local/bin:$PATH
-# BINARY
-# -> homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"
 # LANGUAGE
 # -> php (phpenv must comes after rbenv with its PATH)
 PATH="${HOME}/.phpenv/bin:$PATH"
@@ -51,8 +48,12 @@ eval "$(pyenv virtualenv-init -)"
 # -> ruby (also ruby-build)
 eval "$(~/.rbenv/bin/rbenv init - zsh)"
 # TOOLS
+# -> homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 # -> terraform
 PATH=$HOME/.tfenv/bin:$PATH
+# -> istioctl
+PATH=$HOME/.istioctl/bin:$PATH
 # avoid duplication
 typeset -U path PATH
 # finalize

@@ -36,7 +36,7 @@ alias k='kubectl'
 alias kcx='kubectx'
 alias kcn='kubens'
 # git shortcut
-alias g='git status'
+alias gs='git status'
 alias ga='git add'
 alias gc='git commit'
 alias gcm='git commit -m'
@@ -44,7 +44,7 @@ alias gp='git push'
 alias gd='git diff'
 alias gb='git branch'
 alias gba='git branch -a'
-alias gs='(){ TARGETBRANCH=`git branch -a|sed "s/ *//g"|fzf`; if [ -n ${TARGETBRANCH} ]; then if [[ ${TARGETBRANCH} == "remotes/origin/"* ]]; then TARGETBRANCH=${TARGETBRANCH/remotes\/origin\//}; fi; git checkout $TARGETBRANCH; unset TARGETBRANCH; fi }'
+alias gbs='(){ TARGETBRANCH=`git branch -a|sed "s/ *//g"|fzf`; if [ -n ${TARGETBRANCH} ]; then if [[ ${TARGETBRANCH} == "remotes/origin/"* ]]; then TARGETBRANCH=${TARGETBRANCH/remotes\/origin\//}; fi; git checkout $TARGETBRANCH; unset TARGETBRANCH; fi }'
 alias gl='git log --stat'
 alias glo='git log --oneline'
 alias glp='git log -p'
@@ -98,6 +98,12 @@ source <(podman completion zsh)
 source <(kubectl completion zsh)
 # -> helm
 source <(helm completion zsh)
+# -> argo-cd
+source <(argocd completion zsh)
+# -> istioctl
+source <(istioctl completion zsh)
+# -> kyverno
+source <(kyverno completion zsh)
 # -> terraform (`terraform -install-autocomplete`)
 complete -o nospace -C $HOME/.tfenv/bin/terraform terraform
 # cd history
