@@ -58,6 +58,12 @@ return {
       local allowed_dirs = {
         "~/work",
       }
+      local ignored_buffers = {
+        'coc-explorer',
+        'Mundo',
+        'MundoDiff',
+        'fugitive',
+      }
       persisted.setup({
         autoload = true,
         autosave = true,
@@ -77,12 +83,7 @@ return {
           pattern = "PersistedSavePre",
           callback = function()
             for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-              if (vim.tbl_contains({
-                'coc-explorer',
-                'Mundo',
-                'MundoDiff',
-                'fugitive',
-              }, vim.bo[buf].filetype)) then
+              if (vim.tbl_contains(ignored_buffers, vim.bo[buf].filetype)) then
                 vim.api.nvim_buf_delete(buf, { force = true })
               end
             end
