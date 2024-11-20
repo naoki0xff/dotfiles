@@ -61,7 +61,6 @@ return {
             filename = '[No Name]'
           end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
-      
           return {
             { (ft_icon or '') .. ' ', guifg = ft_color, guibg = 'none' },
             { filename .. ' ', gui = vim.bo[props.buf].modified and 'bold,italic' or 'bold' },
