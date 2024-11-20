@@ -36,20 +36,23 @@ alias k='kubectl'
 alias kcx='kubectx'
 alias kcn='kubens'
 # git shortcut
-alias gs='git status'
+alias g='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
 alias gd='git diff'
+alias gb='git branch'
+alias gba='git branch -a'
+alias gs='(){ TARGETBRANCH=`git branch -a|sed "s/ *//g"|fzf`; if [ -n ${TARGETBRANCH} ]; then if [[ ${TARGETBRANCH} == "remotes/origin/"* ]]; then TARGETBRANCH=${TARGETBRANCH/remotes\/origin\//}; fi; git checkout $TARGETBRANCH; unset TARGETBRANCH; fi }'
 alias gl='git log --stat'
 alias glo='git log --oneline'
 alias glp='git log -p'
 alias glm='git log -m --name-status'
-alias gb='git branch'
-alias gba='git branch -a'
 alias gss='(){ if [ -n "${1}" ];then git stash push -u -m $1; else git stash push -u; fi }'
 alias gsx='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "DROP not done"; else git stash drop ${TARGETSTASH}; unset TARGETSTASH ;fi }'
 alias gsl='git stash list'
 alias gsd='git diff `git stash list|cut -d':' -f1|fzf`'
 alias gsa='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "APPLY not done"; else git stash apply ${TARGETSTASH}; unset TARGETSTASH ;fi }'
-alias gco='(){ TARGETBRANCH=`git branch|sed "s/ *//g"|fzf`; if [ -n ${TARGETBRANCH} ]; then git checkout $TARGETBRANCH; unset TARGETBRANCH; fi }'
 # gui application
 alias vivaldi='open -a vivaldi'
 # execute on filetype
@@ -87,7 +90,7 @@ fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 # -> aws
 complete -C '/usr/local/bin/aws_completer' aws
 ## -> docker
-#source <(docker completion zsh)
+source <(docker completion zsh)
 # -> podman
 source <(podman completion zsh)
 # -> kubectl
