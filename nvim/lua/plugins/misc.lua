@@ -87,8 +87,12 @@ return {
               end
             end
           end,
-        })
+        }),
       })
+    end,
+    -- Do not start session when nvim started as manpager
+    cond = function()
+      return not(vim.tbl_contains(vim.v.argv, '+Man!'))
     end,
   },
 }
