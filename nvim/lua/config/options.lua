@@ -43,6 +43,7 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 opt.breakindent = true
+opt.completeopt = 'menu,menuone,noselect'
 opt.wildoptions = 'pum'
 opt.backspace = 'indent,eol,start'
 opt.virtualedit = 'block'

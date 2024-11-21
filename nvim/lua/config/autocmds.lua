@@ -49,7 +49,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("close_buf_with_q"),
   pattern = {
-    "coc://document",
     "fugitive://*",
     "*.fugitiveblame",
   },
@@ -80,7 +79,7 @@ vim.api.nvim_create_autocmd('BufEnter', {
       }, vim.o.filetype)) then
         vim.opt_local.keywordprg = ":help"
       else
-        vim.api.nvim_buf_set_keymap(0, "n", "K", ":<C-u>call CocAction('doHover')<CR>", { silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "K", ":lua vim.lsp.buf.hover()<CR>", { silent = true })
       end
   end
 })

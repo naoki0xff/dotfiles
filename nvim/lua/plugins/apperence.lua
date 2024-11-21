@@ -20,8 +20,25 @@ return {
     end,
   },
 
-  -- Buffer
-  -- N/A
+  -- Explorer
+  -- Document Symbols
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require('neo-tree').setup({
+        -- Enable document_symbols subcommand
+        sources = {
+          'filesystem',
+          'document_symbols',
+        }
+      })
+    end
+  },
 
   -- Tab
   -- Statusline
