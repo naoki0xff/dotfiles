@@ -28,8 +28,15 @@ return {
         mapping = cmp.mapping.preset.insert({
           ['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           ['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ['<C-e>'] = cmp.mapping(function(fallback)
+            if cmp.get_active_entry() then
+              cmp.close()
+            else
+              fallback()
+            end
+          end
+          ),
         }),
-        -- TODO: when typing <C-e>, which mapped to <C-o>$, you need to type twice to escape from completion menu select mode.
         formatting = {
           format = lspkind.cmp_format({
             mode = 'symbol_text',
