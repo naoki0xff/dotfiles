@@ -3,12 +3,12 @@ return {
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'cmp-nvim-lsp',
-      'cmp-buffer',
-      'cmp-path',
-      'cmp-cmdline',
-      'PhilippFeO/cmp-help-tags',
-      'lspkind.nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'windwp/nvim-autopairs',
+      'onsails/lspkind.nvim',
     },
     config = function()
       local cmp = require('cmp')
@@ -69,5 +69,6 @@ return {
   { 'hrsh7th/cmp-buffer' },
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-cmdline' },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   { 'onsails/lspkind.nvim' },
 }
