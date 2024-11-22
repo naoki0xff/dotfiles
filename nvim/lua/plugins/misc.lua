@@ -36,7 +36,7 @@ return {
   {
     'Yggdroot/indentLine',
     config = function()
-      vim.g.indentLine_fileTypeExclude = { 'txt', 'text', 'help', 'man', 'fzf', 'json', 'coc-explorer' }
+      vim.g.indentLine_fileTypeExclude = { 'txt', 'text', 'help', 'man', 'fzf', 'json', 'neo-tree' }
       vim.g.vim_json_conceal = 0
     end
   },
@@ -59,7 +59,7 @@ return {
         "~/work",
       }
       local ignored_buffers = {
-        'coc-explorer',
+        'neo-tree',
         'Mundo',
         'MundoDiff',
         'fugitive',
