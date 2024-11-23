@@ -16,8 +16,8 @@ return {
           'dockerls',
           'gopls',
           'ts_ls',
-          -- 'java_language_server',
           'lua_ls',
+          'bashls',
           'yamlls',
         }
       })
@@ -65,19 +65,14 @@ return {
     dependencies = { 'williamboman/mason.nvim', 'nvimtools/none-ls.nvim' },
     event = { 'BufReadPre', 'BufNewFile' },
     config = function()
+      -- https://github.com/jay-babu/mason-null-ls.nvim/blob/main/lua/mason-null-ls/mappings/filetype.lua
+      local enabled_formatter = { 'goimports', 'stylua' }
       require('mason').setup()
       require('mason-null-ls').setup({
-        ensure_installed = {
-          -- https://github.com/jay-babu/mason-null-ls.nvim/blob/main/lua/mason-null-ls/mappings/filetype.lua
-          'goimports',
-          'stylua',
-        },
+        ensure_installed = enabled_formatter,
         handlers = {},
       })
-      local status, null_ls = pcall(require, 'null-ls') -- 'null_ls' is same as 'none_ls'
-      if not status then
-        return
-      end
+      local null_ls = require('null-ls')
       null_ls.setup({
         sources = {
           -- TODO: なんかいい感じで。ensure_installedのリストと重複してるからええかんじに一回書くだけで動くように。
