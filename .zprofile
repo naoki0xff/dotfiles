@@ -92,8 +92,14 @@ disable r
 set -o ignoreeof # stop tmux from exit with C-d
 # fzf(require 0.48.0 or later)
 eval "$(fzf --zsh)"
-export FZF_DEFAULT_OPTS='--height 40% --reverse'
+FZF_DEFAULT_OPTS='--reverse'
+export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
+  --color=fg:#e5e9f0,bg:#000000,hl:#81a1c1
+  --color=fg+:#e5e9f0,bg+:#3b4357,hl+:#81a1c1
+  --color=info:#eacb8a,prompt:#bf6069,pointer:#b48dac
+  --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b' # Modified bg of Nord colorscheme = https://github.com/ianchesal/nord-fzf
 export FZF_TMUX=1
+export FZF_TMUX_OPTS='-p'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 export FZF_COMPLETION_TRIGGER=',,'
 # kubernetes

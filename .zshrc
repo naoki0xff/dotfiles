@@ -44,16 +44,16 @@ alias gp='git push'
 alias gd='git diff'
 alias gb='git branch'
 alias gba='git branch -a'
-alias gbs='(){ TARGETBRANCH=`git branch -a|sed "s/ *//g"|fzf`; if [ -n ${TARGETBRANCH} ]; then if [[ ${TARGETBRANCH} == "remotes/origin/"* ]]; then TARGETBRANCH=${TARGETBRANCH/remotes\/origin\//}; fi; git checkout $TARGETBRANCH; unset TARGETBRANCH; fi }'
+alias gbs='(){ TARGETBRANCH=`git branch -a|sed "s/ *//g"|fzf-tmux -p`; if [ -n ${TARGETBRANCH} ]; then if [[ ${TARGETBRANCH} == "remotes/origin/"* ]]; then TARGETBRANCH=${TARGETBRANCH/remotes\/origin\//}; fi; git checkout $TARGETBRANCH; unset TARGETBRANCH; fi }'
 alias gl='git log --stat'
 alias glo='git log --oneline'
 alias glp='git log -p'
 alias glm='git log -m --name-status'
 alias gss='(){ if [ -n "${1}" ];then git stash push -u -m $1; else git stash push -u; fi }'
-alias gsx='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "DROP not done"; else git stash drop ${TARGETSTASH}; unset TARGETSTASH ;fi }'
+alias gsx='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf-tmux -p`; if [ -z ${TARGETSTASH} ];then echo "DROP not done"; else git stash drop ${TARGETSTASH}; unset TARGETSTASH ;fi }'
 alias gsl='git stash list'
-alias gsd='git diff `git stash list|cut -d':' -f1|fzf`'
-alias gsa='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "APPLY not done"; else git stash apply ${TARGETSTASH}; unset TARGETSTASH ;fi }'
+alias gsd='git diff `git stash list|cut -d':' -f1|fzf-tmux -p`'
+alias gsa='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf-tmux -p`; if [ -z ${TARGETSTASH} ];then echo "APPLY not done"; else git stash apply ${TARGETSTASH}; unset TARGETSTASH ;fi }'
 # gui application
 alias vivaldi='open -a vivaldi'
 # execute on filetype
@@ -111,7 +111,7 @@ autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-max 100
 function fzf-cdr() {
-  local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf --reverse)
+  local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf-tmux -p --reverse)
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
     zle accept-line
