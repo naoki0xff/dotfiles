@@ -67,19 +67,9 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
--- show vim help with vim/help/lua files, otherwise show documentation of current symbol from lsp
-vim.api.nvim_create_autocmd('BufEnter', {
-  group = augroup("vim_documentation"),
-  pattern = '*',
-  callback = function ()
-      if (vim.tbl_contains({
-        'vim',
-        'help',
-        'lua'
-      }, vim.o.filetype)) then
-        vim.opt_local.keywordprg = ":help"
-      else
-        vim.api.nvim_buf_set_keymap(0, "n", "K", ":lua vim.lsp.buf.hover()<CR>", { silent = true })
-      end
-  end
+-- show documentation of current symbol with 'K' if LSP client is attached
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(args)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
+  end,
 })

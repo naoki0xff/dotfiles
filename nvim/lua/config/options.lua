@@ -43,7 +43,7 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 opt.breakindent = true
-opt.completeopt = 'menu,menuone,noselect'
+opt.completeopt = 'menu,menuone,noselect,preview'
 opt.wildoptions = 'pum'
 opt.backspace = 'indent,eol,start'
 opt.virtualedit = 'block'
@@ -58,3 +58,6 @@ opt.smartcase = true
 
 -- ctags
 opt.tags = '.tags;~'
+
+-- MISC
+vim.opt.keywordprg = ":help"
