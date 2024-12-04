@@ -58,6 +58,7 @@ return {
         "~/work",
       }
       local ignored_buffers = {
+        'help',
         'man',
         'neo-tree',
         'Mundo',
