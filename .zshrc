@@ -60,20 +60,6 @@ alias vivaldi='open -a vivaldi'
 alias -s html=vivaldi
 alias -s md=vivaldi
 alias -s vim='nvim -S'
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-## additional sources
-# zplug
-source $HOME/.zplug/init.zsh
-zplug "zsh-users/zsh-completions"
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-zplug load
 
 ## zsh config general
 # prompt
@@ -88,6 +74,8 @@ if [ ! -d "${XDG_CONFIG_HOME}/zsh/completion" ];then
     mkdir -p "${XDG_CONFIG_HOME}/zsh/completion"
 fi
 fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
+# fzf
+source <(fzf --zsh)
 # -> aws
 complete -C '/usr/local/bin/aws_completer' aws
 ## -> docker
@@ -111,7 +99,7 @@ autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
 zstyle ':chpwd:*' recent-dirs-max 100
 function fzf-cdr() {
-  local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf-tmux -p --reverse)
+  local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf-tmux -p 80% --reverse)
   if [ -n "$selected_dir" ]; then
     BUFFER="cd ${selected_dir}"
     zle accept-line
