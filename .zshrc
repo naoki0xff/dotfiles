@@ -69,11 +69,6 @@ PROMPT='%F{#5e81ac}%n@%m:%f%~%F{#5e81ac}$%f'
 # completion
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
-## Completion source
-if [ ! -d "${XDG_CONFIG_HOME}/zsh/completion" ];then
-    mkdir -p "${XDG_CONFIG_HOME}/zsh/completion"
-fi
-fpath=($XDG_CONFIG_HOME/zsh/completion $fpath)
 # fzf
 source <(fzf --zsh)
 # -> aws
