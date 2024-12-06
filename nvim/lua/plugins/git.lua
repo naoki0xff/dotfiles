@@ -1,9 +1,6 @@
 return {
   {
     'tpope/vim-fugitive',
-    config = function()
-      vim.g.gitgutter_sign_modified_removed = '~'
-    end
   },
   {
     'lewis6991/gitsigns.nvim',
