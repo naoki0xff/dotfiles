@@ -102,5 +102,7 @@ export FZF_TMUX=1
 export FZF_TMUX_OPTS='-p 80%'
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 export FZF_COMPLETION_TRIGGER=',,'
+# bat
+export BAT_THEME='Nord'
 # kubernetes
 export KUBE_EDITOR=nvim

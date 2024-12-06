@@ -13,6 +13,7 @@ return {
     config = function()
       local actions = require("fzf-lua.actions")
       require("fzf-lua").setup({
+        'fzf-native',
         winopts = {
           preview = {
             layout = 'vertical'
