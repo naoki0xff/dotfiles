@@ -19,8 +19,6 @@
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
-    pkgs.ripgrep
-    pkgs.fd
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -39,7 +37,7 @@
   # Check available nixpkgs
   # https://search.nixos.org/packages
   # Also list of available modules
-  # https://github.com/nix-community/home-manager/tree/master/modules
+  # https://github.com/nix-community/home-manager/tree/master/modules/programs
   imports = [
     ./cli/editor.nix
     ./cli/infra.nix
