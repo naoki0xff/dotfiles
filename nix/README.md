@@ -2,9 +2,7 @@
 
 This README will give an instruction of how to setup nix(nixpkgs) with your environment.
 
-Since nixpkgs are installed differently depending on your working environment, there isn't such one-config-covers-all but per plafrom configurations are available in this project.
-
----
+Since nixpkgs availability are not always the same with your working environment (i.e. linux openssl-devel vs darwin libssl), this configuration is not meant to dynamically change its behavior based on building platform.
 
 ## HOW TO CONFIGURE YOUR NIX ENVIRONMENT
 
