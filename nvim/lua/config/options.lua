@@ -60,4 +60,5 @@ opt.smartcase = true
 opt.tags = '.tags;~'
 
 -- MISC
-vim.opt.keywordprg = ":help"
+opt.keywordprg = ":help"
+opt.fixeol = false

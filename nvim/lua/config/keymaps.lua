@@ -37,7 +37,7 @@ vim.cmd.cabbrev("q1", "q!")
 vim.cmd.cabbrev("qa1", "qa!")
 
 -- Custom
--- t as [Tab]
+-- Tab
 keymap("n", "[tab]", "", { remap = false })
 keymap("n", "t", "[tab]", { remap = true })
 for tabn = 1,9 do
@@ -55,7 +55,7 @@ keymap("n", "[tab]p", "<cmd>tabprev<CR>",  { silent = true })
 keymap("n", "[tab]m", "<cmd>wincmd T<CR>",  { silent = true })
 keymap("n", "[tab]h", "<cmd>tabm -1<CR>",  { silent = true })
 keymap("n", "[tab]l", "<cmd>tabm +1<CR>",  { silent = true })
--- s/S as [sub/SUB]
+-- Finder
 keymap("n", "[sub]", "", { remap = false })
 keymap("n", "s", "[sub]", { remap = true })
 keymap("n", "[SUB]", "", { remap = false })
@@ -82,7 +82,7 @@ keymap("n", "[sub]q", "<cmd>FzfLua search_history<CR>",  { silent = true })
 keymap("n", "[sub]:", "<cmd>FzfLua commands<CR>",  { silent = true })
 keymap("n", "[sub]h", "<cmd>FzfLua helptags<CR>",  { silent = true })
 keymap("n", "[sub]?", "<cmd>FzfLua keymaps<CR>",  { silent = true })
--- <Space>c as [code]
+-- LSP
 keymap("n", "[code]", "", { remap = false })
 keymap("n", "<Space>c", "[code]", { remap = true })
 keymap("n", "[code]?", "<cmd>FzfLua lsp_finer<CR>",  { silent = true })
@@ -96,7 +96,7 @@ keymap("n", "<Leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
 keymap("v", "<Leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", { silent = true })
 keymap("n", "<Leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true })
 keymap("v", "<Leader>f", "<cmd>lua vim.lsp.buf.format()<CR>", { silent = true })
--- <Space>g as [git]
+-- Git
 keymap("n", "[git]", "", { remap = false })
 keymap("n", "<Space>g", "[git]", { remap = true })
 keymap("n", "[git]s", "<cmd>Git<CR>",  { silent = true })
