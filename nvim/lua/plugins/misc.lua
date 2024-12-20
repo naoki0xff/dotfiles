@@ -90,4 +90,43 @@ return {
       return not(vim.tbl_contains(vim.v.argv, '+Man!'))
     end,
   },
+  {
+    'is0n/jaq-nvim',
+    dependencies = { 'iamcco/markdown-preview.nvim' },
+    config = function()
+      require('jaq-nvim').setup({
+        cmds = {
+          internal = {
+            lua = "luafile %",
+            vim = "source %",
+            markdown = "MarkdownPreviewToggle",
+          },
+          external = {
+            sh = "sh %",
+            go = "go run %",
+          },
+        },
+        ui = {
+          float = {
+            -- TODO: Change floating widow bg color. It should match with Nord colorscheme.
+            border = "single",
+            winblend = 15,
+            height = 0.4,
+            width = 0.6,
+            x = 0.5,
+            y = 0.3,
+          },
+        },
+      })
+    end
+  },
+  {
+    'iamcco/markdown-preview.nvim',
+    cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
+    build = 'cd app & yarn install',
+    ft = { 'markdown' },
+    config = function()
+      vim.g.mkdp_filetype = { 'markdown' }
+    end
+  },
 }

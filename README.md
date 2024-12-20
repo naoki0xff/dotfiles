@@ -1,15 +1,13 @@
-## dotfiles
+## Dotfiles
 
-personal configuration files.
+This repository contains personal configuration settings.
 
 All the configuration files are located based on [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/).
 
----
-
-## major requirement
+## Requirements
 
 - zsh: any version
-- tmux: 3.2 or later, requires popup feature
-- neovim: 0.9.0 or later, npm neovim module as additional dependency
+- tmux: 3.2 or later (requires "popup" feature)
+- neovim: 0.9.0 or later (npm "neovim" module for plugin dependency)
 - fzf: 0.48.0 or later
 

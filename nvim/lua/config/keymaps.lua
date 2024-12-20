@@ -110,6 +110,7 @@ keymap("n", "[d", "<cmd>Gitsigns prev_hunk<CR>",  { silent = true })
 keymap("n", "]d", "<cmd>Gitsigns next_hunk<CR>",  { silent = true })
 -- Misc
 keymap("n", "?", "<cmd>Lazy home<CR>",  { silent = true })
+keymap("n", "<Leader>e", "<cmd>Jaq<CR>",  { silent = true })
 keymap("n", "<Leader>s", "<cmd>SessionSelect<CR>",  { silent = true })
 keymap("n", "<Leader>d", "<cmd>SessionDelete<CR>",  { silent = true })
 keymap("n", "<Space>n", "<cmd>Neotree position=left toggle<CR>",  { silent = true })
