@@ -5,16 +5,6 @@
   home.username = "naoki";
   home.homeDirectory = "/Users/naoki";
 
-  # Install Nix Packages
-  # Check available nixpkgs => https://search.nixos.org/packages
-  # List of available modules => https://github.com/nix-community/home-manager/tree/master/modules/programs
-  imports = [
-    ./pkgs/editor.nix
-    ./pkgs/languages.nix
-    #./pkgs/shell.nix
-    ./pkgs/utils.nix
-  ];
-
   # # It is sometimes useful to fine-tune packages, for example, by applying
   # # overrides. You can do that directly here, just don't forget the
   # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -27,6 +17,17 @@
   # (pkgs.writeShellScriptBin "my-hello" ''
   #   echo "Hello, ${config.home.username}!"
   # '')
+
+  # Check available nixpkgs
+  # https://search.nixos.org/packages
+  # Also list of available modules
+  # https://github.com/nix-community/home-manager/tree/master/modules
+  imports = [
+    ./pkgs/editor.nix
+    ./pkgs/languages.nix
+    #./pkgs/shell.nix
+    ./pkgs/utils.nix
+  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -60,7 +61,7 @@
   #  /etc/profiles/per-user/naoki/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # See home manager options => https://nix-community.github.io/home-manager/options.xhtml#opt-home.file

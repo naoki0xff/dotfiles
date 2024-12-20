@@ -2,12 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    # Shell
-    bat
-    colordiff
-    direnv
-    tmux
-
     # Container
     argocd
     devcontainer
@@ -16,16 +10,28 @@
     kubectl
     kubectx
     kubernetes-helm
+    kubeseal
     kyverno
 
     # Security
+    datree
     trivy
 
+    # Cloud
+    awscli2
+    azure-cli
+    kubelogin # Azure AKS utility
+
     # Misc
+    bat
+    colordiff
+    direnv
     fd
     fzf
     jq
+    nkf
     ripgrep
     tree
+    tmux
   ];
 }

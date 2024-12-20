@@ -33,13 +33,6 @@ return {
     end
   },
   {
-    'Yggdroot/indentLine',
-    config = function()
-      vim.g.indentLine_fileTypeExclude = { 'txt', 'text', 'help', 'man', 'fzf', 'json', 'neo-tree' }
-      vim.g.vim_json_conceal = 0
-    end
-  },
-  {
     'simnalamburt/vim-mundo',
     config = function()
       vim.g.mundo_preview_buttom = 1

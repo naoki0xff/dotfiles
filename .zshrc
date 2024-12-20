@@ -22,6 +22,7 @@ alias vimdiff='nvim -d'
 alias taginit='ctags -R -f .tags'
 alias wl='wc -l'
 alias fzf='fzf-tmux'
+alias hm='home-manager'
 alias whihc='which'
 # infra shortcut
 alias o='open .'
