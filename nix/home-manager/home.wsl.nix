@@ -27,6 +27,7 @@
     ./pkgs/languages.nix
     #./pkgs/shell.nix
     ./pkgs/utils.nix
+    ./pkgs/wsl/default.nix
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
