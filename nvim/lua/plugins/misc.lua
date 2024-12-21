@@ -99,17 +99,18 @@ return {
           internal = {
             lua = "luafile %",
             vim = "source %",
-            markdown = "MarkdownPreviewToggle",
+            markdown = "MarkdownPreview",
           },
           external = {
             sh = "sh %",
             go = "go run %",
+            python = "python %",
+            ruby = "ruby %",
           },
         },
         ui = {
           float = {
-            -- TODO: Change floating widow bg color. It should match with Nord colorscheme.
-            border = "single",
+            border = "double",
             winblend = 15,
             height = 0.4,
             width = 0.6,
