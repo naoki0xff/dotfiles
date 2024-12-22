@@ -12,12 +12,14 @@ return {
       require('mason-lspconfig').setup({
         ensure_installed = {
           -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-          'terraformls',
+          'bashls',
           'dockerls',
           'gopls',
-          'ts_ls',
+          'jdtls',
           'lua_ls',
-          'bashls',
+          'nil_ls',
+          'terraformls',
+          'ts_ls',
           'yamlls',
         }
       })
