@@ -104,6 +104,7 @@ return {
           external = {
             sh = "sh %",
             go = "go run %",
+            java = "java %",
             python = "python %",
             ruby = "ruby %",
           },

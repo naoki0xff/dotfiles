@@ -16,6 +16,7 @@ return {
           'dockerls',
           'gopls',
           'jdtls',
+          'lemminx',
           'lua_ls',
           'nil_ls',
           'terraformls',

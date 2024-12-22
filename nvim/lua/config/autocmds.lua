@@ -2,7 +2,7 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
 end
 
--- go to last loc when opening a buffer
+-- Go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = augroup("last_loc"),
   callback = function(event)
@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- close some filetypes with <q>
+-- Close some filetypes with <q>
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("close_ft_with_q"),
   pattern = {
@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "ref*",
     "preview",
     "checkhealth",
+    "Jaq",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -45,7 +46,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- close some buffer types with <q>
+-- Close some buffer types with <q>
 vim.api.nvim_create_autocmd("BufEnter", {
   group = augroup("close_buf_with_q"),
   pattern = {
@@ -67,7 +68,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
--- show documentation of current symbol with 'K' if LSP client is attached
+-- Show documentation of current symbol with 'K' if LSP client is attached
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
