@@ -21,15 +21,17 @@ bindkey "^R" history-incremental-search-backward
 # etc
 stty stop undef
 
-# VARIABLE
-export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
-export EDITOR=nvim
-bindkey -e
-export MANPAGER="nvim +Man!"
 # XDG Base Directory
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
+# LANG/LOCALE
 export LANG=en_US.UTF-8
+# EDITOR
+export EDITOR=nvim
+bindkey -e
+export MANPAGER="nvim +Man!"
+# BROWSER
+export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
 # PATH
 PATH=$HOME/.local/bin:$HOME/usr/bin:$HOME/usr/local/bin:$PATH
 # LANGUAGE
