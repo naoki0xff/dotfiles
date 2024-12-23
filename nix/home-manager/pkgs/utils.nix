@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    # Container
+    # Kubernetes
     argocd
     devcontainer
     istioctl
@@ -12,6 +12,10 @@
     kubernetes-helm
     kubeseal
     kyverno
+
+    # Terraform
+    tenv
+    tflint
 
     # Security
     datree

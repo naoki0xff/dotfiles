@@ -26,14 +26,13 @@ export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
 export EDITOR=nvim
 bindkey -e
 export MANPAGER="nvim +Man!"
-export XDG_CONFIG_HOME=~/.config
+# XDG Base Directory
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
 export LANG=en_US.UTF-8
 # PATH
 PATH=$HOME/.local/bin:$HOME/usr/bin:$HOME/usr/local/bin:$PATH
 # LANGUAGE
-# -> php (phpenv must comes after rbenv with its PATH)
-PATH="${HOME}/.phpenv/bin:$PATH"
-eval "$(phpenv init -)"
 # -> go
 export GOPATH=$HOME/usr/local/go
 export GOBIN=$GOPATH/bin
@@ -50,8 +49,6 @@ eval "$(~/.rbenv/bin/rbenv init - zsh)"
 # TOOLS
 # -> homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# -> terraform
-PATH=$HOME/.tfenv/bin:$PATH
 # -> istioctl
 PATH=$HOME/.istioctl/bin:$PATH
 # avoid duplication

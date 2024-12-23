@@ -70,6 +70,10 @@ PROMPT='%F{#5e81ac}%n@%m:%f%~%F{#5e81ac}$%f'
 # completion
 autoload -Uz compinit && compinit -i
 autoload -U +X bashcompinit && bashcompinit
+# direnv
+if [ ! -z ${EDITOR} ];then
+  eval "$(direnv hook zsh)"
+fi
 # fzf
 source <(fzf --zsh)
 # -> aws
@@ -88,8 +92,8 @@ source <(argocd completion zsh)
 source <(istioctl completion zsh)
 # -> kyverno
 source <(kyverno completion zsh)
-# -> terraform (`terraform -install-autocomplete`)
-complete -o nospace -C $HOME/.tfenv/bin/terraform terraform
+# -> tenv (terraform, terragrunt,opentofu, atoms)
+source <(tenv completion zsh)
 # cd history
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
