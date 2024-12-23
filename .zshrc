@@ -92,8 +92,9 @@ source <(argocd completion zsh)
 source <(istioctl completion zsh)
 # -> kyverno
 source <(kyverno completion zsh)
-# -> tenv (terraform, terragrunt,opentofu, atoms)
-source <(tenv completion zsh)
+# TODO: check if nix installed tenv has completion enabled w/o this setting
+## -> tenv (terraform, terragrunt,opentofu, atoms)
+#source <(tenv completion zsh)
 # cd history
 autoload -Uz chpwd_recent_dirs cdr add-zsh-hook
 add-zsh-hook chpwd chpwd_recent_dirs
