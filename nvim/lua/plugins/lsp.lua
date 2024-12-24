@@ -30,6 +30,8 @@ return {
           require('lspconfig')[server_name].setup {
             capabilities = capabilities,
           }
+          -- Extra Configuration for each language server
+          -- YAML
           require('lspconfig').yamlls.setup {
             settings = {
               yaml = {
