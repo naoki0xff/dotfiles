@@ -50,6 +50,9 @@ return {
           char = "|",
           tab_char = "|",
         },
+        scope = {
+          enabled = false,
+        },
       })
       local hooks = require('ibl.hooks')
       hooks.register(

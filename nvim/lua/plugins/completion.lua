@@ -111,6 +111,59 @@ return {
   { 'hrsh7th/cmp-vsnip' },
   { 'hrsh7th/vim-vsnip' },
   { 'hrsh7th/vim-vsnip-integ' },
-  { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
   { 'onsails/lspkind.nvim' },
+  { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
+  { 
+    'windwp/nvim-ts-autotag',
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require("nvim-ts-autotag").setup({
+        opts = {
+          enable_close = true,
+          enable_rename = true,
+          enable_close_on_slash = false,
+        },
+      })
+    end
+  },
+  { 
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+      vim.opt.runtimepath:prepend(vim.fn.stdpath("data") .. "/nvim-treesitter")
+      require("nvim-treesitter.configs").setup({
+        parser_install_dir = vim.fn.stdpath("data") .. "/nvim-treesitter",
+        -- Supported Languages
+        -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
+        ensure_installed = { 
+          "bash",
+          "c",
+          "diff",
+          "html",
+          "javascript",
+          "jsdoc",
+          "json",
+          "jsonc",
+          "lua",
+          "luadoc",
+          "luap",
+          "markdown",
+          "markdown_inline",
+          "printf",
+          "python",
+          "query",
+          "regex",
+          "toml",
+          "tsx",
+          "typescript",
+          "vim",
+          "vimdoc",
+          "xml",
+          "yaml",
+        },
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end
+  },
 }
