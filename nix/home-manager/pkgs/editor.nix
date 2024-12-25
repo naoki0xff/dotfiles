@@ -1,7 +1,8 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    neovim
-  ];
+  programs.neovim = {
+    enable = true;
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
+  };
 }
