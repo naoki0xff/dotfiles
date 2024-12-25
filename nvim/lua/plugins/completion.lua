@@ -113,7 +113,7 @@ return {
   { 'hrsh7th/vim-vsnip-integ' },
   { 'onsails/lspkind.nvim' },
   { 'windwp/nvim-autopairs', event = 'InsertEnter', config = true },
-  { 
+  {
     'windwp/nvim-ts-autotag',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
     config = function()
@@ -126,7 +126,7 @@ return {
       })
     end
   },
-  { 
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()
