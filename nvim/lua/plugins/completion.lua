@@ -135,11 +135,19 @@ return {
         parser_install_dir = vim.fn.stdpath("data") .. "/nvim-treesitter",
         -- Supported Languages
         -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
-        ensure_installed = { 
+        ensure_installed = {
           "bash",
           "c",
           "diff",
+          "go",
+          "gomod",
+          "gosum",
+          "gotmpl",
+          "gowork",
+          "hcl",
+          "helm",
           "html",
+          "java",
           "javascript",
           "jsdoc",
           "json",
@@ -149,10 +157,14 @@ return {
           "luap",
           "markdown",
           "markdown_inline",
+          "nix",
+          "php",
+          "phpdoc",
           "printf",
           "python",
           "query",
           "regex",
+          "ruby",
           "toml",
           "tsx",
           "typescript",
@@ -161,8 +173,6 @@ return {
           "xml",
           "yaml",
         },
-        highlight = { enable = true },
-        indent = { enable = true },
       })
     end
   },
