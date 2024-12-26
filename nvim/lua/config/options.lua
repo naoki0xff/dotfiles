@@ -21,9 +21,9 @@ vim.opt.hidden = true
 -- Backup
 vim.opt.autoread = true
 vim.opt.backup = true
-vim.opt.backupdir = os.getenv("HOME") .. '/.local/share/nvim/backup'
+vim.opt.backupdir = vim.fn.stdpath("data") .. '/backup'
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv("HOME") .. '/.local/share/nvim/undo'
+vim.opt.undodir = vim.fn.stdpath("data") .. '/undo'
 
 -- Session
 vim.opt.sessionoptions:append({ 'winpos', 'terminal', 'folds' })
