@@ -6,7 +6,7 @@ return {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    dependencies = { 'neovim/nvim-lspconfig', 'hrsh7th/cmp-nvim-lsp' },
+    dependencies = { 'neovim/nvim-lspconfig', 'hrsh7th/cmp-nvim-lsp', 'towolf/vim-helm' },
     config = function()
       require('mason').setup()
       require('mason-lspconfig').setup({
@@ -15,6 +15,7 @@ return {
           'bashls',
           'dockerls',
           'gopls',
+          'helm_ls',
           'jdtls',
           'lemminx',
           'lua_ls',
@@ -85,9 +86,8 @@ return {
       }
     end,
   },
-  {
-    'neovim/nvim-lspconfig',
-  },
+  { 'neovim/nvim-lspconfig' },
+  { 'towolf/vim-helm', ft = { 'helm'} },
 
   -- Formatter
   {
