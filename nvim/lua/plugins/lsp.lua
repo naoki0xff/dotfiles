@@ -20,6 +20,8 @@ return {
           'lemminx',
           'lua_ls',
           'nil_ls',
+          'phpactor',
+          'pyright',
           'terraformls',
           'ts_ls',
           'yamlls',
@@ -31,7 +33,7 @@ return {
           require('lspconfig')[server_name].setup {
             capabilities = capabilities,
           }
-          -- Extra Configuration for each language server
+          -- Extra configuration for each language server
           -- LUA: Enable LSP support for vim config files
           require'lspconfig'.lua_ls.setup {
             on_init = function(client)

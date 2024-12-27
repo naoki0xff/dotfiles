@@ -70,11 +70,12 @@ return {
   -- Statusline
   {
     'vim-airline/vim-airline',
-    dependencies = { 'vim-airline/vim-airline-themes' },
+    dependencies = { 'vim-airline/vim-airline-themes', 'SmiteshP/nvim-navic' },
     config = function()
       -- Theme
       vim.g.airline_theme = 'base16_nord'
       -- Section
+      vim.g.airline_section_c = "%t%r%{%v:lua.require'nvim-navic'.get_location()%}"
       -- Tabline
       vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
       vim.api.nvim_set_var('airline#extensions#tabline#show_tabs', 1)
@@ -85,6 +86,19 @@ return {
       vim.api.nvim_set_var('airline#extensions#tabline#tab_nr_type', 1)
       vim.api.nvim_set_var('airline#extensions#tabline#show_tab_nr', 1)
       vim.api.nvim_set_var('airline#extensions#hunks#non_zero_only', 1)
+    end
+  },
+  -- LSP integration to statusline
+  {
+    'SmiteshP/nvim-navic',
+    dependencies = { 'neovim/nvim-lspconfig' },
+    config = function()
+      require('nvim-navic').setup({
+        lsp = {
+          auto_attach = true,
+        },
+        highlight = true,
+      })
     end
   },
 
