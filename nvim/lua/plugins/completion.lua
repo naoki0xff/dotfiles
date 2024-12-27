@@ -3,7 +3,6 @@ return {
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
-      'hrsh7th/cmp-nvim-lua',
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-buffer',
@@ -28,7 +27,6 @@ return {
         },
         preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
         sources = cmp.config.sources({
-          { name = 'nvim_lua' },
           { name = 'nvim_lsp' },
           { name = 'cmp-nvim-lsp-signature-help' },
           {
@@ -115,7 +113,6 @@ return {
       })
     end
   },
-  { 'hrsh7th/cmp-nvim-lua' },
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-nvim-lsp-signature-help' },
   { 'hrsh7th/cmp-buffer' },
@@ -185,6 +182,10 @@ return {
           "vimdoc",
           "xml",
           "yaml",
+        },
+        sync_install = false,
+        highlight = {
+          enable = true,
         },
       })
     end
