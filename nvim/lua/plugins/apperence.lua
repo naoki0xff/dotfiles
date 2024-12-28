@@ -67,77 +67,82 @@ return {
     end
   },
 
-  -- Tabline & Statusline
-  -- TODO: 絶妙に気に食わない。tablineのカラースキームがビミョいのと、tabのファイル名がactive bufferと一致しない。
-  --  => bufferlineはなんかtablineのスタイルが崩れてる。環境依存感。そこはthemeがダサいのと釣り合いとれてる？あとあれだ。tabnrがbufferlineだと出し方がわからない。
-  --  => lualine as statusline + bufferline as tablineが良さそうだけど、なんか襷に短し系統。diagnosticsはinclineにまとめたいので、statuslineには要らないわ。
+  -- Tabline
   {
-    'vim-airline/vim-airline',
-    dependencies = { 'vim-airline/vim-airline-themes', 'SmiteshP/nvim-navic' },
+    'crispgm/nvim-tabline',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      -- Theme
-      vim.g.airline_theme = 'base16_nord'
-      -- Section
-      vim.g.airline_section_c = "%{%v:lua.require'nvim-navic'.get_location()%}"
-      -- Tabline
-      vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
-      vim.api.nvim_set_var('airline#extensions#tabline#show_tabs', 1)
-      vim.api.nvim_set_var('airline#extensions#tabline#show_tab_count', 2)
-      vim.api.nvim_set_var('airline#extensions#tabline#show_buffers', 0)
-      vim.api.nvim_set_var('airline#extensions#tabline#show_splits', 0)
-      vim.api.nvim_set_var('airline#extensions#tabline#show_splits', 0)
-      vim.api.nvim_set_var('airline#extensions#tabline#tab_nr_type', 1)
-      vim.api.nvim_set_var('airline#extensions#tabline#show_tab_nr', 1)
-      vim.api.nvim_set_var('airline#extensions#hunks#non_zero_only', 1)
+      vim.opt.showtabline = 2
+      require('tabline').setup({
+        show_index = true,
+        show_modify = true,
+        show_icon = true,
+        brackets = { '', '' },
+      })
+    end
+  },
+
+  -- Statusline
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'SmiteshP/nvim-navic' },
+    config = function()
+      require('lualine').setup({
+        options = {
+          theme = 'nord',
+          always_show_tabline = false,
+        },
+        extensions = {
+          'fzf',
+          'lazy',
+          'man',
+          'mason',
+          'neo-tree',
+          'quickfix',
+        }
+      })
     end
   },
 
   -- Winbar
   {
     'b0o/incline.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
+    dependencies = { 'nvim-tree/nvim-web-devicons', 'SmiteshP/nvim-navic' },
     config = function()
-      local function get_diagnostic_label(props)
-          local icons = {
-              Error = "",
-              Warn = "",
-              Info = "",
-              Hint = "",
-          }
-          local label = {}
-          for severity, icon in pairs(icons) do
-              local n = #vim.diagnostic.get(props.buf, {severity = vim.diagnostic.severity[string.upper(severity)]})
-              if n > 0 then
-                  local fg = "#" .. string.format("%06x", vim.api.nvim_get_hl_by_name("DiagnosticSign" .. severity, true)["foreground"])
-                  table.insert(label, {icon .. " " .. n .. " ", guifg = fg})
-              end
-          end
-          return label
-      end
-      require("incline").setup({
-        debounce_threshold = { falling = 500, rising = 250 },
+      local helpers = require 'incline.helpers'
+      local navic = require 'nvim-navic'
+      local devicons = require 'nvim-web-devicons'
+      require('incline').setup {
+        window = {
+          padding = 0,
+          margin = { horizontal = 0, vertical = 0 },
+        },
         render = function(props)
-          local bufname = vim.api.nvim_buf_get_name(props.buf)
-          local filename = vim.fn.fnamemodify(bufname, ":t")
-          local diagnostics = get_diagnostic_label(props)
-          local modified = vim.api.nvim_buf_get_option(props.buf, "modified") and "bold,italic" or "None"
-          local filetype_icon, color = require("nvim-web-devicons").get_icon_color(filename)
-          local buffer = {
-              { filetype_icon, guifg = color },
-              { " " },
-              { filename, gui = modified },
+          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
+          if filename == '' then
+            filename = '[No Name]'
+          end
+          local ft_icon, ft_color = devicons.get_icon_color(filename)
+          local modified = vim.bo[props.buf].modified
+          local res = {
+            ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
+            ' ',
+            { filename, gui = modified and 'bold,italic' or 'bold' },
+            guibg = '#44406e',
           }
-          if #diagnostics > 0 then
-              table.insert(diagnostics, { "| ", guifg = "grey" })
+          if props.focused then
+            for _, item in ipairs(navic.get_data(props.buf) or {}) do
+              table.insert(res, {
+                { ' > ', group = 'NavicSeparator' },
+                { item.icon, group = 'NavicIcons' .. item.type },
+                { item.name, group = 'NavicText' },
+              })
+            end
           end
-          for _, buffer_ in ipairs(buffer) do
-              table.insert(diagnostics, buffer_)
-          end
-          return diagnostics
+          table.insert(res, ' ')
+          return res
         end,
-      })
+      }
     end,
     event = 'VeryLazy',
   },
@@ -153,7 +158,6 @@ return {
           auto_attach = true,
         },
         highlight = true,
-        depth_limit = 5,
       })
     end
   },
