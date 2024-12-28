@@ -28,7 +28,7 @@ return {
         preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
         sources = cmp.config.sources({
           { name = 'nvim_lsp' },
-          { name = 'cmp-nvim-lsp-signature-help' },
+          { name = 'nvim_lsp_signature_help' },
           {
             name = 'buffer',
             option = {
