@@ -92,6 +92,10 @@ return {
           theme = 'nord',
           always_show_tabline = false,
         },
+        sections = {
+          lualine_b = { 'branch', 'diff' },
+          lualine_c = { 'filename', 'navic' },
+        },
         extensions = {
           'fugitive',
           'fzf',
@@ -108,40 +112,36 @@ return {
   -- Winbar
   {
     'b0o/incline.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons', 'SmiteshP/nvim-navic' },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      local helpers = require 'incline.helpers'
-      local navic = require 'nvim-navic'
       local devicons = require 'nvim-web-devicons'
       require('incline').setup {
-        window = {
-          padding = 0,
-          margin = { horizontal = 0, vertical = 0 },
-        },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
           if filename == '' then
             filename = '[No Name]'
           end
           local ft_icon, ft_color = devicons.get_icon_color(filename)
-          local modified = vim.bo[props.buf].modified
-          local res = {
-            ft_icon and { ' ', ft_icon, ' ', guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or '',
-            ' ',
-            { filename, gui = modified and 'bold,italic' or 'bold' },
-            guibg = '#44406e',
-          }
-          if props.focused then
-            for _, item in ipairs(navic.get_data(props.buf) or {}) do
-              table.insert(res, {
-                { ' > ', group = 'NavicSeparator' },
-                { item.icon, group = 'NavicIcons' .. item.type },
-                { item.name, group = 'NavicText' },
-              })
+          local function get_diagnostic_label()
+            local icons = { error = '', warn = '', info = '', hint = '' }
+            local label = {}
+            for severity, icon in pairs(icons) do
+              local n = #vim.diagnostic.get(props.buf, { severity = vim.diagnostic.severity[string.upper(severity)] })
+              if n > 0 then
+                table.insert(label, { icon .. n .. ' ', group = 'DiagnosticSign' .. severity })
+              end
             end
+            if #label > 0 then
+              table.insert(label, { '┊ ' })
+            end
+            return label
           end
-          table.insert(res, ' ')
-          return res
+          return {
+            { get_diagnostic_label() },
+            { (ft_icon or '') .. ' ', guifg = ft_color, guibg = 'none' },
+            { filename .. ' ', gui = vim.bo[props.buf].modified and 'bold,italic' or 'bold' },
+            { '┊  ' .. vim.api.nvim_win_get_number(props.win), group = 'DevIconWindows' },
+          }
         end,
       }
     end,
@@ -159,6 +159,7 @@ return {
           auto_attach = true,
         },
         highlight = true,
+        click = true,
       })
     end
   },
