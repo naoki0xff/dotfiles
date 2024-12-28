@@ -24,6 +24,7 @@
   # https://github.com/nix-community/home-manager/tree/master/modules
   imports = [
     ./pkgs/editor.nix
+    ./pkgs/git.nix
     ./pkgs/languages.nix
     #./pkgs/shell.nix
     ./pkgs/utils.nix
