@@ -1,4 +1,7 @@
 return {
+  -- Icons
+  { 'nvim-tree/nvim-web-devicons' }, -- Depends on https://www.nerdfonts.com
+
   -- Colorscheme
   {
     'shaunsingh/nord.nvim',
@@ -6,7 +9,6 @@ return {
     priority = 1000,
     config = function()
       vim.cmd[[colorscheme nord]]
-
       -- Example config in lua
       vim.g.nord_contrast = true
       vim.g.nord_borders = false
@@ -14,14 +16,12 @@ return {
       vim.g.nord_italic = false
       vim.g.nord_uniform_diff_background = true
       vim.g.nord_bold = false
-
       -- Load the colorscheme
       require('nord').set()
     end,
   },
 
-  -- Explorer
-  -- Document Symbols
+  -- Explorer & Document Symbols
   {
     'nvim-neo-tree/neo-tree.nvim',
     dependencies = {
@@ -31,9 +31,10 @@ return {
     },
     config = function()
       require('neo-tree').setup({
-        -- Enable document_symbols subcommand
         sources = {
+          -- Enable Explorer
           'filesystem',
+          -- Enable document_symbols
           'document_symbols',
         }
       })
@@ -66,8 +67,10 @@ return {
     end
   },
 
-  -- Tab
-  -- Statusline
+  -- Tabline & Statusline
+  -- TODO: 絶妙に気に食わない。tablineのカラースキームがビミョいのと、tabのファイル名がactive bufferと一致しない。
+  --  => bufferlineはなんかtablineのスタイルが崩れてる。環境依存感。そこはthemeがダサいのと釣り合いとれてる？あとあれだ。tabnrがbufferlineだと出し方がわからない。
+  --  => lualine as statusline + bufferline as tablineが良さそうだけど、なんか襷に短し系統。diagnosticsはinclineにまとめたいので、statuslineには要らないわ。
   {
     'vim-airline/vim-airline',
     dependencies = { 'vim-airline/vim-airline-themes', 'SmiteshP/nvim-navic' },
@@ -75,7 +78,7 @@ return {
       -- Theme
       vim.g.airline_theme = 'base16_nord'
       -- Section
-      vim.g.airline_section_c = "%t%r%{%v:lua.require'nvim-navic'.get_location()%}"
+      vim.g.airline_section_c = "%{%v:lua.require'nvim-navic'.get_location()%}"
       -- Tabline
       vim.api.nvim_set_var('airline#extensions#tabline#enabled', 1)
       vim.api.nvim_set_var('airline#extensions#tabline#show_tabs', 1)
@@ -88,7 +91,59 @@ return {
       vim.api.nvim_set_var('airline#extensions#hunks#non_zero_only', 1)
     end
   },
-  -- LSP integration to statusline
+
+  -- Winbar
+  {
+    'b0o/incline.nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      local function get_diagnostic_label(props)
+          local icons = {
+              Error = "",
+              Warn = "",
+              Info = "",
+              Hint = "",
+          }
+          local label = {}
+          for severity, icon in pairs(icons) do
+              local n = #vim.diagnostic.get(props.buf, {severity = vim.diagnostic.severity[string.upper(severity)]})
+              if n > 0 then
+                  local fg = "#" .. string.format("%06x", vim.api.nvim_get_hl_by_name("DiagnosticSign" .. severity, true)["foreground"])
+                  table.insert(label, {icon .. " " .. n .. " ", guifg = fg})
+              end
+          end
+          return label
+      end
+      require("incline").setup({
+        debounce_threshold = { falling = 500, rising = 250 },
+        render = function(props)
+          local bufname = vim.api.nvim_buf_get_name(props.buf)
+          local filename = vim.fn.fnamemodify(bufname, ":t")
+          local diagnostics = get_diagnostic_label(props)
+          local modified = vim.api.nvim_buf_get_option(props.buf, "modified") and "bold,italic" or "None"
+          local filetype_icon, color = require("nvim-web-devicons").get_icon_color(filename)
+          local buffer = {
+              { filetype_icon, guifg = color },
+              { " " },
+              { filename, gui = modified },
+          }
+          if #diagnostics > 0 then
+              table.insert(diagnostics, { "| ", guifg = "grey" })
+          end
+          for _, buffer_ in ipairs(buffer) do
+              table.insert(diagnostics, buffer_)
+          end
+          return diagnostics
+        end,
+      })
+    end,
+    event = 'VeryLazy',
+  },
+
+  -- LSP
+  -- Show parent-child structure
   {
     'SmiteshP/nvim-navic',
     dependencies = { 'neovim/nvim-lspconfig' },
@@ -98,38 +153,11 @@ return {
           auto_attach = true,
         },
         highlight = true,
+        depth_limit = 5,
       })
     end
   },
-
-  -- Floating Filename
-  {
-    'b0o/incline.nvim',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons', -- depends https://www.nerdfonts.com
-      'lewis6991/gitsigns.nvim'
-    },
-    config = function()
-      local devicons = require 'nvim-web-devicons'
-      require('incline').setup {
-        render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ':t')
-          if filename == '' then
-            filename = '[No Name]'
-          end
-          local ft_icon, ft_color = devicons.get_icon_color(filename)
-          return {
-            { (ft_icon or '') .. ' ', guifg = ft_color, guibg = 'none' },
-            { filename .. ' ', gui = vim.bo[props.buf].modified and 'bold,italic' or 'bold' },
-            { '┊  ' .. vim.api.nvim_win_get_number(props.win), group = 'DevIconWindows' },
-          }
-        end,
-      }
-    end,
-    event = 'VeryLazy',
-  },
-
-  -- Context
+  -- Show scope
   {
     'nvim-treesitter/nvim-treesitter-context',
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
