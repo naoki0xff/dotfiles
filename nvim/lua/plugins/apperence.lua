@@ -93,6 +93,7 @@ return {
           always_show_tabline = false,
         },
         extensions = {
+          'fugitive',
           'fzf',
           'lazy',
           'man',
