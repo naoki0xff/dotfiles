@@ -38,7 +38,8 @@ return {
           'document_symbols',
         }
       })
-    end
+    end,
+    event = 'VeryLazy',
   },
 
   -- Indent Guide
@@ -64,7 +65,8 @@ return {
         hooks.type.WHITESPACE,
         hooks.builtin.hide_first_tab_indent_level
       )
-    end
+    end,
+    event = 'VeryLazy',
   },
 
   -- Tabline
@@ -161,7 +163,7 @@ return {
         highlight = true,
         click = true,
       })
-    end
+    end,
   },
   -- Show scope
   {
@@ -173,7 +175,8 @@ return {
         multiwindow = true,
         max_lines = 1,
       })
-    end
+    end,
+    event = 'VeryLazy',
   }
 }
 
