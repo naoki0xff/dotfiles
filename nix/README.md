@@ -2,7 +2,7 @@
 
 This README will give an instruction of how to setup nix(nixpkgs) with your environment.
 
-Since nixpkgs availability are not always the same with your working environment (i.e. linux openssl-devel vs darwin libssl), this configuration is not meant to dynamically change its behavior based on building platform.
+Since nixpkg's availability are not always the same with your working environment (i.e. linux openssl-devel vs darwin libssl), this configuration is not meant to dynamically change its behavior based on building platform.
 
 ## HOW TO CONFIGURE YOUR NIX ENVIRONMENT
 
@@ -15,7 +15,7 @@ sh <(curl -L https://nixos.org/nix/install) --daemon
 For nix flake, you need to activate this feature by
 
 ```
-mkdir -p ${XDG\_CONFIG\_HOME}/nix
+mkdir -p ${XDG_CONFIG_HOME}/nix
 echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
 ```
 
@@ -38,13 +38,13 @@ or
 
 **Use existing template**
 ```
-cp -R ./home-manager ${XDG\_CONFIG\_HOME}
+cp -R ./home-manager ${XDG_CONFIG_HOME}
 ```
 
 then
 
 ```
-cd ${XDG\_CONFIG\_HOME}/home-manager/
+cd ${XDG_CONFIG_HOME}/home-manager/
 home-manager switch --flake .
 ```
 

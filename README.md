@@ -8,6 +8,6 @@ All the configuration files are located based on [XDG Base Directory Specificati
 
 - zsh: any version
 - tmux: 3.2 or later (requires "popup" feature)
-- neovim: 0.9.0 or later (npm "neovim" module for plugin dependency)
+- neovim: 0.9.0 or later
 - fzf: 0.48.0 or later
 
