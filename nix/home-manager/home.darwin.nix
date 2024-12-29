@@ -1,16 +1,11 @@
 { config, pkgs, ... }:
 
 {
+  # See configuration options => https://nix-community.github.io/home-manager/options.xhtml
   # HOME Config
   home = {
     username = "naoki";
     homeDirectory = "/Users/naoki";
-
-    # Dotfile management
-    file = {
-      ".npmrc".source = dotfiles/npmrc;
-      ".tmux.conf".source = dotfiles/tmux.conf;
-    };
 
     sessionVariables = {
       #EDITOR = "nvim";
@@ -30,11 +25,25 @@
   # List of available modules => https://github.com/nix-community/home-manager/tree/master/modules
   imports = [
     ./pkgs/editor.nix
-    ./pkgs/git.nix
     ./pkgs/languages.nix
     #./pkgs/shell.nix
     ./pkgs/utils.nix
   ];
+
+  # Dotfile management
+  home.file = {
+    ".npmrc".source = dotfiles/npmrc;
+    ".tmux.conf".source = dotfiles/tmux.conf;
+  };
+  xdg = {
+    enable = true;
+    configFile = {
+      "git" = {
+        source = dotfiles/git;
+        recursive = true;
+      };
+    };
+  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
