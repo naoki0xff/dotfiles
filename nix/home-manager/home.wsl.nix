@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  # See configuration options => https://nix-community.github.io/home-manager/options.xhtml
   # HOME Config
   home = {
     username = "naoki";
@@ -29,21 +30,6 @@
     ./pkgs/utils.nix
     ./pkgs/wsl/default.nix
   ];
-
-  # Dotfile management
-  home.file = {
-    ".npmrc".source = dotfiles/npmrc;
-    ".tmux.conf".source = dotfiles/tmux.conf;
-  };
-  xdg = {
-    enable = true;
-    configFile = {
-      "git" = {
-        source = dotfiles/git;
-        recursive = true;
-      };
-    };
-  };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

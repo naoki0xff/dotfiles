@@ -6,7 +6,7 @@ return {
   {
     'ibhagwan/fzf-lua',
     dependencies = { 'junegunn/fzf', 'nvim-tree/nvim-web-devicons' },
-    -- binary dependencies:
+    -- External dependencies:
     -- https://github.com/sharkdp/fd
     -- https://github.com/BurntSushi/ripgrep
     -- https://github.com/sharkdp/bat

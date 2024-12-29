@@ -38,7 +38,7 @@ or
 
 **Use existing template**
 ```
-cp -R ./home-manager ${XDG_CONFIG_HOME}
+cp -R {repository_root}/home-manager ${XDG_CONFIG_HOME}
 ```
 
 then
@@ -52,4 +52,7 @@ home-manager switch --flake .
 
 **CAVEATS**:
 
-See `man home-configuration.nix` for further detail of home-manager.
+To clean up old generations, type below command and both nix/home-manager old generations are removed from device.
+```
+nix-collect-garbage -d
+```
