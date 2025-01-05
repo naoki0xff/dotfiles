@@ -20,8 +20,8 @@
   }:
   let
     # Fix here to your preference
-    system = "aarch64-darwin";
     username = "naoki";
+    system = "aarch64-darwin";
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
@@ -33,6 +33,9 @@
       modules = [
         # Nix Configurations
         ./platform/${system}.nix
+
+        # Hardware Configuration
+        #./platform/${system}-hardware.nix
 
         # Install Packages
         ./pkgs/common/default.nix

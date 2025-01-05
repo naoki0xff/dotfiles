@@ -16,6 +16,7 @@
     # brew install --cask for 'Casks'
     casks = [
       "podman-desktop"
+      #"vivaldi"
     ];
   };
 }
