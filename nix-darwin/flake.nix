@@ -31,11 +31,11 @@
       inherit pkgs;
       specialArgs = { inherit self inputs system; };
       modules = [
-        # Nix Configurations
-        ./platform/${system}.nix
+        # Nix Configuration
+        ./platform/${system}/configuration.nix
 
         # Hardware Configuration
-        #./platform/${system}-hardware.nix
+        #./platform/${system}/hardware-configuration.nix
 
         # Install Packages
         ./pkgs/common/default.nix
