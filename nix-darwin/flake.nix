@@ -40,7 +40,6 @@
         # Install Packages
         ./pkgs/common/default.nix
         ./pkgs/${system}/default.nix
-        ./pkgs/${system}/brew.nix
       ];
     };
   };
