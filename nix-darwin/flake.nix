@@ -10,9 +10,6 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Overlays
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
   };
 
   outputs = inputs@{
@@ -56,18 +53,6 @@
         ./pkgs/common/default.nix
         ./pkgs/${system}/default.nix
         ./pkgs/${system}/brew.nix
-        ## Home Manager Configurations
-        #home-manager.darwinModules.home-manager {
-        #  home-manager.useGlobalPkgs = true;
-        #  home-manager.useUserPackages = true;
-        #  home-manager.users.${user} = {
-        #    system,
-        #    user,
-        #    pkgs,
-        #    ...
-        #  }:
-        #  import ./home-manager/aarch64-darwin.nix { inherit system user pkgs; };
-        #}
       ];
       specialArgs = { inherit self inputs system; };
     };

@@ -29,8 +29,8 @@ See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for inst
 ```
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
-nix-shell '<home-manager>' -A install
 ```
+See [home-manager](https://github.com/nix-community/home-manager?tab=readme-ov-file) for installation detail.
 
 #### Apply settings
 

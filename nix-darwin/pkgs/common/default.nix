@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Editor
-    inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+    neovim
 
     # Container
     devcontainer
