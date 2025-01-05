@@ -38,11 +38,3 @@ See [home-manager](https://github.com/nix-community/home-manager?tab=readme-ov-f
 ```
 darwin-rebuild switch --show-trace --flake .#${username}@${system}
 ```
----
-
-**CAVEATS**:
-
-To clean up old generations, type below command and both nix/home-manager old generations are removed from device.
-```
-nix-collect-garbage -d
-```

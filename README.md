@@ -4,12 +4,15 @@ This repository contains personal configuration settings.
 
 All the configuration files are located based on [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/latest/).
 
-## Requirements
+## Dependencies
 
 Manual Installation:
 
-- zsh: Install binary for your platform and change zsh as user's default shell ( `$ chsh -s /path/to/zsh` )
-- nix: Installation method is described with [nix/README.md](nix/README.md)
+- Homebrew: Install with [official method](https://brew.sh) `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`)
+- Nix: See [nix/README.md](nix/README.md) for installation method.
+- Zsh: Install binary for your platform and change zsh as user's default shell ( `$ chsh -s /path/to/zsh` )
+
+## Other Dependencies
 
 Installed via Nix:
 
