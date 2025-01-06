@@ -24,13 +24,14 @@ nix run nix-darwin -- switch --flake .
 ```
 See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for installation detail.
 
-#### Add homemaanger binary?
+#### Add homemaanger module
 
 ```
 nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
 nix-channel --update
+
 ```
-See [home-manager](https://github.com/nix-community/home-manager?tab=readme-ov-file) for installation detail.
+See Home Manager [nix-darwin module](https://nix-community.github.io/home-manager/index.xhtml#sec-install-nix-darwin-module) for installation detail.
 
 #### Apply settings
 
