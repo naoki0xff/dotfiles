@@ -24,5 +24,6 @@
     colordiff
     nkf
     tree
+    unzip
   ];
 }

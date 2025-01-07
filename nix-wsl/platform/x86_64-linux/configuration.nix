@@ -6,6 +6,9 @@
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
+
+    # Systemd
+    ./systemd/docker.nix
   ];
 
   wsl.enable = true;

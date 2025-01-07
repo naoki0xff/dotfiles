@@ -29,8 +29,11 @@
       inherit pkgs;
       specialArgs = { inherit self inputs username system; };
       modules = [
+        # NixOS Configurations
         ./platform/${system}/configuration.nix
         ./platform/${system}/hardware-configuration.nix
+
+        # Package Installation
         ./pkgs/common/default.nix
         ./pkgs/${system}/default.nix
 
@@ -39,10 +42,10 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           users.users.${username} = {
-	    home = "/home/${username}"; # Your home directory
-	    isNormalUser = true;
+    	      home = "/home/${username}"; # Your home directory
+    	      isNormalUser = true;
             shell = pkgs.zsh;
-	  };
+	        };
           home-manager.users.${username} = import ./home/${system}/default.nix; # Your user name
           home-manager.extraSpecialArgs = { inherit self inputs username system; };
         }
