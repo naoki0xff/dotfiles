@@ -1,15 +1,22 @@
-{ config, pkgs, ... }:
+{ self, inputs, username, system, pkgs, ... }:
 
+# Configuration Options
+# => https://nix-community.github.io/home-manager/options.xhtml
 {
-  # See configuration options => https://nix-community.github.io/home-manager/options.xhtml
   # HOME Config
   home = {
-    username = "naoki";
-    homeDirectory = "/Users/naoki";
-
-    sessionVariables = {
-      #EDITOR = "nvim";
+    # Dotfiles Management
+    file = {
+      ".npmrc".source = dotfiles/npm/npmrc;
+      ".config/git" = {
+        source = dotfiles/git;
+        recursive = true;
+      };
     };
+
+    #sessionVariables = {
+    #  EDITOR = "nvim";
+    #};
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -20,15 +27,6 @@
     # release notes.
     stateVersion = "24.11"; # Please read the comment before changing.
   };
-
-  # Check available nixpkgs   => https://search.nixos.org/packages
-  # List of available modules => https://github.com/nix-community/home-manager/tree/master/modules
-  imports = [
-    ./pkgs/editor.nix
-    ./pkgs/languages.nix
-    #./pkgs/shell.nix
-    ./pkgs/utils.nix
-  ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

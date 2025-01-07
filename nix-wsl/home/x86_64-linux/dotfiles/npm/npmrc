@@ -1,0 +1,4 @@
+# Read Official Documentation
+# => https://docs.npmjs.com/cli/v9/configuring-npm/npmrc
+
+prefix = ${HOME}/.npm-packages
