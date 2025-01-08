@@ -13,8 +13,9 @@
     # Grep
     ripgrep
 
-    # JSON
+    # JSON/YAML/XML/TOML
     jq
+    yq
 
     # Previewer
     glow
@@ -24,6 +25,7 @@
     colordiff
     nkf
     tree
+    wget
     unzip
   ];
 }

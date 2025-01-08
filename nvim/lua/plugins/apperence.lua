@@ -103,7 +103,6 @@ return {
           'fzf',
           'lazy',
           'man',
-          'mason',
           'neo-tree',
           'quickfix',
         }
