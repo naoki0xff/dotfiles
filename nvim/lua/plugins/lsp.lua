@@ -83,37 +83,6 @@ return {
   },
   { 'towolf/vim-helm', ft = { 'helm'} },
 
-  -- Formatter
-  --{
-  --  'jay-babu/mason-null-ls.nvim',
-  --  dependencies = { 'williamboman/mason.nvim', 'nvimtools/none-ls.nvim' },
-  --  event = { 'BufReadPre', 'BufNewFile' },
-  --  config = function()
-  --    -- https://github.com/jay-babu/mason-null-ls.nvim/blob/main/lua/mason-null-ls/mappings/filetype.lua
-  --    local enabled_formatter = { 
-  --      --'goimports',
-  --      'stylua'
-  --    }
-  --    require('mason').setup()
-  --    require('mason-null-ls').setup({
-  --      ensure_installed = enabled_formatter,
-  --      handlers = {},
-  --    })
-  --    local null_ls = require('null-ls')
-  --    null_ls.setup({
-  --      sources = {
-  --        -- TODO: なんかいい感じで。ensure_installedのリストと重複してるからええかんじに一回書くだけで動くように。
-  --        --null_ls.builtins.formatting.goimports,
-  --        null_ls.builtins.formatting.stylua,
-  --      }
-  --    })
-  --  end
-  --},
-  --{
-  --  'nvimtools/none-ls.nvim',
-  --  dependencies = { 'nvim-lua/plenary.nvim' },
-  --},
-
   -- MISC
   {
     'j-hui/fidget.nvim',
