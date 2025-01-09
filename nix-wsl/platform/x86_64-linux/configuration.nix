@@ -15,8 +15,11 @@
   wsl.defaultUser = "nixos";
 
   wsl.wslConf.network.generateResolvConf = false;
+
+  # Type bellow command in powershell and insert nameserver entries to /etc/resolv.conf with following setting
+  # (Get-DnsClientServerAddress -AddressFamily IPv4).ServerAddresses | ForEach-Object { "nameserver $_" }
   networking.nameservers = [
-    "8.8.8.8"
+    "x.x.x.x"
   ];
 
   nix = {
