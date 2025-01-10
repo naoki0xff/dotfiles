@@ -67,10 +67,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end)
   end,
 })
-
--- Show documentation of current symbol with 'K' if LSP client is attached
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(args)
-    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = args.buf })
-  end,
-})
