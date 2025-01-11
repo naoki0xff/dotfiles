@@ -5,6 +5,7 @@ return {
   { 't9md/vim-quickhl' },
   { 'tpope/vim-surround' },
   { 'tpope/vim-repeat' },
+  { 'qpkorr/vim-bufkill' },
   {
     'monaqa/dial.nvim',
     config = function()

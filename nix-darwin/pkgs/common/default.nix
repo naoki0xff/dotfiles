@@ -6,7 +6,7 @@
   imports = [
     ./cloud.nix
     ./container.nix
-    ./neovim.nix
+    ./editor.nix
     ./languages.nix
     ./shell.nix
     ./utils.nix

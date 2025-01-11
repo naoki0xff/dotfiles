@@ -48,6 +48,11 @@ return {
     main = "ibl",
     config = function()
       require('ibl').setup({
+        exclude = {
+          filetypes = {
+            'neo-tree',
+          },
+        },
         indent = {
           char = "|",
           tab_char = "|",

@@ -1,10 +1,13 @@
-{ self, inputs, system, pkgs, ... }:
+{ self, inputs, username, system, pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
     # Editor
     neovim
 
+    # parser
+    tree-sitter
+    
     # Launguage Server
     bash-language-server
     dockerfile-language-server-nodejs
