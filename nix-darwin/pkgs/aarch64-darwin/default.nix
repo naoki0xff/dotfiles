@@ -4,5 +4,6 @@
   imports = [
     ./fonts.nix
     ./homebrew.nix
+    ./shell.nix
   ];
 }
