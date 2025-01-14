@@ -1,7 +1,8 @@
 { self, inputs, system, pkgs, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    xdg-utils
+  imports = [
+    ./network.nix
+    ./xdg-utils.nix
   ];
 }
