@@ -81,7 +81,6 @@ vim.keymap.set("n", "[sub]q", "<cmd>FzfLua search_history<CR>",  { silent = true
 vim.keymap.set("n", "[sub]:", "<cmd>FzfLua commands<CR>",  { silent = true })
 vim.keymap.set("n", "[sub]h", "<cmd>FzfLua helptags<CR>",  { silent = true })
 vim.keymap.set("n", "[sub]?", "<cmd>FzfLua keymaps<CR>",  { silent = true })
-vim.keymap.set("n", "[sub],", "<cmd>FzfLua files cwd='" .. vim.fn.stdpath("config") .. "'<CR>",  { silent = true })
 -- LSP
 vim.keymap.set("n", "[code]", "", { remap = false })
 vim.keymap.set("n", "<Space>c", "[code]", { remap = true })
@@ -107,6 +106,7 @@ vim.keymap.set("n", "[git]c", "<cmd>FzfLua git_bcommits<CR>",  { silent = true }
 vim.keymap.set("n", "[git]l", "<cmd>FzfLua git_commits<CR>",  { silent = true })
 vim.keymap.set("n", "[git]i", "<cmd>GitMessenger<CR>",  { silent = true })
 -- Misc
+vim.keymap.set("n", "<Space>,", "<cmd>FzfLua files cwd='" .. vim.fn.stdpath("config") .. "'<CR>",  { silent = true })
 vim.keymap.set("n", "?", "<cmd>Lazy home<CR>",  { silent = true })
 vim.keymap.set("n", "<Leader>e", "<cmd>Jaq<CR>",  { silent = true })
 vim.keymap.set("n", "<Leader>s", "<cmd>SessionSelect<CR>",  { silent = true })

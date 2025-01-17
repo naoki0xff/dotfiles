@@ -11,6 +11,7 @@ return {
       local servers = {
         'bashls',
         'dockerls',
+        'gopls',
         'helm_ls',
         'jdtls',
         'lemminx',

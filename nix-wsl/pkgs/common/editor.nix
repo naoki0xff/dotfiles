@@ -9,17 +9,18 @@
     tree-sitter
     
     # Launguage Server
-    bash-language-server
-    dockerfile-language-server-nodejs
-    helm-ls
-    jdt-language-server # Java
-    lemminx # XML
-    lua-language-server
-    nil # Nix
-    phpactor
-    pyright # Python
-    terraform-ls
-    typescript-language-server
-    yaml-language-server
+    bash-language-server              # Bash
+    dockerfile-language-server-nodejs # Docker
+    gopls                             # Go
+    helm-ls                           # Helm
+    jdt-language-server               # Java
+    lemminx                           # XML
+    lua-language-server               # Lua
+    nil                               # Nix
+    phpactor                          # PHP
+    pyright                           # Python
+    terraform-ls                      # Terraform
+    typescript-language-server        # Javascript/Typescript
+    yaml-language-server              # YAML
   ];
 }

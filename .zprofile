@@ -41,8 +41,6 @@ PATH=$HOME/.local/bin:$HOME/usr/bin:$HOME/usr/local/bin:$PATH
 export GOPATH=$HOME/usr/local/go
 export GOBIN=$GOPATH/bin
 PATH=$PATH:$GOBIN
-# -> node.js
-PATH=$HOME/.nodebrew/current/bin:$PATH
 # -> python
 export PYENV_ROOT=$HOME/.pyenv
 [[ -d $PYENV_ROOT/bin ]] && PATH=$PYENV_ROOT/bin:$PATH
