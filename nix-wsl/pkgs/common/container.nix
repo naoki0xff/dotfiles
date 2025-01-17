@@ -16,9 +16,5 @@
     kubernetes-helm
     kubeseal
     kyverno
-
-    # Vulnerability Detection
-    datree
-    trivy
   ];
 }

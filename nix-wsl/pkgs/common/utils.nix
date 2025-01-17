@@ -27,5 +27,8 @@
     tree
     wget
     unzip
+
+    # GNU utils
+    coreutils
   ];
 }
