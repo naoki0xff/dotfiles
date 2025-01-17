@@ -105,6 +105,8 @@ vim.keymap.set("n", "[git]b", "<cmd>Git blame<CR>",  { silent = true })
 vim.keymap.set("n", "[git]c", "<cmd>FzfLua git_bcommits<CR>",  { silent = true })
 vim.keymap.set("n", "[git]l", "<cmd>FzfLua git_commits<CR>",  { silent = true })
 vim.keymap.set("n", "[git]i", "<cmd>GitMessenger<CR>",  { silent = true })
+vim.keymap.set("n", "[c", function() if vim.wo.diff then vim.cmd.normal({'[c', bang = true}) else gitsigns.nav_hunk('prev') end end)
+vim.keymap.set("n", "]c", function() if vim.wo.diff then vim.cmd.normal({']c', bang = true}) else gitsigns.nav_hunk('next') end end)
 -- Misc
 vim.keymap.set("n", "<Space>,", "<cmd>FzfLua files cwd='" .. vim.fn.stdpath("config") .. "'<CR>",  { silent = true })
 vim.keymap.set("n", "?", "<cmd>Lazy home<CR>",  { silent = true })
