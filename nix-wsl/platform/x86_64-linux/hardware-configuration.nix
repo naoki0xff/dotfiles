@@ -8,7 +8,7 @@
 
   boot.initrd.availableKernelModules = [ "virtio_pci" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/lib/modules/5.15.167.4-microsoft-standard-WSL2" =
@@ -27,7 +27,7 @@
     };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/369bc20c-db4b-4423-b256-c4c90ed88078";
+    { device = "/dev/disk/by-uuid/3255683f-53a2-4fdf-91cf-b4c1041e2a62";
       fsType = "ext4";
     };
 
@@ -47,6 +47,11 @@
       fsType = "overlay";
     };
 
+  fileSystems."/mnt/wslg/doc" =
+    { device = "none";
+      fsType = "overlay";
+    };
+
   fileSystems."/tmp/.X11-unix" =
     { device = "/mnt/wslg/.X11-unix";
       fsType = "none";
@@ -58,13 +63,8 @@
       fsType = "9p";
     };
 
-  fileSystems."/mnt/wslg/doc" =
-    { device = "none";
-      fsType = "overlay";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/1ef8eda8-d577-4cec-bd50-242634900451"; }
+    [ { device = "/dev/disk/by-uuid/299ec652-c85e-4845-85f6-ec47287e9d94"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -72,10 +72,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.br-1a0bfa887b23.useDHCP = lib.mkDefault true;
-  # networking.interfaces.docker0.useDHCP = lib.mkDefault true;
   # networking.interfaces.eth0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.vethdd4940a.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }

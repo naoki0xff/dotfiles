@@ -16,10 +16,15 @@
 
   wsl.wslConf.network.generateResolvConf = false;
 
-  # Type bellow command in powershell and insert nameserver entries to /etc/resolv.conf with following setting
+  # Use auto generated configuration as networking configuration
+  #   or
+  # Type bellow command in powershell and insert nameservers output to /etc/resolv.conf
   # (Get-DnsClientServerAddress -AddressFamily IPv4).ServerAddresses | ForEach-Object { "nameserver $_" }
   networking.nameservers = [
     "x.x.x.x"
+  ];
+  networking.search = [
+    "some.domain.name"
   ];
 
   nix = {
