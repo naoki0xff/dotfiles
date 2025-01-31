@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Container
-    # podman => ../aarch64-darwin/brew.nix
+    # podman => ../aarch64-darwin/homebrew.nix
 
     # Local Cluster
     kind
@@ -16,9 +16,5 @@
     kubernetes-helm
     kubeseal
     kyverno
-
-    # Vulnerability Detection
-    datree
-    trivy
   ];
 }
