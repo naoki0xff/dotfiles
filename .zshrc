@@ -54,7 +54,6 @@ alias tg='terragrunt'
 alias k='kubectl'
 alias kcx='kubectx'
 alias kcn='kubens'
-alias helmvgrep='(){ cat "${1}" | sed -e "/^$/d" -e "/^#/d" -e "/[[:blank:]]#/d" }'
 # gui application
 alias vivaldi='open -a vivaldi'
 # execute on filetype
