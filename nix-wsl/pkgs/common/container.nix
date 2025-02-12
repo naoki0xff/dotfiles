@@ -13,6 +13,7 @@
     istioctl
     kubectl
     kubectx
+    kubepug
     kubernetes-helm
     kubeseal
     kyverno
