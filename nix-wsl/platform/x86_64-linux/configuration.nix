@@ -14,18 +14,19 @@
   wsl.enable = true;
   wsl.defaultUser = "nixos";
 
-  wsl.wslConf.network.generateResolvConf = false;
+  # Networking
+  wsl.wslConf.network.generateResolvConf = true;
 
   # Use auto generated configuration as networking configuration
   #   or
   # Type bellow command in powershell and insert nameservers output to /etc/resolv.conf
   # (Get-DnsClientServerAddress -AddressFamily IPv4).ServerAddresses | ForEach-Object { "nameserver $_" }
-  networking.nameservers = [
-    "x.x.x.x"
-  ];
-  networking.search = [
-    "some.domain.name"
-  ];
+  #networking.nameservers = [
+  #  "x.x.x.x"
+  #];
+  #networking.search = [
+  #  "some.domain.name"
+  #];
 
   nix = {
     settings = {
