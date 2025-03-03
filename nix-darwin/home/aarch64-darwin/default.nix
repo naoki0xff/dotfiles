@@ -8,10 +8,10 @@
     # Dotfiles Management
     file = {
       ".npmrc".source = dotfiles/npm/npmrc;
-      ".config/git" = {
-        source = dotfiles/git;
-        recursive = true;
-      };
+      #".config/git" = {
+      #  source = dotfiles/git;
+      #  recursive = true;
+      #};
     };
 
     #sessionVariables = {

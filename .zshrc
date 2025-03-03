@@ -21,7 +21,6 @@ alias vim='nvim'
 alias vimdiff='nvim -d'
 alias taginit='ctags -R -f .tags'
 alias wl='wc -l'
-alias hm='home-manager'
 alias whihc='which'
 # git shortcut
 alias g='git'
@@ -78,7 +77,7 @@ source <(fzf --zsh)
 # -> aws
 complete -C '/usr/local/bin/aws_completer' aws
 ## -> docker
-source <(docker completion zsh)
+#source <(docker completion zsh)
 # -> podman
 source <(podman completion zsh)
 # -> kubectl

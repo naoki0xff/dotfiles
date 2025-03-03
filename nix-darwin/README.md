@@ -27,7 +27,7 @@ See Home Manager [nix-darwin module](https://nix-community.github.io/home-manage
 
 ```
 cd ~/.config/nix-darwin
-nix run nix-darwin -- switch --flake .
+nix run nix-darwin -- switch --flake .#${username}@${system}
 ```
 See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for installation detail.
 
@@ -35,5 +35,5 @@ See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for inst
 
 **Mac OS**
 ```
-darwin-rebuild switch --show-trace --flake .#${username}@${system}
+darwin-rebuild switch --flake .#${username}@${system}
 ```
