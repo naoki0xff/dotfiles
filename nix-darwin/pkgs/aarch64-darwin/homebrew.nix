@@ -1,7 +1,8 @@
-{ self, inputs, system, pkgs, ... }:
+{ self, inputs, username, system, pkgs, ... }:
 
 {
   homebrew = {
+    # 'enable' option doesn't install homebrew binary
     enable = true;
     onActivation = {
       autoUpdate = true;
@@ -16,6 +17,7 @@
     # brew install --cask for 'Casks'
     casks = [
       "podman-desktop"
+      "slack"
       #"vivaldi"
     ];
   };
