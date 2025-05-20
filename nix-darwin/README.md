@@ -37,3 +37,7 @@ See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for inst
 ```
 darwin-rebuild switch --flake .#${username}@${system}
 ```
+
+TODO:
+https://github.com/nix-darwin/nix-darwin/issues/1361
+switch from determinate nix to official nix since nix-darwin daemon conflict with nix daemon functionality and inhibits garbage collection.
