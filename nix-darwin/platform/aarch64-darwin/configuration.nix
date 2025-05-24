@@ -1,4 +1,4 @@
-{ self, inputs, system, pkgs, ... }:
+{ self, inputs, username, system, localhostname, pkgs, ... }:
 
 {
   nix = {
@@ -21,10 +21,12 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 5;
+  system.stateVersion = 6;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "${system}";
+
+  networking.hostName = "${localhostname}";
 
   imports = [
     #./applications/dock.nix

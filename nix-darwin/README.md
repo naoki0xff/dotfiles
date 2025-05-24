@@ -26,8 +26,14 @@ See Home Manager [nix-darwin module](https://nix-community.github.io/home-manage
 #### Add nix-darwin binary & load nix-darwin configurations
 
 ```
-cd ~/.config/nix-darwin
-nix run nix-darwin -- switch --flake .#${username}@${system}
+sudo mkdir -p /etc/nix-darwin
+sudo chown $(id -nu):$(id -ng) /etc/nix-darwin
+cd /etc/nix-darwin
+
+nix flake init -t nix-darwin/master
+sed -i '' "s/simple/$(scutil --get LocalHostName)/" flake.nix
+sed -i '' "s/aarch64/$(uname -m)/" flake.nix
+sudo nix run nix-darwin/master#darwin-rebuild -- switch
 ```
 See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for installation detail.
 
@@ -35,9 +41,10 @@ See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for inst
 
 **Mac OS**
 ```
-darwin-rebuild switch --flake .#${username}@${system}
+sudo darwin-rebuild switch
 ```
 
 TODO:
 https://github.com/nix-darwin/nix-darwin/issues/1361
 switch from determinate nix to official nix since nix-darwin daemon conflict with nix daemon functionality and inhibits garbage collection.
+=> Use determinated as gc or nix from NixOS and configure it to work as gc.

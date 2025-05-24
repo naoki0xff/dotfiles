@@ -3,7 +3,7 @@
 {
   imports = [
     ./fonts.nix
-    ./homebrew.nix
+    #./homebrew.nix
     ./shell.nix
   ];
 }

@@ -26,36 +26,33 @@
     ...
   }:
   let
-    # Fix here to your preference
     username = "naoki";
     system = "aarch64-darwin";
+    localhostname = "MacBook-Air";
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
     # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#${username}@${system}
-    darwinConfigurations."${username}@${system}" = nix-darwin.lib.darwinSystem {
+    # $ sudo darwin-rebuild switch
+    darwinConfigurations."${localhostname}" = nix-darwin.lib.darwinSystem {
       inherit pkgs;
-      specialArgs = { inherit self inputs username system; };
+      specialArgs = { inherit self inputs username system localhostname; };
       modules = [
         # Nix Configuration
         ./platform/${system}/configuration.nix
-
-        # Hardware Configuration
-        #./platform/${system}/hardware-configuration.nix
 
         # Install Packages
         ./pkgs/common/default.nix
         ./pkgs/${system}/default.nix
 
         # Home Manager Configurations
-        home-manager.darwinModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          users.users.${username}.home = "/Users/${username}"; # Your home directory
-          home-manager.users.${username} = import ./home/aarch64-darwin/default.nix; # Your user name
-          home-manager.extraSpecialArgs = { inherit self inputs username system; };
-        }
+        #home-manager.darwinModules.home-manager {
+        #  home-manager.useGlobalPkgs = true;
+        #  home-manager.useUserPackages = true;
+        #  users.users.${username}.home = "/Users/${username}"; # Your home directory
+        #  home-manager.users.${username} = import ./home/aarch64-darwin/default.nix; # Your user name
+        #  home-manager.extraSpecialArgs = { inherit self inputs username system; };
+        #}
       ];
     };
   };
