@@ -36,23 +36,11 @@ export MANPAGER="nvim +Man!"
 export BROWSER=/Applications/Vivaldi.app/Contents/MacOS/Vivaldi
 # PATH
 PATH=$HOME/.local/bin:$HOME/usr/bin:$HOME/usr/local/bin:$PATH
-# LANGUAGE
-# -> go
-export GOPATH=$HOME/usr/local/go
-export GOBIN=$GOPATH/bin
-PATH=$PATH:$GOBIN
-# -> python
-export PYENV_ROOT=$HOME/.pyenv
-[[ -d $PYENV_ROOT/bin ]] && PATH=$PYENV_ROOT/bin:$PATH
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-# -> ruby (also ruby-build)
-eval "$(~/.rbenv/bin/rbenv init - zsh)"
 # TOOLS
+# -> nix
+source "/etc/profiles/per-user/${USER}/etc/profile.d/hm-session-vars.sh"
 # -> homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# -> istioctl
-PATH=$HOME/.istioctl/bin:$PATH
 # avoid duplication
 typeset -U path PATH
 # finalize

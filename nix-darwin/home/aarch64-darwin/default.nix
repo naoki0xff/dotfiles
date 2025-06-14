@@ -1,4 +1,4 @@
-{ self, inputs, username, system, pkgs, ... }:
+{ self, inputs, username, system, localhostname, pkgs, ... }:
 
 # Configuration Options
 # => https://nix-community.github.io/home-manager/options.xhtml
@@ -14,12 +14,13 @@
     #  };
     };
 
-    #sessionVariables = {
-    #  GOPATH = "${HOME}/usr/local/go";
-    #  GOBIN = "${GOPATH}/bin";
-    #};
-    #sessionPath = [
-    #];
+    sessionVariables = {
+      GOPATH = "/Users/${username}/usr/local/go";
+      GOBIN = "/Users/${username}/usr/local/go/bin";
+    };
+    sessionPath = [
+      "/Users/${username}/usr/local/go/bin"
+    ];
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
