@@ -2,10 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    # Devlopment Support
-    devcontainer
-    direnv
-    
     # Finder
     fd
     fzf
@@ -19,6 +15,13 @@
 
     # Previewer
     glow
+
+    # Vulnerability Detection
+    datree
+    trivy
+
+    # CI/CD
+    reviewdog
 
     # Misc
     bat
