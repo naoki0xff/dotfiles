@@ -8,15 +8,18 @@
     # Dotfiles Management
     file = {
       ".npmrc".source = dotfiles/npm/npmrc;
-      #".config/git" = {
-      #  source = dotfiles/git;
-      #  recursive = true;
-      #};
+    #  ".config/git" = {
+    #    source = dotfiles/git;
+    #    recursive = true;
+    #  };
     };
 
     #sessionVariables = {
-    #  EDITOR = "nvim";
+    #  GOPATH = "${HOME}/usr/local/go";
+    #  GOBIN = "${GOPATH}/bin";
     #};
+    #sessionPath = [
+    #];
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release

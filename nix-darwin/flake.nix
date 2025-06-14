@@ -46,13 +46,13 @@
         ./pkgs/${system}/default.nix
 
         # Home Manager Configurations
-        #home-manager.darwinModules.home-manager {
-        #  home-manager.useGlobalPkgs = true;
-        #  home-manager.useUserPackages = true;
-        #  users.users.${username}.home = "/Users/${username}"; # Your home directory
-        #  home-manager.users.${username} = import ./home/aarch64-darwin/default.nix; # Your user name
-        #  home-manager.extraSpecialArgs = { inherit self inputs username system; };
-        #}
+        home-manager.darwinModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          users.users.${username}.home = "/Users/${username}"; # Your home directory
+          home-manager.users.${username} = import ./home/aarch64-darwin/default.nix; # Your user name
+          home-manager.extraSpecialArgs = { inherit self inputs username system localhostname; };
+        }
       ];
     };
   };
