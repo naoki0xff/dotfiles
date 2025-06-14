@@ -1,6 +1,7 @@
 { self, inputs, username, system, pkgs, ... }:
 
 {
+  system.primaryUser = "${username}";
   homebrew = {
     # 'enable' option doesn't install homebrew binary
     enable = true;
@@ -16,9 +17,10 @@
     ];
     # brew install --cask for 'Casks'
     casks = [
+      "obsidian"
       "podman-desktop"
       "slack"
-      #"vivaldi"
+      "vivaldi"
     ];
   };
 }
