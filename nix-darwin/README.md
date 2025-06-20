@@ -43,8 +43,3 @@ See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for inst
 ```
 sudo darwin-rebuild switch
 ```
-
-TODO:
-https://github.com/nix-darwin/nix-darwin/issues/1361
-switch from determinate nix to official nix since nix-darwin daemon conflict with nix daemon functionality and inhibits garbage collection.
-=> Use determinated as gc or nix from NixOS and configure it to work as gc.

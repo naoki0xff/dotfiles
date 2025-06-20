@@ -5,7 +5,7 @@
     # Node JS
     # You cannot install npm/yarn packages globally with nix way due to its permission restriction.
     # Please add "prefix" configration on your ${HOME}/.npmrc to install npm/yarn packages under user's permission.
-    nodejs # npm is bundled
+    nodejs_24 # npm is bundled
     yarn
 
     # PHP
@@ -23,6 +23,10 @@
 
     # Rust
     cargo
+
+    # Python
+    python313
+    python313Packages.pip
 
     # Terraform
     tenv
