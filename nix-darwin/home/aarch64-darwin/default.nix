@@ -20,6 +20,7 @@
     };
     sessionPath = [
       "/Users/${username}/usr/local/go/bin"
+      "/Users/${username}/.npm-packages/bin"
     ];
 
     # This value determines the Home Manager release that your configuration is
