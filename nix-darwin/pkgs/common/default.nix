@@ -10,7 +10,6 @@
     ./editor.nix
     ./git.nix
     ./languages.nix
-    ./nodepackage.nix
     ./shell.nix
     ./utils.nix
   ];
