@@ -1,6 +1,8 @@
 ### zhsrc
 
 ## alias
+# sudo w/ alias
+alias sudo='sudo '
 # shell command
 alias ls='ls -CF'
 alias sl='ls -CF'
@@ -22,6 +24,18 @@ alias vimdiff='nvim -d'
 alias taginit='ctags -R -f .tags'
 alias wl='wc -l'
 alias whihc='which'
+# infra shortcut
+alias o='open .'
+alias d='podman'
+alias dc='podman compose'
+alias docker='podman'
+alias p='podman'
+alias pd='podman compose'
+alias tf='terraform'
+alias tg='terragrunt'
+alias k='kubectl'
+alias kcx='kubectx'
+alias kcn='kubens'
 # git shortcut
 alias g='git'
 alias gs='git status'
@@ -31,7 +45,7 @@ alias gc='git commit'
 alias gcm='git commit -m'
 alias gp='git push'
 alias gd='git diff'
-alias gdt='git difftool'
+alias gde='git difftool'
 alias gb='git branch'
 alias gba='git branch -a'
 alias gbs='(){ TARGETBRANCH=`git branch -a|sed "s/ *//g"|fzf`; if [ -n ${TARGETBRANCH} ]; then if [[ ${TARGETBRANCH} == "remotes/origin/"* ]]; then TARGETBRANCH=${TARGETBRANCH/remotes\/origin\//}; fi; git checkout $TARGETBRANCH; unset TARGETBRANCH; fi }'
@@ -44,15 +58,6 @@ alias gsx='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETS
 alias gsl='git stash list'
 alias gsd='git diff `git stash list|cut -d':' -f1|fzf`'
 alias gsa='(){ TARGETSTASH=`git stash list|cut -d':' -f1|fzf`; if [ -z ${TARGETSTASH} ];then echo "APPLY not done"; else git stash apply ${TARGETSTASH}; unset TARGETSTASH ;fi }'
-# infra shortcut
-alias o='open .'
-alias d='docker'
-alias dc='docker compose'
-alias tf='terraform'
-alias tg='terragrunt'
-alias k='kubectl'
-alias kcx='kubectx'
-alias kcn='kubens'
 # gui application
 alias vivaldi='open -a vivaldi'
 # execute on filetype

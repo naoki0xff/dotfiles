@@ -1,4 +1,4 @@
-{ self, inputs, system, pkgs, ... }:
+{ self, inputs, username, system, pkgs, ... }:
 
 {
   # Check available nixpkgs   => https://search.nixos.org/packages
@@ -10,6 +10,7 @@
     ./editor.nix
     ./git.nix
     ./languages.nix
+    ./nodepackage.nix
     ./shell.nix
     ./utils.nix
   ];
