@@ -158,7 +158,6 @@ return {
   -- Show parent-child structure
   {
     'SmiteshP/nvim-navic',
-    dependencies = { 'neovim/nvim-lspconfig' },
     config = function()
       require('nvim-navic').setup({
         lsp = {
@@ -180,6 +179,15 @@ return {
       })
     end,
     event = 'VeryLazy',
-  }
+  },
+  -- Show LSP progress message
+  {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup()
+    end
+  },
+  -- Filetype detection
+  { 'towolf/vim-helm', ft = { 'helm'} },
 }
 
