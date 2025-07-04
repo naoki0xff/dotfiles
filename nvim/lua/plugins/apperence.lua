@@ -187,7 +187,5 @@ return {
       require('fidget').setup()
     end
   },
-  -- Filetype detection
-  { 'towolf/vim-helm', ft = { 'helm'} },
 }
 
