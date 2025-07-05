@@ -17,13 +17,13 @@ return {
     config = function()
       local cmp = require('cmp')
       local lspkind = require('lspkind')
-      local auto_select = true
+      local auto_select = false
       local feedkey = function(key, mode)
         vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
       end
       cmp.setup({
         completion = {
-          completeopt = "menu,menuone,noselect,preview"
+          completeopt = "menu,menuone,noselect,popup"
         },
         preselect = auto_select and cmp.PreselectMode.Item or cmp.PreselectMode.None,
         sources = cmp.config.sources({

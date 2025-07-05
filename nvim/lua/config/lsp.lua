@@ -1,6 +1,7 @@
 -- List of server names https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 local servers = {
   'bashls',
+  "bicep",
   'dockerls',
   'gopls',
   'helm_ls',
@@ -15,7 +16,7 @@ local servers = {
   'yamlls',
 }
 
--- General configuration for each language server
+-- Default configuration for each language server
 vim.lsp.config('*', {
   capabilities = {
     textDocument = {

@@ -12,7 +12,6 @@ vim.opt.display = 'lastline'
 vim.opt.pumheight = 10
 vim.opt.laststatus = 3
 vim.opt.ambiwidth = 'double'
-vim.opt.completeopt:remove({ 'preview' })
 vim.opt.lazyredraw = true
 vim.opt.shortmess:append({ c = true })
 vim.opt.signcolumn = 'yes'
@@ -43,7 +42,6 @@ vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.breakindent = true
-vim.opt.completeopt = 'menu,menuone,noselect,preview'
 vim.opt.wildoptions = 'pum'
 vim.opt.backspace = 'indent,eol,start'
 vim.opt.virtualedit = 'block'
