@@ -13,12 +13,13 @@ return {
     config = function()
       local actions = require("fzf-lua.actions")
       require("fzf-lua").setup({
-        'fzf-native',
+        'fzf-tmux',
         file_icon_padding = ' ',
         winopts = {
           preview = {
-            layout = 'vertical',
-          }
+            layout = 'horizontal',
+            horizontal = 'right:50%',
+          },
         },
         actions = {
           files = {
@@ -26,6 +27,9 @@ return {
             ["ctrl-x"] = actions.file_split,
           },
         },
+        fzf_colors = {
+          true,
+        }
       })
     end
   },
