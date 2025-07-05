@@ -14,9 +14,10 @@ return {
       local actions = require("fzf-lua.actions")
       require("fzf-lua").setup({
         'fzf-native',
+        file_icon_padding = ' ',
         winopts = {
           preview = {
-            layout = 'vertical'
+            layout = 'vertical',
           }
         },
         actions = {
