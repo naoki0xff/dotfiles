@@ -101,3 +101,6 @@ vim.lsp.config('yamlls', {
 
 -- Enable language servers
 vim.lsp.enable(servers)
+
+-- Enable diagnostics
+vim.diagnostic.config({ virtual_lines = true })
