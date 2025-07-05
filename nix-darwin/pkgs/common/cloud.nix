@@ -1,4 +1,4 @@
-{ self, inputs, system, pkgs, ... }:
+{ self, inputs, username, system, pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -7,6 +7,7 @@
 
     # Azure
     azure-cli
+    bicep # incl. Bicep.LangServer
     kubelogin # Azure AKS utility
   ];
 }
