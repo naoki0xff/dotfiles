@@ -11,7 +11,6 @@ vim.opt.cursorlineopt = 'number'
 vim.opt.display = 'lastline'
 vim.opt.pumheight = 10
 vim.opt.laststatus = 3
-vim.opt.ambiwidth = 'double'
 vim.opt.lazyredraw = true
 vim.opt.shortmess:append({ c = true })
 vim.opt.signcolumn = 'yes'
