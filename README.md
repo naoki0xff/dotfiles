@@ -17,7 +17,7 @@ Manual Installation:
 Installed via Nix:
 
 - tmux: 3.2 or later (requires "popup" feature)
-- neovim: 0.9.0 or later
+- neovim: 0.11 or later
 - fzf: 0.48.0 or later
 - fd
 - ripgrep

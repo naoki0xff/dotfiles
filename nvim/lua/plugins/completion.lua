@@ -16,6 +16,7 @@ return {
     },
     config = function()
       local cmp = require('cmp')
+      local autopairs = require('nvim-autopairs.completion.cmp')
       local lspkind = require('lspkind')
       local auto_select = false
       local feedkey = function(key, mode)
@@ -97,6 +98,10 @@ return {
           })
         },
       })
+      cmp.event:on(
+        'confirm_done',
+        autopairs.on_confirm_done()
+      )
       cmp.setup.cmdline({ '/', '?' }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
