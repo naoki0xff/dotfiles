@@ -1,4 +1,4 @@
-{ self, inputs, username, system, pkgs, ... }:
+{ self, inputs, username, system, localhostname, pkgs, ... }:
 
 # Configuration Options
 # => https://nix-community.github.io/home-manager/options.xhtml
@@ -8,15 +8,20 @@
     # Dotfiles Management
     file = {
       ".npmrc".source = dotfiles/npm/npmrc;
-      #".config/git" = {
-      #  source = dotfiles/git;
-      #  recursive = true;
-      #};
+    #  ".config/git" = {
+    #    source = dotfiles/git;
+    #    recursive = true;
+    #  };
     };
 
-    #sessionVariables = {
-    #  EDITOR = "nvim";
-    #};
+    sessionVariables = {
+      GOPATH = "/home/${username}/usr/local/go";
+      GOBIN = "/home/${username}/usr/local/go/bin";
+    };
+    sessionPath = [
+      "/home/${username}/usr/local/go/bin"
+      "/home/${username}/.npm-packages/bin"
+    ];
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release

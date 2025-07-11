@@ -15,9 +15,8 @@
   wsl.defaultUser = "nixos";
 
   # Networking
-  wsl.wslConf.network.generateResolvConf = true;
-
   # Use auto generated configuration as networking configuration
+  wsl.wslConf.network.generateResolvConf = true;
   #   or
   # Type bellow command in powershell and insert nameservers output to /etc/resolv.conf
   # (Get-DnsClientServerAddress -AddressFamily IPv4).ServerAddresses | ForEach-Object { "nameserver $_" }
@@ -47,7 +46,7 @@
   system.configurationRevision = self.rev or self.dirtyRev or null;
 
   # Used for backwards compatibility, please read the changelog before changing.
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "${system}";

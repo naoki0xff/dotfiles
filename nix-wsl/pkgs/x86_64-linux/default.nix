@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./misc.nix
     ./network.nix
     ./xdg-utils.nix
   ];

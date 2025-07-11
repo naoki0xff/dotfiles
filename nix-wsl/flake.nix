@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     # Home Manager
     home-manager = {
@@ -21,19 +21,21 @@
   let
     username = "nixos";
     system = "x86_64-linux";
+    localhostname = "nixos";
     pkgs = nixpkgs.legacyPackages.${system};
   in
   {
-    # sudo nixos-rebuild switch --flake .#naoki@x86_64-linux --impure
+    # Build nix flake using:
+    # sudo nixos-rebuild switch --flake .#nixos@x86_64-linux --impure
     nixosConfigurations."${username}@${system}" = nixpkgs.lib.nixosSystem {
       inherit pkgs;
-      specialArgs = { inherit self inputs username system; };
+      specialArgs = { inherit self inputs username system localhostname; };
       modules = [
         # NixOS Configurations
         ./platform/${system}/configuration.nix
         ./platform/${system}/hardware-configuration.nix
 
-        # Package Installation
+        # Install Packages
         ./pkgs/common/default.nix
         ./pkgs/${system}/default.nix
 
@@ -47,7 +49,7 @@
             shell = pkgs.zsh;
 	        };
           home-manager.users.${username} = import ./home/${system}/default.nix; # Your user name
-          home-manager.extraSpecialArgs = { inherit self inputs username system; };
+          home-manager.extraSpecialArgs = { inherit self inputs username system localhostname; };
         }
       ];
     };
