@@ -19,6 +19,7 @@ All the configuration files are located based on [XDG Base Directory Specificati
 │       └── aarch64-darwin/*
 └── ${HOME}/
     ├── .config/
+    │   ├── git/*
     │   ├── nvim/
     │   │   ├── init.lua
     │   │   ├── lua/
