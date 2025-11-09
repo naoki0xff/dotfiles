@@ -31,5 +31,6 @@
     # Terraform
     tenv
     tflint
+    terraform-docs 
   ];
 }
