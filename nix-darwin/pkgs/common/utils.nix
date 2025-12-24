@@ -27,6 +27,7 @@
     bat
     colordiff
     nkf
+    rename
     tree
     wget
     unzip
