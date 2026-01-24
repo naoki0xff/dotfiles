@@ -28,6 +28,9 @@
     python313
     python313Packages.pip
 
+    # Ruby
+    ruby
+
     # Terraform
     tenv
     tflint

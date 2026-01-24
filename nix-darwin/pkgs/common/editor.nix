@@ -19,6 +19,7 @@
     nil                               # Nix
     phpactor                          # PHP
     pyright                           # Python
+    rubyPackages.solargraph           # Ruby
     terraform-ls                      # Terraform
     typescript-language-server        # Javascript/Typescript
     yaml-language-server              # YAML
