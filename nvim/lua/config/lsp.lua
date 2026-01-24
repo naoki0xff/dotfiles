@@ -11,6 +11,7 @@ local servers = {
   'nil_ls',
   'phpactor',
   'pyright',
+  'solargraph',
   'terraformls',
   'ts_ls',
   'yamlls',

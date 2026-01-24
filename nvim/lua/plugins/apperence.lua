@@ -101,7 +101,10 @@ return {
         },
         sections = {
           lualine_b = { 'branch', 'diff' },
-          lualine_c = { 'filename', 'navic' },
+          lualine_c = { 'navic' },
+          lualine_x = { 'lsp_status' },
+          lualine_y = { 'encoding', 'fileformat', 'filetype' },
+          lualine_z = { 'location', 'progress' },
         },
         extensions = {
           'fugitive',
