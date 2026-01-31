@@ -1,6 +1,8 @@
 return {
   -- Icons
-  { 'nvim-tree/nvim-web-devicons' }, -- Depends on https://www.nerdfonts.com
+  { 'nvim-tree/nvim-web-devicons' },
+  -- Depends on: https://www.nerdfonts.com
+  -- Search icons: https://www.nerdfonts.com/cheat-sheet
 
   -- Colorscheme
   {
