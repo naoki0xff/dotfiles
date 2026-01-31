@@ -102,7 +102,7 @@ return {
         sections = {
           lualine_b = { 'branch', 'diff' },
           lualine_c = { 'navic' },
-          lualine_x = { { 'lsp_status', symbols = { separator = '  ' }, }, },
+          lualine_x = { { 'lsp_status', icon = '󰧑', symbols = { separator = '  ', done = '' }, }, },
           lualine_y = { 'encoding', 'fileformat', 'filetype' },
           lualine_z = { 'location', 'progress' },
         },
