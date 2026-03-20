@@ -93,6 +93,7 @@ return {
               menu = 50,
               abbr = 50,
             },
+
             ellipsis_char = '...',
             show_labelDetails = true,
           })
@@ -193,6 +194,14 @@ return {
           enable = true,
         },
       })
+    end
+  },
+
+  -- Editorconfig
+  {
+    'editorconfig/editorconfig',
+    config = function()
+      vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*', 'scp://.*' }
     end
   },
 }

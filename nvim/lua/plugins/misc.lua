@@ -1,8 +1,7 @@
 return {
-  { 'osyo-manga/vim-anzu' },
+  -- Vim Operation Utils
   { 'haya14busa/vim-edgemotion' },
   { 'andymass/vim-tradewinds' },
-  { 't9md/vim-quickhl' },
   { 'tpope/vim-surround' },
   { 'tpope/vim-repeat' },
   { 'qpkorr/vim-bufkill' },
@@ -27,12 +26,14 @@ return {
       }
     end,
   },
-  {
-    'editorconfig/editorconfig',
-    config = function()
-      vim.g.EditorConfig_exclude_patterns = { 'fugitive://.*', 'scp://.*' }
-    end
-  },
+
+  -- Search
+  { 'osyo-manga/vim-anzu' },
+
+  -- highlight
+  { 't9md/vim-quickhl' },
+
+  -- Undo
   {
     'simnalamburt/vim-mundo',
     config = function()
@@ -42,6 +43,8 @@ return {
       vim.g.mundo_tree_statusline = '[Undotree]'
     end
   },
+
+  -- Session
   {
     'olimorris/persisted.nvim',
     lazy = false,
@@ -91,6 +94,8 @@ return {
       return not(vim.tbl_contains(vim.v.argv, '+Man!'))
     end,
   },
+
+  -- Previewer
   {
     'is0n/jaq-nvim',
     dependencies = { 'iamcco/markdown-preview.nvim' },

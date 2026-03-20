@@ -5,10 +5,13 @@ return {
     config = function()
       local gitsigns = require('gitsigns')
       gitsigns.setup({
+        -- options
+        word_diff = true,
+        -- keymap
         on_attach = function(bufnr)
           vim.keymap.set("n", "[c", function() if vim.wo.diff then vim.cmd.normal({'[c', bang = true}) else gitsigns.nav_hunk('prev') end end)
           vim.keymap.set("n", "]c", function() if vim.wo.diff then vim.cmd.normal({']c', bang = true}) else gitsigns.nav_hunk('next') end end)
-        end
+        end,
       })
     end
   },
