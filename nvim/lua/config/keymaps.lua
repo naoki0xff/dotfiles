@@ -104,6 +104,8 @@ vim.keymap.set("v", "<Leader>a", "<cmd>Gitsigns stage_hunk<CR>", { silent = true
 vim.keymap.set("v", "<Leader>u", "<cmd>Gitsigns stage_hunk<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>A", "<cmd>Gitsigns stage_buffer<CR>", { silent = true })
 vim.keymap.set("n", "<Leader>U", "<cmd>Gitsigns reset_buffer_index<CR>", { silent = true })
+-- AI
+vim.keymap.set("n", "<Space>a", "<cmd>CodeCompanionChat Toggle<CR>",  { silent = true })
 -- Misc
 vim.keymap.set("n", "<Space>,", "<cmd>FzfLua files cwd='" .. vim.fn.stdpath("config") .. "'<CR>",  { silent = true })
 vim.keymap.set("n", "?", "<cmd>Lazy home<CR>",  { silent = true })
