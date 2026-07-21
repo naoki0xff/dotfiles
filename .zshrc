@@ -77,6 +77,8 @@ autoload -U +X bashcompinit && bashcompinit
 if [ ! -z ${EDITOR} ];then
   eval "$(direnv hook zsh)"
 fi
+# codex
+source <(codex completion zsh)
 # fzf
 source <(fzf --zsh)
 # -> aws
