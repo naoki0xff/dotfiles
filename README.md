@@ -16,6 +16,8 @@ This repository contains personal configuration files.
 │   └── home/
 │       └── aarch64-darwin/*
 └── ${HOME}/
+    ├── .codex/
+    │   └── config.toml
     ├── .config/
     │   ├── git/*
     │   ├── nvim/
