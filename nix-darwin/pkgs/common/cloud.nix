@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     # AWS
     awscli2
-    nodePackages.aws-cdk
+    aws-cdk-cli
 
     # Azure
     azure-cli
