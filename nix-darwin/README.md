@@ -1,45 +1,43 @@
 ## ABOUT
 
-This README will give an instruction of how to setup nix(nixpkgs) with your environment.  
-This repository aims to deploy desired packages and its configuration just for Mac OS. You need to well translate each settings when you want to do the same with other platforms.
+This README gives an easy instruction of setting up Nix.  
 
-## HOW TO CONFIGURE YOUR NIX ENVIRONMENT
+## HOW TO START YOUR NIX CONFIGURATION
 
-#### Setup nix
+#### Setup Nix
+
+All the installation steps are based on the recommendation of official nix-darwin's [github page](https://github.com/nix-darwin/nix-darwin#uninstalling).
+
+
+#### Install Lix (`nix` binary)
+```
+$ curl -sSf -L https://install.lix.systems/lix | sh -s -- install
+```
+See [Installing Lix](https://lix.systems/install/#on-any-other-linuxmacos-system) for installation detail.  
+
+After installing Lix, you need to open a new shell or run `. /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh`
+
+#### Migrate Configuration
 
 ```
-curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | \
-  sh -s -- install
+$ sudo mkdir -p /etc/nix-darwin
+$ sudo chown $(id -nu):$(id -ng) /etc/nix-darwin
+$ cd /etc/nix-darwin
+
+$ cp -R {path_to_this_folder} .
+$ gsed -i -E "s/^( *localhostname *= *)\"[^\"]*\";/\1\"$(scutil --get LocalHostName)\";/" flake.nix
+$ gsed -i -E "s/^( *system *= *)\"[^\"]*\";/\1\"$(uname -m)-darwin\";/" flake.nix //NOTE: Since "arm64-darwin" is not supported, you should use "aarch64-darwin" instead.
+$ sudo nix run nix-darwin/master#darwin-rebuild -- switch
 ```
-See [Determinate Nix Installer](https://github.com/DeterminateSystems/nix-installer?tab=readme-ov-file#determinate-nix-installer) for installation detail.  
-When you want to use Determinate Nix + Nix-Darwin, installation of nix binary should be done without '--determinate' flag.
-You can set up Determinate using the darwinModules.default module output from the [determinate flake](https://github.com/DeterminateSystems/determinate).
 
-#### Add homemaanger module
+After this step, you can find `darwin-rebuild` binary on your PATH.
 
-```
-nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-nix-channel --update
-```
-See Home Manager [nix-darwin module](https://nix-community.github.io/home-manager/index.xhtml#sec-install-nix-darwin-module) for installation detail.
+## After Installation
 
-#### Add nix-darwin binary & load nix-darwin configurations
-
-```
-sudo mkdir -p /etc/nix-darwin
-sudo chown $(id -nu):$(id -ng) /etc/nix-darwin
-cd /etc/nix-darwin
-
-nix flake init -t nix-darwin/master
-sed -i '' "s/simple/$(scutil --get LocalHostName)/" flake.nix
-sed -i '' "s/aarch64/$(uname -m)/" flake.nix
-sudo nix run nix-darwin/master#darwin-rebuild -- switch
-```
-See [nix-darwin](https://github.com/LnL7/nix-darwin?tab=readme-ov-file) for installation detail.
-
-#### Apply settings
+#### Change Configuration
 
 **Mac OS**
 ```
-sudo darwin-rebuild switch
+$ cd /etc/nix-darwin
+$ sudo darwin-rebuild switch
 ```
