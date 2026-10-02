@@ -17,9 +17,11 @@
     ];
     # brew install --cask for 'Casks'
     casks = [
+      "chatgpt"
       "obsidian"
       "podman-desktop"
       "slack"
+      "microsoft-teams"
       "vivaldi"
     ];
   };
