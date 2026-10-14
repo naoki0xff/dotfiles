@@ -53,6 +53,7 @@ return {
       local utils = require("persisted.utils")
       local allowed_dirs = {
         "~/work",
+        "~/Documents",
       }
       local ignored_buffers = {
         'help',
