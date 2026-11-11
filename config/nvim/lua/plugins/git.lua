@@ -13,6 +13,17 @@ return {
           vim.keymap.set("n", "]c", function() if vim.wo.diff then vim.cmd.normal({']c', bang = true}) else gitsigns.nav_hunk('next') end end)
         end,
       })
+      local function set_word_diff_highlights()
+        vim.api.nvim_set_hl(0, 'GitSignsAddLnInline', { bg = '#3B514D' })
+        vim.api.nvim_set_hl(0, 'GitSignsChangeLnInline', { bg = '#3B5066' })
+        vim.api.nvim_set_hl(0, 'GitSignsDeleteLnInline', { bg = '#5B3B45' })
+      end
+
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        group = vim.api.nvim_create_augroup('GitsignsWordDiffHighlights', { clear = true }),
+        callback = set_word_diff_highlights,
+      })
+      set_word_diff_highlights()
     end
   },
   {
