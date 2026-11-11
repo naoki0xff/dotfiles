@@ -10,7 +10,7 @@
     
     # Launguage Server
     bash-language-server              # Bash
-    dockerfile-language-server-nodejs # Docker
+    dockerfile-language-server        # Docker
     gopls                             # Go
     helm-ls                           # Helm
     jdt-language-server               # Java
